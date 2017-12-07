@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Citat from './components/Citat'
+import ucitaj from './helpers/ucitaj'
 import './App.css';
 
 class App extends Component {
@@ -11,28 +13,19 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const http = new XMLHttpRequest()
-    http.open("GET", "https://raw.githubusercontent.com/skolakoda/skolakoda.github.io/master/_data/quotes.json")
-    http.send()
-    http.onload = () => {
-      const elementi = JSON.parse(http.responseText).map((citat, i) => {
-        return (
-          <blockquote key={i}>{citat.tekst}</blockquote>
-        )
-      })
-      this.setState((state, props) => {
-        return {
-          citati: elementi
-        }
-       })
-    }
+    ucitaj(odgovor =>
+      this.setState( () => ({citati: odgovor}) )
+    )
   }
-  
+
   render() {
+    const jsxCitati = this.state.citati.map((citat, i) =>
+      <Citat key={i} tekst={citat.tekst} autor={citat.autor} />
+    )
     return (
       <div className="App">
-        <h1>Zdravo Svete</h1>
-        {this.state.citati}
+        <h1>Programerske mudrosti</h1>
+        {jsxCitati}
       </div>
     );
   }
