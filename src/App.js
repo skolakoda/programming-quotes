@@ -3,16 +3,27 @@ import Quote from './components/Quote'
 import Filters from './components/Filters'
 import './App.css';
 
+// dovuci sliku sa wiki
+
 const url = "https://raw.githubusercontent.com/skolakoda/skolakoda.github.io/master/_data/quotes.json"
+
+function findProp(obj, prop) {
+  for (var property in obj) {
+    if (property === prop) return obj[property]
+    if (typeof obj[property] === "object")
+      return findProp(obj[property], prop)
+  }
+}
 
 class App extends Component {
 
   constructor() {
     super()
     this.state = {
-      citati: [],
-      autori: [],
-      filtrirano: []
+      citati: [], // niz objekata
+      autori: [], // Set
+      filtrirano: [],
+      slikeAutora: new Map()
     }
   }
 
@@ -20,9 +31,16 @@ class App extends Component {
     fetch(url)
     .then(odgovor => odgovor.json())
     .then(citati => {
-      this.setState(() => ({citati, filtrirano: citati}))
+      this.setState(() => ({citati, filtrirano: citati.filter(x => Math.random() > .9)}))
       const autori = new Set(citati.map(citat => citat.autor))
       this.setState(() => ({autori}))
+
+      for (const autor of autori) {
+        fetch(`https://en.wikipedia.org/w/api.php?action=query&titles=${autor}&prop=pageimages&format=json&pithumbsize=50&origin=*`)
+        .then(odgovor => odgovor.json())
+        .then(obj => this.setState(() => ({slikeAutora: new Map(this.state.slikeAutora).set(autor, findProp(obj, 'source') || '')})
+        ))
+      }
     })
   }
 
@@ -36,13 +54,15 @@ class App extends Component {
 
   render() {
     const citati = this.state.filtrirano.map((citat, i) =>
-      <Quote key={i} tekst={citat.tekst} autor={citat.autor}/>
+      <Quote key={i} tekst={citat.tekst} autor={citat.autor} slika={this.state.slikeAutora.get(citat.autor)} />
     )
     return (
       <div className="App">
-        <Filters autori={this.state.autori} filtriraj={this.filtriraj}/>
-        <h1>Programerske mudrosti</h1>
-        {citati}
+        <Filters autori={this.state.autori} slikeAutora={this.state.slikeAutora} filtriraj={this.filtriraj}/>
+        <main>
+          <h1>Programerske mudrosti</h1>
+          {citati}
+        </main>
       </div>
     )
   }

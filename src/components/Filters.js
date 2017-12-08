@@ -11,19 +11,29 @@ const Filters = props => {
     props.filtriraj(filteri)
   }
 
+  const izaberiAutora = (autor) => {
+    filteri['autor'] = autor
+    props.filtriraj(filteri)
+  }
+
   const sortirano = [...props.autori].sort((a, b) => a > b ? 1 : (b > a ? -1 : 0))
-  const options = sortirano.map((autor, i) =>
-    <option key={i} value={autor}>{autor}</option>
+  const autori = sortirano.map((autor, i) =>
+    <div key={i} onClick={() => izaberiAutora(autor)}>
+      {props.slikeAutora.get(autor) ? <img src={props.slikeAutora.get(autor)} alt={autor} /> : ''}
+      {autor}
+    </div>
   )
 
   return (
-    <div>
-      <input name="tekst" onChange={handleChange} />
-      <select name="autor" onChange={handleChange}>
-        <option value=''>Svi autori</option>
-        {options}
-      </select>
-    </div>
+    <aside>
+      <div className="fixed">
+        <h3>Pretraži</h3>
+        <input name="tekst" onChange={handleChange} />
+        <h3>Izaberi autora</h3>
+        <button className="svi-autori" onClick={() => izaberiAutora('')}>Svi autori</button>
+        {autori}
+      </div>
+    </aside>
   )
 }
 
