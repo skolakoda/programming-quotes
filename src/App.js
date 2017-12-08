@@ -3,7 +3,7 @@ import Quote from './components/Quote'
 import Filters from './components/Filters'
 import './App.css';
 
-// dovuci sliku sa wiki
+// ucitati i dodati veliku sliku izabranog autora
 
 const url = "https://raw.githubusercontent.com/skolakoda/skolakoda.github.io/master/_data/quotes.json"
 
@@ -21,7 +21,7 @@ class App extends Component {
     super()
     this.state = {
       citati: [], // niz objekata
-      autori: [], // Set
+      autori: new Set(),
       filtrirano: [],
       slikeAutora: new Map()
     }
