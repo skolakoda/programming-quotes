@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Citat = props => {
+const Quote = props => {
   return (
     <blockquote>
       <i>{props.tekst}</i><br/>
@@ -9,4 +9,4 @@ const Citat = props => {
   )
 }
 
-export default Citat
+export default Quote
