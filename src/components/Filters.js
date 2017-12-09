@@ -26,8 +26,8 @@ const Filters = props => {
 
   return (
     <aside>
-      <div className="fixed">
-        <h3>Pretraži</h3>
+      <div className="aside-inner">
+        <h3>Pretraži citate</h3>
         <input name="tekst" onChange={handleChange} />
         <h3>Izaberi autora</h3>
         <button className="svi-autori" onClick={() => izaberiAutora('')}>Svi autori</button>

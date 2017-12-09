@@ -60,7 +60,7 @@ class App extends Component {
       <div className="App">
         <Filters autori={this.state.autori} slikeAutora={this.state.slikeAutora} filtriraj={this.filtriraj}/>
         <main>
-          <h1>Programerske mudrosti</h1>
+          <h1>Programerski citati</h1>
           {citati}
         </main>
       </div>
