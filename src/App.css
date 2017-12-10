@@ -17,6 +17,16 @@ aside {
   width: 20%;
 }
 
+.aside-inner {
+  position:fixed;
+  top: 0;
+  bottom:0;
+  overflow-y:scroll;
+  overflow-x:hidden;
+  padding-right: 2%;
+  width: inherit;
+}
+
 .aside-inner div {
   cursor: pointer;
   margin: 8px 0;
@@ -42,15 +52,6 @@ aside {
 
 .aside-inner input {
   width: 100%;
-}
-
-.aside-inner {
-  position:fixed;
-  top: 0;
-  bottom:0;
-  overflow-y:scroll;
-  overflow-x:hidden;
-  padding-right: 40px;
 }
 
 .svi-autori {

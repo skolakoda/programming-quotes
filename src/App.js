@@ -1,19 +1,14 @@
-import React, {Component} from 'react';
+import React, {Component} from 'react'
+import {createStore} from 'redux'
 import Quote from './components/Quote'
 import Filters from './components/Filters'
-import './App.css';
+import findProp from './helpers/findProp'
+import './App.css'
 
 // ucitati i dodati veliku sliku izabranog autora
+console.log(createStore)
 
 const url = "https://raw.githubusercontent.com/skolakoda/skolakoda.github.io/master/_data/quotes.json"
-
-function findProp(obj, prop) {
-  for (var property in obj) {
-    if (property === prop) return obj[property]
-    if (typeof obj[property] === "object")
-      return findProp(obj[property], prop)
-  }
-}
 
 class App extends Component {
 
@@ -68,4 +63,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default App
