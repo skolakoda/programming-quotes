@@ -1,12 +1,8 @@
 import React, {Component} from 'react'
-import {createStore} from 'redux'
 import Quote from './components/Quote'
 import Filters from './components/Filters'
 import findProp from './helpers/findProp'
 import './App.css'
-
-// ucitati i dodati veliku sliku izabranog autora
-console.log(createStore)
 
 const url = "https://raw.githubusercontent.com/skolakoda/skolakoda.github.io/master/_data/quotes.json"
 
@@ -15,7 +11,7 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      citati: [], // niz objekata
+      citati: [],
       autori: new Set(),
       filtrirano: [],
       slikeAutora: new Map()
@@ -25,10 +21,11 @@ class App extends Component {
   componentDidMount() {
     fetch(url)
     .then(odgovor => odgovor.json())
-    .then(citati => {
-      this.setState(() => ({citati, filtrirano: citati.filter(x => Math.random() > .9)}))
+    .then(odgovor => {
+      const citati = odgovor.sort(() => .5 - Math.random())
+      const filtrirano = citati.filter(x => Math.random() > .9)
       const autori = new Set(citati.map(citat => citat.autor))
-      this.setState(() => ({autori}))
+      this.setState(() => ({citati, filtrirano, autori}))
 
       for (const autor of autori) {
         fetch(`https://en.wikipedia.org/w/api.php?action=query&titles=${autor}&prop=pageimages&format=json&pithumbsize=50&origin=*`)

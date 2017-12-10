@@ -1,4 +1,5 @@
 import React from 'react';
+import './Filters.css'
 
 const Filters = props => {
   const filteri = {
@@ -25,8 +26,8 @@ const Filters = props => {
   )
 
   return (
-    <aside>
-      <div className="aside-inner">
+    <aside className="filters">
+      <div className="filters-inner">
         <h3>Pretraži citate</h3>
         <input name="tekst" onChange={handleChange} />
         <h3>Izaberi autora</h3>
