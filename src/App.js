@@ -30,8 +30,11 @@ class App extends Component {
       for (const autor of autori) {
         fetch(`https://en.wikipedia.org/w/api.php?action=query&titles=${autor}&prop=pageimages&format=json&pithumbsize=50&origin=*`)
         .then(odgovor => odgovor.json())
-        .then(obj => this.setState(() => ({slikeAutora: new Map(this.state.slikeAutora).set(autor, findProp(obj, 'source') || '')})
-        ))
+        .then(obj => {
+          const slika = findProp(obj, 'source') || ''
+          const slikeAutora = new Map(this.state.slikeAutora).set(autor, slika)
+          this.setState(() => ({slikeAutora}))
+        })
       }
     })
   }
