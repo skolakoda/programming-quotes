@@ -1,6 +1,6 @@
 [![](screen.png)](https://skolakoda.org/programerski-citati/)
 
-# [Programerski citati](https://skolakoda.org/programerski-citati/)
+# Programerski citati
 
 React aplikacija za pretragu programerskih citata.
 
