@@ -1,3 +1,5 @@
+[![](screen.png)](https://mudroljub.github.io/programerski-citati/)
+
 # [Programerski citati](https://mudroljub.github.io/programerski-citati/)
 
 ```
