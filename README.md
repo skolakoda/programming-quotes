@@ -1,6 +1,18 @@
-[![](screen.png)](https://mudroljub.github.io/programerski-citati/)
+[![](screen.png)](https://skolakoda.org/programerski-citati/)
 
-# [Programerski citati](https://mudroljub.github.io/programerski-citati/)
+# [Programerski citati](https://skolakoda.org/programerski-citati/)
+
+React aplikacija za pretragu programerskih citata.
+
+## Razvoj
+
+```
+npm install
+npm start
+
+```
+
+## Deploy
 
 ```
 npm run deploy
