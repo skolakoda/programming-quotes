@@ -9,3 +9,4 @@ Vidi [uputstvo](https://github.com/facebookincubator/create-react-app/blob/maste
 ## TODO
 
 - ucitati i dodati veliku sliku izabranog autora
+- prebaciti stanje filtera na App
