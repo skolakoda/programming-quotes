@@ -26,3 +26,4 @@ Vidi [uputstvo](https://github.com/facebookincubator/create-react-app/blob/maste
 - prebaciti stanje filtera na App
 - srediti mobilni sidebar kao na: https://angular.io/guide/quickstart
 - dodaci statistike i vizuelizaciju podataka (grafikon za broj citata po autoru)
+- bekend za CRUD
