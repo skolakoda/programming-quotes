@@ -27,3 +27,4 @@ Vidi [uputstvo](https://github.com/facebookincubator/create-react-app/blob/maste
 - srediti mobilni sidebar kao na: https://angular.io/guide/quickstart
 - dodaci statistike i vizuelizaciju podataka (grafikon za broj citata po autoru)
 - bekend za CRUD
+- dodati dvojezicnost
