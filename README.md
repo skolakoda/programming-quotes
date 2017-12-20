@@ -22,9 +22,4 @@ Vidi [uputstvo](https://github.com/facebookincubator/create-react-app/blob/maste
 
 ## TODO
 
-- ucitati i dodati veliku sliku izabranog autora
-- prebaciti stanje filtera na App
-- srediti mobilni sidebar kao na: https://angular.io/guide/quickstart
-- dodaci statistike i vizuelizaciju podataka (grafikon za broj citata po autoru)
-- bekend za CRUD
-- dodati dvojezicnost
+Vidi: https://trello.com/b/fBcFTxgo/programerski-citati
