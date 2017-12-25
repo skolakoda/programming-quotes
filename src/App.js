@@ -14,7 +14,8 @@ class App extends Component {
       citati: [],
       autori: new Set(),
       filtrirano: [],
-      slikeAutora: new Map()
+      slikeAutora: new Map(),
+      engleski: false
     }
   }
 
@@ -40,21 +41,34 @@ class App extends Component {
   }
 
   filtriraj = filteri => {
+    const imaEngleski = this.state.engleski ? 'en' : 'tekst'
     const filtrirano = this.state.citati.filter(citat =>
       (citat.autor === filteri.autor || filteri.autor === '')
-      && citat.tekst.toLowerCase().includes(filteri.tekst.toLowerCase())
+      && (imaEngleski in citat)
+      && citat[imaEngleski].toLowerCase().includes(filteri.tekst.toLowerCase())
     )
     this.setState(() => ({filtrirano}))
   }
-
+  changeToEng = () =>{
+    this.setState({
+      engleski: true
+    })
+  }
+  changeToSrb = () => {
+    this.setState({
+      engleski: false
+    })
+  }
   render() {
     const citati = this.state.filtrirano.map((citat, i) =>
-      <Quote key={i} tekst={citat.tekst} autor={citat.autor} slika={this.state.slikeAutora.get(citat.autor)} />
+      <Quote key={i} tekst={this.state.engleski ? citat.en : citat.tekst} autor={citat.autor} slika={this.state.slikeAutora.get(citat.autor)} />
     )
     return (
       <div className="App">
         <Filters autori={this.state.autori} slikeAutora={this.state.slikeAutora} filtriraj={this.filtriraj}/>
         <main>
+          <button onClick={this.changeToSrb} className="langBtn">SRB</button>
+          <button onClick={this.changeToEng} className="langBtn">ENG</button>
           <h1>Programerski citati</h1>
           {citati}
         </main>
