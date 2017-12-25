@@ -41,11 +41,11 @@ class App extends Component {
   }
 
   filtriraj = filteri => {
-    const imaEngleski = this.state.engleski ? 'en' : 'tekst'
+    const jezik = this.state.engleski ? 'en' : 'tekst'
     const filtrirano = this.state.citati.filter(citat =>
       (citat.autor === filteri.autor || filteri.autor === '')
-      && (imaEngleski in citat)
-      && citat[imaEngleski].toLowerCase().includes(filteri.tekst.toLowerCase())
+      && (jezik in citat)
+      && citat[jezik].toLowerCase().includes(filteri.tekst.toLowerCase())
     )
     this.setState(() => ({filtrirano}))
   }
