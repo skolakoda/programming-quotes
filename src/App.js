@@ -65,11 +65,11 @@ class App extends Component {
     )
     return (
       <div className="App">
-        <Filters autori={this.state.autori} slikeAutora={this.state.slikeAutora} filtriraj={this.filtriraj}/>
+        <Filters autori={this.state.autori} slikeAutora={this.state.slikeAutora} filtriraj={this.filtriraj} engleski={this.state.engleski}/>
         <main>
           <button onClick={this.changeToSrb} className="langBtn">SRB</button>
           <button onClick={this.changeToEng} className="langBtn">ENG</button>
-          <h1>Programerski citati</h1>
+          <h1>{this.state.engleski ? 'Programming quotes' : 'Programerski citati'}</h1>
           {citati}
         </main>
       </div>

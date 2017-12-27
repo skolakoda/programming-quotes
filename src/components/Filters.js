@@ -28,10 +28,10 @@ const Filters = props => {
   return (
     <aside className="filters">
       <div className="filters-inner">
-        <h3>Pretraži citate</h3>
+        <h3>{props.engleski ? 'Search quotes' : 'Pretraži citate'}</h3>
         <input name="tekst" onChange={handleChange} />
-        <h3>Izaberi autora</h3>
-        <button className="svi-autori" onClick={() => izaberiAutora('')}>Svi autori</button>
+        <h3>{props.engleski ? 'Choose the author' : 'Izaberi autora'}</h3>
+        <button className="svi-autori" onClick={() => izaberiAutora('')}>{props.engleski ? 'All authors' : 'Svi autori'}</button>
         {autori}
       </div>
     </aside>
