@@ -1,4 +1,5 @@
 import React from 'react';
+import Stars from './Stars'
 
 const Quote = props => {
   const wikiUrl = `https://en.wikipedia.org/wiki/${props.autor}`
@@ -7,6 +8,7 @@ const Quote = props => {
       <i>{props.tekst}</i><br/>
       <small> — <a href={wikiUrl} target="_blank">{props.autor}</a> </small>
       {/* <img src={props.slika} /> */}
+      <Stars/>
     </blockquote>
   )
 }
