@@ -20,3 +20,6 @@ aside {
   font-size: 12px;
   margin: 0px 5px;
 }
+.not{
+  display: none;
+}
