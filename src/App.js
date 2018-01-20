@@ -7,7 +7,6 @@ import './App.css'
 const url = "https://raw.githubusercontent.com/skolakoda/skolakoda.github.io/master/_data/quotes.json"
 
 class App extends Component {
-
   constructor() {
     super()
     this.state = {
@@ -15,7 +14,7 @@ class App extends Component {
       autori: new Set(),
       filtrirano: [],
       slikeAutora: new Map(),
-      engleski: false
+      engleski: false,
     }
   }
 
@@ -49,7 +48,8 @@ class App extends Component {
     )
     this.setState(() => ({filtrirano}))
   }
-  changeToEng = () =>{
+  
+  changeToEng = () => { 
     this.setState({
       engleski: true
     })
@@ -60,9 +60,16 @@ class App extends Component {
     })
   }
   render() {
-    const citati = this.state.filtrirano.map((citat, i) =>
-      <Quote key={i} tekst={this.state.engleski ? citat.en : citat.tekst} autor={citat.autor} slika={this.state.slikeAutora.get(citat.autor)} />
-    )
+    const citati = this.state.filtrirano.map((citat, i) =>{
+      let tekst;
+      if(this.state.engleski && citat.en){
+        tekst = citat.en
+      }
+      if(!this.state.engleski && citat.tekst){
+        tekst = citat.tekst
+      }    
+      return tekst ? <Quote className="not" key={i} tekst={tekst} autor={citat.autor} slika={this.state.slikeAutora.get(citat.autor)} /> : ''
+    })
     return (
       <div className="App">
         <Filters autori={this.state.autori} slikeAutora={this.state.slikeAutora} filtriraj={this.filtriraj} engleski={this.state.engleski}/>
