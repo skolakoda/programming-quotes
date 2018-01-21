@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import Quote from './components/Quote'
 import Filters from './components/Filters'
+import Picture from './components/Picture'
 import findProp from './helpers/findProp'
 import './App.css'
 
@@ -15,8 +16,28 @@ class App extends Component {
       filtrirano: [],
       slikeAutora: new Map(),
       engleski: false,
+      autor: '',
+      tekst: '',
+      velikaSlika:''
     }
+    this.handleChange=this.handleChange.bind(this);
+    this.izaberiAutora=this.izaberiAutora.bind(this);
+
   }
+handleChange(event){
+      this.setState({tekst:event.target.value},this.filtriraj)
+    }
+
+izaberiAutora(autor){
+    fetch(`https://en.wikipedia.org/w/api.php?action=query&titles=${autor}&prop=pageimages&format=json&pithumbsize=250&origin=*`)
+      .then(response => response.json())
+      .then(obj=>{
+        const velikaSlika = findProp(obj,'source') || '';
+        this.setState({velikaSlika});
+        })
+      this.setState({autor:autor},this.filtriraj);
+    }
+
 
   componentDidMount() {
     fetch(url)
@@ -39,17 +60,17 @@ class App extends Component {
     })
   }
 
-  filtriraj = filteri => {
+  filtriraj =()=> {
     const jezik = this.state.engleski ? 'en' : 'tekst'
     const filtrirano = this.state.citati.filter(citat =>
-      (citat.autor === filteri.autor || filteri.autor === '')
+      (citat.autor === this.state.autor || this.state.autor === '')
       && (jezik in citat)
-      && citat[jezik].toLowerCase().includes(filteri.tekst.toLowerCase())
+      && citat[jezik].toLowerCase().includes(this.state.tekst.toLowerCase())
     )
     this.setState(() => ({filtrirano}))
   }
-  
-  changeToEng = () => { 
+
+  changeToEng = () => {
     this.setState({
       engleski: true
     })
@@ -67,15 +88,23 @@ class App extends Component {
       }
       if(!this.state.engleski && citat.tekst){
         tekst = citat.tekst
-      }    
+      }
       return tekst ? <Quote className="not" key={i} tekst={tekst} autor={citat.autor} slika={this.state.slikeAutora.get(citat.autor)} /> : ''
     })
     return (
       <div className="App">
-        <Filters autori={this.state.autori} slikeAutora={this.state.slikeAutora} filtriraj={this.filtriraj} engleski={this.state.engleski}/>
+        <Filters autori={this.state.autori}
+                 slikeAutora={this.state.slikeAutora}
+                 filtriraj={this.filtriraj}
+                 izaberiAutora={this.izaberiAutora}
+                 handleChange={this.handleChange}
+                 engleski={this.state.engleski} />
         <main>
+          <Picture slika={this.state.velikaSlika}
+                   autor={this.state.autor}/>
           <button onClick={this.changeToSrb} className="langBtn">SRB</button>
           <button onClick={this.changeToEng} className="langBtn">ENG</button>
+
           <h1>{this.state.engleski ? 'Programming quotes' : 'Programerski citati'}</h1>
           {citati}
         </main>
