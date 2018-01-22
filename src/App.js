@@ -100,8 +100,10 @@ izaberiAutora(autor){
                  handleChange={this.handleChange}
                  engleski={this.state.engleski} />
         <main>
+        {(this.state.autor==='')?"":
           <Picture slika={this.state.velikaSlika}
                    autor={this.state.autor}/>
+               }
           <button onClick={this.changeToSrb} className="langBtn">SRB</button>
           <button onClick={this.changeToEng} className="langBtn">ENG</button>
 
