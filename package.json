@@ -1,7 +1,7 @@
 {
   "name": "citati",
   "version": "0.1.0",
-  "homepage": "https://mudroljub.github.io/programerski-citati",
+  "homepage": "https://skolakoda.github.io/programerski-citati",
   "private": true,
   "dependencies": {
     "gh-pages": "^1.1.0",
