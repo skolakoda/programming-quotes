@@ -2,7 +2,7 @@
 
 # Programerski citati
 
-React aplikacija za pretragu programerskih citata.
+React aplikacija za pretragu programerskih citata. Vidi kako radi na [skolakoda.org/programerski-citati](https://skolakoda.org/programerski-citati/)
 
 ## Razvoj
 
