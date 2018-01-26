@@ -2,7 +2,7 @@
 
 # Programerski citati
 
-Programerski citati, aplikacija otvorenog koda koju zajedno razvijamo. Možete se priključiti, to je najbolji način da se naučite razvoju softvera. Tehnologija: React + Node.js
+Programerski citati, aplikacija otvorenog koda koju zajedno razvijamo u Školi koda. Možete se priključiti, to je najbolji način da se naučite razvoju softvera. Tehnologija: React + Node.js
 
 Vidi kako radi: na [skolakoda.org/programerski-citati](https://skolakoda.org/programerski-citati/)
 
