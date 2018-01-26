@@ -4,7 +4,7 @@
 
 React aplikacija za pretragu programerskih citata. Vidi kako radi: na [skolakoda.org/programerski-citati](https://skolakoda.org/programerski-citati/)
 
-## Razvoj
+## Pokretanje
 
 ```
 npm install
@@ -20,6 +20,9 @@ npm run deploy
 
 Vidi [uputstvo](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#github-pages) za objavljivanje React aplikacije na Github stranici.
 
-## TODO
+## Kako se pridružiti
 
-Vidi: https://trello.com/b/fBcFTxgo/programerski-citati
+Ovde možete videte trenutne zadatke:
+- https://trello.com/b/fBcFTxgo/programerski-citati
+
+Projekat vodimo preko Trello-a, a Slack koristimo za komunikaciju. Kontaktirajte Školu koda na bilo koji način ako se želite uključiti.
