@@ -20,9 +20,7 @@ npm run deploy
 
 Vidi [uputstvo](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#github-pages) za objavljivanje React aplikacije na Github stranici.
 
-## Kako se pridružiti
+## TODO
 
 Ovde možete videte trenutne zadatke:
 - https://trello.com/b/fBcFTxgo/programerski-citati
-
-Projekat vodimo preko Trello-a, a Slack koristimo za komunikaciju. Kontaktirajte Školu koda na bilo koji način ako se želite uključiti.
