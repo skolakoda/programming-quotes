@@ -14,7 +14,7 @@ const Filters = props => {
   return (
     <aside className="filters">
       <div className="filters-inner">
-        <h3>{props.engleski ? 'Search quotes' : 'Pretraži citate'}</h3>
+        <h3>{props.engleski ? 'Search text' : 'Pretraži tekst'}</h3>
         <input name="tekst" onChange={props.handleChange} />
         <h3>{props.engleski ? 'Choose the author' : 'Izaberi autora'}</h3>
         <button className="svi-autori" onClick={() =>props.izaberiAutora('')}>{props.engleski ? 'All authors' : 'Svi autori'}</button>
