@@ -17,15 +17,15 @@ class App extends Component {
       slikeAutora: new Map(),
       jezik: 'sr',
       autor: '',
-      sr: '',
+      fraza: '',
       velikaSlika:''
     }
-    this.handleChange=this.handleChange.bind(this);
+    this.setPhrase=this.setPhrase.bind(this);
     this.izaberiAutora=this.izaberiAutora.bind(this);
   }
   
-  handleChange(event){
-    this.setState({sr:event.target.value},this.filtriraj)
+  setPhrase(event){
+    this.setState({fraza:event.target.value}, this.filtriraj)
   }
 
   izaberiAutora(autor){
@@ -65,7 +65,7 @@ class App extends Component {
     const filtrirano = this.state.citati.filter(citat =>
       (citat.autor === this.state.autor || this.state.autor === '')
       && citat[jezik]
-      && citat[jezik].toLowerCase().includes(this.state.sr.toLowerCase())
+      && citat[jezik].toLowerCase().includes(this.state.fraza.toLowerCase())
     )
     this.setState(() => ({filtrirano}))
   }
@@ -88,9 +88,8 @@ class App extends Component {
         <Filters 
           autori={this.state.autori}
           slikeAutora={this.state.slikeAutora}
-          filtriraj={this.filtriraj}
           izaberiAutora={this.izaberiAutora}
-          handleChange={this.handleChange}
+          setPhrase={this.setPhrase}
           jezik={this.state.jezik} 
         />
 
@@ -99,10 +98,8 @@ class App extends Component {
             slika={this.state.velikaSlika}
             autor={this.state.autor}
           />
-
           <button onClick={() => this.changeLang('sr')} className="langBtn">SRB</button>
           <button onClick={() => this.changeLang('en')} className="langBtn">ENG</button>
-
           <h1>{this.state.jezik === 'en' ? 'Programming quotes' : 'Programerski citati'}</h1>
           {citati}
         </main>

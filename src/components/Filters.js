@@ -16,11 +16,14 @@ const Filters = props => {
   return (
     <aside className="filters">
       <div className="filters-inner">
+
         <h3>{props.jezik === 'en' ? 'Search text' : 'Pretraži tekst'}</h3>
-        <input name="tekst" onChange={props.handleChange} />
+        <input name="tekst" onChange={props.setPhrase} />
+
         <h3>{props.jezik === 'en' ? 'Choose the author' : 'Izaberi autora'}</h3>
         <button className="svi-autori" onClick={() =>props.izaberiAutora('')}>{props.jezik === 'en' ? 'All authors' : 'Svi autori'}</button>
         {autori}
+
       </div>
     </aside>
   )
