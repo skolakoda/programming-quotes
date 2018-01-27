@@ -7,7 +7,6 @@ const Quote = props => {
     <blockquote>
       <i>{props.tekst}</i><br/>
       <small> — <a href={wikiUrl} target="_blank">{props.autor}</a> </small>
-      {/* <img src={props.slika} /> */}
       <Stars/>
     </blockquote>
   )

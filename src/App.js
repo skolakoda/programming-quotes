@@ -22,22 +22,22 @@ class App extends Component {
     }
     this.handleChange=this.handleChange.bind(this);
     this.izaberiAutora=this.izaberiAutora.bind(this);
-
   }
-handleChange(event){
-      this.setState({sr:event.target.value},this.filtriraj)
-    }
+  
+  handleChange(event){
+    this.setState({sr:event.target.value},this.filtriraj)
+  }
 
-izaberiAutora(autor){
+  izaberiAutora(autor){
+    // TODO: move fetch to Picture component
     fetch(`https://en.wikipedia.org/w/api.php?action=query&titles=${autor}&prop=pageimages&format=json&pithumbsize=250&origin=*`)
       .then(response => response.json())
-      .then(obj=>{
+      .then(obj => {
         const velikaSlika = findProp(obj,'source') || '';
         this.setState({velikaSlika});
-        })
-      this.setState({autor:autor},this.filtriraj);
-    }
-
+      })
+    this.setState({autor}, this.filtriraj);
+  }
 
   componentDidMount() {
     fetch(url)
@@ -77,9 +77,11 @@ izaberiAutora(autor){
   }
 
   render() {
-    const citati = this.state.filtrirano.map((citat, i) =>{
-      let tekst = citat[this.state.jezik]
-      return tekst ? <Quote className="not" key={i} tekst={tekst} autor={citat.autor} slika={this.state.slikeAutora.get(citat.autor)} /> : ''
+    const citati = this.state.filtrirano.map((citat, i) => {
+      const tekst = citat[this.state.jezik]
+      return tekst ? 
+        <Quote className="not" key={i} tekst={tekst} autor={citat.autor} /> 
+        : ''
     })
     return (
       <div className="App">
@@ -89,13 +91,15 @@ izaberiAutora(autor){
           filtriraj={this.filtriraj}
           izaberiAutora={this.izaberiAutora}
           handleChange={this.handleChange}
-          jezik={this.state.jezik} />
+          jezik={this.state.jezik} 
+        />
+
         <main>
-          {(this.state.autor === '') ? '':
-            <Picture 
-              slika={this.state.velikaSlika}
-              autor={this.state.autor}/>
-          }
+          <Picture 
+            slika={this.state.velikaSlika}
+            autor={this.state.autor}
+          />
+
           <button onClick={() => this.changeLang('sr')} className="langBtn">SRB</button>
           <button onClick={() => this.changeLang('en')} className="langBtn">ENG</button>
 
