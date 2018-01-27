@@ -2,10 +2,10 @@ import React, {Component} from 'react'
 import Quote from './components/Quote'
 import Filters from './components/Filters'
 import Picture from './components/Picture'
-import findProp from './helpers/findProp'
+import {findProp} from './shared/helpers'
 import './App.css'
 
-const url = "https://raw.githubusercontent.com/skolakoda/skolakoda.github.io/master/_data/quotes.json"
+const url = "https://baza-podataka.herokuapp.com/citati/"
 
 class App extends Component {
   constructor() {
@@ -15,9 +15,9 @@ class App extends Component {
       autori: new Set(),
       filtrirano: [],
       slikeAutora: new Map(),
-      engleski: false,
+      jezik: 'sr',
       autor: '',
-      tekst: '',
+      sr: '',
       velikaSlika:''
     }
     this.handleChange=this.handleChange.bind(this);
@@ -25,7 +25,7 @@ class App extends Component {
 
   }
 handleChange(event){
-      this.setState({tekst:event.target.value},this.filtriraj)
+      this.setState({sr:event.target.value},this.filtriraj)
     }
 
 izaberiAutora(autor){
@@ -61,53 +61,45 @@ izaberiAutora(autor){
   }
 
   filtriraj =()=> {
-    const jezik = this.state.engleski ? 'en' : 'tekst'
+    const jezik = this.state.jezik
     const filtrirano = this.state.citati.filter(citat =>
       (citat.autor === this.state.autor || this.state.autor === '')
-      && (jezik in citat)
-      && citat[jezik].toLowerCase().includes(this.state.tekst.toLowerCase())
+      && citat[jezik]
+      && citat[jezik].toLowerCase().includes(this.state.sr.toLowerCase())
     )
     this.setState(() => ({filtrirano}))
   }
 
-  changeToEng = () => {
+  changeLang = (lang) => {
     this.setState({
-      engleski: true
+      jezik: lang
     })
   }
-  changeToSrb = () => {
-    this.setState({
-      engleski: false
-    })
-  }
+
   render() {
     const citati = this.state.filtrirano.map((citat, i) =>{
-      let tekst;
-      if(this.state.engleski && citat.en){
-        tekst = citat.en
-      }
-      if(!this.state.engleski && citat.tekst){
-        tekst = citat.tekst
-      }
+      let tekst = citat[this.state.jezik]
       return tekst ? <Quote className="not" key={i} tekst={tekst} autor={citat.autor} slika={this.state.slikeAutora.get(citat.autor)} /> : ''
     })
     return (
       <div className="App">
-        <Filters autori={this.state.autori}
-                 slikeAutora={this.state.slikeAutora}
-                 filtriraj={this.filtriraj}
-                 izaberiAutora={this.izaberiAutora}
-                 handleChange={this.handleChange}
-                 engleski={this.state.engleski} />
+        <Filters 
+          autori={this.state.autori}
+          slikeAutora={this.state.slikeAutora}
+          filtriraj={this.filtriraj}
+          izaberiAutora={this.izaberiAutora}
+          handleChange={this.handleChange}
+          jezik={this.state.jezik} />
         <main>
-        {(this.state.autor==='')?"":
-          <Picture slika={this.state.velikaSlika}
-                   autor={this.state.autor}/>
-               }
-          <button onClick={this.changeToSrb} className="langBtn">SRB</button>
-          <button onClick={this.changeToEng} className="langBtn">ENG</button>
+          {(this.state.autor === '') ? '':
+            <Picture 
+              slika={this.state.velikaSlika}
+              autor={this.state.autor}/>
+          }
+          <button onClick={() => this.changeLang('sr')} className="langBtn">SRB</button>
+          <button onClick={() => this.changeLang('en')} className="langBtn">ENG</button>
 
-          <h1>{this.state.engleski ? 'Programming quotes' : 'Programerski citati'}</h1>
+          <h1>{this.state.jezik === 'en' ? 'Programming quotes' : 'Programerski citati'}</h1>
           {citati}
         </main>
       </div>
