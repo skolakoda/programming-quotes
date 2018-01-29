@@ -1,11 +1,11 @@
 import React from 'react'
 import './Picture.css'
 
-const Picture = props => {
-  return props.autor === '' ? '': (
+const Picture = ({ autor, slika }) => {
+  return slika === '' ? '' : (
     <div className="thumbnail">
-      <h3>{props.autor}</h3>
-      <img  src={props.slika} alt="Loading..."/>
+      <h3>{autor}</h3>
+      <img  src={slika} alt="Loading..."/>
     </div>
   );
 }

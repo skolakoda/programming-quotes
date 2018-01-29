@@ -20,15 +20,13 @@ class App extends Component {
       fraza: '',
       velikaSlika:''
     }
-    this.setPhrase=this.setPhrase.bind(this);
-    this.izaberiAutora=this.izaberiAutora.bind(this);
   }
-  
-  setPhrase(event){
+
+  setPhrase = event => {
     this.setState({fraza:event.target.value}, this.filtriraj)
   }
 
-  izaberiAutora(autor){
+  izaberiAutora = autor => {
     // TODO: move fetch to Picture component
     fetch(`https://en.wikipedia.org/w/api.php?action=query&titles=${autor}&prop=pageimages&format=json&pithumbsize=250&origin=*`)
       .then(response => response.json())
@@ -60,7 +58,7 @@ class App extends Component {
     })
   }
 
-  filtriraj =()=> {
+  filtriraj = () => {
     const jezik = this.state.jezik
     const filtrirano = this.state.citati.filter(citat =>
       (citat.autor === this.state.autor || this.state.autor === '')
@@ -79,22 +77,22 @@ class App extends Component {
   render() {
     const citati = this.state.filtrirano.map((citat, i) => {
       const tekst = citat[this.state.jezik]
-      return tekst ? 
-        <Quote className="not" key={i} tekst={tekst} autor={citat.autor} /> 
+      return tekst ?
+        <Quote className="not" key={citat._id} tekst={tekst} autor={citat.autor} />
         : ''
     })
     return (
       <div className="App">
-        <Filters 
+        <Filters
           autori={this.state.autori}
           slikeAutora={this.state.slikeAutora}
           izaberiAutora={this.izaberiAutora}
           setPhrase={this.setPhrase}
-          jezik={this.state.jezik} 
+          jezik={this.state.jezik}
         />
 
         <main>
-          <Picture 
+          <Picture
             slika={this.state.velikaSlika}
             autor={this.state.autor}
           />
