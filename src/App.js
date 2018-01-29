@@ -11,7 +11,7 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      citati: [],
+      quotes: [],
       authors: new Set(),
       filtered: [],
       authorImages: new Map(),
@@ -39,19 +39,19 @@ class App extends Component {
 
   componentDidMount() {
     fetch(url)
-    .then(odgovor => odgovor.json())
-    .then(odgovor => {
-      const citati = odgovor.sort(() => .5 - Math.random())
-      const filtered = citati.filter(x => Math.random() > .9)
-      const authors = new Set(citati.map(citat => citat.autor))
-      this.setState(() => ({citati, filtered, authors}))
+    .then(response => response.json())
+    .then(response => {
+      const quotes = response.sort(() => .5 - Math.random())
+      const filtered = quotes.filter(x => Math.random() > .9)
+      const authors = new Set(quotes.map(quote => quote.autor))
+      this.setState(() => ({quotes, filtered, authors}))
 
       for (const autor of authors) {
         fetch(`https://en.wikipedia.org/w/api.php?action=query&titles=${autor}&prop=pageimages&format=json&pithumbsize=50&origin=*`)
-        .then(odgovor => odgovor.json())
+        .then(response => response.json())
         .then(obj => {
-          const slika = findProp(obj, 'source') || ''
-          const authorImages = new Map(this.state.authorImages).set(autor, slika)
+          const imgSrc = findProp(obj, 'source') || ''
+          const authorImages = new Map(this.state.authorImages).set(autor, imgSrc)
           this.setState(() => ({authorImages}))
         })
       }
@@ -60,10 +60,10 @@ class App extends Component {
 
   filterQuotes = () => {
     const language = this.state.language
-    const filtered = this.state.citati.filter(citat =>
-      (citat.autor === this.state.autor || this.state.autor === '')
-      && citat[language]
-      && citat[language].toLowerCase().includes(this.state.phrase.toLowerCase())
+    const filtered = this.state.quotes.filter(quote =>
+      (quote.autor === this.state.autor || this.state.autor === '')
+      && quote[language]
+      && quote[language].toLowerCase().includes(this.state.phrase.toLowerCase())
     )
     this.setState(() => ({filtered}))
   }
@@ -91,7 +91,7 @@ class App extends Component {
 
         <main>
           <Picture
-            slika={this.state.mainImage}
+            imgSrc={this.state.mainImage}
             autor={this.state.autor}
           />
           <button onClick={() => this.changeLang('sr')} className="lang-btn">SRB</button>
