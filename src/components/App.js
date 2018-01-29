@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
-import Quote from './components/Quote'
-import Filters from './components/Filters'
-import Picture from './components/Picture'
-import {findProp} from './shared/helpers'
+import Quote from './Quote'
+import Filters from './Filters'
+import Picture from './Picture'
+import {findProp} from '../shared/helpers'
 import './App.css'
 
 const url = "https://baza-podataka.herokuapp.com/citati/"

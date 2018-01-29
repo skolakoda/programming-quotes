@@ -1,7 +1,3 @@
-* {
-  box-sizing: border-box;
-}
-
 .App {
   margin-left: 2%;
   display: flex;
@@ -16,6 +12,7 @@ main {
 aside {
   width: 20%;
 }
+
 .lang-btn{
   font-size: 12px;
   margin: 0px 5px;
