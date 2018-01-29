@@ -4,11 +4,11 @@ import './Filters.css'
 
 const Filters = props => {
 
-  const sortirano = [...props.autori].sort(sortirajAbecedno)
+  const sortirano = [...props.authors].sort(sortirajAbecedno)
 
-  const autori = sortirano.map((autor, i) =>
-    <div key={i} onClick={() =>props.izaberiAutora(autor)}>
-      {props.slikeAutora.get(autor) ? <img src={props.slikeAutora.get(autor)} alt={autor} /> : ''}
+  const authors = sortirano.map((autor, i) =>
+    <div key={i} onClick={() =>props.setAuthor(autor)}>
+      {props.authorImages.get(autor) ? <img src={props.authorImages.get(autor)} alt={autor} /> : ''}
       {autor}
     </div>
   )
@@ -17,12 +17,12 @@ const Filters = props => {
     <aside className="filters">
       <div className="filters-inner">
 
-        <h3>{props.jezik === 'en' ? 'Search text' : 'Pretraži tekst'}</h3>
+        <h3>{props.language === 'en' ? 'Search text' : 'Pretraži tekst'}</h3>
         <input name="tekst" onChange={props.setPhrase} />
 
-        <h3>{props.jezik === 'en' ? 'Choose the author' : 'Izaberi autora'}</h3>
-        <button className="svi-autori" onClick={() =>props.izaberiAutora('')}>{props.jezik === 'en' ? 'All authors' : 'Svi autori'}</button>
-        {autori}
+        <h3>{props.language === 'en' ? 'Choose the author' : 'Izaberi autora'}</h3>
+        <button className="svi-autori" onClick={() =>props.setAuthor('')}>{props.language === 'en' ? 'All authors' : 'Svi autori'}</button>
+        {authors}
 
       </div>
     </aside>

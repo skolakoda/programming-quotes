@@ -12,29 +12,29 @@ class App extends Component {
     super()
     this.state = {
       citati: [],
-      autori: new Set(),
-      filtrirano: [],
-      slikeAutora: new Map(),
-      jezik: 'sr',
+      authors: new Set(),
+      filtered: [],
+      authorImages: new Map(),
+      language: 'sr',
       autor: '',
-      fraza: '',
-      velikaSlika:''
+      phrase: '',
+      mainImage:''
     }
   }
 
   setPhrase = event => {
-    this.setState({fraza:event.target.value}, this.filtriraj)
+    this.setState({phrase:event.target.value}, this.filterQuotes)
   }
 
-  izaberiAutora = autor => {
+  setAuthor = autor => {
     // TODO: move fetch to Picture component
     fetch(`https://en.wikipedia.org/w/api.php?action=query&titles=${autor}&prop=pageimages&format=json&pithumbsize=250&origin=*`)
       .then(response => response.json())
       .then(obj => {
-        const velikaSlika = findProp(obj,'source') || '';
-        this.setState({velikaSlika});
+        const mainImage = findProp(obj,'source') || '';
+        this.setState({mainImage});
       })
-    this.setState({autor}, this.filtriraj);
+    this.setState({autor}, this.filterQuotes);
   }
 
   componentDidMount() {
@@ -42,41 +42,41 @@ class App extends Component {
     .then(odgovor => odgovor.json())
     .then(odgovor => {
       const citati = odgovor.sort(() => .5 - Math.random())
-      const filtrirano = citati.filter(x => Math.random() > .9)
-      const autori = new Set(citati.map(citat => citat.autor))
-      this.setState(() => ({citati, filtrirano, autori}))
+      const filtered = citati.filter(x => Math.random() > .9)
+      const authors = new Set(citati.map(citat => citat.autor))
+      this.setState(() => ({citati, filtered, authors}))
 
-      for (const autor of autori) {
+      for (const autor of authors) {
         fetch(`https://en.wikipedia.org/w/api.php?action=query&titles=${autor}&prop=pageimages&format=json&pithumbsize=50&origin=*`)
         .then(odgovor => odgovor.json())
         .then(obj => {
           const slika = findProp(obj, 'source') || ''
-          const slikeAutora = new Map(this.state.slikeAutora).set(autor, slika)
-          this.setState(() => ({slikeAutora}))
+          const authorImages = new Map(this.state.authorImages).set(autor, slika)
+          this.setState(() => ({authorImages}))
         })
       }
     })
   }
 
-  filtriraj = () => {
-    const jezik = this.state.jezik
-    const filtrirano = this.state.citati.filter(citat =>
+  filterQuotes = () => {
+    const language = this.state.language
+    const filtered = this.state.citati.filter(citat =>
       (citat.autor === this.state.autor || this.state.autor === '')
-      && citat[jezik]
-      && citat[jezik].toLowerCase().includes(this.state.fraza.toLowerCase())
+      && citat[language]
+      && citat[language].toLowerCase().includes(this.state.phrase.toLowerCase())
     )
-    this.setState(() => ({filtrirano}))
+    this.setState(() => ({filtered}))
   }
 
   changeLang = (lang) => {
     this.setState({
-      jezik: lang
+      language: lang
     })
   }
 
   render() {
-    const citati = this.state.filtrirano.map((citat, i) => {
-      const tekst = citat[this.state.jezik]
+    const citati = this.state.filtered.map((citat, i) => {
+      const tekst = citat[this.state.language]
       return tekst ?
         <Quote className="not" key={citat._id} tekst={tekst} autor={citat.autor} />
         : ''
@@ -84,21 +84,21 @@ class App extends Component {
     return (
       <div className="App">
         <Filters
-          autori={this.state.autori}
-          slikeAutora={this.state.slikeAutora}
-          izaberiAutora={this.izaberiAutora}
+          authors={this.state.authors}
+          authorImages={this.state.authorImages}
+          setAuthor={this.setAuthor}
           setPhrase={this.setPhrase}
-          jezik={this.state.jezik}
+          language={this.state.language}
         />
 
         <main>
           <Picture
-            slika={this.state.velikaSlika}
+            slika={this.state.mainImage}
             autor={this.state.autor}
           />
           <button onClick={() => this.changeLang('sr')} className="langBtn">SRB</button>
           <button onClick={() => this.changeLang('en')} className="langBtn">ENG</button>
-          <h1>{this.state.jezik === 'en' ? 'Programming quotes' : 'Programerski citati'}</h1>
+          <h1>{this.state.language === 'en' ? 'Programming quotes' : 'Programerski citati'}</h1>
           {citati}
         </main>
       </div>
