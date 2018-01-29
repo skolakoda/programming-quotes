@@ -6,10 +6,10 @@ const Filters = props => {
 
   const sortirano = [...props.authors].sort(sortirajAbecedno)
 
-  const authors = sortirano.map((autor, i) =>
-    <div key={i} onClick={() =>props.setAuthor(autor)}>
-      {props.authorImages.get(autor) ? <img src={props.authorImages.get(autor)} alt={autor} /> : ''}
-      {autor}
+  const authors = sortirano.map((author, i) =>
+    <div key={i} onClick={() =>props.setAuthor(author)}>
+      {props.authorImages.get(author) ? <img src={props.authorImages.get(author)} alt={author} /> : ''}
+      {author}
     </div>
   )
 

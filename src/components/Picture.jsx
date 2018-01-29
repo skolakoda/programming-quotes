@@ -1,10 +1,10 @@
 import React from 'react'
 import './Picture.css'
 
-const Picture = ({ autor, imgSrc }) => {
+const Picture = ({ author, imgSrc }) => {
   return imgSrc === '' ? '' : (
     <div className="thumbnail">
-      <h3>{autor}</h3>
+      <h3>{author}</h3>
       <img  src={imgSrc} alt="Loading..."/>
     </div>
   );

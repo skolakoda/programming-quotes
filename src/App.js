@@ -16,7 +16,7 @@ class App extends Component {
       filtered: [],
       authorImages: new Map(),
       language: 'sr',
-      autor: '',
+      chosenAuthor: '',
       phrase: '',
       mainImage:''
     }
@@ -26,15 +26,15 @@ class App extends Component {
     this.setState({phrase:event.target.value}, this.filterQuotes)
   }
 
-  setAuthor = autor => {
+  setAuthor = chosenAuthor => {
     // TODO: move fetch to Picture component
-    fetch(`https://en.wikipedia.org/w/api.php?action=query&titles=${autor}&prop=pageimages&format=json&pithumbsize=250&origin=*`)
+    fetch(`https://en.wikipedia.org/w/api.php?action=query&titles=${chosenAuthor}&prop=pageimages&format=json&pithumbsize=250&origin=*`)
       .then(response => response.json())
       .then(obj => {
         const mainImage = findProp(obj,'source') || '';
         this.setState({mainImage});
       })
-    this.setState({autor}, this.filterQuotes);
+    this.setState({chosenAuthor}, this.filterQuotes);
   }
 
   componentDidMount() {
@@ -46,12 +46,12 @@ class App extends Component {
       const authors = new Set(quotes.map(quote => quote.autor))
       this.setState(() => ({quotes, filtered, authors}))
 
-      for (const autor of authors) {
-        fetch(`https://en.wikipedia.org/w/api.php?action=query&titles=${autor}&prop=pageimages&format=json&pithumbsize=50&origin=*`)
+      for (const author of authors) {
+        fetch(`https://en.wikipedia.org/w/api.php?action=query&titles=${author}&prop=pageimages&format=json&pithumbsize=50&origin=*`)
         .then(response => response.json())
         .then(obj => {
           const imgSrc = findProp(obj, 'source') || ''
-          const authorImages = new Map(this.state.authorImages).set(autor, imgSrc)
+          const authorImages = new Map(this.state.authorImages).set(author, imgSrc)
           this.setState(() => ({authorImages}))
         })
       }
@@ -61,7 +61,7 @@ class App extends Component {
   filterQuotes = () => {
     const language = this.state.language
     const filtered = this.state.quotes.filter(quote =>
-      (quote.autor === this.state.autor || this.state.autor === '')
+      (quote.autor === this.state.chosenAuthor || this.state.chosenAuthor === '')
       && quote[language]
       && quote[language].toLowerCase().includes(this.state.phrase.toLowerCase())
     )
@@ -76,7 +76,7 @@ class App extends Component {
 
   render() {
     const quotes = this.state.filtered.map((q, i) => q[this.state.language]
-      ? <Quote key={q._id} content={q[this.state.language]} autor={q.autor} />
+      ? <Quote key={q._id} content={q[this.state.language]} author={q.autor} />
       : ''
     )
     return (
@@ -92,7 +92,7 @@ class App extends Component {
         <main>
           <Picture
             imgSrc={this.state.mainImage}
-            autor={this.state.autor}
+            author={this.state.chosenAuthor}
           />
           <button onClick={() => this.changeLang('sr')} className="lang-btn">SRB</button>
           <button onClick={() => this.changeLang('en')} className="lang-btn">ENG</button>
