@@ -75,12 +75,10 @@ class App extends Component {
   }
 
   render() {
-    const citati = this.state.filtered.map((citat, i) => {
-      const tekst = citat[this.state.language]
-      return tekst ?
-        <Quote className="not" key={citat._id} tekst={tekst} autor={citat.autor} />
-        : ''
-    })
+    const quotes = this.state.filtered.map((q, i) => q[this.state.language]
+      ? <Quote key={q._id} content={q[this.state.language]} autor={q.autor} />
+      : ''
+    )
     return (
       <div className="App">
         <Filters
@@ -96,10 +94,10 @@ class App extends Component {
             slika={this.state.mainImage}
             autor={this.state.autor}
           />
-          <button onClick={() => this.changeLang('sr')} className="langBtn">SRB</button>
-          <button onClick={() => this.changeLang('en')} className="langBtn">ENG</button>
+          <button onClick={() => this.changeLang('sr')} className="lang-btn">SRB</button>
+          <button onClick={() => this.changeLang('en')} className="lang-btn">ENG</button>
           <h1>{this.state.language === 'en' ? 'Programming quotes' : 'Programerski citati'}</h1>
-          {citati}
+          {quotes}
         </main>
       </div>
     )
