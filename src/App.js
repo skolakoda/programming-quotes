@@ -22,21 +22,6 @@ class App extends Component {
     }
   }
 
-  setPhrase = event => {
-    this.setState({phrase:event.target.value}, this.filterQuotes)
-  }
-
-  setAuthor = chosenAuthor => {
-    // TODO: move fetch to Picture component
-    fetch(`https://en.wikipedia.org/w/api.php?action=query&titles=${chosenAuthor}&prop=pageimages&format=json&pithumbsize=250&origin=*`)
-      .then(response => response.json())
-      .then(obj => {
-        const mainImage = findProp(obj,'source') || '';
-        this.setState({mainImage});
-      })
-    this.setState({chosenAuthor}, this.filterQuotes);
-  }
-
   componentDidMount() {
     fetch(url)
     .then(response => response.json())
@@ -56,6 +41,21 @@ class App extends Component {
         })
       }
     })
+  }
+
+  setPhrase = event => {
+    this.setState({phrase:event.target.value}, this.filterQuotes)
+  }
+
+  setAuthor = chosenAuthor => {
+    // TODO: move fetch to Picture component
+    fetch(`https://en.wikipedia.org/w/api.php?action=query&titles=${chosenAuthor}&prop=pageimages&format=json&pithumbsize=250&origin=*`)
+      .then(response => response.json())
+      .then(obj => {
+        const mainImage = findProp(obj,'source') || '';
+        this.setState({mainImage});
+      })
+    this.setState({chosenAuthor}, this.filterQuotes);
   }
 
   filterQuotes = () => {
