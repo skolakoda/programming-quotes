@@ -8,8 +8,7 @@ Vidi kako radi: na [skolakoda.org/programerski-citati](https://skolakoda.org/pro
 
 ## Razvoj
 
-Ovde možete videte trenutno stanje razvoja:
-- https://trello.com/b/fBcFTxgo/programerski-citati
+Na [Trello](https://trello.com/b/fBcFTxgo/programerski-citati)-u možeš videti trenutno stanje razvoja.
 
 ### Pokretanje
 
