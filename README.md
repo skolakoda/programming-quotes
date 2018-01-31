@@ -6,7 +6,12 @@ Programerski citati, aplikacija otvorenog koda koju zajedno razvijamo. Možeš s
 
 Vidi kako radi: na [skolakoda.org/programerski-citati](https://skolakoda.org/programerski-citati/)
 
-## Pokretanje
+## Razvoj
+
+Ovde možete videte trenutno stanje razvoja:
+- https://trello.com/b/fBcFTxgo/programerski-citati
+
+### Pokretanje
 
 ```
 npm install
@@ -14,18 +19,13 @@ npm start
 
 ```
 
-## Deploy
+### Deploy
 
 ```
 npm run deploy
 ```
 
 Vidi [uputstvo](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#github-pages) za objavljivanje React aplikacije na Github stranici.
-
-## TODO
-
-Ovde možete videte trenutne zadatke:
-- https://trello.com/b/fBcFTxgo/programerski-citati
 
 ## Kako se priključiti?
 
