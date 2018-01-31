@@ -1,0 +1,445 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: Filters snapshot should render Filters  1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <Filters
+    authorImages={Map {}}
+    authors={
+        Array [
+            "some",
+            "random",
+            "authors",
+          ]
+    }
+    language="en"
+    setAuthor={[Function]}
+    setPhrase={[Function]}
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": <div
+        className="filters-inner"
+>
+        <h3
+                name="language"
+        >
+                Search text
+        </h3>
+        <input
+                name="tekst"
+                onChange={[Function]}
+        />
+        <h3>
+                Choose the author
+        </h3>
+        <button
+                className="svi-autori"
+                onClick={[Function]}
+        >
+                All authors
+        </button>
+        <div
+                onClick={[Function]}
+        >
+                
+                authors
+        </div>
+        <div
+                onClick={[Function]}
+        >
+                
+                random
+        </div>
+        <div
+                onClick={[Function]}
+        >
+                
+                some
+        </div>
+</div>,
+      "className": "filters",
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <h3
+            name="language"
+>
+            Search text
+</h3>,
+          <input
+            name="tekst"
+            onChange={[Function]}
+/>,
+          <h3>
+            Choose the author
+</h3>,
+          <button
+            className="svi-autori"
+            onClick={[Function]}
+>
+            All authors
+</button>,
+          Array [
+            <div
+              onClick={[Function]}
+>
+              
+              authors
+</div>,
+            <div
+              onClick={[Function]}
+>
+              
+              random
+</div>,
+            <div
+              onClick={[Function]}
+>
+              
+              some
+</div>,
+          ],
+        ],
+        "className": "filters-inner",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Search text",
+            "name": "language",
+          },
+          "ref": null,
+          "rendered": "Search text",
+          "type": "h3",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "name": "tekst",
+            "onChange": [Function],
+          },
+          "ref": null,
+          "rendered": null,
+          "type": "input",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Choose the author",
+          },
+          "ref": null,
+          "rendered": "Choose the author",
+          "type": "h3",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "All authors",
+            "className": "svi-autori",
+            "onClick": [Function],
+          },
+          "ref": null,
+          "rendered": "All authors",
+          "type": "button",
+        },
+        Object {
+          "instance": null,
+          "key": "0",
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              "",
+              "authors",
+            ],
+            "onClick": [Function],
+          },
+          "ref": null,
+          "rendered": Array [
+            "",
+            "authors",
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": "1",
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              "",
+              "random",
+            ],
+            "onClick": [Function],
+          },
+          "ref": null,
+          "rendered": Array [
+            "",
+            "random",
+          ],
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": "2",
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              "",
+              "some",
+            ],
+            "onClick": [Function],
+          },
+          "ref": null,
+          "rendered": Array [
+            "",
+            "some",
+          ],
+          "type": "div",
+        },
+      ],
+      "type": "div",
+    },
+    "type": "aside",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <div
+          className="filters-inner"
+>
+          <h3
+                    name="language"
+          >
+                    Search text
+          </h3>
+          <input
+                    name="tekst"
+                    onChange={[Function]}
+          />
+          <h3>
+                    Choose the author
+          </h3>
+          <button
+                    className="svi-autori"
+                    onClick={[Function]}
+          >
+                    All authors
+          </button>
+          <div
+                    onClick={[Function]}
+          >
+                    
+                    authors
+          </div>
+          <div
+                    onClick={[Function]}
+          >
+                    
+                    random
+          </div>
+          <div
+                    onClick={[Function]}
+          >
+                    
+                    some
+          </div>
+</div>,
+        "className": "filters",
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <h3
+              name="language"
+>
+              Search text
+</h3>,
+            <input
+              name="tekst"
+              onChange={[Function]}
+/>,
+            <h3>
+              Choose the author
+</h3>,
+            <button
+              className="svi-autori"
+              onClick={[Function]}
+>
+              All authors
+</button>,
+            Array [
+              <div
+                onClick={[Function]}
+>
+                
+                authors
+</div>,
+              <div
+                onClick={[Function]}
+>
+                
+                random
+</div>,
+              <div
+                onClick={[Function]}
+>
+                
+                some
+</div>,
+            ],
+          ],
+          "className": "filters-inner",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Search text",
+              "name": "language",
+            },
+            "ref": null,
+            "rendered": "Search text",
+            "type": "h3",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "name": "tekst",
+              "onChange": [Function],
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "input",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Choose the author",
+            },
+            "ref": null,
+            "rendered": "Choose the author",
+            "type": "h3",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "All authors",
+              "className": "svi-autori",
+              "onClick": [Function],
+            },
+            "ref": null,
+            "rendered": "All authors",
+            "type": "button",
+          },
+          Object {
+            "instance": null,
+            "key": "0",
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                "",
+                "authors",
+              ],
+              "onClick": [Function],
+            },
+            "ref": null,
+            "rendered": Array [
+              "",
+              "authors",
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": "1",
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                "",
+                "random",
+              ],
+              "onClick": [Function],
+            },
+            "ref": null,
+            "rendered": Array [
+              "",
+              "random",
+            ],
+            "type": "div",
+          },
+          Object {
+            "instance": null,
+            "key": "2",
+            "nodeType": "host",
+            "props": Object {
+              "children": Array [
+                "",
+                "some",
+              ],
+              "onClick": [Function],
+            },
+            "ref": null,
+            "rendered": Array [
+              "",
+              "some",
+            ],
+            "type": "div",
+          },
+        ],
+        "type": "div",
+      },
+      "type": "aside",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
