@@ -28,4 +28,4 @@ Vidi [uputstvo](https://github.com/facebookincubator/create-react-app/blob/maste
 
 ## Kako se priključiti?
 
-Ako biste se uključili u razvoj projekta, ali ne znate kako, slobodno nas [kontaktirajte](https://skolakoda.org/kontakt).
+Ako želiš da se uključiš, ali ne znaš kako, pročitaj uputstvo: [Kako doprinositi projektima?](http://skolakoda.org/kako-doprinositi/).
