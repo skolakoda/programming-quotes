@@ -28,8 +28,8 @@ class AddQuote extends React.Component {
       headers: {
         'Accept': 'application/json, text/plain, */*',
         'Content-Type': 'application/json',
-        //  'mode': 'cors',
       },
+          
       body: JSON.stringify({autor: this.state.autor, sr:this.state.quote})
     })
     
@@ -46,9 +46,10 @@ class AddQuote extends React.Component {
       headers: {
         'Accept': 'application/json, text/plain, */*',
         'Content-Type': 'application/json',
-        //  'mode': 'cors',
+        
       },
-      body: JSON.stringify({_id:"kjdjkjawkj"})
+      
+            body: JSON.stringify({_id:"kjdjkjawkj"})
     })
         alert(`Deleted`);
         
@@ -57,7 +58,7 @@ class AddQuote extends React.Component {
     
     
   render() {
-     console.log(this.state.autor,this.state.quote)
+     
     return (
     <div className="container">
     <div className="row">
@@ -72,13 +73,8 @@ class AddQuote extends React.Component {
          
        </form>
       
-      
-      
-      
-      
-      
       </div>
-        </div>
+     </div>
     );
   }
 }
