@@ -11,7 +11,7 @@ class Wrap extends React.Component {
     <div>
       <Nav/>
         <Route exact path="/" component={App}/>
-           <Route path="/AddQuote" component={AddQuote}/>
+           <Route path="/addQuote" component={AddQuote}/>
                
        </div>
     );
