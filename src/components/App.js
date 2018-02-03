@@ -5,6 +5,8 @@ import Picture from './Picture'
 import {findProp} from '../shared/helpers'
 import './App.css'
 
+
+
 const url = "https://baza-podataka.herokuapp.com/citati/"
 
 class App extends Component {
@@ -81,6 +83,8 @@ class App extends Component {
     )
     return (
       <div className="App">
+       
+        
         <Filters
           authors={this.state.authors}
           authorImages={this.state.authorImages}
@@ -90,6 +94,7 @@ class App extends Component {
         />
 
         <main>
+        
           <Picture
             imgSrc={this.state.mainImage}
             author={this.state.chosenAuthor}
