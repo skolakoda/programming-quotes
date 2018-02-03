@@ -48,7 +48,7 @@ class AddQuote extends React.Component {
         'Content-Type': 'application/json',
         //  'mode': 'cors',
       },
-      body: JSON.stringify({_id:})
+      body: JSON.stringify({_id:"kjdjkjawkj"})
     })
         alert(`Deleted`);
         
