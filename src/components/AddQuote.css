@@ -1,30 +1,33 @@
-form{
-    text-align: center;
-    margin: 20px auto;
-  
-}
-input , textarea{
-     border:2px solid DarkOrange;
-     outline:0;
-     padding: 1em;
-     border-radius:5px;
-     display: block;
-     margin-top: 1em;
-     width: 70%;
+form {
+	text-align: center;
+	margin: 20px auto;
 
 }
-textarea{
-  max-height: 100px;
+
+input,
+textarea {
+	border: 2px solid DarkOrange;
+	outline: 0;
+	padding: 1em;
+	border-radius: 5px;
+	display: block;
+	margin-top: 1em;
+	width: 70%;
+
 }
 
-#submit{
-     font-size:130%;
-     margin-top: 10px;
-     color:red;
-     background:white;
-     cursor: pointer;
-   }
+textarea {
+	max-height: 100px;
+}
 
-.center{
-    text-align: center;
+#submit {
+	font-size: 130%;
+	margin-top: 10px;
+	color: red;
+	background: white;
+	cursor: pointer;
+}
+
+.center {
+	text-align: center;
 }

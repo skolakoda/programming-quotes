@@ -7,7 +7,6 @@ import './index.css'
 
 ReactDOM.render(
     <BrowserRouter>
-        <Wrap/>
-        
-        </BrowserRouter>, document.getElementById('root'));
+      <Wrap/>
+       </BrowserRouter>, document.getElementById('root'));
 registerServiceWorker();

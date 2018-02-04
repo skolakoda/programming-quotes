@@ -83,9 +83,7 @@ class App extends Component {
     )
     return (
       <div className="App">
-       
-        
-        <Filters
+       <Filters
           authors={this.state.authors}
           authorImages={this.state.authorImages}
           setAuthor={this.setAuthor}
@@ -94,8 +92,7 @@ class App extends Component {
         />
 
         <main>
-        
-          <Picture
+        	<Picture
             imgSrc={this.state.mainImage}
             author={this.state.chosenAuthor}
           />
