@@ -35,7 +35,7 @@ class App extends Component {
         fetch(`https://en.wikipedia.org/w/api.php?action=query&titles=${author}&prop=pageimages&format=json&pithumbsize=50&origin=*`)
         .then(response => response.json())
         .then(obj => {
-          const imgSrc = findProp(obj, 'source') || ''
+          const imgSrc = findProp(obj, 'source') || 'https://www.win.tue.nl/ieeetfpm/lib/exe/fetch.php?cache=&media=shared:unknown.jpg'
           const authorImages = new Map(this.state.authorImages).set(author, imgSrc)
           this.setState(() => ({authorImages}))
         })
@@ -52,7 +52,7 @@ class App extends Component {
     fetch(`https://en.wikipedia.org/w/api.php?action=query&titles=${chosenAuthor}&prop=pageimages&format=json&pithumbsize=250&origin=*`)
       .then(response => response.json())
       .then(obj => {
-        const mainImage = findProp(obj,'source') || '';
+        const mainImage = findProp(obj,'source') || 'https://www.win.tue.nl/ieeetfpm/lib/exe/fetch.php?cache=&media=shared:unknown.jpg';
         this.setState({mainImage});
       })
     this.setState({chosenAuthor}, this.filterQuotes);
@@ -76,7 +76,7 @@ class App extends Component {
 
   render() {
     const quotes = this.state.filtered.map((q, i) => q[this.state.language]
-      ? <Quote key={q._id} content={q[this.state.language]} author={q.autor} />
+      ? <Quote key={q._id} rating={q.ocena} content={q[this.state.language]} author={q.autor} quoteId={q._id}/>
       : ''
     )
     return (
