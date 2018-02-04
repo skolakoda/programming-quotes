@@ -7,7 +7,7 @@ const Quote = props => {
     <blockquote>
       <i>{props.content}</i><br/>
       <small> — <a href={wikiUrl} target="_blank">{props.author}</a> </small>
-      <Stars/>
+      <Stars rating={props.rating} id={props.id} />
     </blockquote>
   )
 }

@@ -76,7 +76,7 @@ class App extends Component {
 
   render() {
     const quotes = this.state.filtered.map((q, i) => q[this.state.language]
-      ? <Quote key={q._id} content={q[this.state.language]} author={q.autor} />
+      ? <Quote key={q._id} content={q[this.state.language]} author={q.autor} rating={q.ocena} id={q._id} />
       : ''
     )
     return (
