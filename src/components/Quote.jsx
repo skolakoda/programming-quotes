@@ -1,7 +1,7 @@
 import React from 'react';
 import Stars from './Stars'
 
-const Quote = ({author, content, rating, quoteId, onRate}) => {
+const Quote = ({author, content, rating, quoteId}) => {
   const wikiUrl = `https://en.wikipedia.org/wiki/${author}`
   return (
     <blockquote>
