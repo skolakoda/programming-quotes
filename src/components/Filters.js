@@ -1,9 +1,8 @@
 import React from 'react';
-import {sortirajAbecedno} from '../shared/helpers'
 import './Filters.css'
 
 const Filters = ({ authorImages, authors, language, setPhrase, setAuthor }) => {
-  const sortirano = [...authors].sort(sortirajAbecedno)
+  const sortirano = [...authors].sort()
 
   const sortedAuthors = sortirano.map((author, i) =>
     <div key={i} onClick={() =>setAuthor(author)}>

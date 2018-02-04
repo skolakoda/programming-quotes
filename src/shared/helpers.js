@@ -6,6 +6,21 @@ export function findProp(obj, prop) {
   }
 }
 
-export function sortirajAbecedno(a, b) {
-  return a > b ? 1 : (b > a ? -1 : 0)
+export function vote(id, ocena) {
+  let data = {
+      _id: id,
+      novaOcena: ocena
+  }
+  return fetch('https://baza-podataka.herokuapp.com/oceni-citat/', {
+      method: 'POST',
+      body: JSON.stringify(data), 
+      headers: new Headers({
+        'Content-Type': 'application/json'
+      })
+  })
+  .then(response => {
+      if(response.status < 400) {
+          return 'OK'
+      }
+  })
 }
