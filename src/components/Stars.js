@@ -10,12 +10,9 @@ class Stars extends Component{
             edit: true,
             rating: Number(this.props.rating)
         }
-
     }
     
-
-    rate = (newRating) => {
-
+    rate = newRating => {
         const http = new XMLHttpRequest()
         http.open('POST', 'https://baza-podataka.herokuapp.com/oceni-citat/')
         http.setRequestHeader('Content-type', 'application/json')
@@ -26,8 +23,6 @@ class Stars extends Component{
             edit: false,
             rating: newRating
         })
-
-
     }
     render(){
         return(
