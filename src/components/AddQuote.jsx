@@ -35,10 +35,9 @@ class AddQuote extends React.Component {
 				sr: this.state.quote
 			})
 		})
-
-		alert(`Quote by: "${this.state.autor}" has been updated to quote base.
+  alert(`Quote by: "${this.state.autor}" has been updated to quote base.
           Thank you for updating!`);
-	}
+  }
 
 	deleteQuote(e) {
 		e.preventDefault();

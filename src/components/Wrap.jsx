@@ -10,8 +10,8 @@ class Wrap extends React.Component {
     return (
     <div>
       <Nav/>
-        <Route exact path="/" component={App}/>
-        <Route path="/addQuote" component={AddQuote}/>
+       <Route exact path="/" component={App}/>
+       <Route path="/addQuote" component={AddQuote}/>
      </div>
     );
   }
