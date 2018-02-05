@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import ReactStars from 'react-stars'
 import { vote } from '../shared/helpers'
+import './Stars.css'
 
 class Stars extends Component {
     constructor(props) {
@@ -55,7 +56,7 @@ class Stars extends Component {
         return(
             <div>
                 <ReactStars size={20} value={this.state.rating} onChange={this.onRating.bind(this)}/>
-                {this.state.error && <p style={{color: 'red'}}>You can vote just once</p>}
+                {this.state.error && <p className="voting-error">You can vote just once</p>}
             </div>
             
         )
