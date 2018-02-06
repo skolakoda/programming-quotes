@@ -45,4 +45,4 @@ Kodni standard na projektu je [JavaScript Standard Style](https://standardjs.com
 - 2 razmaka za poravnanje
 - bez tački-zareza
 - polunavodnici za strune
-- === umesto == za poređenje
+- `===` umesto `==` za poređenje
