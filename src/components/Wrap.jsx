@@ -11,10 +11,10 @@ class Wrap extends React.Component {
       <div>
         <Nav/>
         <Route exact path="/" component={App}/>
-        <Route path="/addQuote" component={AddQuote}/>
+        <Route path="/add-quote" component={AddQuote}/>
       </div>
     );
   }
 }
 
-export default Wrap;
+export default Wrap

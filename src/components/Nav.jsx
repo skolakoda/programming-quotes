@@ -5,16 +5,14 @@ import './Nav.css'
 class Nav extends React.Component {
   render() {
     return (
-
       <div className="nav">
         <ul>
-          <Link to='/'>Citati</Link>
-          <Link to='/AddQuote'>Dodaj Citat</Link>
-         
+          <Link to='/'>Citati </Link>
+          <Link to='/add-quote'>Dodaj Citat</Link>
         </ul>
       </div>
-    );
+    )
   }
 }
 
-export default Nav;
+export default Nav
