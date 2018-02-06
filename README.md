@@ -40,7 +40,7 @@ Ako želiš da se uključiš, ali ne znaš kako, pročitaj uputstvo: [Kako dopri
 
 ## Kodni standard
 
-Kodni standard na projektu je [JavaScript Standard Style](https://standardjs.com/), čija su glavne značaljke:
+Kodni standard na projektu je [JavaScript Standard Style](https://standardjs.com/), čije su glavne značaljke:
 
 - bez tački-zareza
 - 2 razmaka za poravnanje
