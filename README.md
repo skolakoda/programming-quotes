@@ -40,4 +40,10 @@ Ako želiš da se uključiš, ali ne znaš kako, pročitaj uputstvo: [Kako dopri
 
 ## Kodni standard
 
-Kodni standard na projektu je [JavaScript Standard Style](https://standardjs.com/), čija je glavna karakteristika izostavljanje tačke-zareza.
+Kodni standard na projektu je [JavaScript Standard Style](https://standardjs.com/), čija su glavne karakteristike:
+
+- 2 razmaka za poravnanje
+- bez tački-zareza
+- bez naupotrebljenih varijabli
+- polunavodnici za strune
+- === umesto == za poređenje
