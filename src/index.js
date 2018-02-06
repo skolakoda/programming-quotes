@@ -7,7 +7,9 @@ import Wrap from './components/Wrap'
 import './index.css'
 
 ReactDOM.render(
-  <BrowserRouter><Wrap/></BrowserRouter>, 
+  <BrowserRouter>
+    <Wrap/>
+  </BrowserRouter>, 
   document.getElementById('root')
 )
 
