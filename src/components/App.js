@@ -5,8 +5,6 @@ import Picture from './Picture'
 import {findProp} from '../shared/helpers'
 import './App.css'
 
-
-
 const url = "https://baza-podataka.herokuapp.com/citati/"
 
 class App extends Component {
@@ -50,7 +48,7 @@ class App extends Component {
   }
 
   setAuthor = chosenAuthor => {
-    // TODO: move fetch to Picture component
+    // TODO: separate getImage
     fetch(`https://en.wikipedia.org/w/api.php?action=query&titles=${chosenAuthor}&prop=pageimages&format=json&pithumbsize=250&origin=*`)
       .then(response => response.json())
       .then(obj => {
@@ -92,12 +90,12 @@ class App extends Component {
         />
 
         <main>
-        	<Picture
+          <button onClick={() => this.changeLang('sr')} className="lang-btn">SRB</button>
+          <button onClick={() => this.changeLang('en')} className="lang-btn">ENG</button>
+          <Picture
             imgSrc={this.state.mainImage}
             author={this.state.chosenAuthor}
           />
-          <button onClick={() => this.changeLang('sr')} className="lang-btn">SRB</button>
-          <button onClick={() => this.changeLang('en')} className="lang-btn">ENG</button>
           <h1>{this.state.language === 'en' ? 'Programming quotes' : 'Programerski citati'}</h1>
           {quotes}
         </main>
