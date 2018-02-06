@@ -4,7 +4,7 @@
 
 # Programerski citati
 
-Programerski citati, aplikacija otvorenog koda koju zajedno razvijamo. Tehnologije: React + Node.js. Nulta tolerancija prema tehničkom dugu.
+Programerski citati, aplikacija otvorenog koda koju zajedno razvijamo. Tehnologije: React + Node.js.
 
 Vidi kako radi: na [skolakoda.org/programerski-citati](https://skolakoda.org/programerski-citati/)
 
@@ -35,3 +35,5 @@ Vidi [uputstvo](https://github.com/facebookincubator/create-react-app/blob/maste
 Ako želiš da se uključiš, ali ne znaš kako, pročitaj uputstvo: [Kako doprinositi projektima?](http://skolakoda.org/kako-doprinositi/)
 
 [Ovde](https://trello.com/b/fBcFTxgo/programerski-citati) možeš videti šta je sve potrebno uraditi.
+
+Upoznaj se dobro sa projektom i konvencijama pre nego počneš doprinositi. Imamo politiku nulte tolerancije prema tehničkom dugu.
