@@ -10,9 +10,11 @@ Vidi kako radi: na [skolakoda.org/programerski-citati](https://skolakoda.org/pro
 
 ## Razvoj
 
-Na [Trello](https://trello.com/b/fBcFTxgo/programerski-citati)-u možeš videti trenutno stanje razvoja.
+Preduslovi su da imate instaliran node.js i git. 
 
 ### Pokretanje
+
+Klonirete projekat, uđete u njega i pokrenete sledeće komande:
 
 ```
 npm install
@@ -31,3 +33,5 @@ Vidi [uputstvo](https://github.com/facebookincubator/create-react-app/blob/maste
 ## Kako se priključiti?
 
 Ako želiš da se uključiš, ali ne znaš kako, pročitaj uputstvo: [Kako doprinositi projektima?](http://skolakoda.org/kako-doprinositi/)
+
+[Ovde](https://trello.com/b/fBcFTxgo/programerski-citati) možeš videti šta je sve potrebno uraditi.
