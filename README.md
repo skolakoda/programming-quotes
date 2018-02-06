@@ -34,4 +34,4 @@ Vidi [uputstvo](https://github.com/facebookincubator/create-react-app/blob/maste
 
 Ako želiš da se uključiš, ali ne znaš kako, pročitaj uputstvo: [Kako doprinositi projektima?](http://skolakoda.org/kako-doprinositi/)
 
-[Ovde](https://trello.com/b/fBcFTxgo/programerski-citati) možeš videti šta je sve potrebno uraditi. Upoznaj se dobro sa projektom i konvencijama pre nego počneš doprinositi. Imamo nultu toleranciju prema tehničkom dugu.
+[Ovde](https://trello.com/b/fBcFTxgo/programerski-citati) možeš videti šta je sve potrebno uraditi. Upoznaj se dobro sa projektom i konvencijama pre nego počneš doprinositi. Imamo politiku nulte tolerancije prema tehničkom dugu.
