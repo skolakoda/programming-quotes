@@ -10,7 +10,7 @@ Vidi kako radi: na [skolakoda.org/programerski-citati](https://skolakoda.org/pro
 
 ## Razvoj
 
-Preduslovi su da imate instaliran node.js i git. 
+Preduslovi su da imaš instaliran node.js i git. 
 
 ### Pokretanje
 
