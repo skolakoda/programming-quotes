@@ -5,7 +5,3 @@ export function findProp(obj, prop) {
       return findProp(obj[property], prop)
   }
 }
-
-export function sortirajAbecedno(a, b) {
-  return a > b ? 1 : (b > a ? -1 : 0)
-}

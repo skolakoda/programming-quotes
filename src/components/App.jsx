@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
-import Quote from './Quote'
-import Filters from './Filters'
-import Picture from './Picture'
+import Navigation from './header/Navigation'
+import MainContent from './main/MainContent'
+import Sidebar from './sidebar/Sidebar'
 import {findProp} from '../shared/helpers'
 import './App.css'
 
@@ -11,9 +11,9 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      quotes: [],
+      allQuotes: [],
+      currentQuotes: [],
       authors: new Set(),
-      filtered: [],
       authorImages: new Map(),
       language: 'sr',
       chosenAuthor: '',
@@ -26,10 +26,10 @@ class App extends Component {
     fetch(url)
     .then(response => response.json())
     .then(response => {
-      const quotes = response.sort(() => .5 - Math.random())
-      const filtered = quotes.filter(x => Math.random() > .9)
-      const authors = new Set(quotes.map(quote => quote.autor))
-      this.setState(() => ({quotes, filtered, authors}))
+      const allQuotes = response.sort(() => .5 - Math.random())
+      const currentQuotes = allQuotes.filter(x => Math.random() > .9)
+      const authors = new Set(allQuotes.map(quote => quote.autor))
+      this.setState(() => ({allQuotes, currentQuotes, authors}))
 
       for (const author of authors) {
         fetch(`https://en.wikipedia.org/w/api.php?action=query&titles=${author}&prop=pageimages&format=json&pithumbsize=50&origin=*`)
@@ -60,45 +60,40 @@ class App extends Component {
 
   filterQuotes = () => {
     const language = this.state.language
-    const filtered = this.state.quotes.filter(quote =>
+    const currentQuotes = this.state.allQuotes.filter(quote =>
       (quote.autor === this.state.chosenAuthor || this.state.chosenAuthor === '')
       && quote[language]
       && quote[language].toLowerCase().includes(this.state.phrase.toLowerCase())
     )
-    this.setState(() => ({filtered}))
+    this.setState({currentQuotes})
   }
 
-  changeLang = (lang) => {
-    this.setState({
-      language: lang
-    })
+  changeLang = (language) => {
+    this.setState({language})
   }
 
   render() {
-    const quotes = this.state.filtered.map((q, i) => q[this.state.language]
-      ? <Quote key={q._id} content={q[this.state.language]} author={q.autor} rating={q.ocena} id={q._id} />
-      : ''
-    )
     return (
       <div className="App">
-        <Filters
+        <Sidebar className="left-section"
           authors={this.state.authors}
           authorImages={this.state.authorImages}
           setAuthor={this.setAuthor}
           setPhrase={this.setPhrase}
           language={this.state.language}
         />
-
-        <main>
-          <Picture
-            imgSrc={this.state.mainImage}
-            author={this.state.chosenAuthor}
+        <section className="right-section">
+          <Navigation
+            language={this.state.language}
+            changeLang={this.changeLang}
           />
-          <button onClick={() => this.changeLang('sr')} className="lang-btn">SRB</button>
-          <button onClick={() => this.changeLang('en')} className="lang-btn">ENG</button>
-          <h1>{this.state.language === 'en' ? 'Programming quotes' : 'Programerski citati'}</h1>
-          {quotes}
-        </main>
+          <MainContent
+            language={this.state.language}
+            mainImage={this.state.mainImage}
+            chosenAuthor={this.state.chosenAuthor}
+            currentQuotes={this.state.currentQuotes}
+          />
+        </section>
       </div>
     )
   }

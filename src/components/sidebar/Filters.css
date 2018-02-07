@@ -1,0 +1,12 @@
+.filters input,
+.filters button {
+  font-size: inherit;
+}
+
+.filters input {
+  width: 100%;
+}
+
+.btn-authors {
+  margin-bottom: 20px;
+}
