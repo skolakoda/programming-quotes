@@ -1,6 +1,6 @@
 .App {
   margin-left: 2%;
-  display: flex;
+  display:flex;
   justify-content: space-between;
 }
 

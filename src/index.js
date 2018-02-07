@@ -1,8 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import registerServiceWorker from './registerServiceWorker';
-import App from './components/App';
-import './index.css';
+import {BrowserRouter} from 'react-router-dom'
+import registerServiceWorker from './registerServiceWorker'
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+import Wrap from './components/Wrap'
+import './index.css'
+
+ReactDOM.render(
+  <BrowserRouter>
+    <Wrap/>
+  </BrowserRouter>, 
+  document.getElementById('root')
+)
+
+registerServiceWorker()
