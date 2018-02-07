@@ -1,19 +1,19 @@
 .App {
-  margin-left: 2%;
   display: flex;
   justify-content: space-between;
+  margin-left: 2%;
 }
 
-main {
-  width: 74%;
-  right: 0;
-}
-
-aside {
+.left-section {
   width: 20%;
 }
 
-.lang-btn{
+.right-section {
+  right: 0;
+  width: 74%;
+}
+
+.lang-btn {
   font-size: 12px;
   margin: 0px 5px;
 }

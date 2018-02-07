@@ -1,5 +1,5 @@
 import React from 'react';
-import {sortirajAbecedno} from '../shared/helpers'
+import {sortirajAbecedno} from '../../shared/helpers'
 import './Filters.css'
 
 const Filters = ({ authorImages, authors, language, setPhrase, setAuthor }) => {

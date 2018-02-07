@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
-import Quote from './Quote'
-import Filters from './Filters'
-import Picture from './Picture'
+import Quote from './main/Quote'
+import Filters from './sidebar/Filters'
+import Picture from './main/Picture'
 import {findProp} from '../shared/helpers'
 import './App.css'
 
@@ -75,13 +75,13 @@ class App extends Component {
   }
 
   render() {
-    const quotes = this.state.filtered.map((q, i) => q[this.state.language]
-      ? <Quote key={q._id} content={q[this.state.language]} author={q.autor} rating={q.ocena} id={q._id} />
-      : ''
-    )
+    const quotes = this.state.filtered
+      .filter(q => q[this.state.language])
+      .map(q => <Quote key={q._id} content={q[this.state.language]} author={q.autor} rating={q.ocena} id={q._id} />)
+
     return (
       <div className="App">
-        <Filters
+        <Filters className="left-section"
           authors={this.state.authors}
           authorImages={this.state.authorImages}
           setAuthor={this.setAuthor}
@@ -89,16 +89,17 @@ class App extends Component {
           language={this.state.language}
         />
 
-        <main>
+        <section className="right-section">
+          <button onClick={() => this.changeLang('sr')} className="lang-btn">SRB</button>
+          <button onClick={() => this.changeLang('en')} className="lang-btn">ENG</button>
+          <h1>{this.state.language === 'en' ? 'Programming quotes' : 'Programerski citati'}</h1>
+
           <Picture
             imgSrc={this.state.mainImage}
             author={this.state.chosenAuthor}
           />
-          <button onClick={() => this.changeLang('sr')} className="lang-btn">SRB</button>
-          <button onClick={() => this.changeLang('en')} className="lang-btn">ENG</button>
-          <h1>{this.state.language === 'en' ? 'Programming quotes' : 'Programerski citati'}</h1>
           {quotes}
-        </main>
+        </section>
       </div>
     )
   }
