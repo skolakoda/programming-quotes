@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
-import Quote from './main/Quote'
+import Navigation from './header/Navigation'
+import MainContent from './main/MainContent'
 import Filters from './sidebar/Filters'
-import Picture from './main/Picture'
 import {findProp} from '../shared/helpers'
 import './App.css'
 
@@ -65,20 +65,14 @@ class App extends Component {
       && quote[language]
       && quote[language].toLowerCase().includes(this.state.phrase.toLowerCase())
     )
-    this.setState(() => ({currentQuotes}))
+    this.setState({currentQuotes})
   }
 
-  changeLang = (lang) => {
-    this.setState({
-      language: lang
-    })
+  changeLang = (language) => {
+    this.setState({language})
   }
 
   render() {
-    const preparedQuotes = this.state.currentQuotes
-      .filter(q => q[this.state.language])
-      .map(q => <Quote key={q._id} content={q[this.state.language]} author={q.autor} rating={q.ocena} id={q._id} />)
-
     return (
       <div className="App">
         <Filters className="left-section"
@@ -88,17 +82,17 @@ class App extends Component {
           setPhrase={this.setPhrase}
           language={this.state.language}
         />
-
         <section className="right-section">
-          <button onClick={() => this.changeLang('sr')} className="lang-btn">SRB</button>
-          <button onClick={() => this.changeLang('en')} className="lang-btn">ENG</button>
-          <h1>{this.state.language === 'en' ? 'Programming quotes' : 'Programerski citati'}</h1>
-
-          <Picture
-            imgSrc={this.state.mainImage}
-            author={this.state.chosenAuthor}
+          <Navigation
+            language={this.state.language}
+            changeLang={this.changeLang}
           />
-          {preparedQuotes}
+          <MainContent
+            language={this.state.language}
+            mainImage={this.state.mainImage}
+            chosenAuthor={this.state.chosenAuthor}
+            currentQuotes={this.state.currentQuotes}
+          />
         </section>
       </div>
     )

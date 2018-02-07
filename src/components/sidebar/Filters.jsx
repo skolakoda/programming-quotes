@@ -3,9 +3,8 @@ import {sortirajAbecedno} from '../../shared/helpers'
 import './Filters.css'
 
 const Filters = ({ authorImages, authors, language, setPhrase, setAuthor }) => {
-  const sortirano = [...authors].sort(sortirajAbecedno)
-
-  const sortedAuthors = sortirano.map((author, i) =>
+  const sortedAuthors = [...authors].sort(sortirajAbecedno)
+  const preparedAuthors = sortedAuthors.map((author, i) =>
     <div key={i} onClick={() =>setAuthor(author)}>
       {authorImages.get(author) ? <img src={authorImages.get(author)} alt={author} /> : ''}
       {author}
@@ -13,9 +12,8 @@ const Filters = ({ authorImages, authors, language, setPhrase, setAuthor }) => {
   )
 
   return (
-    <aside className="filters">
+    <aside>
       <div className="filters-inner">
-
         <h3 name="language">{language === 'en' ? 'Search text' : 'Pretraži tekst'}</h3>
         <input name="tekst" onChange={setPhrase} />
 
@@ -23,8 +21,7 @@ const Filters = ({ authorImages, authors, language, setPhrase, setAuthor }) => {
         <button className="svi-autori" onClick={() => setAuthor('')}>
           {language === 'en' ? 'All authors' : 'Svi autori'}
         </button>
-        {sortedAuthors}
-
+        {preparedAuthors}
       </div>
     </aside>
   )
