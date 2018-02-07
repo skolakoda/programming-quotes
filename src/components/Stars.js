@@ -62,5 +62,4 @@ class Stars extends Component {
         )
     }
 }
-
 export default Stars
