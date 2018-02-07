@@ -11,9 +11,9 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      quotes: [],
+      allQuotes: [],
+      currentQuotes: [],
       authors: new Set(),
-      filtered: [],
       authorImages: new Map(),
       language: 'sr',
       chosenAuthor: '',
@@ -26,10 +26,10 @@ class App extends Component {
     fetch(url)
     .then(response => response.json())
     .then(response => {
-      const quotes = response.sort(() => .5 - Math.random())
-      const filtered = quotes.filter(x => Math.random() > .9)
-      const authors = new Set(quotes.map(quote => quote.autor))
-      this.setState(() => ({quotes, filtered, authors}))
+      const allQuotes = response.sort(() => .5 - Math.random())
+      const currentQuotes = allQuotes.filter(x => Math.random() > .9)
+      const authors = new Set(allQuotes.map(quote => quote.autor))
+      this.setState(() => ({allQuotes, currentQuotes, authors}))
 
       for (const author of authors) {
         fetch(`https://en.wikipedia.org/w/api.php?action=query&titles=${author}&prop=pageimages&format=json&pithumbsize=50&origin=*`)
@@ -60,12 +60,12 @@ class App extends Component {
 
   filterQuotes = () => {
     const language = this.state.language
-    const filtered = this.state.quotes.filter(quote =>
+    const currentQuotes = this.state.allQuotes.filter(quote =>
       (quote.autor === this.state.chosenAuthor || this.state.chosenAuthor === '')
       && quote[language]
       && quote[language].toLowerCase().includes(this.state.phrase.toLowerCase())
     )
-    this.setState(() => ({filtered}))
+    this.setState(() => ({currentQuotes}))
   }
 
   changeLang = (lang) => {
@@ -75,7 +75,7 @@ class App extends Component {
   }
 
   render() {
-    const quotes = this.state.filtered
+    const preparedQuotes = this.state.currentQuotes
       .filter(q => q[this.state.language])
       .map(q => <Quote key={q._id} content={q[this.state.language]} author={q.autor} rating={q.ocena} id={q._id} />)
 
@@ -98,7 +98,7 @@ class App extends Component {
             imgSrc={this.state.mainImage}
             author={this.state.chosenAuthor}
           />
-          {quotes}
+          {preparedQuotes}
         </section>
       </div>
     )
