@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import Navigation from './header/Navigation'
 import MainContent from './main/MainContent'
-import Filters from './sidebar/Filters'
+import Sidebar from './sidebar/Sidebar'
 import {findProp} from '../shared/helpers'
 import './App.css'
 
@@ -75,7 +75,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Filters className="left-section"
+        <Sidebar className="left-section"
           authors={this.state.authors}
           authorImages={this.state.authorImages}
           setAuthor={this.setAuthor}

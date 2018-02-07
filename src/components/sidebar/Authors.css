@@ -1,0 +1,21 @@
+.authors {
+  margin-top: 20px;
+}
+
+.author {
+  cursor: pointer;
+  margin: 8px 0;
+}
+
+.author:nth-child(odd) {
+  background: #e5e5e5;
+}
+
+.author:nth-child(even) {
+  background: #f5f5f5;
+}
+
+.author img {
+  margin-right: 8px;
+  width: 30px;
+}

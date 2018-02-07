@@ -1,29 +1,18 @@
-import React from 'react';
-import {sortirajAbecedno} from '../../shared/helpers'
+import React from 'react'
+import Authors from './Authors'
 import './Filters.css'
 
-const Filters = ({ authorImages, authors, language, setPhrase, setAuthor }) => {
-  const sortedAuthors = [...authors].sort(sortirajAbecedno)
-  const preparedAuthors = sortedAuthors.map((author, i) =>
-    <div key={i} onClick={() =>setAuthor(author)}>
-      {authorImages.get(author) ? <img src={authorImages.get(author)} alt={author} /> : ''}
-      {author}
-    </div>
-  )
-
+const Filters = ({ language, setPhrase, setAuthor }) => {
   return (
-    <aside>
-      <div className="filters-inner">
-        <h3 name="language">{language === 'en' ? 'Search text' : 'Pretraži tekst'}</h3>
-        <input name="tekst" onChange={setPhrase} />
+    <div className="filters">
+      <h3 name="language">{language === 'en' ? 'Search text' : 'Pretraži tekst'}</h3>
+      <input name="tekst" onChange={setPhrase} />
 
-        <h3>{language === 'en' ? 'Choose the author' : 'Izaberi autora'}</h3>
-        <button className="svi-autori" onClick={() => setAuthor('')}>
-          {language === 'en' ? 'All authors' : 'Svi autori'}
-        </button>
-        {preparedAuthors}
-      </div>
-    </aside>
+      <h3>{language === 'en' ? 'Choose the author' : 'Izaberi autora'}</h3>
+      <button className="svi-autori" onClick={() => setAuthor('')}>
+        {language === 'en' ? 'All authors' : 'Svi autori'}
+      </button>
+    </div>
   )
 }
 
