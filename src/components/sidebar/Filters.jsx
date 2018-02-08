@@ -1,14 +1,15 @@
 import React from 'react'
 import './Filters.css'
+import translate from '../../shared/translate'
 
-const Filters = ({ language, setPhrase, setAuthor }) => (
+const Filters = ({ setPhrase, setAuthor }) => (
   <div className="filters">
-    <h3 name="language">{language === 'en' ? 'Search text' : 'Pretraži tekst'}</h3>
-    <input name="tekst" onChange={setPhrase} />
+    <h3>{translate("SEARCH_TEXT")}</h3>
+    <input onChange={setPhrase} />
 
-    <h3>{language === 'en' ? 'Choose the author' : 'Izaberi autora'}</h3>
+    <h3>{translate("CHOOSE_AUTHOR")}</h3>
     <button className="btn-authors" onClick={() => setAuthor('')}>
-      {language === 'en' ? 'All authors' : 'Svi autori'}
+      {translate("ALL_AUTHORS")}
     </button>
   </div>
 )

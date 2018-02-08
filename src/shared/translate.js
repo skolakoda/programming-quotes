@@ -1,8 +1,9 @@
-import en from '../translations/en'
-import sr from '../translations/sr'
-
-const translations = { en, sr }
+import translations from '../data/translations'
 
 export default function translate(key, lang) {
-  return translations[lang][key]
+  return translations[translate.currentLanguage][key]
 }
+
+translate.currentLanguage = 'en'
+
+translate.setLanguage = lang => translate.currentLanguage = lang

@@ -1,0 +1,14 @@
+{
+  "en": {
+    "PROGRAMMING_QUOTES": "Programming quotes",
+    "SEARCH_TEXT": "Search text",
+    "CHOOSE_AUTHOR": "Choose the author",
+    "ALL_AUTHORS": "All authors"
+  },
+  "sr": {
+    "PROGRAMMING_QUOTES": "Programerski citati",
+    "SEARCH_TEXT": "Pretraži tekst",
+    "CHOOSE_AUTHOR": "Izaberi autora",
+    "ALL_AUTHORS": "Svi autori"
+  }
+}

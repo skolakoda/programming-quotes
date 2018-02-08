@@ -3,6 +3,7 @@ import Navigation from './header/Navigation'
 import MainContent from './main/MainContent'
 import Sidebar from './sidebar/Sidebar'
 import {findProp} from '../shared/helpers'
+import translate from '../shared/translate'
 import './App.css'
 
 const url = "https://baza-podataka.herokuapp.com/citati/"
@@ -23,6 +24,7 @@ class App extends Component {
   }
 
   componentDidMount() {
+    translate.setLanguage(this.state.language)
     fetch(url)
     .then(response => response.json())
     .then(response => {
@@ -30,7 +32,6 @@ class App extends Component {
       const currentQuotes = allQuotes.filter(x => Math.random() > .9)
       const authors = new Set(allQuotes.map(quote => quote.autor))
       this.setState(() => ({allQuotes, currentQuotes, authors}))
-
       for (const author of authors) {
         fetch(`https://en.wikipedia.org/w/api.php?action=query&titles=${author}&prop=pageimages&format=json&pithumbsize=50&origin=*`)
         .then(response => response.json())
@@ -70,6 +71,7 @@ class App extends Component {
 
   changeLang = (language) => {
     this.setState({language})
+    translate.setLanguage(language)
   }
 
   render() {
@@ -80,11 +82,9 @@ class App extends Component {
           authorImages={this.state.authorImages}
           setAuthor={this.setAuthor}
           setPhrase={this.setPhrase}
-          language={this.state.language}
         />
         <section className="right-section">
           <Navigation
-            language={this.state.language}
             changeLang={this.changeLang}
           />
           <MainContent
