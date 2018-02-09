@@ -32,15 +32,17 @@ class App extends Component {
       const currentQuotes = allQuotes.filter(x => Math.random() > .9)
       const authors = new Set(allQuotes.map(quote => quote.autor))
       this.setState(() => ({allQuotes, currentQuotes, authors}))
-      for (const author of authors) {
-        fetch(`https://en.wikipedia.org/w/api.php?action=query&titles=${author}&prop=pageimages&format=json&pithumbsize=50&origin=*`)
-        .then(response => response.json())
-        .then(obj => {
-          const imgSrc = findProp(obj, 'source') || ''
-          const authorImages = new Map(this.state.authorImages).set(author, imgSrc)
-          this.setState(() => ({authorImages}))
-        })
-      }
+      for (const author of authors) this.getImage(author)
+    })
+  }
+
+  getImage(author) {
+    fetch(`https://en.wikipedia.org/w/api.php?action=query&titles=${author}&prop=pageimages&format=json&pithumbsize=50&origin=*`)
+    .then(response => response.json())
+    .then(obj => {
+      const imgSrc = findProp(obj, 'source') || 'images/unknown.jpg'
+      const authorImages = new Map(this.state.authorImages).set(author, imgSrc)
+      this.setState(() => ({authorImages}))
     })
   }
 
@@ -49,14 +51,13 @@ class App extends Component {
   }
 
   setAuthor = chosenAuthor => {
-    // TODO: move fetch to Picture component
     fetch(`https://en.wikipedia.org/w/api.php?action=query&titles=${chosenAuthor}&prop=pageimages&format=json&pithumbsize=250&origin=*`)
       .then(response => response.json())
       .then(obj => {
-        const mainImage = findProp(obj,'source') || '';
-        this.setState({mainImage});
+        const mainImage = findProp(obj,'source') || 'images/unknown.jpg'
+        this.setState({mainImage})
       })
-    this.setState({chosenAuthor}, this.filterQuotes);
+    this.setState({chosenAuthor}, this.filterQuotes)
   }
 
   filterQuotes = () => {

@@ -6,8 +6,12 @@
   padding:5px;
   text-align: center;
   float:right;
-
 }
+
+.main-image {
+  max-width: 100%;
+}
+
 .caption{
   font-size: 0.7em;
 }

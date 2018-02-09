@@ -1,13 +1,13 @@
 import React from 'react';
 import Stars from './Stars'
 
-const Quote = props => {
-  const wikiUrl = `https://en.wikipedia.org/wiki/${props.author}`
+const Quote = ({author, content, rating, id}) => {
+  const wikiUrl = `https://en.wikipedia.org/wiki/${author}`
   return (
     <blockquote>
-      <i>{props.content}</i><br/>
-      <small> — <a href={wikiUrl} target="_blank">{props.author}</a> </small>
-      <Stars rating={props.rating} id={props.id} />
+      <i>{content}</i><br/>
+      <small> — <a href={wikiUrl} target="_blank">{author}</a> </small>
+      <Stars rating={rating} id={id} />
     </blockquote>
   )
 }

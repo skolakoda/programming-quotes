@@ -6,7 +6,7 @@ const Picture = ({ author, imgSrc }) => {
   return (
     <div className="thumbnail">
       <h3>{author}</h3>
-      <img  src={imgSrc} alt="Loading..."/>
+      <img className="main-image" src={imgSrc} alt={author} />
     </div>
   );
 }
