@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import Stars from './Stars'
 
 const Quote = ({author, content, rating, id}) => {

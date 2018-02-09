@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import Author from './Author'
 
 const Authors = ({ authorImages, authors, setAuthor }) => {

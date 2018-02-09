@@ -8,6 +8,6 @@ const Picture = ({ author, imgSrc }) => {
       <h3>{author}</h3>
       <img className="main-image" src={imgSrc} alt={author} />
     </div>
-  );
+  )
 }
 export default Picture

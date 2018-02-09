@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import './Author.css'
 
 const Author = ({ authorName, authorImage, setAuthor }) => (
