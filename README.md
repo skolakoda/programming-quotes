@@ -4,7 +4,7 @@
 
 # Programerski citati
 
-**Programerski citati, aplikacija otvorenog koda koju zajedno razvijamo. Tehnologije: React + Node.js.**
+**Programerski citati, aplikacija otvorenog koda koju zajedno razvijamo. Tehnologije: React, Node.js i MongoDB.**
 
 Vidi kako radi: na [skolakoda.org/programerski-citati](https://skolakoda.org/programerski-citati/)
 
