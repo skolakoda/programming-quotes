@@ -4,6 +4,6 @@ export default function translate(key, lang) {
   return translations[translate.currentLanguage][key]
 }
 
-translate.currentLanguage = 'en'
+translate.currentLanguage = 'sr'
 
 translate.setLanguage = lang => translate.currentLanguage = lang

@@ -16,7 +16,7 @@ class App extends Component {
       currentQuotes: [],
       authors: new Set(),
       authorImages: new Map(),
-      language: 'sr',
+      language: '',
       chosenAuthor: '',
       phrase: '',
       mainImage:''
@@ -24,7 +24,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    translate.setLanguage(this.state.language)
+    this.setState({language: translate.currentLanguage})
     fetch(url)
     .then(response => response.json())
     .then(response => {
@@ -69,7 +69,7 @@ class App extends Component {
     this.setState({currentQuotes})
   }
 
-  changeLang = (language) => {
+  setLang = (language) => {
     this.setState({language})
     translate.setLanguage(language)
   }
@@ -85,7 +85,7 @@ class App extends Component {
         />
         <section className="right-section">
           <Navigation
-            changeLang={this.changeLang}
+            setLang={this.setLang}
           />
           <MainContent
             language={this.state.language}
