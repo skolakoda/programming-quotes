@@ -1,19 +1,26 @@
 import React from 'react'
-import Quote from './Quote'
-import Picture from './Picture'
+import { Switch, Route } from 'react-router-dom'
+import Home from '../../routes/Home'
+import AddQuote from '../../routes/AddQuote'
+import EditQuote from '../../routes/EditQuote'
+import ShowQuote from '../../routes/ShowQuote'
+import ShowAuthor from '../../routes/ShowAuthor'
+import Login from '../../routes/Login'
 
 const MainContent = ({ language, chosenAuthor, mainImage, currentQuotes }) => {
-  const preparedQuotes = currentQuotes
-    .filter(q => q[language])
-    .map(q => <Quote key={q._id} content={q[language]} author={q.autor} rating={q.ocena} id={q._id} />)
 
   return (
     <main>
-      <Picture
-        imgSrc={mainImage}
-        author={chosenAuthor}
-      />
-      {preparedQuotes}
+      <Switch>
+        <Route path='/quote/:id' component={ShowQuote}/>
+        <Route path='/author/:id' component={ShowAuthor}/>
+        <Route path='/add-quote' component={AddQuote}/>
+        <Route path='/edit-quote/:id' component={EditQuote}/>
+        <Route path='/login' component={Login}/>
+        <Route path='/' render={(routeProps) => (
+          <Home imgSrc={mainImage} author={chosenAuthor} language={language} currentQuotes={currentQuotes} />
+        )} />
+      </Switch>
     </main>
   )
 }
