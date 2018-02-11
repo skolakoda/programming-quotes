@@ -29,6 +29,7 @@ class App extends Component {
     }
   }
 
+  // prebaciti ajax pozive u componentDidMount dece
   componentDidMount() {
     this.setState({language: translate.currentLanguage})
     fetch(url)
@@ -72,13 +73,20 @@ class App extends Component {
   }
 
   setAuthor = chosenAuthor => {
-    this.setState({mainImage: ''})
-    this.fetchMainImage(chosenAuthor)
+    this.setState({mainImage: '', chosenAuthor: ''})
     this.setState({chosenAuthor}, this.filterQuotes)
+    this.fetchMainImage(chosenAuthor)
   }
 
   setPhrase = event => {
     this.setState({phrase:event.target.value}, this.filterQuotes)
+  }
+
+  resetFilters = () => {
+    this.setState({mainImage: '', chosenAuthor: '', phrase: ''}, this.filterQuotes)
+    const currentQuotes = this.state.allQuotes.filter(x => Math.random() > .9)
+    this.setState({currentQuotes})
+    console.log('this.state.allQuotes :', this.state.allQuotes.length, 'currentQuotes :', currentQuotes.length)
   }
 
   setLang = (language) => {
@@ -111,7 +119,10 @@ class App extends Component {
             <Route path='/edit-quote/:id' component={EditQuote}/>
             <Route path='/login' component={Login}/>
             <Route path='/' render={(props) => (
-              <Home {...props} language={this.state.language} currentQuotes={this.state.currentQuotes} />
+              <Home {...props}
+                resetFilters={this.resetFilters}
+                language={this.state.language}
+                currentQuotes={this.state.currentQuotes} />
             )} />
           </Switch>
         </section>

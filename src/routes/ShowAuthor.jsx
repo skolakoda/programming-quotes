@@ -13,8 +13,14 @@ const isEqual = function(array1, array2) {
 }
 
 class ShowAuthor extends Component {
+  componentDidMount() {
+    this.props.setAuthor(this.props.match.params.name)
+  }
+
   componentWillReceiveProps(nextProps) {
     if (
+      (nextProps.match.params.name !== this.props.match.params.name) ||
+      (nextProps.match.params.name !== this.props.chosenAuthor) ||
       (nextProps.match.params.name !== nextProps.chosenAuthor) ||
       (!isEqual(this.props.currentQuotes, nextProps.currentQuotes))
     )

@@ -1,10 +1,19 @@
-import React from 'react'
+import React, {Component} from 'react'
 import Quotes from '../components/main/Quotes'
 
-const Home = ({ language, currentQuotes }) => (
-  <main>
-    <Quotes language={language} currentQuotes={currentQuotes} />
-  </main>
-)
+class Home extends Component {
+  componentDidMount() {
+    this.props.resetFilters()
+  }
+
+  render() {
+    const {language, currentQuotes} = this.props
+    return (
+      <main>
+        <Quotes language={language} currentQuotes={currentQuotes} />
+      </main>
+    )
+  }
+}
 
 export default Home
