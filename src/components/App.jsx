@@ -21,6 +21,7 @@ class App extends Component {
       allQuotes: [],
       currentQuotes: [],
       authors: new Set(),
+      authorList: [],
       authorImages: new Map(),
       language: '',
       chosenAuthor: '',
@@ -38,7 +39,7 @@ class App extends Component {
         const allQuotes = response.sort(() => .5 - Math.random())
         const currentQuotes = allQuotes.filter(x => Math.random() > .9)
         const authors = new Set(allQuotes.map(quote => quote.autor))
-        this.setState(() => ({allQuotes, currentQuotes, authors}))
+        this.setState(() => ({allQuotes, currentQuotes, authors, authorList: [...authors]}))
         for (const author of authors) this.fetchImage(author)
       })
   }
@@ -78,6 +79,15 @@ class App extends Component {
     this.fetchMainImage(chosenAuthor)
   }
 
+  findAuthor = findFraze => {
+    let re = new RegExp(findFraze,"gi");
+    
+    let filtered = [...this.state.authors].filter((item) => {
+      return re.test(item)
+    })
+    this.setState({authorList: filtered})
+  }
+
   setPhrase = event => {
     this.setState({phrase:event.target.value}, this.filterQuotes)
   }
@@ -98,10 +108,11 @@ class App extends Component {
     return (
       <div className="App">
         <Sidebar className="left-section"
-          authors={this.state.authors}
+          authors={this.state.authorList}
           authorImages={this.state.authorImages}
           setAuthor={this.setAuthor}
           setPhrase={this.setPhrase}
+          findAuthor={this.findAuthor}
         />
         <section className="right-section">
           <Navigation setLang={this.setLang} />
