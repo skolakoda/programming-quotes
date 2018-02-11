@@ -3,12 +3,14 @@
     "PROGRAMMING_QUOTES": "Programming quotes",
     "SEARCH_TEXT": "Search text",
     "CHOOSE_AUTHOR": "Choose the author",
-    "ALL_AUTHORS": "All authors"
+    "ALL_AUTHORS": "All authors",
+    "SEARCH_FOR_AUTORS": "Search for autors" 
   },
   "sr": {
     "PROGRAMMING_QUOTES": "Programerski citati",
     "SEARCH_TEXT": "Pretraži tekst",
     "CHOOSE_AUTHOR": "Izaberi autora",
-    "ALL_AUTHORS": "Svi autori"
+    "ALL_AUTHORS": "Svi autori",
+    "SEARCH_FOR_AUTORS": "Nadji autora"
   }
 }
