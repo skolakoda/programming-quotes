@@ -2,6 +2,8 @@
   box-sizing: border-box;
 }
 
+/* DEFAULTS */
+
 body {
   color: #333;
   font-family: sans-serif;
@@ -9,4 +11,11 @@ body {
   line-height: 1.4;
   margin: 0;
   padding: 0;
+}
+
+/* HELPERS */
+
+.no-link {
+  color: inherit;
+  text-decoration: none;
 }

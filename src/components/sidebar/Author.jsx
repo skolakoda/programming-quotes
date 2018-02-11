@@ -1,11 +1,12 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import './Author.css'
 
 const Author = ({ authorName, authorImage, setAuthor }) => (
-  <div className="author" onClick={() => setAuthor(authorName)}>
-    {authorImage ? <img src={authorImage} alt={authorName} /> : ''}
+  <Link className="author no-link" to={`/author/${authorName}`}>
+    <img src={authorImage} alt="author" />
     {authorName}
-  </div>
+  </Link>
 )
 
 export default Author

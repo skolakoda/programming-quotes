@@ -3,9 +3,9 @@ import React from 'react'
 const AddQuote = () => {
 
   return (
-    <div>
+    <main>
       <h1>Add quote</h1>
-    </div>
+    </main>
   )
 }
 

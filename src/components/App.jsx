@@ -1,10 +1,16 @@
 import React, {Component} from 'react'
+import { Switch, Route } from 'react-router-dom'
 import Navigation from './header/Navigation'
-import MainContent from './main/MainContent'
 import Sidebar from './sidebar/Sidebar'
 import {findProp} from '../shared/helpers'
 import translate from '../shared/translate'
 import './App.css'
+import Home from '../routes/Home'
+import AddQuote from '../routes/AddQuote'
+import EditQuote from '../routes/EditQuote'
+import ShowQuote from '../routes/ShowQuote'
+import ShowAuthor from '../routes/ShowAuthor'
+import Login from '../routes/Login'
 
 const url = 'https://baza-podataka.herokuapp.com/citati/'
 
@@ -50,7 +56,7 @@ class App extends Component {
     fetch(`https://en.wikipedia.org/w/api.php?action=query&titles=${author}&prop=pageimages&format=json&pithumbsize=50&origin=*`)
       .then(response => response.json())
       .then(obj => {
-        const imgSrc = findProp(obj, 'source') || 'images/unknown.jpg'
+        const imgSrc = findProp(obj, 'source') || '/images/unknown.jpg'
         const authorImages = new Map(this.state.authorImages).set(author, imgSrc)
         this.setState({authorImages})
       })
@@ -60,12 +66,13 @@ class App extends Component {
     fetch(`https://en.wikipedia.org/w/api.php?action=query&titles=${author}&prop=pageimages&format=json&pithumbsize=250&origin=*`)
       .then(response => response.json())
       .then(obj => {
-        const mainImage = findProp(obj, 'source') || 'images/unknown.jpg'
+        const mainImage = findProp(obj, 'source') || '/images/unknown.jpg'
         this.setState({mainImage})
       })
   }
 
   setAuthor = chosenAuthor => {
+    this.setState({mainImage: ''})
     this.fetchMainImage(chosenAuthor)
     this.setState({chosenAuthor}, this.filterQuotes)
   }
@@ -89,15 +96,24 @@ class App extends Component {
           setPhrase={this.setPhrase}
         />
         <section className="right-section">
-          <Navigation
-            setLang={this.setLang}
-          />
-          <MainContent
-            language={this.state.language}
-            mainImage={this.state.mainImage}
-            chosenAuthor={this.state.chosenAuthor}
-            currentQuotes={this.state.currentQuotes}
-          />
+          <Navigation setLang={this.setLang} />
+          <Switch>
+            <Route path='/quote/:id' component={ShowQuote}/>
+            <Route path='/author/:name' render={(props) => (
+              <ShowAuthor {...props}
+                setAuthor={this.setAuthor}
+                mainImage={this.state.mainImage}
+                chosenAuthor={this.state.chosenAuthor}
+                language={this.state.language}
+                currentQuotes={this.state.currentQuotes} />
+            )} />
+            <Route path='/add-quote' component={AddQuote}/>
+            <Route path='/edit-quote/:id' component={EditQuote}/>
+            <Route path='/login' component={Login}/>
+            <Route path='/' render={(props) => (
+              <Home {...props} language={this.state.language} currentQuotes={this.state.currentQuotes} />
+            )} />
+          </Switch>
         </section>
       </div>
     )
