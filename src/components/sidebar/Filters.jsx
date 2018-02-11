@@ -9,7 +9,7 @@ const Filters = ({ setPhrase, setAuthor, findAuthor }) => (
 
     <h3>{translate('CHOOSE_AUTHOR')}</h3>
     <input placeholder={translate('SEARCH_FOR_AUTORS')} onChange={(e) => findAuthor(e.target.value)} /> 
-    <button className="btn-authors" onClick={() => setAuthor('')}>
+    <button className="btn-authors" onClick={() => findAuthor('')}>
       {translate('ALL_AUTHORS')}
     </button>
   </div>

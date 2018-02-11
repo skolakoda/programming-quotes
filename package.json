@@ -4,6 +4,7 @@
   "homepage": "https://skolakoda.github.io/programerski-citati",
   "repository": "https://github.com/skolakoda/programerski-citati",
   "dependencies": {
+    "axios": "^0.17.1",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "gh-pages": "^1.1.0",

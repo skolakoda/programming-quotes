@@ -7,7 +7,7 @@ import './index.css'
 
 render(
   <Router>
-    <Route exact path='/' component={App} />
+    <App />
   </Router>
   , document.getElementById('root'))
 
