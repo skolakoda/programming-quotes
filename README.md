@@ -32,6 +32,12 @@ npm run deploy
 
 Vidi [uputstvo](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#github-pages) za objavljivanje React aplikacije na Github stranici.
 
+## Kako se uključiti?
+
+Ako želiš da se uključiš, ali ne znaš kako, pročitaj uputstvo: [Kako doprinositi projektima?](http://skolakoda.org/kako-doprinositi/)
+
+[Ovde](https://trello.com/b/fBcFTxgo/programerski-citati) možeš videti šta je sve potrebno uraditi. Upoznaj se dobro sa projektom i konvencijama pre nego počneš doprinositi. Imamo politiku nulte tolerancije prema tehničkom dugu.
+
 ## Kodni standard
 
 Kodni standard na projektu je [*JavaScript Standard Style*](https://standardjs.com/), čije su glavne značaljke:
@@ -42,9 +48,3 @@ Kodni standard na projektu je [*JavaScript Standard Style*](https://standardjs.c
 - `===` umesto `==` za poređenje
 
 Da biste imali uživo upozorenja, potrebno je instalirati ESLint dodatak za editor koji koristite.
-
-## Kako se uključiti?
-
-Ako želiš da se uključiš, ali ne znaš kako, pročitaj uputstvo: [Kako doprinositi projektima?](http://skolakoda.org/kako-doprinositi/)
-
-[Ovde](https://trello.com/b/fBcFTxgo/programerski-citati) možeš videti šta je sve potrebno uraditi. Upoznaj se dobro sa projektom i konvencijama pre nego počneš doprinositi. Imamo politiku nulte tolerancije prema tehničkom dugu.
