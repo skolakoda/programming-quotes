@@ -1,7 +1,9 @@
 import React, {Component} from 'react'
+import { Switch, Route } from 'react-router-dom'
 import Navigation from './header/Navigation'
 import Sidebar from './sidebar/Sidebar'
 import MainContent from '../containers/MainContent'
+import AddQuote from '../containers/AddQuote'
 import {fetchImage} from '../shared/helpers'
 import translate from '../shared/translate'
 import './App.css'
@@ -26,11 +28,14 @@ class App extends Component {
 
   componentDidMount() {
     this.setState({quoteLanguage: translate.currentLanguage})
+
     fetch(url)
       .then(response => response.json())
       .then(response => {
         const allQuotes = response.sort(() => .5 - Math.random())
-        const currentQuotes = allQuotes.filter(x => Math.random() > .9)
+
+        const currentQuotes = allQuotes.filter(q => Math.random() > .9)
+
         const allAuthors = new Set(allQuotes.map(quote => quote.autor))
         this.setState(() => ({allQuotes, currentQuotes, allAuthors, filteredAuthors: [...allAuthors]}))
         for (const author of allAuthors) this.fetchThumbnail(author)
@@ -54,9 +59,9 @@ class App extends Component {
   }
 
   setAuthor = chosenAuthor => {
-    this.setState({mainImage: ''})
-    fetchImage(chosenAuthor, '250', imgSrc => this.setState({mainImage: imgSrc}))
-    this.setState({chosenAuthor}, this.filterQuotes)
+    this.setState({chosenAuthor, mainImage: ''}, this.filterQuotes)
+    if (chosenAuthor) 
+      fetchImage(chosenAuthor, '250', imgSrc => this.setState({mainImage: imgSrc}))
   }
 
   filterAuthors = phrase => {
@@ -86,15 +91,19 @@ class App extends Component {
           filterAuthors={this.filterAuthors}
         />
         <section className="right-section">
-          <Navigation
-            setLang={this.setLang}
-          />
-          <MainContent
-            language={this.state.quoteLanguage}
-            mainImage={this.state.mainImage}
-            chosenAuthor={this.state.chosenAuthor}
-            currentQuotes={this.state.currentQuotes}
-          />
+          <Navigation setLang={this.setLang} />
+
+          <Switch>
+            <Route path='/add-quote' component={AddQuote}/>
+            <Route path='/' render={(props) => (
+              <MainContent {...props}
+                language={this.state.quoteLanguage}
+                mainImage={this.state.mainImage}
+                chosenAuthor={this.state.chosenAuthor}
+                currentQuotes={this.state.currentQuotes}
+              />
+            )} />
+          </Switch>
         </section>
       </div>
     )
