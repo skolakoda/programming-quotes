@@ -14,10 +14,10 @@ class App extends Component {
     this.state = {
       allQuotes: [],
       currentQuotes: [],
-      authors: new Set(),
-      authorList: [],
+      allAuthors: new Set(),
+      filteredAuthors: [],
       authorImages: new Map(),
-      language: '',
+      quoteLanguage: '',
       chosenAuthor: '',
       phrase: '',
       mainImage:''
@@ -25,24 +25,24 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.setState({language: translate.currentLanguage})
+    this.setState({quoteLanguage: translate.currentLanguage})
     fetch(url)
       .then(response => response.json())
       .then(response => {
         const allQuotes = response.sort(() => .5 - Math.random())
         const currentQuotes = allQuotes.filter(x => Math.random() > .9)
-        const authors = new Set(allQuotes.map(quote => quote.autor))
-        this.setState(() => ({allQuotes, currentQuotes, authors, authorList: [...authors]}))
-        for (const author of authors) this.fetchImage(author)
+        const allAuthors = new Set(allQuotes.map(quote => quote.autor))
+        this.setState(() => ({allQuotes, currentQuotes, allAuthors, filteredAuthors: [...allAuthors]}))
+        for (const author of allAuthors) this.fetchImage(author)
       })
   }
 
   filterQuotes = () => {
-    const language = this.state.language
+    const lang = this.state.quoteLanguage
     const currentQuotes = this.state.allQuotes.filter(quote =>
       (quote.autor === this.state.chosenAuthor || this.state.chosenAuthor === '')
-      && quote[language]
-      && quote[language].toLowerCase().includes(this.state.phrase.toLowerCase())
+      && quote[lang]
+      && quote[lang].toLowerCase().includes(this.state.phrase.toLowerCase())
     )
     this.setState({currentQuotes})
   }
@@ -71,21 +71,19 @@ class App extends Component {
     this.setState({chosenAuthor}, this.filterQuotes)
   }
 
-  findAuthor = findFraze => {
-    let re = new RegExp(findFraze,"gi");
-    
-    let filtered = [...this.state.authors].filter((item) => {
-      return re.test(item)
-    })
-    this.setState({authorList: filtered})
+  filterAuthors = phrase => {
+    const filteredAuthors = [...this.state.allAuthors].filter(
+      name => name.toLowerCase().includes(phrase.toLowerCase())
+    )
+    this.setState({filteredAuthors})
   }
 
   setPhrase = event => {
     this.setState({phrase:event.target.value}, this.filterQuotes)
   }
 
-  setLang = (language) => {
-    this.setState({language})
+  setLang = language => {
+    this.setState({quoteLanguage: language})
     translate.setLanguage(language)
   }
 
@@ -93,18 +91,18 @@ class App extends Component {
     return (
       <div className="App">
         <Sidebar className="left-section"
-          authors={this.state.authorList}
+          authors={this.state.filteredAuthors}
           authorImages={this.state.authorImages}
           setAuthor={this.setAuthor}
           setPhrase={this.setPhrase}
-          findAuthor={this.findAuthor}
+          filterAuthors={this.filterAuthors}
         />
         <section className="right-section">
           <Navigation
             setLang={this.setLang}
           />
           <MainContent
-            language={this.state.language}
+            language={this.state.quoteLanguage}
             mainImage={this.state.mainImage}
             chosenAuthor={this.state.chosenAuthor}
             currentQuotes={this.state.currentQuotes}
