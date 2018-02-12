@@ -1,6 +1,7 @@
 import React from 'react'
 import Quote from './Quote'
 import Picture from './Picture'
+import Header from '../header/Header'
 
 const MainContent = ({ language, chosenAuthor, mainImage, currentQuotes }) => {
   const preparedQuotes = currentQuotes
@@ -9,6 +10,7 @@ const MainContent = ({ language, chosenAuthor, mainImage, currentQuotes }) => {
 
   return (
     <main>
+      <Header language={language}/>
       <Picture
         imgSrc={mainImage}
         author={chosenAuthor}
@@ -17,5 +19,4 @@ const MainContent = ({ language, chosenAuthor, mainImage, currentQuotes }) => {
     </main>
   )
 }
-
 export default MainContent

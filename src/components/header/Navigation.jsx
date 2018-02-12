@@ -1,14 +1,16 @@
 import React from 'react'
-import Github from './Github'
-import translate from '../../shared/translate'
+import './Navigation.css'
+import {Link} from 'react-router-dom'
 
-const Navigation = ({setLang}) => (
-  <header>
-    <Github repoUrl="https://github.com/skolakoda/programerski-citati" />
-    <h1>{translate('PROGRAMMING_QUOTES')}</h1>
-    <button onClick={() => setLang('sr')} className="lang-btn">SRB</button>
-    <button onClick={() => setLang('en')} className="lang-btn">ENG</button>
-  </header>
+const Navigation = ({language, changeLang,isLoged}) => (
+  <ul className="nav">
+    <Link to='/login'>Login</Link>
+    <Link to='/'> Main</Link>
+    <Link to='/addQuote'>AddQuote</Link>
+    <button onClick={() => changeLang('sr')} className="lang-btn">SRB</button>
+    <button onClick={() => changeLang('en')} className="lang-btn">ENG</button>
+   
+ </ul>
 )
 
 export default Navigation
