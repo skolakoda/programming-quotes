@@ -61,11 +61,10 @@ class App extends Component {
   }
 
   filterAuthors = phrase => {
-    this.setState({mainImage: ''})
     const filteredAuthors = [...this.state.allAuthors].filter(
       name => name.toLowerCase().includes(phrase.toLowerCase())
     )
-    this.setState({filteredAuthors})
+    this.setState({mainImage: '', filteredAuthors})
   }
 
   setPhrase = event => {
