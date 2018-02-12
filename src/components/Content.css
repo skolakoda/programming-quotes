@@ -1,0 +1,19 @@
+.left-section {
+  width: 20%;
+}
+
+.right-section {
+  right: 0;
+  width: 74%;
+}
+
+.lang-btn {
+  font-size: 12px;
+  margin: 0px 5px;
+}
+.App {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 2%;
+  margin-top: 50px;
+}

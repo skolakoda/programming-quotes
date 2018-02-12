@@ -1,9 +1,11 @@
 import React, {Component} from 'react'
 import Navigation from './header/Navigation'
-import MainContent from './main/MainContent'
-import Sidebar from './sidebar/Sidebar'
-import {findProp} from '../shared/helpers'
+import Content from './Content'
+import Login from './header/Login'
+import AddQuote from './AddQuote'
 import translate from '../shared/translate'
+import {findProp} from '../shared/helpers'
+import {Route} from 'react-router-dom'
 import './App.css'
 
 const url = 'https://baza-podataka.herokuapp.com/citati/'
@@ -91,25 +93,23 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Sidebar className="left-section"
-          authors={this.state.authorList}
+      <div>
+        <Navigation
+          language={this.state.language}
+          changeLang={this.changeLang} />
+        <Route exact path='/' component={()=>
+        <Content
+          authors={this.state.authors}
           authorImages={this.state.authorImages}
           setAuthor={this.setAuthor}
           setPhrase={this.setPhrase}
-          findAuthor={this.findAuthor}
-        />
-        <section className="right-section">
-          <Navigation
-            setLang={this.setLang}
-          />
-          <MainContent
-            language={this.state.language}
-            mainImage={this.state.mainImage}
-            chosenAuthor={this.state.chosenAuthor}
-            currentQuotes={this.state.currentQuotes}
-          />
-        </section>
+          language={this.state.language}
+          mainImage={this.state.mainImage}
+          chosenAuthor={this.state.chosenAuthor}
+          currentQuotes={this.state.currentQuotes}
+            />}/>
+         <Route path='/Login' component={()=><Login/>}/>
+         <Route path='/AddQuote' component={()=><AddQuote/>}/>
       </div>
     )
   }
