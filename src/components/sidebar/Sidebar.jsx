@@ -3,10 +3,10 @@ import Filters from './Filters'
 import Authors from './Authors'
 import './Sidebar.css'
 
-const Sidebar = ({ authorImages, authors, setPhrase, setAuthor }) => (
+const Sidebar = ({ authorImages, authors, setPhrase, setAuthor, findAuthor }) => (
   <aside>
     <div className="sidebar-inner">
-      <Filters setPhrase={setPhrase} setAuthor={setAuthor} />
+      <Filters setPhrase={setPhrase} setAuthor={setAuthor} findAuthor={findAuthor} />
       <Authors authorImages={authorImages} authors={authors} setAuthor={setAuthor} />
     </div>
   </aside>
