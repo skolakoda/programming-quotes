@@ -1,3 +1,7 @@
+.sidebar {
+  width: 22%;
+}
+
 .sidebar-inner {
   position:fixed;
   top: 0;

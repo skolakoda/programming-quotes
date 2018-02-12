@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import Navigation from './header/Navigation'
-import MainContent from './main/MainContent'
 import Sidebar from './sidebar/Sidebar'
+import MainContent from '../containers/MainContent'
 import {fetchImage} from '../shared/helpers'
 import translate from '../shared/translate'
 import './App.css'
@@ -41,8 +41,7 @@ class App extends Component {
     const lang = this.state.quoteLanguage
     const currentQuotes = this.state.allQuotes.filter(quote =>
       (quote.autor === this.state.chosenAuthor || this.state.chosenAuthor === '')
-      && quote[lang]
-      && quote[lang].toLowerCase().includes(this.state.phrase.toLowerCase())
+      && quote[lang] && quote[lang].toLowerCase().includes(this.state.phrase.toLowerCase())
     )
     this.setState({currentQuotes})
   }
@@ -79,7 +78,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Sidebar className="left-section"
+        <Sidebar
           authors={this.state.filteredAuthors}
           authorImages={this.state.authorImages}
           setAuthor={this.setAuthor}

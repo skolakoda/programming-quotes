@@ -1,6 +1,7 @@
 import React from 'react'
 import Github from './Github'
 import translate from '../../shared/translate'
+import './Navigation.css'
 
 const Navigation = ({setLang}) => (
   <header>
