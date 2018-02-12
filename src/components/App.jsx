@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import Navigation from './header/Navigation'
 import MainContent from './main/MainContent'
 import Sidebar from './sidebar/Sidebar'
-import {findProp} from '../shared/helpers'
+import {fetchImage} from '../shared/helpers'
 import translate from '../shared/translate'
 import './App.css'
 
@@ -33,7 +33,7 @@ class App extends Component {
         const currentQuotes = allQuotes.filter(x => Math.random() > .9)
         const allAuthors = new Set(allQuotes.map(quote => quote.autor))
         this.setState(() => ({allQuotes, currentQuotes, allAuthors, filteredAuthors: [...allAuthors]}))
-        for (const author of allAuthors) this.fetchImage(author)
+        for (const author of allAuthors) this.fetchThumbnail(author)
       })
   }
 
@@ -47,31 +47,21 @@ class App extends Component {
     this.setState({currentQuotes})
   }
 
-  fetchImage(author) {
-    fetch(`https://en.wikipedia.org/w/api.php?action=query&titles=${author}&prop=pageimages&format=json&pithumbsize=50&origin=*`)
-      .then(response => response.json())
-      .then(obj => {
-        const imgSrc = findProp(obj, 'source') || 'images/unknown.jpg'
-        const authorImages = new Map(this.state.authorImages).set(author, imgSrc)
-        this.setState({authorImages})
-      })
-  }
-
-  fetchMainImage(author) {
-    fetch(`https://en.wikipedia.org/w/api.php?action=query&titles=${author}&prop=pageimages&format=json&pithumbsize=250&origin=*`)
-      .then(response => response.json())
-      .then(obj => {
-        const mainImage = findProp(obj, 'source') || 'images/unknown.jpg'
-        this.setState({mainImage})
-      })
+  fetchThumbnail(author) {
+    fetchImage(author, '50', imgSrc => {
+      const authorImages = this.state.authorImages.set(author, imgSrc)
+      this.setState({authorImages})
+    })
   }
 
   setAuthor = chosenAuthor => {
-    this.fetchMainImage(chosenAuthor)
+    this.setState({mainImage: ''})
+    fetchImage(chosenAuthor, '250', imgSrc => this.setState({mainImage: imgSrc}))
     this.setState({chosenAuthor}, this.filterQuotes)
   }
 
   filterAuthors = phrase => {
+    this.setState({mainImage: ''})
     const filteredAuthors = [...this.state.allAuthors].filter(
       name => name.toLowerCase().includes(phrase.toLowerCase())
     )
