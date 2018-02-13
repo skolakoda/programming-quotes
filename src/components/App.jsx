@@ -33,9 +33,7 @@ class App extends Component {
       .then(response => response.json())
       .then(response => {
         const allQuotes = response.sort(() => .5 - Math.random())
-
         const currentQuotes = allQuotes.filter(q => Math.random() > .9)
-
         const allAuthors = new Set(allQuotes.map(quote => quote.autor))
         this.setState(() => ({allQuotes, currentQuotes, allAuthors, filteredAuthors: [...allAuthors]}))
         for (const author of allAuthors) this.fetchThumbnail(author)
@@ -60,7 +58,7 @@ class App extends Component {
 
   setAuthor = chosenAuthor => {
     this.setState({chosenAuthor, mainImage: ''}, this.filterQuotes)
-    if (chosenAuthor) 
+    if (chosenAuthor)
       fetchImage(chosenAuthor, '250', imgSrc => this.setState({mainImage: imgSrc}))
   }
 

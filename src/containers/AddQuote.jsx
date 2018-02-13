@@ -2,47 +2,35 @@ import React, { Component } from 'react'
 import translate from '../shared/translate'
 import MessagePopup from './MessagePopup'
 
-// dodati izvor
-// srediti formu na osnovu kicine grane
-// ukloniti stanje
+// dodati sugestije za autora
 
 class AddQuote extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      autor: '',
-      sr: '',
-      en: '',
       error: '',
       popupMessage: ''
     }
   }
 
-  resetState() {
-    this.setState({
-      autor: '',
-      sr: '',
-      en: '',
-      error: ''
-    })
-  }
-
-  createQuote(e) {
+  postQuote(e) {
     e.preventDefault()
-    const { autor, sr, en } = this.state
+    const autor = e.target.elements.author.value
+    const en = e.target.elements.en.value
+    const sr = e.target.elements.sr.value
+    const izvor = e.target.elements.izvor.value
     const condition = autor && (sr || en)
     if (!condition) return this.setState({ error: translate('ARGUMENTS_ERROR') })
 
     fetch('https://baza-podataka.herokuapp.com/dodaj-citat/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ autor, sr, en })
+      body: JSON.stringify({ autor, sr, en, izvor })
     })
       .then(response => response.text())
       .catch(e => this.setState({ popupMessage: translate('ERROR_POPUP') }))
       .then(response => {
-        this.resetState()
-        this.setState({ popupMessage: translate('SUCCESS_SAVED') })
+        this.setState({ error: '', popupMessage: translate('SUCCESS_SAVED') })
         // uzeti u obzir povratnu poruku
         console.log(response)
       })
@@ -51,18 +39,30 @@ class AddQuote extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.createQuote.bind(this)}>
-          <label htmlFor="author" >{translate('AUTHOR')}</label>
-          <input id="author" value={this.state.autor} type="text" onChange={e => this.setState({ autor: e.target.value })} />
-          <br />
+        <form onSubmit={this.postQuote.bind(this)}>
+          <p>
+            <label htmlFor="author" >{translate('AUTHOR')} <small>(like on en.wikipedia)</small> </label><br/>
+            <input name="author" required />
+          </p>
 
-          <label htmlFor="sr" >{translate('QUOTE_SERBIAN')}</label>
-          <textarea id="sr" value={this.state.sr} type="text" onChange={e => this.setState({ sr: e.target.value })} />
-          <br />
+          <p>
+            <label htmlFor="sr" >{translate('QUOTE_SERBIAN')}</label><br />
+            <textarea name="sr" cols="60" rows="5" onChange={this.handleInput}></textarea>
+          </p>
 
-          <label htmlFor="en" >{translate('QUOTE_ENGLISH')}</label>
-          <textarea id="en" value={this.state.en} type="text" onChange={e => this.setState({ en: e.target.value })} />
-          <br />
+          <p>
+            <label htmlFor="en" >{translate('QUOTE_ENGLISH')}</label><br />
+            <textarea name="en" cols="60" rows="5" onChange={this.handleInput}></textarea>
+          </p>
+
+          <p>
+            <label>Source (<small>optional</small>): </label><br/>
+            <input name='izvor' />
+          </p>
+
+          <p>
+            <small>* Author and at least one language is required.</small>
+          </p>
 
           {this.state.error && <p>{this.state.error}</p>}
 
@@ -71,7 +71,6 @@ class AddQuote extends Component {
 
         {this.state.popupMessage && <MessagePopup message={this.state.popupMessage} closePopup={() => this.setState({ popupMessage: '' })} />}
       </div>
-
     )
   }
 }
