@@ -14,10 +14,10 @@ class AddQuote extends Component {
   postQuote = e => {
     e.preventDefault()
     const fields = e.target.elements
-    const autor = fields.author.value,
-      en = fields.en.value,
-      sr = fields.sr.value,
-      izvor = fields.izvor.value
+    const autor = fields.author.value.trim(),
+      en = fields.en.value.trim(),
+      sr = fields.sr.value.trim(),
+      izvor = fields.izvor.value.trim()
     const condition = autor && (sr || en)
     if (!condition) return this.setState({ error: translate('ARGUMENTS_ERROR') })
     ;[...fields].map(field => field.value = '')
@@ -46,28 +46,23 @@ class AddQuote extends Component {
             <label htmlFor="author" >{translate('AUTHOR')} <small>(name from en.wikipedia)</small> </label><br/>
             <input name="author" />
           </p>
-
           <p>
             <label htmlFor="sr" >{translate('QUOTE_SERBIAN')}</label><br />
             <textarea name="sr" cols="60" rows="5" onChange={this.handleInput}></textarea>
           </p>
-
           <p>
             <label htmlFor="en" >{translate('QUOTE_ENGLISH')}</label><br />
             <textarea name="en" cols="60" rows="5" onChange={this.handleInput}></textarea>
           </p>
-
           <p>
             <label>Source (<small>optional</small>): </label><br/>
             <input name='izvor' />
           </p>
-
           <p>
             <small>* Author and at least one language is required.</small>
           </p>
 
           {this.state.error && <p>{this.state.error}</p>}
-
           <button type="submit">{translate('SAVE')}</button>
         </form>
 
