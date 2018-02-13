@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import translate from '../shared/translate'
 import MessagePopup from './MessagePopup'
 
-// dodati sugestije za autora
-
 class AddQuote extends Component {
   constructor(props) {
     super(props)
@@ -13,14 +11,16 @@ class AddQuote extends Component {
     }
   }
 
-  postQuote(e) {
+  postQuote = e => {
     e.preventDefault()
-    const autor = e.target.elements.author.value
-    const en = e.target.elements.en.value
-    const sr = e.target.elements.sr.value
-    const izvor = e.target.elements.izvor.value
+    const fields = e.target.elements
+    const autor = fields.author.value,
+      en = fields.en.value,
+      sr = fields.sr.value,
+      izvor = fields.izvor.value
     const condition = autor && (sr || en)
     if (!condition) return this.setState({ error: translate('ARGUMENTS_ERROR') })
+    ;[...fields].map(field => field.value = '')
 
     fetch('https://baza-podataka.herokuapp.com/dodaj-citat/', {
       method: 'POST',
@@ -29,20 +29,21 @@ class AddQuote extends Component {
     })
       .then(response => response.text())
       .catch(e => this.setState({ popupMessage: translate('ERROR_POPUP') }))
-      .then(response => {
-        this.setState({ error: '', popupMessage: translate('SUCCESS_SAVED') })
-        // uzeti u obzir povratnu poruku
-        console.log(response)
-      })
+      .then(response => this.setState({ error: '', popupMessage: response }))
+      // prevoditi response sa servera tj. prikazivati translate('SUCCESS_SAVED') uslovno
+  }
+
+  closePopup = () => {
+    this.setState({ popupMessage: '' })
   }
 
   render() {
     return (
       <div>
-        <form onSubmit={this.postQuote.bind(this)}>
+        <form onSubmit={this.postQuote}>
           <p>
             <label htmlFor="author" >{translate('AUTHOR')} <small>(like on en.wikipedia)</small> </label><br/>
-            <input name="author" required />
+            <input name="author" />
           </p>
 
           <p>
@@ -66,10 +67,10 @@ class AddQuote extends Component {
 
           {this.state.error && <p>{this.state.error}</p>}
 
-          <input value={translate('SAVE')} type="submit" />
+          <button type="submit">{translate('SAVE')}</button>
         </form>
 
-        {this.state.popupMessage && <MessagePopup message={this.state.popupMessage} closePopup={() => this.setState({ popupMessage: '' })} />}
+        {this.state.popupMessage && <MessagePopup message={this.state.popupMessage} closePopup={this.closePopup} />}
       </div>
     )
   }
