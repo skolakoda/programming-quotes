@@ -12,9 +12,10 @@ const Navigation = ({setLang}) => (
       <Link to="/">Home</Link>
       <Link to="/add-quote">Add quote</Link>
       <Link to="/login">Login</Link>
-      {/* naraviti jezicke rute */}
-      <button onClick={() => setLang('sr')} className="lang-btn">SRB</button>
-      <button onClick={() => setLang('en')} className="lang-btn">ENG</button>
+      <div>
+        <button onClick={() => setLang('sr')} className="lang-btn">SRB</button>
+        <button onClick={() => setLang('en')} className="lang-btn">ENG</button>
+      </div>
     </nav>
   </header>
 )
