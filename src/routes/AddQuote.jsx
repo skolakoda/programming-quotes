@@ -40,9 +40,10 @@ class AddQuote extends Component {
   render() {
     return (
       <div>
+        <h1>Dodaj citat</h1>
         <form onSubmit={this.postQuote}>
           <p>
-            <label htmlFor="author" >{translate('AUTHOR')} <small>(like on en.wikipedia)</small> </label><br/>
+            <label htmlFor="author" >{translate('AUTHOR')} <small>(name from en.wikipedia)</small> </label><br/>
             <input name="author" />
           </p>
 
