@@ -2,7 +2,7 @@ import React from 'react'
 import Quotes from '../components/main/Quotes'
 import Picture from '../components/main/Picture'
 
-const MainContent = ({ language, chosenAuthor, mainImage, currentQuotes }) => {
+const Main = ({ language, chosenAuthor, mainImage, currentQuotes }) => {
   return (
     <main>
       <Picture imgSrc={mainImage} author={chosenAuthor} />
@@ -11,4 +11,4 @@ const MainContent = ({ language, chosenAuthor, mainImage, currentQuotes }) => {
   )
 }
 
-export default MainContent
+export default Main

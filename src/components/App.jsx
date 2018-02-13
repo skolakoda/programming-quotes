@@ -2,8 +2,8 @@ import React, {Component} from 'react'
 import { Switch, Route } from 'react-router-dom'
 import Navigation from './header/Navigation'
 import Sidebar from './sidebar/Sidebar'
-import MainContent from '../containers/MainContent'
-import AddQuote from '../containers/AddQuote'
+import Main from '../routes/Main'
+import AddQuote from '../routes/AddQuote'
 import {fetchImage} from '../shared/helpers'
 import translate from '../shared/translate'
 import './App.css'
@@ -94,7 +94,7 @@ class App extends Component {
           <Switch>
             <Route path='/add-quote' component={AddQuote}/>
             <Route path='/' render={(props) => (
-              <MainContent {...props}
+              <Main {...props}
                 language={this.state.quoteLanguage}
                 mainImage={this.state.mainImage}
                 chosenAuthor={this.state.chosenAuthor}
