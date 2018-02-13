@@ -1,5 +1,5 @@
 import React from 'react'
-import Quotes from './Quotes'
+import Quotes from '../components/main/Quotes'
 import Picture from '../components/main/Picture'
 
 const MainContent = ({ language, chosenAuthor, mainImage, currentQuotes }) => {

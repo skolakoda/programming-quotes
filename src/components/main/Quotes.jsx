@@ -1,5 +1,5 @@
 import React from 'react'
-import Quote from '../components/main/Quote'
+import Quote from './Quote'
 
 const Quotes = ({ language, currentQuotes }) => {
   const preparedQuotes = currentQuotes
