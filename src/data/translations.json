@@ -4,13 +4,27 @@
     "SEARCH_TEXT": "Search text",
     "CHOOSE_AUTHOR": "Choose the author",
     "ALL_AUTHORS": "All authors",
-    "SEARCH_FOR_AUTORS": "Search for autors" 
+    "SEARCH_FOR_AUTORS": "Search for autors",
+    "AUTHOR": "Author",
+    "QUOTE_SERBIAN": "Quote in english language",
+    "QUOTE_ENGLISH": "Quote in Serbian language",
+    "SAVE": "Save",
+    "ERROR_POPUP": "There was error while saving, please try again",
+    "ARGUMENTS_ERROR": "You must enter author name and serbian or english translate of quote",
+    "SUCCESS_SAVED": "Thanks, quote is success saved"
   },
   "sr": {
     "PROGRAMMING_QUOTES": "Programerski citati",
     "SEARCH_TEXT": "Pretraži tekst",
     "CHOOSE_AUTHOR": "Izaberi autora",
     "ALL_AUTHORS": "Svi autori",
-    "SEARCH_FOR_AUTORS": "Nadji autora"
+    "SEARCH_FOR_AUTORS": "Nadji autora",
+    "AUTHOR": "Autor",
+    "QUOTE_ENGLISH": "Citat na srpskom jeziku",
+    "QUOTE_SERBIAN": "Citat na engleskom",
+    "SAVE": "Sacuvaj",
+    "ERROR_POPUP": "Doslo je do greske prolikom slanja, molimo vas pokusajte ponovo",
+    "ARGUMENTS_ERROR": "Morate uneti autora i citat na bar jednom jeziku",
+    "SUCCESS_SAVED": "Hvala, citat je uspesno sacuvan"
   }
 }

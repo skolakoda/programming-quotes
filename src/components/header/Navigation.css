@@ -1,3 +1,9 @@
+nav {
+  display: flex;
+  justify-content: space-evenly;
+  width: 50%;
+}
+
 .lang-btn {
   font-size: 12px;
   margin: 0px 5px;

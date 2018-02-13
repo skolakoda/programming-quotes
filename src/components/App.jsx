@@ -4,6 +4,7 @@ import Navigation from './header/Navigation'
 import Sidebar from './sidebar/Sidebar'
 import Main from '../routes/Main'
 import AddQuote from '../routes/AddQuote'
+import Login from '../routes/Login'
 import {fetchImage} from '../shared/helpers'
 import translate from '../shared/translate'
 import './App.css'
@@ -93,6 +94,7 @@ class App extends Component {
 
           <Switch>
             <Route path='/add-quote' component={AddQuote}/>
+            <Route path='/login' component={Login}/>
             <Route path='/' render={(props) => (
               <Main {...props}
                 language={this.state.quoteLanguage}
