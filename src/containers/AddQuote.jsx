@@ -31,22 +31,21 @@ class AddQuote extends Component {
     e.preventDefault()
     const { autor, sr, en } = this.state
     const condition = autor && (sr || en)
-    if (!condition) return this.setState({error: translate('ARGUMENTS_ERROR')})
+    if (!condition) return this.setState({ error: translate('ARGUMENTS_ERROR') })
 
     fetch('https://baza-podataka.herokuapp.com/dodaj-citat/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ autor, sr, en })
     })
+      .then(response => response.text())
+      .catch(e => this.setState({ popupMessage: translate('ERROR_POPUP') }))
       .then(response => {
         this.resetState()
-        this.setState({ popupMessage: translate('SUCCESS_SAVED') }) // uzeti u obzir povratnu poruku
-        return response.text()
+        this.setState({ popupMessage: translate('SUCCESS_SAVED') })
+        // uzeti u obzir povratnu poruku
+        console.log(response)
       })
-      .catch(e => this.setState({
-        popupMessage: translate('ERROR_POPUP')
-      }))
-      .then(response => console.log(response))
   }
 
   render() {
