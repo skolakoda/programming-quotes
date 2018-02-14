@@ -9,8 +9,6 @@ import {fetchImage} from '../shared/helpers'
 import translate from '../shared/translate'
 import './App.css'
 
-const url = 'https://baza-podataka.herokuapp.com/citati/'
-
 class App extends Component {
   constructor() {
     super()
@@ -30,7 +28,7 @@ class App extends Component {
   componentDidMount() {
     this.setState({quoteLanguage: translate.currentLanguage})
 
-    fetch(url)
+    fetch('https://baza-podataka.herokuapp.com/citati/')
       .then(response => response.json())
       .then(response => {
         const allQuotes = response.sort(() => .5 - Math.random())
@@ -82,16 +80,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Sidebar
-          authors={this.state.filteredAuthors}
-          authorImages={this.state.authorImages}
-          setAuthor={this.setAuthor}
-          setPhrase={this.setPhrase}
-          filterAuthors={this.filterAuthors}
-        />
         <section className="right-section">
           <Navigation setLang={this.setLang} />
-
           <Switch>
             <Route path='/add-quote' component={AddQuote}/>
             <Route path='/login' component={Login}/>
@@ -105,6 +95,13 @@ class App extends Component {
             )} />
           </Switch>
         </section>
+        <Sidebar
+          authors={this.state.filteredAuthors}
+          authorImages={this.state.authorImages}
+          setAuthor={this.setAuthor}
+          setPhrase={this.setPhrase}
+          filterAuthors={this.filterAuthors}
+        />
       </div>
     )
   }

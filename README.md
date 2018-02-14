@@ -12,7 +12,7 @@ Bekend API se nalazi [ovde](https://github.com/skolakoda/baza-podataka).
 
 ## Razvoj
 
-Preduslovi su da imaš instaliran node.js i git. 
+Preduslovi su da imaš instaliran node.js i git.
 
 ### Pokretanje
 
