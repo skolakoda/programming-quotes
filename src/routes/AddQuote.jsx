@@ -25,7 +25,7 @@ class AddQuote extends Component {
     fetch('https://baza-podataka.herokuapp.com/dodaj-citat/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ autor, sr, en, izvor })
+      body: JSON.stringify({ autor, sr, en, izvor, password: this.props.password })
     })
       .then(response => response.text())
       .catch(e => this.setState({ popupMessage: translate('ERROR_POPUP') }))
@@ -41,31 +41,33 @@ class AddQuote extends Component {
     return (
       <div>
         <h1>Dodaj citat</h1>
-        <form onSubmit={this.postQuote}>
-          <p>
-            <label htmlFor="author" >{translate('AUTHOR')} <small>(name from en.wikipedia)</small> </label><br/>
-            <input name="author" />
-          </p>
-          <p>
-            <label htmlFor="sr" >{translate('QUOTE_SERBIAN')}</label><br />
-            <textarea name="sr" cols="60" rows="5" onChange={this.handleInput}></textarea>
-          </p>
-          <p>
-            <label htmlFor="en" >{translate('QUOTE_ENGLISH')}</label><br />
-            <textarea name="en" cols="60" rows="5" onChange={this.handleInput}></textarea>
-          </p>
-          <p>
-            <label>Source (<small>optional</small>): </label><br/>
-            <input name='izvor' />
-          </p>
-          <p>
-            <small>* Author and at least one language is required.</small>
-          </p>
+        {this.props.password ?
+          <form onSubmit={this.postQuote}>
+            <p>
+              <label htmlFor="author" >{translate('AUTHOR')} <small>(name from en.wikipedia)</small> </label><br/>
+              <input name="author" />
+            </p>
+            <p>
+              <label htmlFor="sr" >{translate('QUOTE_SERBIAN')}</label><br />
+              <textarea name="sr" cols="60" rows="5" onChange={this.handleInput}></textarea>
+            </p>
+            <p>
+              <label htmlFor="en" >{translate('QUOTE_ENGLISH')}</label><br />
+              <textarea name="en" cols="60" rows="5" onChange={this.handleInput}></textarea>
+            </p>
+            <p>
+              <label>Source (<small>optional</small>): </label><br/>
+              <input name='izvor' />
+            </p>
+            <p>
+              <small>* Author and at least one language is required.</small>
+            </p>
 
-          {this.state.error && <p>{this.state.error}</p>}
-          <button type="submit">{translate('SAVE')}</button>
-        </form>
-
+            {this.state.error && <p>{this.state.error}</p>}
+            <button type="submit">{translate('SAVE')}</button>
+          </form>
+          : <p>Moraš biti prijavljen</p>
+        }
         {this.state.popupMessage && <MessagePopup message={this.state.popupMessage} closePopup={this.closePopup} />}
       </div>
     )
