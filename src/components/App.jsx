@@ -20,8 +20,9 @@ class App extends Component {
       authorImages: new Map(),
       quoteLanguage: '',
       chosenAuthor: '',
+      mainImage:'',
       phrase: '',
-      mainImage:''
+      password: ''
     }
   }
 
@@ -61,15 +62,20 @@ class App extends Component {
       fetchImage(chosenAuthor, '250', imgSrc => this.setState({mainImage: imgSrc}))
   }
 
-  filterAuthors = phrase => {
+  filterAuthors = text => {
     const filteredAuthors = [...this.state.allAuthors].filter(
-      name => name.toLowerCase().includes(phrase.toLowerCase())
+      name => name.toLowerCase().includes(text.toLowerCase())
     )
     this.setState({mainImage: '', filteredAuthors})
   }
 
-  setPhrase = event => {
-    this.setState({phrase:event.target.value}, this.filterQuotes)
+  setPhrase = e => {
+    this.setState({phrase:e.target.value}, this.filterQuotes)
+  }
+
+  setPassword = e => {
+    e.preventDefault()
+    this.setState({password: e.target.elements.password.value})
   }
 
   setLang = language => {
@@ -84,9 +90,11 @@ class App extends Component {
           <Navigation setLang={this.setLang} />
           <Switch>
             <Route path='/add-quote' component={AddQuote}/>
-            <Route path='/login' component={Login}/>
-            <Route path='/' render={(props) => (
-              <Main {...props}
+            <Route path='/login' component={() => (
+              <Login setPassword={this.setPassword} />
+            )} />
+            <Route path='/' render={() => (
+              <Main
                 language={this.state.quoteLanguage}
                 mainImage={this.state.mainImage}
                 chosenAuthor={this.state.chosenAuthor}
