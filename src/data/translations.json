@@ -11,7 +11,10 @@
     "SAVE": "Save",
     "ERROR_POPUP": "There was error while saving, please try again",
     "ARGUMENTS_ERROR": "You must enter author name and serbian or english translate of quote",
-    "SUCCESS_SAVED": "Thanks, quote is success saved"
+    "SUCCESS_SAVED": "Thanks, quote is success saved",
+    "ADD_QUOTE": "Add quote",
+    "AUTHOR_NAME": "name from en.wikipedia",
+    "ADD_QUOTE_REQUIRED": "* Author and at least one language is required."
   },
   "sr": {
     "PROGRAMMING_QUOTES": "Programerski citati",
@@ -25,6 +28,9 @@
     "SAVE": "Sacuvaj",
     "ERROR_POPUP": "Doslo je do greske prolikom slanja, molimo vas pokusajte ponovo",
     "ARGUMENTS_ERROR": "Morate uneti autora i citat na bar jednom jeziku",
-    "SUCCESS_SAVED": "Hvala, citat je uspesno sacuvan"
+    "SUCCESS_SAVED": "Hvala, citat je uspesno sacuvan",
+    "ADD_QUOTE": "Dodaj citat",
+    "AUTHOR_NAME": "Ime sa engleske vikipedije",
+    "ADD_QUOTE_REQUIRED": "* Obavezno je uneti autora i citat na bar jednom jeziku"
   }
 }

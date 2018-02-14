@@ -89,14 +89,14 @@ class App extends Component {
         <section className="right-section">
           <Navigation setLang={this.setLang} />
           <Switch>
-            <Route path='/add-quote' component={() => (
-              <AddQuote password={this.state.password} />
-            )} />
+            <Route path='/add-quote' render={(props) => (
+              <AddQuote language={this.state.quoteLanguage} password={this.state.password} />
+            )}/>
             <Route path='/login' component={() => (
               <Login setPassword={this.setPassword} />
             )} />
-            <Route path='/' render={() => (
-              <Main
+            <Route path='/' render={(props) => (
+              <Main {...props}
                 language={this.state.quoteLanguage}
                 mainImage={this.state.mainImage}
                 chosenAuthor={this.state.chosenAuthor}
