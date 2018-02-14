@@ -16,22 +16,16 @@ export function fetchImage(title, size, callback) {
 }
 
 export function vote(id, ocena) {
-  const data = {
-    _id: id,
-    novaOcena: ocena
-  }
   return fetch('https://baza-podataka.herokuapp.com/oceni-citat/', {
     method: 'POST',
-    body: JSON.stringify(data),
+    body: JSON.stringify({
+      _id: id,
+      novaOcena: ocena
+    }),
     headers: new Headers({
       'Content-Type': 'application/json'
     })
   })
-    .then(response => {
-      if(response.status < 400) {
-        return 'OK'
-      } else {
-        return 'NOTOK'
-      }
-    })
+    .then(response => response.status < 400 ? 'OK' : 'NOTOK')
+    // response vraca novi prosek
 }
