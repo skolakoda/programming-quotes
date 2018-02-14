@@ -11,6 +11,10 @@ class AddQuote extends Component {
     }
   }
 
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.language !== this.props.language && this.state.error) this.setState({error: translate('ARGUMENTS_ERROR')})
+  }
+
   postQuote = e => {
     e.preventDefault()
     const fields = e.target.elements
@@ -28,8 +32,8 @@ class AddQuote extends Component {
       body: JSON.stringify({ autor, sr, en, izvor })
     })
       .then(response => response.text())
-      .catch(e => this.setState({ popupMessage: translate('ERROR_POPUP') }))
       .then(response => this.setState({ error: '', popupMessage: response }))
+      .catch(e => this.setState({ popupMessage: translate('ERROR_POPUP') }))
       // prevoditi response sa servera tj. prikazivati translate('SUCCESS_SAVED') uslovno
   }
 
@@ -40,10 +44,10 @@ class AddQuote extends Component {
   render() {
     return (
       <div>
-        <h1>Dodaj citat</h1>
+        <h1>{translate('ADD_QUOTE')}</h1>
         <form onSubmit={this.postQuote}>
           <p>
-            <label htmlFor="author" >{translate('AUTHOR')} <small>(name from en.wikipedia)</small> </label><br/>
+            <label htmlFor="author" >{translate('AUTHOR')} <small>({translate('AUTHOR_NAME')})</small> </label><br/>
             <input name="author" />
           </p>
           <p>
@@ -59,7 +63,7 @@ class AddQuote extends Component {
             <input name='izvor' />
           </p>
           <p>
-            <small>* Author and at least one language is required.</small>
+            <small>{translate('ADD_QUOTE_REQUIRED')}</small>
           </p>
 
           {this.state.error && <p>{this.state.error}</p>}
