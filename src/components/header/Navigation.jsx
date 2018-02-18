@@ -3,12 +3,12 @@ import Github from './Github'
 import {Link} from 'react-router-dom'
 import './Navigation.css'
 
-const Navigation = ({setLang}) => (
+const Navigation = ({setLang, password}) => (
   <header>
     <Github repoUrl="https://github.com/skolakoda/programerski-citati" />
     <nav>
       <Link to="/">Home</Link>
-      <Link to="/add-quote">Add quote</Link>
+      {password && <Link to="/add-quote">Add quote</Link>}
       <Link to="/login">Login</Link>
       <div>
         <button onClick={() => setLang('sr')} className="lang-btn">SRB</button>

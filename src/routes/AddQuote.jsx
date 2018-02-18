@@ -6,7 +6,7 @@ class AddQuote extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      error: '',
+      validationMessage: '',
       popupMessage: ''
     }
   }
@@ -19,7 +19,8 @@ class AddQuote extends Component {
       sr = fields.sr.value.trim(),
       izvor = fields.izvor.value.trim()
     const condition = autor && (sr || en)
-    if (!condition) return this.setState({ error: translate('ARGUMENTS_ERROR') })
+    if (!condition) return this.setState({ validationMessage: translate('ARGUMENTS_ERROR') })
+
     ;[...fields].map(field => field.value = '')
 
     fetch('https://baza-podataka.herokuapp.com/dodaj-citat/', {
@@ -29,8 +30,7 @@ class AddQuote extends Component {
     })
       .then(response => response.text())
       .catch(e => this.setState({ popupMessage: translate('ERROR_POPUP') }))
-      .then(response => this.setState({ error: '', popupMessage: response }))
-      // prevoditi response sa servera tj. prikazivati translate('SUCCESS_SAVED') uslovno
+      .then(response => this.setState({ validationMessage: '', popupMessage: translate(response) }))
   }
 
   closePopup = () => {
@@ -63,8 +63,8 @@ class AddQuote extends Component {
               <small>* Author and at least one language is required.</small>
             </p>
 
-            {this.state.error && <p>{this.state.error}</p>}
-            <button type="submit">{translate('SAVE')}</button>
+            {this.state.validationMessage && <p>{this.state.validationMessage}</p>}
+            <button type="submit">{translate('POST')}</button>
           </form>
           : <p>Moraš biti prijavljen</p>
         }

@@ -8,7 +8,7 @@
     "AUTHOR": "Author",
     "QUOTE_SERBIAN": "Quote in english language",
     "QUOTE_ENGLISH": "Quote in Serbian language",
-    "SAVE": "Save",
+    "POST": "Post",
     "ERROR_POPUP": "There was error while saving, please try again",
     "ARGUMENTS_ERROR": "You must enter author name and serbian or english translate of quote",
     "SUCCESS_SAVED": "Thanks, quote is success saved"
@@ -22,7 +22,7 @@
     "AUTHOR": "Autor",
     "QUOTE_ENGLISH": "Citat na srpskom jeziku",
     "QUOTE_SERBIAN": "Citat na engleskom",
-    "SAVE": "Sacuvaj",
+    "POST": "Pošalji",
     "ERROR_POPUP": "Doslo je do greske prolikom slanja, molimo vas pokusajte ponovo",
     "ARGUMENTS_ERROR": "Morate uneti autora i citat na bar jednom jeziku",
     "SUCCESS_SAVED": "Hvala, citat je uspesno sacuvan"

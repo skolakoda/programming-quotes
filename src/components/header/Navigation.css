@@ -1,12 +1,7 @@
-nav {
-  display: flex;
-  justify-content: space-evenly;
-}
-
-@media (min-width: 800px) {
-  nav {
-    width: 50%;
-  }
+nav > a,
+nav > div {
+  display: inline-block;
+  margin-right: 20px;
 }
 
 .lang-btn {
