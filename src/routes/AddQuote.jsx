@@ -25,8 +25,8 @@ class AddQuote extends Component {
 
     ;[...fields].map(field => field.value = '')
 
-    const api = _id ? 'azuriraj' : 'dodaj'
-    fetch(`https://baza-podataka.herokuapp.com/${api}-citat/`, {
+    const endpoint = _id ? 'azuriraj' : 'dodaj'
+    fetch(`https://baza-podataka.herokuapp.com/${endpoint}-citat/`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ autor, sr, en, izvor, _id, password: this.props.password })
