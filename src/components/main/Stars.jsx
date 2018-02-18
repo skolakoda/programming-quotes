@@ -30,11 +30,18 @@ class Stars extends Component {
     } else if(Array.isArray(storage) && storage.indexOf(this.props.id) < 0) {
       vote(this.props.id, newRating)
         .then(res => {
-          if(res === 'OK') {
-            const storageData = [...storage, this.props.id]
+          if(typeof res === 'number' && res >= 0 && res <= 5) {
+            const storageData = [
+              ...storage,
+              this.props.id
+            ]
             localStorage.setItem('programerskicitatiocene', JSON.stringify(storageData))
-            this.setState({ rating: newRating})
+            this.setState({ rating: res})
           }
+        })
+        .catch(e => {
+          console.log('sasa' ,this.state.rating)
+          this.setState({errorMessage: 'Problem with network, please try again later', error: true, })
         })
     } else {
       this.setState({
