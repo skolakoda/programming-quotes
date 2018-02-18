@@ -28,6 +28,8 @@ class App extends Component {
 
   componentDidMount() {
     this.setState({quoteLanguage: translate.currentLanguage})
+    const password = localStorage.programerskiCitatiPassword
+    if (password) this.setState({password})
 
     fetch('https://baza-podataka.herokuapp.com/citati/')
       .then(response => response.json())
@@ -75,7 +77,9 @@ class App extends Component {
 
   setPassword = e => {
     e.preventDefault()
-    this.setState({password: e.target.elements.password.value})
+    const password = e.target.elements.password.value
+    this.setState({password})
+    localStorage.programerskiCitatiPassword = password
   }
 
   setLang = language => {
@@ -89,8 +93,11 @@ class App extends Component {
         <section className="right-section">
           <Navigation setLang={this.setLang} password={this.state.password} />
           <Switch>
-            <Route path='/add-quote' component={() => (
-              <AddQuote password={this.state.password} />
+            <Route path='/add-quote' component={props => (
+              <AddQuote {...props} password={this.state.password} />
+            )} />
+            <Route path='/edit-quote/:id' component={props => (
+              <AddQuote {...props} allQuotes={this.state.allQuotes} password={this.state.password} />
             )} />
             <Route path='/login' component={() => (
               <Login setPassword={this.setPassword} />

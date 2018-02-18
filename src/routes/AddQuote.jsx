@@ -7,7 +7,8 @@ class AddQuote extends Component {
     super(props)
     this.state = {
       validationMessage: '',
-      popupMessage: ''
+      popupMessage: '',
+      quote: {}
     }
   }
 
@@ -17,16 +18,18 @@ class AddQuote extends Component {
     const autor = fields.author.value.trim(),
       en = fields.en.value.trim(),
       sr = fields.sr.value.trim(),
-      izvor = fields.izvor.value.trim()
+      izvor = fields.izvor.value.trim(),
+      _id = fields._id.value.trim()
     const condition = autor && (sr || en)
     if (!condition) return this.setState({ validationMessage: translate('ARGUMENTS_ERROR') })
 
     ;[...fields].map(field => field.value = '')
 
-    fetch('https://baza-podataka.herokuapp.com/dodaj-citat/', {
+    const api = _id ? 'azuriraj' : 'dodaj'
+    fetch(`https://baza-podataka.herokuapp.com/${api}-citat/`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ autor, sr, en, izvor, password: this.props.password })
+      body: JSON.stringify({ autor, sr, en, izvor, _id, password: this.props.password })
     })
       .then(response => response.text())
       .catch(e => this.setState({ popupMessage: translate('ERROR_POPUP') }))
@@ -35,29 +38,35 @@ class AddQuote extends Component {
 
   closePopup = () => {
     this.setState({ popupMessage: '' })
+    window.location.reload()
   }
 
   render() {
+    const edit = (this.props.match.path === '/edit-quote/:id')
+    const id = edit ? this.props.match.params.id : ''
+    const quote = edit ? this.props.allQuotes.find(q => q._id === id) : null
+
     return (
       <div>
         <h1>Dodaj citat</h1>
         {this.props.password ?
           <form onSubmit={this.postQuote}>
+            <input type="hidden" name="_id" defaultValue={quote && quote._id} />
             <p>
               <label htmlFor="author" >{translate('AUTHOR')} <small>(name from en.wikipedia)</small> </label><br/>
-              <input name="author" />
+              <input name="author" defaultValue={quote && quote.autor} />
             </p>
             <p>
               <label htmlFor="sr" >{translate('QUOTE_SERBIAN')}</label><br />
-              <textarea name="sr" cols="60" rows="5" onChange={this.handleInput}></textarea>
+              <textarea name="sr" defaultValue={quote && quote.sr} cols="60" rows="5"></textarea>
             </p>
             <p>
               <label htmlFor="en" >{translate('QUOTE_ENGLISH')}</label><br />
-              <textarea name="en" cols="60" rows="5" onChange={this.handleInput}></textarea>
+              <textarea name="en" defaultValue={quote && quote.en} cols="60" rows="5"></textarea>
             </p>
             <p>
               <label>Source (<small>optional</small>): </label><br/>
-              <input name='izvor' />
+              <input name='izvor' defaultValue={quote && quote.izvor} />
             </p>
             <p>
               <small>* Author and at least one language is required.</small>
