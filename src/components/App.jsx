@@ -108,6 +108,7 @@ class App extends Component {
                 mainImage={this.state.mainImage}
                 chosenAuthor={this.state.chosenAuthor}
                 currentQuotes={this.state.currentQuotes}
+                password={this.state.password}
               />
             )} />
           </Switch>
