@@ -57,9 +57,9 @@ class App extends Component {
     this.setState({currentQuotes})
   }
 
-  fetchThumbnail(author) {
-    fetchImage(author, '50', imgSrc => {
-      const authorImages = this.state.authorImages.set(author, imgSrc)
+  fetchThumbnail(authorName) {
+    fetchImage(authorName, '50', (src) => {
+      const authorImages = this.state.authorImages.set(authorName, src)
       this.setState({authorImages})
     })
   }
@@ -67,7 +67,7 @@ class App extends Component {
   setAuthor = chosenAuthor => {
     this.setState({chosenAuthor, mainImage: ''}, this.filterQuotes)
     if (chosenAuthor)
-      fetchImage(chosenAuthor, '250', imgSrc => this.setState({mainImage: imgSrc}))
+      fetchImage(chosenAuthor, '250', mainImage => this.setState({mainImage}))
   }
 
   filterAuthors = text => {
