@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import translate from '../shared/translate'
 import MessagePopup from './MessagePopup'
+import * as api from '../config/endpoints'
 
 class AddQuote extends Component {
   constructor(props) {
@@ -25,8 +26,8 @@ class AddQuote extends Component {
 
     ;[...fields].map(field => field.value = '')
 
-    const endpoint = _id ? 'azuriraj' : 'dodaj'
-    fetch(`https://baza-podataka.herokuapp.com/${endpoint}-citat/`, {
+    const endpoint = _id ? api.update : api.create
+    fetch(endpoint, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ autor, sr, en, izvor, _id, password: this.props.password })

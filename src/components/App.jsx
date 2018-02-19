@@ -7,6 +7,7 @@ import AddQuote from '../routes/AddQuote'
 import Login from '../routes/Login'
 import {fetchImage} from '../shared/helpers'
 import translate from '../shared/translate'
+import * as api from '../config/endpoints'
 import './App.css'
 
 class App extends Component {
@@ -31,7 +32,7 @@ class App extends Component {
     const password = localStorage.programerskiCitatiPassword
     if (password) this.setState({password})
 
-    fetch('https://baza-podataka.herokuapp.com/citati/')
+    fetch(api.read)
       .then(response => response.json())
       .then(response => {
         const allQuotes = response.sort(() => .5 - Math.random())

@@ -64,7 +64,7 @@ class Stars extends Component {
   // rate = newRating => {
   //   if (this.state.rated) return
   //   const http = new XMLHttpRequest()
-  //   http.open('POST', 'https://baza-podataka.herokuapp.com/oceni-citat/')
+  //   http.open('POST', api.rate)
   //   http.setRequestHeader('Content-type', 'application/json')
   //   http.onload = () => this.setState({ rating: Number(http.responseText) })
   //   http.send(JSON.stringify({ '_id': this.props.id, 'novaOcena': newRating }))
