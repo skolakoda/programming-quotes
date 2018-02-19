@@ -1,0 +1,10 @@
+nav > a,
+nav > div {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.lang-btn {
+  font-size: 12px;
+  margin: 0px 5px;
+}

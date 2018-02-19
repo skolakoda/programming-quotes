@@ -1,9 +1,15 @@
-.sidebar-inner {
-  position:fixed;
-  top: 0;
-  bottom:0;
-  overflow-y:scroll;
-  overflow-x:hidden;
-  padding-right: 2%;
-  width: inherit;
+@media (min-width: 800px) {
+  .sidebar {
+    width: 22%;
+  }
+
+  .sidebar-inner {
+    position:fixed;
+    top: 0;
+    bottom:0;
+    overflow-y:scroll;
+    overflow-x:hidden;
+    padding-right: 2%;
+    width: inherit;
+  }  
 }

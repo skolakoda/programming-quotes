@@ -1,0 +1,5 @@
+export const create = 'https://baza-podataka.herokuapp.com/dodaj-citat/'
+export const read = 'https://baza-podataka.herokuapp.com/citati/'
+export const update = 'https://baza-podataka.herokuapp.com/azuriraj-citat/'
+export const del = 'https://baza-podataka.herokuapp.com/obrisi-citat/'
+export const rate = 'https://baza-podataka.herokuapp.com/oceni-citat/'

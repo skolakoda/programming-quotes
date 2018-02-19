@@ -8,25 +8,21 @@ class Stars extends Component {
     super()
     this.state = {
       rating: Number(props.rating),
-      error: false,
       errorMessage: ''
     }
   }
 
-  onRating(newRating) {
+  onRating = newRating => {
     const storage = JSON.parse(localStorage.getItem('programerskicitatiocene'))
     if(!storage) {
       vote(this.props.id, newRating)
         .then(res => {
           if(res === 'OK') {
-            const storageData = [
-              this.props.id
-            ]
+            const storageData = [this.props.id]
             localStorage.setItem('programerskicitatiocene', JSON.stringify(storageData))
             this.setState({ rating: newRating})
           } else {
             this.setState({
-              error: true,
               errorMessage: 'Greska prilikom glasanja, pokusajte ponovo kasnije!'
             })
           }
@@ -35,10 +31,7 @@ class Stars extends Component {
       vote(this.props.id, newRating)
         .then(res => {
           if(res === 'OK') {
-            const storageData = [
-              ...storage,
-              this.props.id
-            ]
+            const storageData = [...storage, this.props.id]
             localStorage.setItem('programerskicitatiocene', JSON.stringify(storageData))
             this.setState({ rating: newRating})
           }
@@ -46,7 +39,6 @@ class Stars extends Component {
     } else {
       this.setState({
         rating: Number(this.state.rating),
-        error: true,
         errorMessage: 'You can vote just once!'
       })
     }
@@ -55,8 +47,8 @@ class Stars extends Component {
   render() {
     return(
       <div>
-        <ReactStars size={20} value={this.state.rating} onChange={this.onRating.bind(this)}/>
-        {this.state.error && <p className="voting-error">{this.state.errorMessage}</p>}
+        <ReactStars size={20} value={this.state.rating} onChange={this.onRating}/>
+        {this.state.errorMessage && <p className="voting-error">{this.state.errorMessage}</p>}
       </div>
     )
   }
@@ -72,7 +64,7 @@ class Stars extends Component {
   // rate = newRating => {
   //   if (this.state.rated) return
   //   const http = new XMLHttpRequest()
-  //   http.open('POST', 'https://baza-podataka.herokuapp.com/oceni-citat/')
+  //   http.open('POST', api.rate)
   //   http.setRequestHeader('Content-type', 'application/json')
   //   http.onload = () => this.setState({ rating: Number(http.responseText) })
   //   http.send(JSON.stringify({ '_id': this.props.id, 'novaOcena': newRating }))
