@@ -41,8 +41,7 @@ class App extends Component {
     http.onerror = () => this.prepareData(cachedQuotes)
   }
 
-  prepareData = data => {
-    const allQuotes = data.sort(() => .5 - Math.random())
+  prepareData = allQuotes => {
     const currentQuotes = allQuotes.filter(q => Math.random() > .9)
     const allAuthors = new Set(allQuotes.map(quote => quote.autor))
     this.setState(() => ({allQuotes, currentQuotes, allAuthors, filteredAuthors: [...allAuthors]}))
