@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import { Switch, Route } from 'react-router-dom'
+
 import Navigation from './header/Navigation'
 import Sidebar from './sidebar/Sidebar'
 import Main from '../routes/Main'
@@ -9,6 +10,7 @@ import {fetchImage} from '../shared/helpers'
 import translate from '../shared/translate'
 import * as api from '../config/endpoints'
 import './App.css'
+const cachedQuotes = require('../data/quotes.json')
 
 class App extends Component {
   constructor() {
@@ -32,15 +34,19 @@ class App extends Component {
     const password = localStorage.programerskiCitatiPassword
     if (password) this.setState({password})
 
-    fetch(api.read)
-      .then(response => response.json())
-      .then(response => {
-        const allQuotes = response.sort(() => .5 - Math.random())
-        const currentQuotes = allQuotes.filter(q => Math.random() > .9)
-        const allAuthors = new Set(allQuotes.map(quote => quote.autor))
-        this.setState(() => ({allQuotes, currentQuotes, allAuthors, filteredAuthors: [...allAuthors]}))
-        for (const author of allAuthors) this.fetchThumbnail(author)
-      })
+    const http = new XMLHttpRequest()
+    http.open('GET', api.read)
+    http.send()
+    http.onload = () => this.prepareData(JSON.parse(http.responseText))
+    http.onerror = () => this.prepareData(cachedQuotes)
+  }
+
+  prepareData = data => {
+    const allQuotes = data.sort(() => .5 - Math.random())
+    const currentQuotes = allQuotes.filter(q => Math.random() > .9)
+    const allAuthors = new Set(allQuotes.map(quote => quote.autor))
+    this.setState(() => ({allQuotes, currentQuotes, allAuthors, filteredAuthors: [...allAuthors]}))
+    for (const author of allAuthors) this.fetchThumbnail(author)
   }
 
   filterQuotes = () => {
