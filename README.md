@@ -8,7 +8,7 @@
 
 Vidi kako radi: na [skolakoda.org/programerski-citati](https://skolakoda.org/programerski-citati/)
 
-Bekend API se nalazi [ovde](https://github.com/skolakoda/baza-podataka).
+Bekend API sa bazom podataka se nalazi [ovde](https://github.com/skolakoda/baza-podataka).
 
 ## Razvoj
 
