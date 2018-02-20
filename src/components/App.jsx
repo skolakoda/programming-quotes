@@ -18,8 +18,8 @@ class App extends Component {
     this.state = {
       allQuotes: [],
       allAuthors: new Set(),
-      filteredAuthors: [],
-      authorImages: new Map(),
+      filteredAuthors: [],  // spustiti na Sidebar
+      authorImages: new Map(),  // spustiti na Sidebar
       quoteLanguage: '',
       phrase: '',
       password: ''
