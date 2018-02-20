@@ -6,7 +6,7 @@ import App from './components/App'
 import './index.css'
 
 render(
-  <Router>
+  <Router basename={'programerski-citati'}>
     <App />
   </Router>, document.getElementById('root'))
 
