@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import { Switch, Route } from 'react-router-dom'
+
 import Navigation from './header/Navigation'
 import Sidebar from './sidebar/Sidebar'
 import Main from '../routes/Main'
@@ -9,6 +10,7 @@ import {fetchImage} from '../shared/helpers'
 import translate from '../shared/translate'
 import * as api from '../config/endpoints'
 import './App.css'
+const cachedQuotes = require('../data/quotes.json')
 
 class App extends Component {
   constructor() {
@@ -32,15 +34,18 @@ class App extends Component {
     const password = localStorage.programerskiCitatiPassword
     if (password) this.setState({password})
 
-    fetch(api.read)
-      .then(response => response.json())
-      .then(response => {
-        const allQuotes = response.sort(() => .5 - Math.random())
-        const currentQuotes = allQuotes.filter(q => Math.random() > .9)
-        const allAuthors = new Set(allQuotes.map(quote => quote.autor))
-        this.setState(() => ({allQuotes, currentQuotes, allAuthors, filteredAuthors: [...allAuthors]}))
-        for (const author of allAuthors) this.fetchThumbnail(author)
-      })
+    const http = new XMLHttpRequest()
+    http.open('GET', api.read)
+    http.send()
+    http.onload = () => this.prepareData(JSON.parse(http.responseText))
+    http.onerror = () => this.prepareData(cachedQuotes)
+  }
+
+  prepareData = allQuotes => {
+    const currentQuotes = allQuotes.filter(q => Math.random() > .9)
+    const allAuthors = new Set(allQuotes.map(quote => quote.autor))
+    this.setState(() => ({allQuotes, currentQuotes, allAuthors, filteredAuthors: [...allAuthors]}))
+    for (const author of allAuthors) this.fetchThumbnail(author)
   }
 
   filterQuotes = () => {
@@ -52,9 +57,9 @@ class App extends Component {
     this.setState({currentQuotes})
   }
 
-  fetchThumbnail(author) {
-    fetchImage(author, '50', imgSrc => {
-      const authorImages = this.state.authorImages.set(author, imgSrc)
+  fetchThumbnail(authorName) {
+    fetchImage(authorName, '50', (src) => {
+      const authorImages = this.state.authorImages.set(authorName, src)
       this.setState({authorImages})
     })
   }
@@ -62,7 +67,7 @@ class App extends Component {
   setAuthor = chosenAuthor => {
     this.setState({chosenAuthor, mainImage: ''}, this.filterQuotes)
     if (chosenAuthor)
-      fetchImage(chosenAuthor, '250', imgSrc => this.setState({mainImage: imgSrc}))
+      fetchImage(chosenAuthor, '250', mainImage => this.setState({mainImage}))
   }
 
   filterAuthors = text => {

@@ -16,11 +16,15 @@
     "react-test-renderer": "^16.2.0"
   },
   "scripts": {
+    "save": "wget https://baza-podataka.herokuapp.com/citati/ -d src/data/quotes.json",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "start": "react-scripts start",
+    "start": "npm run save & react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "node-wget": "^0.4.2"
   }
 }
