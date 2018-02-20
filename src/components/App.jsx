@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
 import { Switch, Route } from 'react-router-dom'
-
 import Navigation from './header/Navigation'
 import Sidebar from './sidebar/Sidebar'
 import Main from '../routes/Main'
+import Author from '../routes/Author'
 import AddQuote from '../routes/AddQuote'
 import Login from '../routes/Login'
 import {fetchImage} from '../shared/helpers'
@@ -22,8 +22,6 @@ class App extends Component {
       filteredAuthors: [],
       authorImages: new Map(),
       quoteLanguage: '',
-      chosenAuthor: '',
-      mainImage:'',
       phrase: '',
       password: ''
     }
@@ -51,8 +49,7 @@ class App extends Component {
   filterQuotes = () => {
     const lang = this.state.quoteLanguage
     const currentQuotes = this.state.allQuotes.filter(quote =>
-      (quote.autor === this.state.chosenAuthor || this.state.chosenAuthor === '')
-      && quote[lang] && quote[lang].toLowerCase().includes(this.state.phrase.toLowerCase())
+      quote[lang] && quote[lang].toLowerCase().includes(this.state.phrase.toLowerCase())
     )
     this.setState({currentQuotes})
   }
@@ -64,17 +61,11 @@ class App extends Component {
     })
   }
 
-  setAuthor = chosenAuthor => {
-    this.setState({chosenAuthor, mainImage: ''}, this.filterQuotes)
-    if (chosenAuthor)
-      fetchImage(chosenAuthor, '250', mainImage => this.setState({mainImage}))
-  }
-
   filterAuthors = text => {
     const filteredAuthors = [...this.state.allAuthors].filter(
       name => name.toLowerCase().includes(text.toLowerCase())
     )
-    this.setState({mainImage: '', filteredAuthors})
+    this.setState({filteredAuthors})
   }
 
   setPhrase = e => {
@@ -108,11 +99,16 @@ class App extends Component {
             <Route path='/login' component={() => (
               <Login setPassword={this.setPassword} />
             )} />
+            <Route path='/author/:name' render={props => (
+              <Author {...props}
+                language={this.state.quoteLanguage}
+                allQuotes={this.state.allQuotes}
+                password={this.state.password}
+              />
+            )} />
             <Route path='/' render={() => (
               <Main
                 language={this.state.quoteLanguage}
-                mainImage={this.state.mainImage}
-                chosenAuthor={this.state.chosenAuthor}
                 currentQuotes={this.state.currentQuotes}
                 password={this.state.password}
               />
@@ -122,7 +118,6 @@ class App extends Component {
         <Sidebar
           authors={this.state.filteredAuthors}
           authorImages={this.state.authorImages}
-          setAuthor={this.setAuthor}
           setPhrase={this.setPhrase}
           filterAuthors={this.filterAuthors}
         />
