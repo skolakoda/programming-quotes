@@ -17,7 +17,6 @@ class App extends Component {
     super()
     this.state = {
       allQuotes: [],
-      currentQuotes: [],
       allAuthors: new Set(),
       filteredAuthors: [],
       authorImages: new Map(),
@@ -35,23 +34,14 @@ class App extends Component {
     const http = new XMLHttpRequest()
     http.open('GET', api.read)
     http.send()
-    http.onload = () => this.prepareData(JSON.parse(http.responseText))
-    http.onerror = () => this.prepareData(cachedQuotes)
+    http.onload = () => this.initData(JSON.parse(http.responseText))
+    http.onerror = () => this.initData(cachedQuotes)
   }
 
-  prepareData = allQuotes => {
-    const currentQuotes = allQuotes.filter(q => Math.random() > .9)
+  initData = allQuotes => {
     const allAuthors = new Set(allQuotes.map(quote => quote.autor))
-    this.setState(() => ({allQuotes, currentQuotes, allAuthors, filteredAuthors: [...allAuthors]}))
+    this.setState(() => ({allQuotes, allAuthors, filteredAuthors: [...allAuthors]}))
     for (const author of allAuthors) this.fetchThumbnail(author)
-  }
-
-  filterQuotes = () => {
-    const lang = this.state.quoteLanguage
-    const currentQuotes = this.state.allQuotes.filter(quote =>
-      quote[lang] && quote[lang].toLowerCase().includes(this.state.phrase.toLowerCase())
-    )
-    this.setState({currentQuotes})
   }
 
   fetchThumbnail(authorName) {
@@ -69,7 +59,7 @@ class App extends Component {
   }
 
   setPhrase = e => {
-    this.setState({phrase:e.target.value}, this.filterQuotes)
+    this.setState({phrase:e.target.value})
   }
 
   setPassword = e => {
@@ -109,7 +99,8 @@ class App extends Component {
             <Route path='/' render={() => (
               <Main
                 language={this.state.quoteLanguage}
-                currentQuotes={this.state.currentQuotes}
+                allQuotes={this.state.allQuotes}
+                phrase={this.state.phrase}
                 password={this.state.password}
               />
             )} />
