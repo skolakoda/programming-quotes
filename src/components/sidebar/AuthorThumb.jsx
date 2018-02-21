@@ -2,7 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import './AuthorThumb.css'
 
-const AuthorThumb = ({ authorName, authorImage, setAuthor }) => {
+const AuthorThumb = ({ authorName, authorImage }) => {
   const link = `/author/${authorName}`
   return (
     <Link className="author" to={link}>
