@@ -8,8 +8,7 @@ class AddQuote extends Component {
     super(props)
     this.state = {
       validationMessage: '',
-      popupMessage: '',
-      quote: {}
+      popupMessage: ''
     }
   }
 

@@ -18,7 +18,7 @@ class AuthorThumb extends Component {
     const link = `/author/${authorName}`
     return (
       <Link className="author" to={link}>
-        <img src={this.state.image || 'images/unknown.jpg'} alt="author" />
+        <img src={this.state.image || '/images/unknown.jpg'} alt="author" />
         {authorName}
       </Link>
     )

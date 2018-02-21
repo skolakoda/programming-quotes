@@ -6,9 +6,7 @@ import {fetchImage} from '../shared/helpers'
 class Author extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      image: ''
-    }
+    this.state = {image: ''}
   }
 
   componentDidMount() {
