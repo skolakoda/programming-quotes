@@ -4,28 +4,26 @@ import Authors from './Authors'
 import './Sidebar.css'
 
 class Sidebar extends Component {
-
   constructor(props) {
     super(props)
-    this.state = {
-      filteredAuthors: []
-    }
+    this.state = {authors: []}
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({filteredAuthors: [...nextProps.authors]})
+    this.setState({authors: [...nextProps.authors]})
   }
 
   filterAuthors = text => {
-    const filteredAuthors = [...this.props.authors].filter(name => name.toLowerCase().includes(text.toLowerCase()))
-    this.setState({filteredAuthors})
+    const filtered = [...this.props.authors]
+      .filter(name => name.toLowerCase().includes(text.toLowerCase()))
+    this.setState({authors: filtered})
   }
 
   render() {
     return (<aside className="sidebar">
       <div className="sidebar-inner">
         <Filters setPhrase={this.props.setPhrase} filterAuthors={this.filterAuthors}/>
-        <Authors authors={this.state.filteredAuthors}/>
+        <Authors authors={this.state.authors}/>
       </div>
     </aside>)
   }
