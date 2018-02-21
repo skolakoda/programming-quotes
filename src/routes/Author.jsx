@@ -12,14 +12,17 @@ class Author extends Component {
   }
 
   componentDidMount() {
-    const author = this.props.match.params.name
-    fetchImage(author, '250', image => this.setState({image}))
+    this.getImage(this.props)
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.match.params.name === this.props.match.params.name) return
+    if (nextProps.match.params.name !== this.props.match.params.name)
+      this.getImage(nextProps)
+  }
+
+  getImage(props) {
     this.setState({image: ''})
-    const author = nextProps.match.params.name
+    const author = props.match.params.name
     fetchImage(author, '250', image => this.setState({image}))
   }
 
