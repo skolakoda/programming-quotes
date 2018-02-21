@@ -18,7 +18,6 @@ class App extends Component {
     this.state = {
       allQuotes: [],
       allAuthors: new Set(),
-      filteredAuthors: [],  // spustiti na Sidebar
       authorImages: new Map(),  // spustiti na Sidebar
       quoteLanguage: '',
       phrase: '',
@@ -40,7 +39,7 @@ class App extends Component {
 
   initData = allQuotes => {
     const allAuthors = new Set(allQuotes.map(quote => quote.autor))
-    this.setState(() => ({allQuotes, allAuthors, filteredAuthors: [...allAuthors]}))
+    this.setState(() => ({allQuotes, allAuthors}))
     for (const author of allAuthors) this.fetchThumbnail(author)
   }
 
@@ -49,13 +48,6 @@ class App extends Component {
       const authorImages = this.state.authorImages.set(authorName, src)
       this.setState({authorImages})
     })
-  }
-
-  filterAuthors = text => {
-    const filteredAuthors = [...this.state.allAuthors].filter(
-      name => name.toLowerCase().includes(text.toLowerCase())
-    )
-    this.setState({filteredAuthors})
   }
 
   setPhrase = e => {
@@ -107,10 +99,9 @@ class App extends Component {
           </Switch>
         </section>
         <Sidebar
-          authors={this.state.filteredAuthors}
+          authors={this.state.allAuthors}
           authorImages={this.state.authorImages}
           setPhrase={this.setPhrase}
-          filterAuthors={this.filterAuthors}
         />
       </div>
     )
