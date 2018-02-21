@@ -6,7 +6,6 @@ import Main from '../routes/Main'
 import Author from '../routes/Author'
 import AddQuote from '../routes/AddQuote'
 import Login from '../routes/Login'
-import {fetchImage} from '../shared/helpers'
 import translate from '../shared/translate'
 import * as api from '../config/endpoints'
 import './App.css'
@@ -18,18 +17,13 @@ class App extends Component {
     this.state = {
       allQuotes: [],
       allAuthors: new Set(),
-      authorImages: new Map(),  // spustiti na Sidebar
-      quoteLanguage: '',
       phrase: '',
-      password: ''
+      quoteLanguage: translate.currentLanguage,
+      password: localStorage.programerskiCitatiPassword
     }
   }
 
   componentDidMount() {
-    this.setState({quoteLanguage: translate.currentLanguage})
-    const password = localStorage.programerskiCitatiPassword
-    if (password) this.setState({password})
-
     const http = new XMLHttpRequest()
     http.open('GET', api.read)
     http.send()
@@ -40,14 +34,6 @@ class App extends Component {
   initData = allQuotes => {
     const allAuthors = new Set(allQuotes.map(quote => quote.autor))
     this.setState(() => ({allQuotes, allAuthors}))
-    for (const author of allAuthors) this.fetchThumbnail(author)
-  }
-
-  fetchThumbnail(authorName) {
-    fetchImage(authorName, '50', (src) => {
-      const authorImages = this.state.authorImages.set(authorName, src)
-      this.setState({authorImages})
-    })
   }
 
   setPhrase = e => {
@@ -71,6 +57,7 @@ class App extends Component {
       <div className="App">
         <section className="right-section">
           <Navigation setLang={this.setLang} password={this.state.password} />
+
           <Switch>
             <Route path='/add-quote' component={props => (
               <AddQuote {...props} password={this.state.password} />
@@ -97,10 +84,10 @@ class App extends Component {
               />
             )} />
           </Switch>
+
         </section>
         <Sidebar
           authors={this.state.allAuthors}
-          authorImages={this.state.authorImages}
           setPhrase={this.setPhrase}
         />
       </div>

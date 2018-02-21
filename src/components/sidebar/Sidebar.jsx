@@ -13,26 +13,21 @@ class Sidebar extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.authors !== this.props.authors)
-      this.setState({ filteredAuthors: [...nextProps.authors] })
+    this.setState({filteredAuthors: [...nextProps.authors]})
   }
 
   filterAuthors = text => {
-    const filteredAuthors = [...this.props.authors].filter(
-      name => name.toLowerCase().includes(text.toLowerCase())
-    )
+    const filteredAuthors = [...this.props.authors].filter(name => name.toLowerCase().includes(text.toLowerCase()))
     this.setState({filteredAuthors})
   }
 
   render() {
-    return (
-      <aside className="sidebar">
-        <div className="sidebar-inner">
-          <Filters setPhrase={this.props.setPhrase} filterAuthors={this.filterAuthors} />
-          <Authors authorImages={this.props.authorImages} authors={this.state.filteredAuthors} />
-        </div>
-      </aside>
-    )
+    return (<aside className="sidebar">
+      <div className="sidebar-inner">
+        <Filters setPhrase={this.props.setPhrase} filterAuthors={this.filterAuthors}/>
+        <Authors authors={this.state.filteredAuthors}/>
+      </div>
+    </aside>)
   }
 }
 
