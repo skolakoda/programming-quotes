@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import translate from '../shared/translate'
-import MessagePopup from './MessagePopup'
+import MessagePopup from '../components/main/MessagePopup'
 import * as api from '../config/endpoints'
 
-class AddQuote extends Component {
+class EditQuote extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -83,4 +83,4 @@ class AddQuote extends Component {
   }
 }
 
-export default AddQuote
+export default EditQuote

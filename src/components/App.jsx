@@ -1,13 +1,13 @@
 import React, {Component} from 'react'
 import { Switch, Route } from 'react-router-dom'
+import translate from '../shared/translate'
+import * as api from '../config/endpoints'
 import Navigation from './header/Navigation'
 import Sidebar from './sidebar/Sidebar'
 import Main from '../routes/Main'
 import Author from '../routes/Author'
-import AddQuote from '../routes/AddQuote'
+import EditQuote from '../routes/EditQuote'
 import Login from '../routes/Login'
-import translate from '../shared/translate'
-import * as api from '../config/endpoints'
 import './App.css'
 const cachedQuotes = require('../data/quotes.json')
 
@@ -60,10 +60,10 @@ class App extends Component {
 
           <Switch>
             <Route path='/add-quote' component={props => (
-              <AddQuote {...props} password={this.state.password} />
+              <EditQuote {...props} password={this.state.password} />
             )} />
             <Route path='/edit-quote/:id' component={props => (
-              <AddQuote {...props} allQuotes={this.state.allQuotes} password={this.state.password} />
+              <EditQuote {...props} allQuotes={this.state.allQuotes} password={this.state.password} />
             )} />
             <Route path='/login' component={() => (
               <Login setPassword={this.setPassword} />
