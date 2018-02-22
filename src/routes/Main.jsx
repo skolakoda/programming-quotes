@@ -11,7 +11,10 @@ const Main = ({ language, allQuotes, phrase, password }) => {
   return (
     <main>
       <h1>{translate('PROGRAMMING_QUOTES')}</h1>
-      <Quotes language={language} currentQuotes={currentQuotes} password={password} />
+      {currentQuotes.length
+        ? <Quotes language={language} currentQuotes={currentQuotes} password={password} />
+        : <img src="/images/preloader.gif" alt="loading..." />
+      }
     </main>
   )
 }
