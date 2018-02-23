@@ -4,10 +4,10 @@
   display: flex;
   margin: 40px;
   max-width: 1200px;
-  padding: 40px 80px;
+  padding: 40px 60px;
 }
 
 .quote-box img {
-  margin-right: 5%;
+  margin-right: 40px;
   object-fit: contain;
 }
