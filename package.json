@@ -13,7 +13,8 @@
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.17",
     "react-stars": "^2.2.5",
-    "react-test-renderer": "^16.2.0"
+    "react-test-renderer": "^16.2.0",
+    "shortid": "^2.2.8"
   },
   "scripts": {
     "save": "wget https://baza-podataka.herokuapp.com/citati/ -d src/data/quotes.json",

@@ -10,16 +10,16 @@ class AuthorThumb extends Component {
   }
 
   componentDidMount() {
-    fetchImage(this.props.authorName, '50', image => this.setState({image}))
+    fetchImage(this.props.author, '50', image => this.setState({image}))
   }
 
   render() {
-    const {authorName} = this.props
-    const link = `/author/${authorName}`
+    const author = this.props.author
+    const link = `/author/${author}`
     return (
       <Link className="author" to={link}>
         <img src={this.state.image || '/images/unknown.jpg'} alt="author" />
-        {authorName}
+        {author}
       </Link>
     )
   }
