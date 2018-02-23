@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
+import {Link} from 'react-router-dom'
 import translate from '../shared/translate'
-import MessagePopup from './MessagePopup'
+import MessagePopup from '../components/main/MessagePopup'
 import * as api from '../config/endpoints'
 
-class AddQuote extends Component {
+class EditQuote extends Component {
   constructor(props) {
     super(props)
     this.state = {
       validationMessage: '',
-      popupMessage: '',
-      quote: {}
+      popupMessage: ''
     }
   }
 
@@ -46,10 +46,11 @@ class AddQuote extends Component {
     const edit = (this.props.match.path === '/edit-quote/:id')
     const id = edit ? this.props.match.params.id : ''
     const quote = edit ? this.props.allQuotes.find(q => q._id === id) : null
+    const quoteLink = `/quote/${id}`
 
     return (
       <div>
-        <h1>Dodaj citat</h1>
+        <h1>{edit ? 'Uredi citat' : 'Dodaj citat'} {edit && <small><sup>(<Link to={quoteLink}>show</Link>)</sup></small>}</h1>
         {this.props.password ?
           <form onSubmit={this.postQuote}>
             <input type="hidden" name="_id" defaultValue={quote && quote._id} />
@@ -84,4 +85,4 @@ class AddQuote extends Component {
   }
 }
 
-export default AddQuote
+export default EditQuote

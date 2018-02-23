@@ -1,6 +1,9 @@
 .author {
+  color: inherit;
   cursor: pointer;
+  display: block;
   margin: 8px 0;
+  text-decoration: none;
 }
 
 .author:nth-child(odd) {

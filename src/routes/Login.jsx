@@ -5,7 +5,7 @@ const Login = ({ setPassword }) => (
     <h1>Login</h1>
     <form onSubmit={setPassword}>
       <p>Admin password:</p>
-      <input name="password" type="password"></input>
+      <input name="password" type="password" defaultValue={localStorage.programerskiCitatiPassword}></input>
       <button type="submit">Login</button>
     </form>
   </main>

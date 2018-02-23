@@ -1,9 +1,10 @@
 import React from 'react'
 import AuthorThumb from './AuthorThumb'
+const shortid = require('shortid')
 
-const Authors = ({ authorImages, authors, setAuthor }) => {
-  const preparedAuthors = [...authors].sort().map((author, i) =>
-    <AuthorThumb key={i} authorName={author} authorImage={authorImages.get(author)} setAuthor={setAuthor} />
+const Authors = ({ authors }) => {
+  const preparedAuthors = [...authors].sort().map(author =>
+    <AuthorThumb key={shortid.generate()} author={author} />
   )
   return (
     <div className="authors">
