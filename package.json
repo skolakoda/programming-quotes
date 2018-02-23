@@ -17,15 +17,16 @@
     "shortid": "^2.2.8"
   },
   "scripts": {
-    "save": "wget https://baza-podataka.herokuapp.com/citati/ -d src/data/quotes.json",
+    "save": "wget https://baza-podataka.herokuapp.com/citati/ -d src/data/quotes.json echo 0",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "start": "npm run save & react-scripts start",
+    "start": "concurrently \"npm run save\" \"react-scripts start\"",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "concurrently": "^3.5.1",
     "node-wget": "^0.4.2"
   }
 }
