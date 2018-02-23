@@ -1,8 +1,7 @@
 import React, {Component} from 'react'
 import {fetchImage} from '../../shared/helpers'
-import './Picture.css'
 
-class Picture extends Component {
+class AuthorImage extends Component {
   constructor(props) {
     super(props)
     this.state = {image: ''}
@@ -19,18 +18,17 @@ class Picture extends Component {
 
   getImage(author) {
     this.setState({image: ''})
+    const unknown = this.props.showUnknown ? '/images/unknown.jpg' : ''
     fetchImage(author, '250', src =>
-      this.setState({image: src || '/images/unknown.jpg'}))
+      this.setState({image: src || unknown}))
   }
 
   render() {
-    const { author } = this.props
+    if (!this.state.image) return null
+
     return (
-      <div className="thumbnail">
-        <h3>{author}</h3>
-        <img className="main-image" src={this.state.image} alt={author} />
-      </div>
+      <img className="main-image" src={this.state.image} alt={this.props.author} />
     )
   }
 }
-export default Picture
+export default AuthorImage

@@ -11,6 +11,10 @@ body {
   padding: 0;
 }
 
+img {
+  max-width: 100%;
+}
+
 .no-link {
   color: inherit;
   text-decoration: none;

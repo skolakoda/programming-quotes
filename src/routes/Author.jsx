@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import Quotes from '../components/main/Quotes'
-import Picture from '../components/main/Picture'
+import AuthorBox from '../components/main/AuthorBox'
 
 class Author extends Component {
   render() {
@@ -11,7 +11,7 @@ class Author extends Component {
     return (
       <main>
         <h1>{author}</h1>
-        <Picture author={author} />
+        <AuthorBox author={author} />
         <Quotes language={language} currentQuotes={currentQuotes} password={password} />
       </main>
     )

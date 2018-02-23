@@ -1,6 +1,13 @@
-.single-quote {
+.quote-box {
   background: #252525;
   color: #e5e5e5;
-  padding: 40px 80px;
+  display: flex;
   margin: 40px;
+  max-width: 1200px;
+  padding: 40px 80px;
+}
+
+.quote-box img {
+  margin-right: 5%;
+  object-fit: contain;
 }
