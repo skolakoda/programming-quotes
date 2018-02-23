@@ -25,6 +25,10 @@ class App extends Component {
   }
 
   componentDidMount() {
+    this.loadData()
+  }
+
+  loadData() {
     const http = new XMLHttpRequest()
     http.open('GET', api.read)
     http.send()
