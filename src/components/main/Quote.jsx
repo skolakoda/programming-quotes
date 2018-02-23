@@ -4,13 +4,17 @@ import Stars from './Stars'
 import './Quote.css'
 
 const Quote = ({author, content, rating, id, password}) => {
+  const quoteLink = `/quote/${id}`
+  const editLink = `/edit-quote/${id}`
+  const authorLink = `/author/${author}`
   const wikiUrl = `https://en.wikipedia.org/wiki/${author}`
-  const link = `/edit-quote/${id}`
 
   return (
     <blockquote>
-      <i>{content}</i> {password && <Link to={link}><span className="edit-icon">&#9998;</span></Link>}<br/>
-      <small> — <a href={wikiUrl} target="_blank">{author}</a> </small>
+      <Link to={quoteLink} className="no-link"><i>{content}</i></Link>&nbsp;
+      { password && <Link to={editLink}><span className="edit-icon">&#9998;</span></Link> }
+      <br/>
+      <small> — <Link to={authorLink}>{author}</Link> <small>(<a href={wikiUrl} target="_blank">wiki</a>)</small> </small>
       <Stars rating={rating} id={id} />
     </blockquote>
   )

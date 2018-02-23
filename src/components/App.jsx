@@ -4,9 +4,10 @@ import translate from '../shared/translate'
 import * as api from '../config/endpoints'
 import Navigation from './header/Navigation'
 import Sidebar from './sidebar/Sidebar'
-import Main from '../routes/Main'
+import Home from '../routes/Home'
 import Author from '../routes/Author'
 import EditQuote from '../routes/EditQuote'
+import Quote from '../routes/Quote'
 import Login from '../routes/Login'
 import './App.css'
 const cachedQuotes = require('../data/quotes.json')
@@ -65,6 +66,12 @@ class App extends Component {
             <Route path='/edit-quote/:id' component={props => (
               <EditQuote {...props} allQuotes={this.state.allQuotes} password={this.state.password} />
             )} />
+            <Route path='/quote/:id' component={props => (
+              <Quote {...props}
+                language={this.state.quoteLanguage}
+                allQuotes={this.state.allQuotes}
+                password={this.state.password} />
+            )} />
             <Route path='/login' component={() => (
               <Login setPassword={this.setPassword} />
             )} />
@@ -76,7 +83,7 @@ class App extends Component {
               />
             )} />
             <Route path='/' render={() => (
-              <Main
+              <Home
                 language={this.state.quoteLanguage}
                 allQuotes={this.state.allQuotes}
                 phrase={this.state.phrase}

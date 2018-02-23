@@ -4,7 +4,7 @@ import Quotes from '../components/main/Quotes'
 
 const numberOfQuotes = 10
 
-const Main = ({ language, allQuotes, phrase, password }) => {
+const Home = ({ language, allQuotes, phrase, password }) => {
   const currentQuotes = allQuotes
     .filter(quote => quote[language] && quote[language].toLowerCase().includes(phrase.toLowerCase()))
     .filter((quote, i) => i < numberOfQuotes)
@@ -19,4 +19,4 @@ const Main = ({ language, allQuotes, phrase, password }) => {
   )
 }
 
-export default Main
+export default Home
