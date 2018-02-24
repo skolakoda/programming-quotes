@@ -28,6 +28,12 @@ export function vote(id, ocena) {
       'Content-Type': 'application/json'
     })
   })
-    .then(response => response.status < 400 ? 'OK' : 'NOTOK')
-    // response vraca novi prosek
+    .then(res => res.json())
+    .then(response => {
+      if(typeof response === 'number') {
+        return response
+      } else {
+        return 'NOTOK'
+      }
+    })
 }
