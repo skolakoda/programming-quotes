@@ -8,7 +8,7 @@ class EditQuote extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      validationMessage: '',
+      fieldsTip: '',
       popupMessage: ''
     }
   }
@@ -22,7 +22,7 @@ class EditQuote extends Component {
       izvor = fields.izvor.value.trim(),
       _id = fields._id.value.trim()
     const condition = autor && (sr || en)
-    if (!condition) return this.setState({ validationMessage: translate('ARGUMENTS_ERROR') })
+    if (!condition) return this.setState({ fieldsTip: translate('REQUIRED_FIELDS') })
 
     ;[...fields].map(field => field.value = '')
 
@@ -34,12 +34,12 @@ class EditQuote extends Component {
     })
       .then(response => response.text())
       .catch(e => this.setState({ popupMessage: translate('ERROR_POPUP') }))
-      .then(response => this.setState({ validationMessage: '', popupMessage: translate(response) }))
+      .then(response => this.setState({ fieldsTip: '', popupMessage: translate(response) }))
   }
 
   closePopup = () => {
     this.setState({ popupMessage: '' })
-    window.location.reload()
+    window.location.reload() // TODO: push new quote into allQuotes
   }
 
   render() {
@@ -50,12 +50,13 @@ class EditQuote extends Component {
 
     return (
       <div>
-        <h1>{edit ? 'Uredi citat' : 'Dodaj citat'} {edit && <small><sup>(<Link to={quoteLink}>show</Link>)</sup></small>}</h1>
+        <h1>{translate(edit ? 'EDIT_QUOTE' : 'ADD_QUOTE')} {edit && <small><sup>(<Link to={quoteLink}>show</Link>)</sup></small>}</h1>
+
         {this.props.password ?
           <form onSubmit={this.postQuote}>
             <input type="hidden" name="_id" defaultValue={quote && quote._id} />
             <p>
-              <label htmlFor="author" >{translate('AUTHOR')} <small>(name from en.wikipedia)</small> </label><br/>
+              <label htmlFor="author" >{translate('AUTHOR')} <small>({translate('AUTHOR_TIP')})</small> </label><br/>
               <input name="author" defaultValue={quote && quote.autor} />
             </p>
             <p>
@@ -67,14 +68,14 @@ class EditQuote extends Component {
               <textarea name="en" defaultValue={quote && quote.en} cols="60" rows="5"></textarea>
             </p>
             <p>
-              <label>Source (<small>optional</small>): </label><br/>
+              <label>{translate('SOURCE')} (<small>{translate('OPTIONAL')}</small>): </label><br/>
               <input name='izvor' defaultValue={quote && quote.izvor} />
             </p>
             <p>
-              <small>* Author and at least one language is required.</small>
+              <small>* {translate('REQUIRED_FIELDS')}</small>
             </p>
 
-            {this.state.validationMessage && <p>{this.state.validationMessage}</p>}
+            {this.state.fieldsTip && <p>{this.state.fieldsTip}</p>}
             <button type="submit">{translate('POST')}</button>
           </form>
           : <p>Moraš biti prijavljen</p>

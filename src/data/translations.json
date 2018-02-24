@@ -1,28 +1,36 @@
 {
   "en": {
     "PROGRAMMING_QUOTES": "Programming quotes",
-    "SEARCH_TEXT": "Search text",
-    "CHOOSE_AUTHOR": "Choose the author",
-    "SEARCH_FOR_AUTORS": "Search for autors",
+    "SEARCH_QUOTES": "Search quotes",
+    "SEARCH_AUTHORS": "Search authors",
     "AUTHOR": "Author",
+    "AUTHOR_TIP": "name from en.wikipedia",
     "QUOTE_SERBIAN": "Quote in Serbian language",
-    "QUOTE_ENGLISH": "Quote in english language",
+    "QUOTE_ENGLISH": "Quote in English language",
+    "SOURCE": "Source",
+    "OPTIONAL": "optional",
     "POST": "Post",
     "ERROR_POPUP": "There was error while saving, please try again",
-    "ARGUMENTS_ERROR": "You must enter author name and serbian or english translate of quote",
-    "SUCCESS_SAVED": "Thanks, quote is success saved"
+    "REQUIRED_FIELDS": "Author and at least one language is required.",
+    "SUCCESS_SAVED": "Thanks, the quote has been successfully saved.",
+    "ADD_QUOTE": "Add quote",
+    "EDIT_QUOTE": "Edit quote"
   },
   "sr": {
     "PROGRAMMING_QUOTES": "Programerski citati",
-    "SEARCH_TEXT": "Pretraži tekst",
-    "CHOOSE_AUTHOR": "Izaberi autora",
-    "SEARCH_FOR_AUTORS": "Nadji autora",
+    "SEARCH_QUOTES": "Pretraži citate",
+    "SEARCH_AUTHORS": "Pretraži autore",
     "AUTHOR": "Autor",
+    "AUTHOR_TIP": "ime sa en.wikipedije",
     "QUOTE_ENGLISH": "Citat na engleskom",
     "QUOTE_SERBIAN": "Citat na srpskom jeziku",
+    "SOURCE": "Izvor",
+    "OPTIONAL": "opciono",
     "POST": "Pošalji",
-    "ERROR_POPUP": "Doslo je do greske prolikom slanja, molimo vas pokusajte ponovo",
-    "ARGUMENTS_ERROR": "Morate uneti autora i citat na bar jednom jeziku",
-    "SUCCESS_SAVED": "Hvala, citat je uspesno sacuvan"
+    "ERROR_POPUP": "Doslo je do greške prolikom slanja, molimo pokušajte ponovo",
+    "REQUIRED_FIELDS": "Obavezni su autor i citat na bar jednom jeziku.",
+    "SUCCESS_SAVED": "Hvala, citat je uspešno sačuvan.",
+    "ADD_QUOTE": "Dodaj citat",
+    "EDIT_QUOTE": "Uredi citat"
   }
 }
