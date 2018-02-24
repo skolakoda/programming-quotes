@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import {fetchImage} from '../../shared/helpers'
+import unknownImage from '../../images/unknown.jpg'
 import './AuthorThumb.css'
 
 class AuthorThumb extends Component {
@@ -18,7 +19,7 @@ class AuthorThumb extends Component {
     const link = `/author/${author}`
     return (
       <Link className="author" to={link}>
-        <img src={this.state.image || '/images/unknown.jpg'} alt="author" />
+        <img src={this.state.image || unknownImage} alt="author" />
         {author}
       </Link>
     )

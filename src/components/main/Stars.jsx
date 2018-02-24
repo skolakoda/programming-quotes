@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import ReactStars from 'react-stars'
-import { vote } from '../../shared/helpers'
+import * as api from '../../config/endpoints'
 import './Stars.css'
 
 class Stars extends Component {
@@ -8,77 +8,42 @@ class Stars extends Component {
     super()
     this.state = {
       rating: Number(props.rating),
-      errorMessage: ''
+      error: ''
     }
   }
 
-  onRating = newRating => {
+  alreadyVoted(storage) {
+    return Array.isArray(storage) && storage.includes(this.props.id)
+  }
+
+  rate = newRating => {
     const storage = JSON.parse(localStorage.getItem('programerskicitatiocene'))
-    if(!storage) {
-      vote(this.props.id, newRating)
-        .then(res => {
-          if(res === 'OK') {
-            const storageData = [this.props.id]
-            localStorage.setItem('programerskicitatiocene', JSON.stringify(storageData))
-            this.setState({ rating: newRating})
-          } else {
-            this.setState({
-              errorMessage: 'Greska prilikom glasanja, pokusajte ponovo kasnije!'
-            })
-          }
-        })
-    } else if(Array.isArray(storage) && storage.indexOf(this.props.id) < 0) {
-      vote(this.props.id, newRating)
-        .then(res => {
-          if(res === 'OK') {
-            const storageData = [...storage, this.props.id]
-            localStorage.setItem('programerskicitatiocene', JSON.stringify(storageData))
-            this.setState({ rating: newRating})
-          }
-        })
-    } else {
-      this.setState({
-        rating: Number(this.state.rating),
-        errorMessage: 'You can vote just once!'
-      })
-    }
+    if (this.alreadyVoted(storage)) return this.setState({error: 'You can vote just once!'})
+
+    const newStorage = storage ? [...storage, this.props.id] : [this.props.id]
+
+    fetch(api.rate, {
+      method: 'POST',
+      body: JSON.stringify({_id: this.props.id, novaOcena: newRating}),
+      headers: {'content-type': 'application/json'}
+    })
+      .then(response => response.json())
+      .then(response => this.setNewVote(newStorage, response))
+      .catch(e => this.setState({error: 'Problem with network, please try again later'}))
+  }
+
+  setNewVote(newStorage, newAverage) {
+    localStorage.setItem('programerskicitatiocene', JSON.stringify(newStorage))
+    this.setState({rating: newAverage})
   }
 
   render() {
-    return(
+    return (
       <div>
-        <ReactStars size={20} value={this.state.rating} onChange={this.onRating}/>
-        {this.state.errorMessage && <p className="voting-error">{this.state.errorMessage}</p>}
+        <ReactStars size={20} value={this.state.rating} onChange={this.rate}/> {this.state.error && <p className="vote-error">{this.state.error}</p>}
       </div>
     )
   }
-  // constructor(props) {
-  //   super(props)
-  //   this.state = {
-  //     edit: true,
-  //     rated: false,
-  //     rating: Number(this.props.rating)
-  //   }
-  // }
-
-  // rate = newRating => {
-  //   if (this.state.rated) return
-  //   const http = new XMLHttpRequest()
-  //   http.open('POST', api.rate)
-  //   http.setRequestHeader('Content-type', 'application/json')
-  //   http.onload = () => this.setState({ rating: Number(http.responseText) })
-  //   http.send(JSON.stringify({ '_id': this.props.id, 'novaOcena': newRating }))
-  //   this.setState({
-  //     edit: false,
-  //     rated: true
-  //   })
-  // }
-
-  // render() {
-  //   return (
-  //     <ReactStars size={20} value={this.state.rating} onChange={this.rate} edit={this.state.edit} />
-  //   )
-  // }
 }
 
 export default Stars

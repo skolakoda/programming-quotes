@@ -1,5 +1,3 @@
-import * as api from '../config/endpoints'
-
 export function findProp(obj, prop) {
   for (const property in obj) {
     if (property === prop) return obj[property]
@@ -15,19 +13,4 @@ export function fetchImage(title, size, callback) {
       const imgSrc = findProp(obj, 'source')
       callback(imgSrc)
     })
-}
-
-export function vote(id, ocena) {
-  return fetch(api.rate, {
-    method: 'POST',
-    body: JSON.stringify({
-      _id: id,
-      novaOcena: ocena
-    }),
-    headers: new Headers({
-      'Content-Type': 'application/json'
-    })
-  })
-    .then(response => response.status < 400 ? 'OK' : 'NOTOK')
-    // response vraca novi prosek
 }

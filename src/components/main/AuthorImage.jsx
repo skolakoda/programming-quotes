@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {fetchImage} from '../../shared/helpers'
+import unknownImage from '../../images/unknown.jpg'
 
 class AuthorImage extends Component {
   constructor(props) {
@@ -18,7 +19,7 @@ class AuthorImage extends Component {
 
   getImage(author) {
     this.setState({image: ''})
-    const unknown = this.props.showUnknown ? '/images/unknown.jpg' : ''
+    const unknown = this.props.showUnknown ? unknownImage : ''
     fetchImage(author, '250', src =>
       this.setState({image: src || unknown}))
   }

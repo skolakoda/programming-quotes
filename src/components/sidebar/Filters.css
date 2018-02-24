@@ -1,3 +1,7 @@
+.filters {
+  margin-bottom: 20px;
+}
+
 .filters input,
 .filters button {
   font-size: inherit;
@@ -7,6 +11,6 @@
   width: 100%;
 }
 
-.btn-authors {
-  margin-bottom: 20px;
+.filters h3 {
+  margin: 10px 0;
 }
