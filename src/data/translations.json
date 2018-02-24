@@ -14,7 +14,8 @@
     "REQUIRED_FIELDS": "Author and at least one language is required.",
     "SUCCESS_SAVED": "Thanks, the quote has been successfully saved.",
     "ADD_QUOTE": "Add quote",
-    "EDIT_QUOTE": "Edit quote"
+    "EDIT_QUOTE": "Edit quote",
+    "LOGIN_REQUIRED": "You must be logged in"
   },
   "sr": {
     "PROGRAMMING_QUOTES": "Programerski citati",
@@ -31,6 +32,7 @@
     "REQUIRED_FIELDS": "Obavezni su autor i citat na bar jednom jeziku.",
     "SUCCESS_SAVED": "Hvala, citat je uspešno sačuvan.",
     "ADD_QUOTE": "Dodaj citat",
-    "EDIT_QUOTE": "Uredi citat"
+    "EDIT_QUOTE": "Uredi citat",
+    "LOGIN_REQUIRED": "Moraš biti prijavljen"
   }
 }
