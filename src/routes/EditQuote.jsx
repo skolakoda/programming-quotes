@@ -58,7 +58,7 @@ class EditQuote extends Component {
           <input type="hidden" name="_id" defaultValue={quote && quote._id} />
           <p>
             <label htmlFor="author" >{translate('AUTHOR')} <small>({translate('AUTHOR_TIP')})</small> </label><br/>
-            <input name="author" defaultValue={quote && quote.autor} />
+            <input name="author" defaultValue={quote && quote.autor} autoFocus />
           </p>
           <p>
             <label htmlFor="en" >{translate('QUOTE_ENGLISH')}</label><br />
