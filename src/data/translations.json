@@ -15,6 +15,7 @@
     "SUCCESS_SAVED": "Thanks, the quote has been successfully saved.",
     "ADD_QUOTE": "Add quote",
     "EDIT_QUOTE": "Edit quote",
+    "QUOTE_DELETED": "The quote is deleted.",
     "LOGIN_REQUIRED": "You must be logged in"
   },
   "sr": {
@@ -33,6 +34,7 @@
     "SUCCESS_SAVED": "Hvala, citat je uspešno sačuvan.",
     "ADD_QUOTE": "Dodaj citat",
     "EDIT_QUOTE": "Uredi citat",
+    "QUOTE_DELETED": "Citat je obrisan.",
     "LOGIN_REQUIRED": "Moraš biti prijavljen"
   }
 }

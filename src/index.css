@@ -19,3 +19,11 @@ img {
   color: inherit;
   text-decoration: none;
 }
+
+.pointer {
+  cursor: pointer;
+}
+
+.red {
+  color: red;
+}
