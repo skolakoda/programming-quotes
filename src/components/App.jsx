@@ -19,7 +19,7 @@ class App extends Component {
       allQuotes: [],
       allAuthors: new Set(),
       phrase: '',
-      quoteLanguage: translate.currentLanguage,
+      language: translate.currentLanguage,
       password: localStorage.programerskiCitatiPassword
     }
   }
@@ -53,7 +53,7 @@ class App extends Component {
   }
 
   setLang = language => {
-    this.setState({quoteLanguage: language})
+    this.setState({language})
     translate.setLanguage(language)
   }
 
@@ -61,7 +61,11 @@ class App extends Component {
     return (
       <div className="App">
         <section className="right-section">
-          <Navigation setLang={this.setLang} password={this.state.password} />
+          <Navigation
+            language={this.state.language}
+            setLang={this.setLang}
+            password={this.state.password}
+          />
 
           <Switch>
             <Route path='/add-quote' component={props => (
@@ -72,7 +76,7 @@ class App extends Component {
             )} />
             <Route path='/quote/:id' component={props => (
               <ShowQuote {...props}
-                language={this.state.quoteLanguage}
+                language={this.state.language}
                 allQuotes={this.state.allQuotes}
                 password={this.state.password} />
             )} />
@@ -81,22 +85,22 @@ class App extends Component {
             )} />
             <Route path='/author/:name' render={props => (
               <Author {...props}
-                language={this.state.quoteLanguage}
+                language={this.state.language}
                 allQuotes={this.state.allQuotes}
                 password={this.state.password}
               />
             )} />
             <Route path='/' render={() => (
               <Home
-                language={this.state.quoteLanguage}
+                language={this.state.language}
                 allQuotes={this.state.allQuotes}
                 phrase={this.state.phrase}
                 password={this.state.password}
               />
             )} />
           </Switch>
-
         </section>
+
         <Sidebar
           authors={this.state.allAuthors}
           setPhrase={this.setPhrase}

@@ -1,15 +1,6 @@
 import React, {Component} from 'react'
-// import {findVal} from '../../shared/helpers'
+import {findValue} from '../../shared/helpers'
 import unknownImage from '../../images/unknown.jpg'
-
-function findVal(object, key) {
-  let value
-  Object.keys(object).some(k => {
-    if (k === key) value = object[k]
-    if (typeof object[k] === 'object') value = findVal(object[k], key)
-  })
-  return value
-}
 
 class AuthorImage extends Component {
   constructor(props) {
@@ -32,8 +23,8 @@ class AuthorImage extends Component {
     fetch(`https://en.wikipedia.org/w/api.php?action=query&titles=${title}&prop=pageimages|extracts&format=json&pithumbsize=${size}&origin=*&redirects=1&exintro`)
       .then(response => response.json())
       .then(obj => {
-        const imgSrc = findVal(obj, 'source')
-        const info = findVal(obj, 'extract')
+        const imgSrc = findValue(obj, 'source')
+        const info = findValue(obj, 'extract')
         console.log(info)
         callback(imgSrc)
       })

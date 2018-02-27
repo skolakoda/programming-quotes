@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import Stars from './Stars'
 import MessagePopup from './MessagePopup'
 import translate from '../../shared/translate'
+import * as api from '../../config/endpoints'
 import './Quote.css'
 
 class Quote extends Component {
@@ -21,7 +22,7 @@ class Quote extends Component {
   }
 
   deleteQuote = () => {
-    fetch('https://baza-podataka.herokuapp.com/obrisi-citat/', {
+    fetch(api.del, {
       method: 'delete',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({_id: this.props.id, password: this.props.password})
@@ -47,8 +48,8 @@ class Quote extends Component {
       <blockquote>
         <Link to={quoteLink} className="no-link"><i>{content}</i></Link>&nbsp;
         { password &&
-          <span>
-            <Link to={editLink}><span className="edit-icon">&#9998;</span></Link>
+          <span className="admin-actions">
+            <Link to={editLink}><span className="edit-icon">&#9998;</span></Link>&nbsp;
             <span onClick={this.tryDelete} className={deleteStyle}>&#10005;</span>
           </span>
         }

@@ -1,10 +1,8 @@
-nav > a,
-nav > div {
+nav > * {
   display: inline-block;
   margin-right: 20px;
 }
 
-.lang-btn {
-  font-size: 12px;
-  margin: 0px 5px;
+nav .active {
+  font-weight: bold;
 }
