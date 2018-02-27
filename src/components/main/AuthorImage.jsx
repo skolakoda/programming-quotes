@@ -1,6 +1,15 @@
 import React, {Component} from 'react'
-import {fetchImage} from '../../shared/helpers'
+// import {findVal} from '../../shared/helpers'
 import unknownImage from '../../images/unknown.jpg'
+
+function findVal(object, key) {
+  let value
+  Object.keys(object).some(k => {
+    if (k === key) value = object[k]
+    if (typeof object[k] === 'object') value = findVal(object[k], key)
+  })
+  return value
+}
 
 class AuthorImage extends Component {
   constructor(props) {
@@ -17,11 +26,24 @@ class AuthorImage extends Component {
       this.getImage(nextProps.author)
   }
 
+  // TODO: prebaciti ucitavanje slike i info na roditelja
+
+  fetchImage(title, size, callback) {
+    fetch(`https://en.wikipedia.org/w/api.php?action=query&titles=${title}&prop=pageimages|extracts&format=json&pithumbsize=${size}&origin=*&redirects=1&exintro`)
+      .then(response => response.json())
+      .then(obj => {
+        const imgSrc = findVal(obj, 'source')
+        const info = findVal(obj, 'extract')
+        console.log(info)
+        callback(imgSrc)
+      })
+  }
+
   getImage(author) {
     this.setState({image: ''})
-    const unknown = this.props.showUnknown ? unknownImage : ''
-    fetchImage(author, '250', src =>
-      this.setState({image: src || unknown}))
+    const alternative = this.props.showUnknown ? unknownImage : ''
+    this.fetchImage(author, '250', src =>
+      this.setState({image: src || alternative}))
   }
 
   render() {
