@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import AuthorImage from './AuthorImage'
 import {findValue} from '../../shared/helpers'
-import unknownImage from '../../images/unknown.jpg'
+import unknownImage from '../../assets/images/unknown.jpg'
 import './AuthorBox.css'
 
 export default class AuthorBox extends Component {

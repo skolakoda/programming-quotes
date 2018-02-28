@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import {fetchImage} from '../../shared/helpers'
-import unknownImage from '../../images/unknown.jpg'
+import unknownImage from '../../assets/images/unknown.jpg'
 import './AuthorThumb.css'
 
 class AuthorThumb extends Component {

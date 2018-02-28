@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {fetchImage} from '../../shared/helpers'
-import unknownImage from '../../images/unknown.jpg'
+import unknownImage from '../../assets/images/unknown.jpg'
 
 // TODO: obrisati komponentu kada optimizujemo ucitavanje slika
 

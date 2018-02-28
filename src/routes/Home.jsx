@@ -1,7 +1,7 @@
 import React from 'react'
 import translate from '../shared/translate'
 import Quotes from '../components/main/Quotes'
-import preloader from '../images/preloader.gif'
+import preloader from '../assets/images/preloader.gif'
 
 const numberOfQuotes = 10
 
