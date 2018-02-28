@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
-import AuthorImage from '../components/main/AuthorImage'
+import SmartAuthorImage from '../components/main/SmartAuthorImage'
 import './ShowQuote.css'
 
 class ShowQuote extends Component {
@@ -16,7 +16,7 @@ class ShowQuote extends Component {
 
     return (
       <main className="quote-box">
-        <AuthorImage author={author} />
+        <SmartAuthorImage author={author} />
         <article>
           <h1>
             {quote[language]} &nbsp;

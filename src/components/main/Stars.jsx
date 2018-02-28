@@ -40,7 +40,8 @@ class Stars extends Component {
   render() {
     return (
       <div>
-        <ReactStars size={20} value={this.state.rating} onChange={this.rate}/> {this.state.error && <p className="vote-error">{this.state.error}</p>}
+        <ReactStars size={20} value={this.state.rating} half={false} onChange={this.rate} />
+        {this.state.error && <p className="vote-error">{this.state.error}</p>}
       </div>
     )
   }
