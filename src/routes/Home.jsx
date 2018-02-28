@@ -1,7 +1,6 @@
 import React from 'react'
 import translate from '../shared/translate'
 import Quotes from '../components/main/Quotes'
-import preloader from '../assets/images/preloader.gif'
 
 const numberOfQuotes = 10
 
@@ -14,10 +13,7 @@ const Home = ({ language, allQuotes, phrase, password }) => {
     <main>
       <h1>{translate('PROGRAMMING_QUOTES')}</h1>
       {phrase && <small>{translate('SHOWING_RESULTS')} "{phrase}":</small>}
-      {allQuotes.length
-        ? <Quotes language={language} currentQuotes={currentQuotes} password={password} />
-        : <img src={preloader} alt="loading..." />
-      }
+      <Quotes language={language} loaded={allQuotes.length} currentQuotes={currentQuotes} password={password} />
     </main>
   )
 }
