@@ -16,6 +16,7 @@
     "ADD_QUOTE": "Add quote",
     "EDIT_QUOTE": "Edit quote",
     "QUOTE_DELETED": "The quote is deleted.",
+    "SHOWING_RESULTS": "Showing results for search term",
     "LOGIN_REQUIRED": "You must be logged in"
   },
   "sr": {
@@ -35,6 +36,7 @@
     "ADD_QUOTE": "Dodaj citat",
     "EDIT_QUOTE": "Uredi citat",
     "QUOTE_DELETED": "Citat je obrisan.",
+    "SHOWING_RESULTS": "Prikazuje rezultate za pojam",
     "LOGIN_REQUIRED": "Moraš biti prijavljen"
   }
 }

@@ -12,7 +12,7 @@ import Login from '../routes/Login'
 import './App.css'
 const cachedQuotes = require('../data/quotes.json')
 
-class App extends Component {
+export default class App extends Component {
   constructor() {
     super()
     this.state = {
@@ -41,8 +41,8 @@ class App extends Component {
     this.setState(() => ({allQuotes, allAuthors}))
   }
 
-  setPhrase = e => {
-    this.setState({phrase:e.target.value})
+  setPhrase = phrase => {
+    this.setState({phrase})
   }
 
   setPassword = e => {
@@ -88,6 +88,7 @@ class App extends Component {
                 language={this.state.language}
                 allQuotes={this.state.allQuotes}
                 password={this.state.password}
+                phrase={this.state.phrase}
               />
             )} />
             <Route path='/' render={() => (
@@ -96,6 +97,7 @@ class App extends Component {
                 allQuotes={this.state.allQuotes}
                 phrase={this.state.phrase}
                 password={this.state.password}
+                setPhrase={this.setPhrase}
               />
             )} />
           </Switch>
@@ -109,5 +111,3 @@ class App extends Component {
     )
   }
 }
-
-export default App
