@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom'
 import translate from '../shared/translate'
 import MessagePopup from '../components/main/MessagePopup'
 import * as api from '../config/endpoints'
+import './EditQuote'
 
 class EditQuote extends Component {
   constructor(props) {

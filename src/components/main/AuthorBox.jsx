@@ -43,7 +43,7 @@ export default class AuthorBox extends Component {
     const { author } = this.props
     return (
       <div className="thumbnail">
-        <h3>{author}</h3>
+        <h3 className="hide-sm">{author}</h3>
         <AuthorImage author={author} src={this.state.image} />
         <small dangerouslySetInnerHTML={{__html: this.state.info}}></small>
       </div>
