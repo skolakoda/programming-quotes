@@ -41,7 +41,7 @@ class Quote extends Component {
     const quoteLink = `/quote/${id}`
     const editLink = `/edit-quote/${id}`
     const authorLink = `/author/${author}`
-    const wikiUrl = `https://en.wikipedia.org/wiki/${author}`
+    const wikiUrl = `https://en.wikipedia.org/wiki/${encodeURIComponent(author)}`
     const deleteStyle = `pointer ${this.state.shouldDelete ? 'red' : ''}`
 
     return (
