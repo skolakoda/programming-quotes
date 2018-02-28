@@ -5,15 +5,12 @@
   "repository": "https://github.com/skolakoda/programerski-citati",
   "license": "MIT",
   "dependencies": {
-    "enzyme": "^3.3.0",
-    "enzyme-adapter-react-16": "^1.1.1",
     "gh-pages": "^1.1.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.17",
     "react-stars": "^2.2.5",
-    "react-test-renderer": "^16.2.0",
     "shortid": "^2.2.8"
   },
   "scripts": {
