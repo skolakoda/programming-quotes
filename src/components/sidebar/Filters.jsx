@@ -1,17 +1,14 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
 import './Filters.css'
 import translate from '../../shared/translate'
 
 const Filters = ({ setPhrase, filterAuthors }) => (
   <div className="filters">
     <h3>{translate('SEARCH_QUOTES')}</h3>
-    <Link className="author" to="/">
-      <input onChange={setPhrase} />
-    </Link>
+    <input onChange={e => setPhrase(e.target.value)} />
 
     <h3>{translate('SEARCH_AUTHORS')}</h3>
-    <input onChange={(e) => filterAuthors(e.target.value)} />
+    <input onChange={e => filterAuthors(e.target.value)} />
   </div>
 )
 

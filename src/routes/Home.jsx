@@ -13,6 +13,7 @@ const Home = ({ language, allQuotes, phrase, password }) => {
   return (
     <main>
       <h1>{translate('PROGRAMMING_QUOTES')}</h1>
+      {phrase && <small>Showing results for search term is "{phrase}":</small>}
       {allQuotes.length
         ? <Quotes language={language} currentQuotes={currentQuotes} password={password} />
         : <img src={preloader} alt="loading..." />
