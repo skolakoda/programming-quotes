@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import Quotes from '../components/main/Quotes'
 import AuthorBox from '../components/main/AuthorBox'
+import translate from '../shared/translate'
 import preloader from '../assets/images/preloader.gif'
 
 class Author extends Component {
@@ -13,9 +14,9 @@ class Author extends Component {
 
     return (
       <main>
-        <h1>{author} Quotes</h1>
+        <h1>{author}</h1>
         <AuthorBox author={author} />
-        {phrase && <small>Showing results for search term is "{phrase}":</small>}
+        {phrase && <small>{translate('SHOWING_RESULTS')} "{phrase}":</small>}
         {allQuotes.length
           ? <Quotes language={language} currentQuotes={currentQuotes} password={password} />
           : <img src={preloader} alt="loading..." />
