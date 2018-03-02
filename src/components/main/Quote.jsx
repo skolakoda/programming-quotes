@@ -37,7 +37,10 @@ export default class Quote extends Component {
   }
 
   render() {
-    const {author, content, rating, id, password} = this.props
+    const { id, language, currentQuotes, password } = this.props
+    const quote = currentQuotes.find(q => q._id === id)
+    const author = quote.autor
+
     const quoteLink = `/quote/${id}`
     const editLink = `/edit-quote/${id}`
     const authorLink = `/author/${author}`
@@ -46,7 +49,7 @@ export default class Quote extends Component {
 
     return (
       <blockquote>
-        <Link to={quoteLink} className="no-link"><i>{content}</i></Link>&nbsp;
+        <Link to={quoteLink} className="no-link"><i>{quote[language]}</i></Link>&nbsp;
         { password &&
           <span className="admin-actions">
             <Link to={editLink}><span className="edit-icon">&#9998;</span></Link>&nbsp;
@@ -56,7 +59,7 @@ export default class Quote extends Component {
         <br/>
 
         <small> — <Link to={authorLink}>{author}</Link> <small>(<a href={wikiUrl} target="_blank">wiki</a>)</small> </small>
-        <Stars rating={rating} id={id} />
+        <Stars rating={quote.ocena} id={id} />
 
         {this.state.response && <MessagePopup message={this.state.response} closePopup={this.closePopup} />}
       </blockquote>
