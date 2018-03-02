@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import ReactStars from 'react-stars'
-import * as api from '../../config/endpoints'
+import {API} from '../../config/endpoints'
+import {LS} from '../../config/localstorage'
 import translate from '../../shared/translate'
 import './Stars.css'
 
@@ -18,12 +19,12 @@ class Stars extends Component {
   }
 
   rate = newRating => {
-    const storage = JSON.parse(localStorage.getItem('programerskicitatiocene'))
+    const storage = JSON.parse(localStorage.getItem(LS.ratings))
     if (this.alreadyVoted(storage)) return this.setState({ error: translate('CAN_VOTE_ONCE') })
 
     const newStorage = storage ? [...storage, this.props.id] : [this.props.id]
 
-    fetch(api.rate, {
+    fetch(API.rate, {
       method: 'POST',
       body: JSON.stringify({_id: this.props.id, novaOcena: newRating}),
       headers: {'content-type': 'application/json'}
@@ -34,7 +35,7 @@ class Stars extends Component {
   }
 
   setNewVote(newStorage, newAverage) {
-    localStorage.setItem('programerskicitatiocene', JSON.stringify(newStorage))
+    localStorage.setItem(LS.ratings, JSON.stringify(newStorage))
     this.setState({rating: newAverage})
   }
 

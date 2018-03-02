@@ -3,10 +3,10 @@ import {Link} from 'react-router-dom'
 import Stars from './Stars'
 import MessagePopup from './MessagePopup'
 import translate from '../../shared/translate'
-import * as api from '../../config/endpoints'
+import {API} from '../../config/endpoints'
 import './Quote.css'
 
-class Quote extends Component {
+export default class Quote extends Component {
   constructor() {
     super()
     this.state = {
@@ -22,7 +22,7 @@ class Quote extends Component {
   }
 
   deleteQuote = () => {
-    fetch(api.del, {
+    fetch(API.del, {
       method: 'delete',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({_id: this.props.id, password: this.props.password})
@@ -63,5 +63,3 @@ class Quote extends Component {
     )
   }
 }
-
-export default Quote

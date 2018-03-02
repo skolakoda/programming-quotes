@@ -3,7 +3,7 @@ import Quotes from '../components/main/Quotes'
 import AuthorBox from '../components/main/AuthorBox'
 import translate from '../shared/translate'
 
-class Author extends Component {
+export default class Author extends Component {
   render() {
     const author = this.props.match.params.name
     const { language, allQuotes, password, phrase } = this.props
@@ -21,5 +21,3 @@ class Author extends Component {
     )
   }
 }
-
-export default Author
