@@ -1,8 +1,9 @@
 import React from 'react'
+import translate from '../shared/translate'
 
 const Login = ({ setPassword }) => (
   <main>
-    <h1>Login</h1>
+    <h1>{translate('LOGIN')}</h1>
     <form onSubmit={setPassword}>
       <p>Admin password:</p>
       <input name="password" type="password" defaultValue={localStorage.programerskiCitatiPassword}></input>

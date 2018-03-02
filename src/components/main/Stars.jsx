@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import ReactStars from 'react-stars'
 import * as api from '../../config/endpoints'
+import translate from '../../shared/translate'
 import './Stars.css'
 
 class Stars extends Component {
@@ -18,7 +19,7 @@ class Stars extends Component {
 
   rate = newRating => {
     const storage = JSON.parse(localStorage.getItem('programerskicitatiocene'))
-    if (this.alreadyVoted(storage)) return this.setState({error: 'You can vote just once!'})
+    if (this.alreadyVoted(storage)) return this.setState({ error: translate('CAN_VOTE_ONCE') })
 
     const newStorage = storage ? [...storage, this.props.id] : [this.props.id]
 
@@ -29,7 +30,7 @@ class Stars extends Component {
     })
       .then(response => response.json())
       .then(response => this.setNewVote(newStorage, response))
-      .catch(e => this.setState({error: 'Problem with network, please try again later'}))
+      .catch(e => this.setState({ error: translate('NETWORK_PROBLEM') }))
   }
 
   setNewVote(newStorage, newAverage) {
