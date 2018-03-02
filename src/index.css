@@ -6,7 +6,6 @@ body {
   color: #333;
   font-family: sans-serif;
   font-size: 1.2em;
-  line-height: 1.4;
   margin: 0;
   padding: 0;
 }
@@ -15,8 +14,26 @@ img {
   max-width: 100%;
 }
 
+textarea {
+  max-width: 100%;
+}
+
 button {
   cursor: pointer;
+}
+
+blockquote {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+@media (min-width: 800px) {
+  body {
+    line-height: 1.4;
+  }
+  blockquote {
+    margin: 1em 40px;
+  }
 }
 
 .no-link {
@@ -30,4 +47,14 @@ button {
 
 .red {
   color: red;
+}
+
+.hide-sm {
+  display: none;
+}
+
+@media (min-width: 800px) {
+  .hide-sm {
+    display: block;
+  }
 }
