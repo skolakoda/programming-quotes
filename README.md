@@ -1,4 +1,8 @@
+[![Latest NPM release][npm-badge]][npm-badge-url]
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![License][license-badge]][license-badge-url]
+[![Dependencies][dependencies-badge]][dependencies-badge-url]
+[![Dev Dependencies][devDependencies-badge]][devDependencies-badge-url]
 
 [![](screen.png)](https://skolakoda.org/programerski-citati/)
 
