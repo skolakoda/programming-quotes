@@ -10,8 +10,8 @@ import Author from '../routes/Author'
 import EditQuote from '../routes/EditQuote'
 import ShowQuote from '../routes/ShowQuote'
 import Login from '../routes/Login'
+import cachedQuotes from '../data/quotes.json'
 import './App.css'
-const cachedQuotes = require('../data/quotes.json')
 
 export default class App extends Component {
   constructor() {
@@ -46,9 +46,7 @@ export default class App extends Component {
     this.setState({phrase})
   }
 
-  setPassword = e => {
-    e.preventDefault()
-    const password = e.target.elements.password.value
+  setPassword = password => {
     this.setState({password})
     localStorage.setItem(LS.password, password)
   }
