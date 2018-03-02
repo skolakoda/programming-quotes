@@ -1,6 +1,8 @@
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/skolakoda/programerski-citati/blob/master/LICENSE)
 
+[![](screen.png)](https://skolakoda.org/programerski-citati/)
+
 # Programerski citati
 
 **Programerski citati, aplikacija otvorenog koda koju zajedno razvijamo. Tehnologije: React, Node.js i MongoDB.**
@@ -8,8 +10,6 @@
 Vidi kako radi: na [skolakoda.org/programerski-citati](https://skolakoda.org/programerski-citati/)
 
 Bekend API sa bazom podataka se nalazi [ovde](https://github.com/skolakoda/baza-podataka).
-
-[![](screen.png)](https://skolakoda.org/programerski-citati/)
 
 ## Razvoj
 
