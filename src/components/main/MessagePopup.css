@@ -2,8 +2,8 @@
   display: block;
   position: fixed;
   top: 10%;
-  left: 25%;
-  width: 50%;
+  left: 10%;
+  width: 80%;
   height: 80%;
   padding: 16px;
   border: 2px solid rgb(46, 44, 40);
@@ -24,4 +24,11 @@
   -moz-opacity: 0.8;
   opacity: .80;
   filter: alpha(opacity=80);
+}
+
+@media (min-width: 800px) {
+  .white_content {
+    left: 25%;
+    width: 50%;
+  }
 }

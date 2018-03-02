@@ -1,8 +1,13 @@
+.App {
+  padding: 20px;
+}
+
 @media (min-width: 800px) {
   .App {
     display: flex;
     justify-content: space-between;
     margin-left: 2%;
+    padding: 0;
   }
 
   .right-section {
