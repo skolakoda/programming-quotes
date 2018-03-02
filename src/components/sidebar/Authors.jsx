@@ -1,16 +1,25 @@
-import React from 'react'
+import React, {Component} from 'react'
 import AuthorThumb from './AuthorThumb'
 const shortid = require('shortid')
 
-const Authors = ({ authors }) => {
-  const preparedAuthors = [...authors].sort().map(author =>
-    <AuthorThumb key={shortid.generate()} author={author} />
-  )
-  return (
-    <div className="authors">
-      {preparedAuthors}
-    </div>
-  )
-}
+export default class Authors extends Component {
 
-export default Authors
+  componentWillReceiveProps(nextProps) {
+    const authors = nextProps.authors.join("|")
+
+    fetch(`https://en.wikipedia.org/w/api.php?action=query&titles=${authors}&prop=pageimages&format=json&pithumbsize=50&origin=*`)
+    .then(res => res.json())
+    .then(res => console.log(res.query.pages))
+  }
+
+  render() {
+    const preparedAuthors = [...this.props.authors].sort().map(author =>
+      <AuthorThumb key={shortid.generate()} author={author} />
+    )
+    return (
+      <div className="authors">
+        {preparedAuthors}
+      </div>
+    )
+  }
+}

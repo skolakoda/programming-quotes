@@ -4,7 +4,7 @@ import {fetchImage} from '../../shared/helpers'
 import unknownImage from '../../assets/images/unknown.jpg'
 import './AuthorThumb.css'
 
-class AuthorThumb extends Component {
+export default class AuthorThumb extends Component {
   constructor(props) {
     super(props)
     this.state = {image: ''}
@@ -25,5 +25,3 @@ class AuthorThumb extends Component {
     )
   }
 }
-
-export default AuthorThumb
