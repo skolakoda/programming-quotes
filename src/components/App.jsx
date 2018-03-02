@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import { Switch, Route } from 'react-router-dom'
 import translate from '../shared/translate'
+import {getAuthorImages} from '../shared/helpers'
 import {API} from '../config/endpoints'
 import {LS} from '../config/localstorage'
 import Navigation from './header/Navigation'
@@ -13,12 +14,15 @@ import Login from '../routes/Login'
 import cachedQuotes from '../data/quotes.json'
 import './App.css'
 
+const wikiLimit = 50
+
 export default class App extends Component {
   constructor() {
     super()
     this.state = {
       allQuotes: [],
       allAuthors: new Set(),
+      authorImages: new Map(),
       phrase: '',
       language: translate.currentLanguage,
       password: localStorage.getItem(LS.password)
@@ -26,20 +30,30 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    this.loadData()
+    this.loadQuotes()
   }
 
-  loadData() {
+  loadQuotes() {
     const http = new XMLHttpRequest()
     http.open('GET', API.read)
     http.send()
-    http.onload = () => this.initData(JSON.parse(http.responseText))
-    http.onerror = () => this.initData(cachedQuotes)
+    http.onload = () => this.initState(JSON.parse(http.responseText))
+    http.onerror = () => this.initState(cachedQuotes)
   }
 
-  initData = allQuotes => {
-    const allAuthors = new Set(allQuotes.map(quote => quote.autor))
+  initState = allQuotes => {
+    const allAuthors = new Set(allQuotes.map(quote => quote.autor).sort())
     this.setState(() => ({allQuotes, allAuthors}))
+    this.getAuthorThumbs(allAuthors)
+  }
+
+  getAuthorThumbs(allAuthors) {
+    const promises = []
+    for (let i = 0; i < [...allAuthors].length; i += wikiLimit)
+      promises.push(getAuthorImages([...allAuthors].slice(i, i + wikiLimit)))
+    Promise.all(promises).then(data =>
+      this.setState({authorImages: data.reduce((a, b) => new Map([...a, ...b]))})
+    )
   }
 
   setPhrase = phrase => {
@@ -104,6 +118,7 @@ export default class App extends Component {
 
         <Sidebar
           authors={this.state.allAuthors}
+          authorImages={this.state.authorImages}
           setPhrase={this.setPhrase}
         />
       </div>

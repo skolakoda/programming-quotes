@@ -23,7 +23,7 @@ class Sidebar extends Component {
     return (<aside className="sidebar">
       <div className="sidebar-inner">
         <Filters setPhrase={this.props.setPhrase} filterAuthors={this.filterAuthors}/>
-        <Authors authors={this.state.authors}/>
+        <Authors authors={this.state.authors} authorImages={this.props.authorImages}/>
       </div>
     </aside>)
   }
