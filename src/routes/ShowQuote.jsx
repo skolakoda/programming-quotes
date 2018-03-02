@@ -44,6 +44,7 @@ export default class ShowQuote extends Component {
     if (!quote || !quote[language]) return null
 
     const author = quote.autor
+    const quoteLink = `/quote/${id}`
     const editLink = `/edit-quote/${id}`
     const authorLink = `/author/${author}`
     const deleteStyle = `pointer ${this.state.shouldDelete ? 'red' : ''}`
@@ -53,7 +54,7 @@ export default class ShowQuote extends Component {
         <SmartAuthorImage author={author} />
         <blockquote>
           <h1>
-            {quote[language]} &nbsp;
+            <Link to={quoteLink} className="no-link">{quote[language]}</Link>&nbsp;
             { password &&
               <span className="admin-actions">
                 <Link to={editLink}><span className="edit-icon">&#9998;</span></Link>&nbsp;

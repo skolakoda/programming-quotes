@@ -44,22 +44,21 @@ export default class Quote extends Component {
     const quoteLink = `/quote/${id}`
     const editLink = `/edit-quote/${id}`
     const authorLink = `/author/${author}`
-    const wikiUrl = `https://en.wikipedia.org/wiki/${encodeURIComponent(author)}`
     const deleteStyle = `pointer ${this.state.shouldDelete ? 'red' : ''}`
 
     return (
       <blockquote>
-        <Link to={quoteLink} className="no-link"><i>{quote[language]}</i></Link>&nbsp;
-        { password &&
-          <span className="admin-actions">
-            <Link to={editLink}><span className="edit-icon">&#9998;</span></Link>&nbsp;
-            <span onClick={this.tryDelete} className={deleteStyle}>&#10005;</span>
-          </span>
-        }
-        <br/>
-
-        <small> — <Link to={authorLink}>{author}</Link> <small>(<a href={wikiUrl} target="_blank">wiki</a>)</small> </small>
+        <p>
+          <Link to={quoteLink} className="no-link"><i>{quote[language]}</i></Link>&nbsp;
+          { password &&
+            <span className="admin-actions">
+              <Link to={editLink}><span className="edit-icon">&#9998;</span></Link>&nbsp;
+              <span onClick={this.tryDelete} className={deleteStyle}>&#10005;</span>
+            </span>
+          }
+        </p>
         <Stars rating={quote.ocena} id={id} />
+        <small> — <Link to={authorLink}>{author}</Link></small>
 
         {this.state.response && <MessagePopup message={this.state.response} closePopup={this.closePopup} />}
       </blockquote>
