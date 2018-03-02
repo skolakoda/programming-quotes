@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 import translate from '../shared/translate'
 import MessagePopup from '../components/main/MessagePopup'
-import * as api from '../config/endpoints'
+import {API} from '../config/endpoints'
 
 class EditQuote extends Component {
   constructor(props) {
@@ -26,7 +26,7 @@ class EditQuote extends Component {
 
     ;[...fields].map(field => field.value = '')
 
-    const endpoint = _id ? api.update : api.create
+    const endpoint = _id ? API.update : API.create
     fetch(endpoint, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

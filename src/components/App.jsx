@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
 import { Switch, Route } from 'react-router-dom'
 import translate from '../shared/translate'
-import * as api from '../config/endpoints'
+import {API} from '../config/endpoints'
+import {LS} from '../config/localstorage'
 import Navigation from './header/Navigation'
 import Sidebar from './sidebar/Sidebar'
 import Home from '../routes/Home'
@@ -20,7 +21,7 @@ export default class App extends Component {
       allAuthors: new Set(),
       phrase: '',
       language: translate.currentLanguage,
-      password: localStorage.programerskiCitatiPassword
+      password: localStorage.getItem(LS.password)
     }
   }
 
@@ -30,7 +31,7 @@ export default class App extends Component {
 
   loadData() {
     const http = new XMLHttpRequest()
-    http.open('GET', api.read)
+    http.open('GET', API.read)
     http.send()
     http.onload = () => this.initData(JSON.parse(http.responseText))
     http.onerror = () => this.initData(cachedQuotes)
@@ -49,7 +50,7 @@ export default class App extends Component {
     e.preventDefault()
     const password = e.target.elements.password.value
     this.setState({password})
-    localStorage.programerskiCitatiPassword = password
+    localStorage.setItem(LS.password, password)
   }
 
   setLang = language => {

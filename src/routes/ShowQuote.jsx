@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import SmartAuthorImage from '../components/main/SmartAuthorImage'
 import './ShowQuote.css'
 
-class ShowQuote extends Component {
+export default class ShowQuote extends Component {
   render() {
     const id = this.props.match.params.id
     const { language, allQuotes, password } = this.props
@@ -28,5 +28,3 @@ class ShowQuote extends Component {
     )
   }
 }
-
-export default ShowQuote
