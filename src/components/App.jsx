@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
 import { Switch, Route } from 'react-router-dom'
 import translate from '../shared/translate'
-import * as api from '../config/endpoints'
+import {API} from '../config/endpoints'
+import {LS} from '../config/localstorage'
 import Navigation from './header/Navigation'
 import Sidebar from './sidebar/Sidebar'
 import Home from '../routes/Home'
@@ -9,8 +10,8 @@ import Author from '../routes/Author'
 import EditQuote from '../routes/EditQuote'
 import ShowQuote from '../routes/ShowQuote'
 import Login from '../routes/Login'
+import cachedQuotes from '../data/quotes.json'
 import './App.css'
-const cachedQuotes = require('../data/quotes.json')
 
 export default class App extends Component {
   constructor() {
@@ -20,7 +21,7 @@ export default class App extends Component {
       allAuthors: new Set(),
       phrase: '',
       language: translate.currentLanguage,
-      password: localStorage.programerskiCitatiPassword
+      password: localStorage.getItem(LS.password)
     }
   }
 
@@ -30,7 +31,7 @@ export default class App extends Component {
 
   loadData() {
     const http = new XMLHttpRequest()
-    http.open('GET', api.read)
+    http.open('GET', API.read)
     http.send()
     http.onload = () => this.initData(JSON.parse(http.responseText))
     http.onerror = () => this.initData(cachedQuotes)
@@ -45,11 +46,9 @@ export default class App extends Component {
     this.setState({phrase})
   }
 
-  setPassword = e => {
-    e.preventDefault()
-    const password = e.target.elements.password.value
+  setPassword = password => {
     this.setState({password})
-    localStorage.programerskiCitatiPassword = password
+    localStorage.setItem(LS.password, password)
   }
 
   setLang = language => {

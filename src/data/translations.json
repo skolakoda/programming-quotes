@@ -1,5 +1,8 @@
 {
   "en": {
+    "HOME": "Home",
+    "LOGIN": "Login",
+    "LOGOUT": "Logout",
     "PROGRAMMING_QUOTES": "Programming quotes",
     "SEARCH_QUOTES": "Search quotes",
     "SEARCH_AUTHORS": "Search authors",
@@ -17,9 +20,14 @@
     "EDIT_QUOTE": "Edit quote",
     "QUOTE_DELETED": "The quote is deleted.",
     "SHOWING_RESULTS": "Showing results for search term",
-    "LOGIN_REQUIRED": "You must be logged in"
+    "LOGIN_REQUIRED": "You must be logged in",
+    "CAN_VOTE_ONCE": "You can vote just once!",
+    "NETWORK_PROBLEM": "Problem with network, please try again later."
   },
   "sr": {
+    "HOME": "Početna",
+    "LOGIN": "Prijava",
+    "LOGOUT": "Odjava",
     "PROGRAMMING_QUOTES": "Programerski citati",
     "SEARCH_QUOTES": "Pretraži citate",
     "SEARCH_AUTHORS": "Pretraži autore",
@@ -37,6 +45,8 @@
     "EDIT_QUOTE": "Uredi citat",
     "QUOTE_DELETED": "Citat je obrisan.",
     "SHOWING_RESULTS": "Prikazuje rezultate za pojam",
-    "LOGIN_REQUIRED": "Moraš biti prijavljen"
+    "LOGIN_REQUIRED": "Moraš biti prijavljen",
+    "CAN_VOTE_ONCE": "Možeš glasati samo jednom!",
+    "NETWORK_PROBLEM": "Problem sa mrežom, pokušajte ponovo kasnije."
   }
 }

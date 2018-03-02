@@ -1,6 +1,7 @@
 import React from 'react'
 import Github from './Github'
 import {Link} from 'react-router-dom'
+import translate from '../../shared/translate'
 import './Navigation.css'
 
 const Navigation = ({language, setLang, password}) => {
@@ -8,9 +9,11 @@ const Navigation = ({language, setLang, password}) => {
     <header>
       <Github repoUrl="https://github.com/skolakoda/programerski-citati" />
       <nav>
-        <Link to="/">Home</Link>
-        {password && <Link to="/add-quote">Add quote</Link>}
-        <Link to="/login">Login</Link>
+        <Link to="/">{translate('HOME')}</Link>
+
+        {password && <Link to="/add-quote">{translate('ADD_QUOTE')}</Link>}
+
+        <Link to="/login">{translate(password ? 'LOGOUT' : 'LOGIN')}</Link>
         <div>
           <button
             onClick={() => setLang('en')}
