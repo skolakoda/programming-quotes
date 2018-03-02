@@ -3,13 +3,13 @@
 
 # Programerski citati
 
-[![](screen.png)](https://skolakoda.org/programerski-citati/)
-
 **Programerski citati, aplikacija otvorenog koda koju zajedno razvijamo. Tehnologije: React, Node.js i MongoDB.**
 
 Vidi kako radi: na [skolakoda.org/programerski-citati](https://skolakoda.org/programerski-citati/)
 
 Bekend API sa bazom podataka se nalazi [ovde](https://github.com/skolakoda/baza-podataka).
+
+[![](screen.png)](https://skolakoda.org/programerski-citati/)
 
 ## Razvoj
 
