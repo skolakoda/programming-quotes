@@ -1,9 +1,9 @@
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/skolakoda/programerski-citati/blob/master/LICENSE)
 
-[![](screen.png)](https://skolakoda.org/programerski-citati/)
-
 # Programerski citati
+
+[![](screen.png)](https://skolakoda.org/programerski-citati/)
 
 **Programerski citati, aplikacija otvorenog koda koju zajedno razvijamo. Tehnologije: React, Node.js i MongoDB.**
 
