@@ -1,5 +1,31 @@
-blockquote p {
+.small-quote .quote-text {
   margin: 0;
+  font-size: 1em;
+  font-style: italic;
+}
+
+.small-quote .quote-author {
+  font-size: smaller;
+}
+
+.big-quote .quote-text {
+  margin-top: 0.83em;
+  margin-bottom: 0.83em;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.big-quote .quote-author {
+  font-size: 1.17em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  font-weight: bold;
+  display: block;
+}
+
+.big-quote .quote-author a {
+  color: inherit;
+  text-decoration: none;
 }
 
 .admin-actions {

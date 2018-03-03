@@ -37,7 +37,7 @@ export default class Quote extends Component {
   }
 
   render() {
-    const { id, language, currentQuotes, password } = this.props
+    const { id, language, currentQuotes, password, cssClass } = this.props
     const quote = currentQuotes.find(q => q._id === id)
     const author = quote.autor
 
@@ -45,11 +45,12 @@ export default class Quote extends Component {
     const editLink = `/edit-quote/${id}`
     const authorLink = `/author/${author}`
     const deleteStyle = `pointer ${this.state.shouldDelete ? 'red' : ''}`
+    console.log(this.props.cssClass)
 
     return (
-      <blockquote>
-        <p>
-          <Link to={quoteLink} className="no-link"><i>{quote[language]}</i></Link>&nbsp;
+      <blockquote className={cssClass || 'small-quote'}>
+        <p className="quote-text">
+          <Link to={quoteLink} className="no-link">{quote[language]}</Link>&nbsp;
           { password &&
             <span className="admin-actions">
               <Link to={editLink}><span className="edit-icon">&#9998;</span></Link>&nbsp;
@@ -58,7 +59,7 @@ export default class Quote extends Component {
           }
         </p>
         <Stars rating={quote.ocena} id={id} />
-        <small> — <Link to={authorLink}>{author}</Link></small>
+        <span className="quote-author"> — <Link to={authorLink}>{author}</Link></span>
 
         {this.state.response && <MessagePopup message={this.state.response} closePopup={this.closePopup} />}
       </blockquote>

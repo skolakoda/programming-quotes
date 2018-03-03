@@ -1,8 +1,6 @@
 import React, {Component} from 'react'
-import {Link} from 'react-router-dom'
 import AuthorImage from '../components/main/AuthorImage'
-import Stars from './../components/main/Stars'
-import MessagePopup from '../components/main/MessagePopup'
+import Quote from './../components/main/Quote'
 import translate from '../shared/translate'
 import {API} from '../config/endpoints'
 import './ShowQuote.css'
@@ -43,30 +41,10 @@ export default class ShowQuote extends Component {
     const quote = allQuotes.find(q => q._id === id)
     if (!quote || !quote[language]) return null
 
-    const author = quote.autor
-    const quoteLink = `/quote/${id}`
-    const editLink = `/edit-quote/${id}`
-    const authorLink = `/author/${author}`
-    const deleteStyle = `pointer ${this.state.shouldDelete ? 'red' : ''}`
-
     return (
       <main className="quote-box">
-        <AuthorImage author={author} authorImages={this.props.authorImages} />
-        <blockquote>
-          <h1>
-            <Link to={quoteLink} className="no-link">{quote[language]}</Link>&nbsp;
-            { password &&
-              <span className="admin-actions">
-                <Link to={editLink}><span className="edit-icon">&#9998;</span></Link>&nbsp;
-                <span onClick={this.tryDelete} className={deleteStyle}>&#10005;</span>
-              </span>
-            }
-          </h1>
-          <Stars rating={quote.ocena} id={id} />
-          <h3> — <Link className="no-link" to={authorLink}>{author}</Link></h3>
-
-          {this.state.response && <MessagePopup message={this.state.response} closePopup={this.closePopup} />}
-        </blockquote>
+        <AuthorImage author={quote.autor} authorImages={this.props.authorImages} />
+        <Quote id={id} language={language} currentQuotes={allQuotes} password={password} cssClass="big-quote" />
       </main>
     )
   }
