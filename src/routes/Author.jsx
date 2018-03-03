@@ -5,7 +5,7 @@ import translate from '../shared/translate'
 
 export default class Author extends Component {
   render() {
-    const author = this.props.match.params.name
+    const author = this.props.match.params.name.replace(/_/g, ' ')
     const { language, allQuotes, password, phrase } = this.props
     const filtered = allQuotes
       .filter(q => q.autor === author)
