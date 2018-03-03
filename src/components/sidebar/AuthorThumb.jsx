@@ -6,7 +6,7 @@ import './AuthorThumb.css'
 export default class AuthorThumb extends Component {
   render() {
     const {author, image} = this.props
-    const link = `/author/${author}`
+    const link = `/author/${author.replace(/ /g, '_')}`
     return (
       <Link className="author" to={link}>
         <img src={image || unknownImage} alt="author" />

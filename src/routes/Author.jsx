@@ -5,9 +5,9 @@ import translate from '../shared/translate'
 
 export default class Author extends Component {
   render() {
-    const author = this.props.match.params.name
+    const author = this.props.match.params.name.replace(/_/g, ' ')
     const { language, allQuotes, password, phrase } = this.props
-    const currentQuotes = allQuotes
+    const filtered = allQuotes
       .filter(q => q.autor === author)
       .filter(quote => quote[language] && quote[language].toLowerCase().includes(phrase.toLowerCase()))
 
@@ -16,7 +16,7 @@ export default class Author extends Component {
         <h1>{author}</h1>
         <AuthorBox author={author} allImages={this.props.allImages} />
         {phrase && <small>{translate('SHOWING_RESULTS')} "{phrase}":</small>}
-        <Quotes language={language} loaded={allQuotes.length} currentQuotes={currentQuotes} password={password} />
+        <Quotes language={language} loaded={allQuotes.length} currentQuotes={filtered} password={password} />
       </main>
     )
   }
