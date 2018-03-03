@@ -12,7 +12,7 @@ export default class ShowQuote extends Component {
 
     return (
       <main className="quote-box">
-        <AuthorImage author={quote.autor} authorImages={this.props.authorImages} />
+        <AuthorImage author={quote.autor} allImages={this.props.allImages} />
         <Quote id={id} language={language} quotes={allQuotes} password={password} cssClass="big-quote" />
       </main>
     )

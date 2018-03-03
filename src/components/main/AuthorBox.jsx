@@ -9,7 +9,7 @@ export default class AuthorBox extends Component {
     return (
       <div className="thumbnail">
         <h3 className="hide-sm">{author}</h3>
-        <AuthorImage author={author} authorImages={this.props.authorImages} showUnknown={true} />
+        <AuthorImage author={author} allImages={this.props.allImages} showUnknown={true} />
         <AuthorInfo author={author} />
       </div>
     )

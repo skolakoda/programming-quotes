@@ -9,7 +9,7 @@ export default class Authors extends Component {
       <AuthorThumb
         key={shortid.generate()}
         author={author}
-        image={this.props.authorImages.get(author)}
+        image={this.props.allImages.get(author)}
       />
     )
     return (

@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import { Switch, Route } from 'react-router-dom'
 import translate from '../shared/translate'
-import {getAuthorImages} from '../shared/helpers'
+import {getallImages} from '../shared/helpers'
 import {API} from '../config/endpoints'
 import {LS} from '../config/localstorage'
 import Navigation from './header/Navigation'
@@ -22,7 +22,7 @@ export default class App extends Component {
     this.state = {
       allQuotes: [],
       allAuthors: new Set(),
-      authorImages: new Map(),
+      allImages: new Map(),
       phrase: '',
       language: translate.currentLanguage,
       password: localStorage.getItem(LS.password)
@@ -50,9 +50,9 @@ export default class App extends Component {
   getAuthorThumbs(allAuthors) {
     const promises = []
     for (let i = 0; i < [...allAuthors].length; i += wikiLimit)
-      promises.push(getAuthorImages([...allAuthors].slice(i, i + wikiLimit)))
+      promises.push(getallImages([...allAuthors].slice(i, i + wikiLimit)))
     Promise.all(promises).then(data =>
-      this.setState({authorImages: data.reduce((a, b) => new Map([...a, ...b]))})
+      this.setState({allImages: data.reduce((a, b) => new Map([...a, ...b]))})
     )
   }
 
@@ -91,7 +91,7 @@ export default class App extends Component {
               <ShowQuote {...props}
                 language={this.state.language}
                 allQuotes={this.state.allQuotes}
-                authorImages={this.state.authorImages}
+                allImages={this.state.allImages}
                 password={this.state.password} />
             )} />
             <Route path='/login' component={() => (
@@ -101,7 +101,7 @@ export default class App extends Component {
               <Author {...props}
                 language={this.state.language}
                 allQuotes={this.state.allQuotes}
-                authorImages={this.state.authorImages}
+                allImages={this.state.allImages}
                 password={this.state.password}
                 phrase={this.state.phrase}
               />
@@ -120,7 +120,7 @@ export default class App extends Component {
 
         <Sidebar
           authors={this.state.allAuthors}
-          authorImages={this.state.authorImages}
+          allImages={this.state.allImages}
           setPhrase={this.setPhrase}
         />
       </div>

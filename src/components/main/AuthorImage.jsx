@@ -3,8 +3,8 @@ import unknownImage from '../../assets/images/unknown.jpg'
 
 const responsiveBreakpoint = 800
 
-const AuthorImage = ({author, authorImages, showUnknown}) => {
-  const src = authorImages.get(author)
+const AuthorImage = ({author, allImages, showUnknown}) => {
+  const src = allImages.get(author)
   const imgWidth = window.innerWidth < responsiveBreakpoint ? window.innerWidth : 250
   const unknown = showUnknown ? unknownImage : ''
   const newSrc = src ? src.replace(/\d+px/, `${imgWidth}px`) : unknown
