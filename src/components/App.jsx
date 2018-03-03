@@ -14,7 +14,7 @@ import Login from '../routes/Login'
 import cachedQuotes from '../data/quotes.json'
 import './App.css'
 
-const wikiLimit = 50
+const apiLimit = 50
 
 export default class App extends Component {
   constructor() {
@@ -30,15 +30,15 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    this.loadQuotes()
+    this.initState(cachedQuotes)
+    this.loadQuotes(API.read)
   }
 
-  loadQuotes() {
+  loadQuotes(url) {
     const http = new XMLHttpRequest()
-    http.open('GET', API.read)
+    http.open('GET', url)
     http.send()
     http.onload = () => this.initState(JSON.parse(http.responseText))
-    http.onerror = () => this.initState(cachedQuotes)
   }
 
   initState = allQuotes => {
@@ -49,10 +49,10 @@ export default class App extends Component {
 
   getAuthorThumbs(allAuthors) {
     const promises = []
-    for (let i = 0; i < [...allAuthors].length; i += wikiLimit)
-      promises.push(getallImages([...allAuthors].slice(i, i + wikiLimit)))
+    for (let i = 0; i < [...allAuthors].length; i += apiLimit)
+      promises.push(getallImages([...allAuthors].slice(i, i + apiLimit)))
     Promise.all(promises).then(data =>
-      this.setState({allImages: data.reduce((a, b) => new Map([...a, ...b]))})
+      this.setState({ allImages: data.reduce((a, b) => new Map([...a, ...b])) })
     )
   }
 
