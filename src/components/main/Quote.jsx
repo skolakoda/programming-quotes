@@ -46,7 +46,7 @@ export default class Quote extends Component {
 
     const quoteLink = `/quote/${id}`
     const editLink = `/edit-quote/${id}`
-    const authorLink = `/author/${author}`
+    const authorLink = `/author/${author.replace(/ /g, '_')}`
     const deleteStyle = `pointer ${this.state.shouldDelete ? 'red' : ''}`
 
     return (
