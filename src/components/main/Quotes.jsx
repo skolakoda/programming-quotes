@@ -10,6 +10,10 @@ export default class Quotes extends Component {
     this.state = {currentPage: 0}
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({currentPage: 0})
+  }
+
   turnThePage = e => {
     this.setState({currentPage: e.target.value})
   }
@@ -18,21 +22,20 @@ export default class Quotes extends Component {
     const { language, loaded, currentQuotes, password } = this.props
     const startPosition = this.state.currentPage * quotesPerPage
     const preparedQuotes = currentQuotes
-      .filter((quote, i) => i > startPosition && i < startPosition + quotesPerPage)
+      .filter((q, i) => i >= startPosition && i < startPosition + quotesPerPage)
       .map(q =>
         <Quote key={q._id} language={language} quote={q} id={q._id} password={password} />
       )
-
     const pagination = []
     const totalPages = Math.ceil(currentQuotes.length / quotesPerPage)
     for (let i = 0; i < totalPages; i++)
       pagination.push(<button value={i} onClick={this.turnThePage} key={i}>{i}</button>)
 
-    return loaded
-      ? (
+    return loaded ?
+      (
         <div>
           {preparedQuotes}
-          <p>{pagination}</p>
+          {totalPages > 1 && <p>{pagination}</p>}
         </div>
       )
       : <img src={preloader} alt="loading..." />
