@@ -1,10 +1,17 @@
-import React, {Component} from 'react'
+import React from 'react'
+import unknownImage from '../../assets/images/unknown.jpg'
 
-class AuthorImage extends Component {
-  render() {
-    return (
-      <img className="main-image" src={this.props.src} alt={this.props.author} />
-    )
-  }
+const responsiveBreakpoint = 800
+
+const AuthorImage = ({author, authorImages, showUnknown}) => {
+  const src = authorImages.get(author)
+  const imgWidth = window.innerWidth < responsiveBreakpoint ? window.innerWidth : 250
+  const unknown = showUnknown ? unknownImage : ''
+  const newSrc = src ? src.replace(/\d+px/, `${imgWidth}px`) : unknown
+  if (!newSrc) return null
+
+  return (
+    <img className="main-image" src={newSrc} alt={author} />
+  )
 }
 export default AuthorImage

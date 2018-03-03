@@ -14,7 +14,7 @@ export default class Author extends Component {
     return (
       <main>
         <h1>{author}</h1>
-        <AuthorBox author={author} />
+        <AuthorBox author={author} authorImages={this.props.authorImages} />
         {phrase && <small>{translate('SHOWING_RESULTS')} "{phrase}":</small>}
         <Quotes language={language} loaded={allQuotes.length} currentQuotes={currentQuotes} password={password} />
       </main>

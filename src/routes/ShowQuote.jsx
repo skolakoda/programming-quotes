@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
-import SmartAuthorImage from '../components/main/SmartAuthorImage'
+import AuthorImage from '../components/main/AuthorImage'
 import Stars from './../components/main/Stars'
 import MessagePopup from '../components/main/MessagePopup'
 import translate from '../shared/translate'
@@ -51,7 +51,7 @@ export default class ShowQuote extends Component {
 
     return (
       <main className="quote-box">
-        <SmartAuthorImage author={author} />
+        <AuthorImage author={author} authorImages={this.props.authorImages} />
         <blockquote>
           <h1>
             <Link to={quoteLink} className="no-link">{quote[language]}</Link>&nbsp;

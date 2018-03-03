@@ -91,6 +91,7 @@ export default class App extends Component {
               <ShowQuote {...props}
                 language={this.state.language}
                 allQuotes={this.state.allQuotes}
+                authorImages={this.state.authorImages}
                 password={this.state.password} />
             )} />
             <Route path='/login' component={() => (
@@ -100,6 +101,7 @@ export default class App extends Component {
               <Author {...props}
                 language={this.state.language}
                 allQuotes={this.state.allQuotes}
+                authorImages={this.state.authorImages}
                 password={this.state.password}
                 phrase={this.state.phrase}
               />
