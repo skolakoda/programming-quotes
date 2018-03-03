@@ -22,7 +22,7 @@ export default class Quote extends Component {
   }
 
   deleteQuote = () => {
-    fetch(API.del, {
+    fetch(API.delete, {
       method: 'delete',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({_id: this.props.id, password: this.props.password})
@@ -36,16 +36,18 @@ export default class Quote extends Component {
     window.location.reload() // TODO: remove quote from allQuotes
   }
 
+  /**
+  alternative props: quote{} or quotes[]
+  */
   render() {
-    const { id, language, currentQuotes, password, cssClass } = this.props
-    const quote = currentQuotes.find(q => q._id === id)
+    const { id, language, quotes, password, cssClass } = this.props
+    const quote = this.props.quote || quotes.find(q => q._id === id)
     const author = quote.autor
 
     const quoteLink = `/quote/${id}`
     const editLink = `/edit-quote/${id}`
     const authorLink = `/author/${author}`
     const deleteStyle = `pointer ${this.state.shouldDelete ? 'red' : ''}`
-    console.log(this.props.cssClass)
 
     return (
       <blockquote className={cssClass || 'small-quote'}>
