@@ -30,7 +30,6 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    this.initState(cachedQuotes)
     this.loadQuotes(API.read)
   }
 
@@ -39,6 +38,7 @@ export default class App extends Component {
     http.open('GET', url)
     http.send()
     http.onload = () => this.initState(JSON.parse(http.responseText))
+    http.onerror = () => this.initState(cachedQuotes)
   }
 
   initState = allQuotes => {
