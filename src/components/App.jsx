@@ -10,6 +10,7 @@ import Home from '../routes/Home'
 import Author from '../routes/Author'
 import EditQuote from '../routes/EditQuote'
 import ShowQuote from '../routes/ShowQuote'
+import RandomQuote from '../routes/RandomQuote'
 import Login from '../routes/Login'
 import cachedQuotes from '../data/quotes.json'
 import './App.css'
@@ -104,6 +105,15 @@ export default class App extends Component {
                 allImages={this.state.allImages}
                 password={this.state.password}
                 phrase={this.state.phrase}
+              />
+            )} />
+            <Route path='/random-quote' render={() => (
+              <RandomQuote
+                language={this.state.language}
+                allQuotes={this.state.allQuotes}
+                phrase={this.state.phrase}
+                password={this.state.password}
+                setPhrase={this.setPhrase}
               />
             )} />
             <Route path='/' render={() => (
