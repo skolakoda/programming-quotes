@@ -6,7 +6,7 @@ import {API} from '../config/endpoints'
 import {LS} from '../config/localstorage'
 import Navigation from './header/Navigation'
 import Sidebar from './sidebar/Sidebar'
-import Home from '../routes/Home'
+import AllQuotes from '../routes/AllQuotes'
 import Author from '../routes/Author'
 import EditQuote from '../routes/EditQuote'
 import ShowQuote from '../routes/ShowQuote'
@@ -108,7 +108,7 @@ export default class App extends Component {
               />
             )} />
             <Route path='/all-quotes' render={() => (
-              <Home
+              <AllQuotes
                 language={this.state.language}
                 allQuotes={this.state.allQuotes}
                 phrase={this.state.phrase}

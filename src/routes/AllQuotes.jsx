@@ -2,7 +2,7 @@ import React from 'react'
 import translate from '../shared/translate'
 import Quotes from '../components/main/Quotes'
 
-const Home = ({ language, allQuotes, phrase, password }) => {
+const AllQuotes = ({ language, allQuotes, phrase, password }) => {
   const filtered = allQuotes
     .filter(quote => quote[language] && quote[language].toLowerCase().includes(phrase.toLowerCase()))
 
@@ -15,4 +15,4 @@ const Home = ({ language, allQuotes, phrase, password }) => {
   )
 }
 
-export default Home
+export default AllQuotes
