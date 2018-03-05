@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
-import AuthorImage from '../components/main/AuthorImage'
-import Quote from './../components/main/Quote'
+import ImageQuote from './../components/main/ImageQuote'
 import './ShowQuote.css'
 
 export default class ShowQuote extends Component {
@@ -11,10 +10,7 @@ export default class ShowQuote extends Component {
     if (!quote || !quote[language]) return null
 
     return (
-      <main className="quote-box">
-        <AuthorImage author={quote.autor} allImages={this.props.allImages} />
-        <Quote id={id} language={language} quotes={allQuotes} password={password} cssClass="big-quote" />
-      </main>
+      <ImageQuote quote={quote} allImages={this.props.allImages} language={language} password={password} cssClass="big-quote" />
     )
   }
 }

@@ -10,9 +10,8 @@ const Navigation = ({language, setLang, password}) => {
       <Github repoUrl="https://github.com/skolakoda/programerski-citati" />
       <nav>
         <Link to="/">{translate('HOME')}</Link>
-
-        {password && <Link to="/add-quote">{translate('ADD_QUOTE')}</Link>}
-
+        <Link to="/all-quotes">{translate('ALL_QUOTES')}</Link>
+        {password && <Link to="/add-quote">{translate('ADD')}</Link>}
         <Link to="/login">{translate(password ? 'LOGOUT' : 'LOGIN')}</Link>
         <div>
           <button

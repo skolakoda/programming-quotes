@@ -11,8 +11,14 @@
 .big-quote .quote-text {
   margin-top: 0.83em;
   margin-bottom: 0.83em;
-  font-size: 1.5em;
+  font-size: 1.2em;
   font-weight: bold;
+}
+
+@media (min-width: 800px) {
+  .big-quote .quote-text {
+    font-size: 1.5em;
+  }
 }
 
 .big-quote .quote-author {
