@@ -8,15 +8,15 @@ export default class RandomQuote extends Component {
   }
 
   componentDidMount() {
-    this.getRandom(this.props)
+    this.getRandom()
   }
 
   componentWillReceiveProps(nextProps) {
-    this.getRandom(nextProps)
+    this.getRandom()
   }
 
-  getRandom(props) {
-    const allQuotes = props.allQuotes
+  getRandom = () => {
+    const allQuotes = this.props.allQuotes
     this.setState({ quote: allQuotes[Math.floor(Math.random() * allQuotes.length)] })
   }
 
@@ -28,6 +28,7 @@ export default class RandomQuote extends Component {
       <main>
         <h1>Quote of the day</h1>
         <ImageQuote quote={this.state.quote} allImages={this.props.allImages} language={language} password={password} cssClass="big-quote" />
+        <button onClick={this.getRandom}>Gimme more!</button>
       </main>
     )
   }
