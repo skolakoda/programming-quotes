@@ -111,9 +111,8 @@ export default class App extends Component {
               <RandomQuote
                 language={this.state.language}
                 allQuotes={this.state.allQuotes}
-                phrase={this.state.phrase}
+                allImages={this.state.allImages}
                 password={this.state.password}
-                setPhrase={this.setPhrase}
               />
             )} />
             <Route path='/' render={() => (

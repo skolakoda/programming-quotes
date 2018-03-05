@@ -24,7 +24,7 @@ export default class Quotes extends Component {
     const preparedQuotes = currentQuotes
       .filter((q, i) => i >= startPosition && i < startPosition + quotesPerPage)
       .map(q =>
-        <Quote key={q._id} language={language} quote={q} id={q._id} password={password} />
+        <Quote key={q._id} language={language} quote={q} password={password} />
       )
     const pagination = []
     const totalPages = Math.ceil(currentQuotes.length / quotesPerPage)

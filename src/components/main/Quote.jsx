@@ -36,26 +36,20 @@ export default class Quote extends Component {
     window.location.reload() // TODO: remove quote from allQuotes
   }
 
-  /**
-  alternative props: quote{} or quotes[]
-  */
   render() {
-    const { id, language, quotes, password, cssClass } = this.props
-    const quote = this.props.quote || quotes.find(q => q._id === id)
+    const { quote, language, password, cssClass } = this.props
     const author = quote.autor
-
-    const quoteLink = `/quote/${id}`
-    const editLink = `/edit-quote/${id}`
+    const id = quote._id
     const authorLink = `/author/${author.replace(/ /g, '_')}`
     const deleteStyle = `pointer ${this.state.shouldDelete ? 'red' : ''}`
 
     return (
       <blockquote className={cssClass || 'small-quote'}>
         <p className="quote-text">
-          <Link to={quoteLink} className="no-link">{quote[language]}</Link>&nbsp;
+          <Link to={`/quote/${id}`} className="no-link">{quote[language]}</Link>&nbsp;
           { password &&
             <span className="admin-actions">
-              <Link to={editLink}><span className="edit-icon">&#9998;</span></Link>&nbsp;
+              <Link to={`/edit-quote/${id}`}><span className="edit-icon">&#9998;</span></Link>&nbsp;
               <span onClick={this.tryDelete} className={deleteStyle}>&#10005;</span>
             </span>
           }

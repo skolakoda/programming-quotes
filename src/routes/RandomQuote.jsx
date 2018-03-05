@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Quote from './../components/main/Quote'
+import SingleQuote from './../components/main/SingleQuote'
 
 export default class RandomQuote extends Component {
   constructor() {
@@ -19,7 +19,7 @@ export default class RandomQuote extends Component {
     return (
       <main>
         <h1>Quote of the day</h1>
-        <Quote language={language} quote={this.state.quote} id={this.state.quote._id} password={password} cssClass="big-quote" />
+        <SingleQuote quote={this.state.quote} allImages={this.props.allImages} language={language} password={password} cssClass="big-quote" />
       </main>
     )
   }
