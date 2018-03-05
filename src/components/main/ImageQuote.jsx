@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import AuthorImage from './AuthorImage'
 import Quote from './Quote'
 
-export default class SingleQuote extends Component {
+export default class ImageQuote extends Component {
   render() {
     const { quote, language, allImages, password } = this.props
 

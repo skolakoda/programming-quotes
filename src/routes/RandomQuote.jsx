@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import SingleQuote from './../components/main/SingleQuote'
+import ImageQuote from './../components/main/ImageQuote'
 
 export default class RandomQuote extends Component {
   constructor() {
@@ -7,8 +7,16 @@ export default class RandomQuote extends Component {
     this.state = {quote: null}
   }
 
+  componentDidMount() {
+    this.getRandom(this.props)
+  }
+
   componentWillReceiveProps(nextProps) {
-    const allQuotes = nextProps.allQuotes
+    this.getRandom(nextProps)
+  }
+
+  getRandom(props) {
+    const allQuotes = props.allQuotes
     this.setState({ quote: allQuotes[Math.floor(Math.random() * allQuotes.length)] })
   }
 
@@ -19,7 +27,7 @@ export default class RandomQuote extends Component {
     return (
       <main>
         <h1>Quote of the day</h1>
-        <SingleQuote quote={this.state.quote} allImages={this.props.allImages} language={language} password={password} cssClass="big-quote" />
+        <ImageQuote quote={this.state.quote} allImages={this.props.allImages} language={language} password={password} cssClass="big-quote" />
       </main>
     )
   }

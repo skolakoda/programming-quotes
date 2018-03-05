@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import SingleQuote from './../components/main/SingleQuote'
+import ImageQuote from './../components/main/ImageQuote'
 import './ShowQuote.css'
 
 export default class ShowQuote extends Component {
@@ -10,7 +10,7 @@ export default class ShowQuote extends Component {
     if (!quote || !quote[language]) return null
 
     return (
-      <SingleQuote quote={quote} allImages={this.props.allImages} language={language} password={password} cssClass="big-quote" />
+      <ImageQuote quote={quote} allImages={this.props.allImages} language={language} password={password} cssClass="big-quote" />
     )
   }
 }
