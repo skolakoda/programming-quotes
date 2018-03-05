@@ -107,21 +107,21 @@ export default class App extends Component {
                 phrase={this.state.phrase}
               />
             )} />
-            <Route path='/random-quote' render={() => (
-              <RandomQuote
-                language={this.state.language}
-                allQuotes={this.state.allQuotes}
-                allImages={this.state.allImages}
-                password={this.state.password}
-              />
-            )} />
-            <Route path='/' render={() => (
+            <Route path='/all-quotes' render={() => (
               <Home
                 language={this.state.language}
                 allQuotes={this.state.allQuotes}
                 phrase={this.state.phrase}
                 password={this.state.password}
                 setPhrase={this.setPhrase}
+              />
+            )} />
+            <Route path='/' render={() => (
+              <RandomQuote
+                language={this.state.language}
+                allQuotes={this.state.allQuotes}
+                allImages={this.state.allImages}
+                password={this.state.password}
               />
             )} />
           </Switch>

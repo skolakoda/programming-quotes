@@ -16,7 +16,7 @@ export default class RandomQuote extends Component {
   }
 
   getRandom = () => {
-    const allQuotes = this.props.allQuotes
+    const allQuotes = this.props.allQuotes.filter(q => q[this.props.language])
     this.setState({ quote: allQuotes[Math.floor(Math.random() * allQuotes.length)] })
   }
 
