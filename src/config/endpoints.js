@@ -1,7 +1,11 @@
+const domain = (process.env.NODE_ENV === 'development')
+  ? 'http://localhost:5000'
+  : 'https://baza-podataka.herokuapp.com'
+
 export const API = {
-  create: 'https://baza-podataka.herokuapp.com/dodaj-citat/',
-  read: 'https://baza-podataka.herokuapp.com/citati/',
-  update: 'https://baza-podataka.herokuapp.com/azuriraj-citat/',
-  delete: 'https://baza-podataka.herokuapp.com/obrisi-citat/',
-  rate: 'https://baza-podataka.herokuapp.com/oceni-citat/'
+  create: `${domain}/dodaj-citat/`,
+  read: `${domain}/citati/`,
+  update: `${domain}/azuriraj-citat/`,
+  delete: `${domain}/obrisi-citat/`,
+  rate: `${domain}/oceni-citat/`
 }
