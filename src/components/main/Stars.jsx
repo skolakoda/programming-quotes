@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import ReactStars from 'react-stars'
-import {API} from '../../config/endpoints'
+import {API} from '../../config/api'
 import {LS} from '../../config/localstorage'
 import translate from '../../shared/translate'
 import './Stars.css'

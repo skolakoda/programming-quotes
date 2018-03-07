@@ -1,4 +1,4 @@
-const domain = (process.env.NODE_ENV === 'development')
+const domain = (process.env.REACT_APP_NODE_ENV === 'local')
   ? 'http://localhost:5000'
   : 'https://baza-podataka.herokuapp.com'
 

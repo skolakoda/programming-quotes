@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import { Switch, Route } from 'react-router-dom'
 import translate from '../shared/translate'
 import {getallImages} from '../shared/helpers'
-import {API} from '../config/endpoints'
+import {API} from '../config/api'
 import {LS} from '../config/localstorage'
 import Navigation from './header/Navigation'
 import Sidebar from './sidebar/Sidebar'
@@ -14,8 +14,6 @@ import RandomQuote from '../routes/RandomQuote'
 import Login from '../routes/Login'
 import cachedQuotes from '../data/quotes.json'
 import './App.css'
-
-const apiLimit = 50
 
 export default class App extends Component {
   constructor() {
@@ -49,9 +47,10 @@ export default class App extends Component {
   }
 
   getAuthorThumbs(allAuthors) {
+    const wikiApiLimit = 50
     const promises = []
-    for (let i = 0; i < [...allAuthors].length; i += apiLimit)
-      promises.push(getallImages([...allAuthors].slice(i, i + apiLimit)))
+    for (let i = 0; i < [...allAuthors].length; i += wikiApiLimit)
+      promises.push(getallImages([...allAuthors].slice(i, i + wikiApiLimit)))
     Promise.all(promises).then(data =>
       this.setState({ allImages: data.reduce((a, b) => new Map([...a, ...b])) })
     )

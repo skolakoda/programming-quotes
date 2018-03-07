@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 import translate from '../shared/translate'
 import MessagePopup from '../components/main/MessagePopup'
-import {API} from '../config/endpoints'
+import {API} from '../config/api'
 import './EditQuote'
 
 class EditQuote extends Component {
