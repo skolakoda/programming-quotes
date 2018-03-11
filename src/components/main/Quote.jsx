@@ -41,7 +41,7 @@ export default class Quote extends Component {
     const author = quote.author
     const id = quote._id
     const authorLink = `/author/${author.replace(/ /g, '_')}`
-    const deleteStyle = `pointer ${this.state.shouldDelete ? 'red' : ''}`
+    const deleteCss = `pointer ${this.state.shouldDelete ? 'red' : ''}`
 
     return (
       <blockquote className={cssClass || 'small-quote'}>
@@ -50,7 +50,7 @@ export default class Quote extends Component {
           { password &&
             <span className="admin-actions">
               <Link to={`/edit-quote/${id}`}><span className="edit-icon">&#9998;</span></Link>&nbsp;
-              <span onClick={this.tryDelete} className={deleteStyle}>&#10005;</span>
+              <span onClick={this.tryDelete} className={deleteCss}>&#10005;</span>
             </span>
           }
         </p>
