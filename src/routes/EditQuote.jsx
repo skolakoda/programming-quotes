@@ -17,12 +17,12 @@ class EditQuote extends Component {
   postQuote = e => {
     e.preventDefault()
     const fields = e.target.elements
-    const autor = fields.author.value.trim(),
+    const author = fields.author.value.trim(),
       en = fields.en.value.trim(),
       sr = fields.sr.value.trim(),
-      izvor = fields.izvor.value.trim(),
+      source = fields.source.value.trim(),
       _id = fields._id.value.trim()
-    const condition = autor && (sr || en)
+    const condition = author && (sr || en)
     if (!condition) return this.setState({ warning: translate('REQUIRED_FIELDS') })
 
     ;[...fields].map(field => field.value = '')
@@ -31,7 +31,7 @@ class EditQuote extends Component {
     fetch(endpoint, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ autor, sr, en, izvor, _id, password: this.props.password })
+      body: JSON.stringify({ author, sr, en, source, _id, password: this.props.password })
     })
       .then(res => res.text())
       .catch(e => this.setState({ response: translate('ERROR_POPUP') }))
@@ -59,7 +59,7 @@ class EditQuote extends Component {
           <input type="hidden" name="_id" defaultValue={quote && quote._id} />
           <p>
             <label htmlFor="author" >{translate('AUTHOR')} <small>({translate('AUTHOR_TIP')})</small> </label><br/>
-            <input name="author" defaultValue={quote && quote.autor} autoFocus />
+            <input name="author" defaultValue={quote && quote.author} autoFocus />
           </p>
           <p>
             <label htmlFor="en" >{translate('QUOTE_ENGLISH')}</label><br />
@@ -71,7 +71,7 @@ class EditQuote extends Component {
           </p>
           <p>
             <label>{translate('SOURCE')} <small>({translate('OPTIONAL')})</small>: </label><br/>
-            <input name='izvor' defaultValue={quote && quote.izvor} />
+            <input name='source' defaultValue={quote && quote.source} />
           </p>
           <p>
             <small>* {translate('REQUIRED_FIELDS')}</small>

@@ -8,7 +8,7 @@ export default class Author extends Component {
     const author = this.props.match.params.name.replace(/_/g, ' ')
     const { language, allQuotes, password, phrase } = this.props
     const filtered = allQuotes
-      .filter(q => q.autor === author)
+      .filter(q => q.author === author)
       .filter(quote => quote[language] && quote[language].toLowerCase().includes(phrase.toLowerCase()))
 
     return (

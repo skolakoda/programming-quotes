@@ -44,7 +44,7 @@ export default class App extends Component {
   }
 
   initState = allQuotes => {
-    const allAuthors = new Set(allQuotes.map(quote => quote.autor).sort())
+    const allAuthors = new Set(allQuotes.map(quote => quote.author).sort())
     this.setState(() => ({allQuotes, allAuthors}))
     this.getAuthorThumbs(allAuthors)
   }

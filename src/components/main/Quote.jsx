@@ -38,7 +38,7 @@ export default class Quote extends Component {
 
   render() {
     const { quote, language, password, cssClass } = this.props
-    const author = quote.autor
+    const author = quote.author
     const id = quote._id
     const authorLink = `/author/${author.replace(/ /g, '_')}`
     const deleteStyle = `pointer ${this.state.shouldDelete ? 'red' : ''}`
@@ -54,7 +54,7 @@ export default class Quote extends Component {
             </span>
           }
         </p>
-        <Stars rating={quote.ocena} id={id} />
+        <Stars rating={quote.rating} id={id} />
         <span className="quote-author"> — <Link to={authorLink}>{author}</Link></span>
 
         {this.state.response && <MessagePopup message={this.state.response} closePopup={this.closePopup} />}

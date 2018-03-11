@@ -26,7 +26,7 @@ class Stars extends Component {
 
     fetch(API.rate, {
       method: 'POST',
-      body: JSON.stringify({_id: this.props.id, novaOcena: newRating}),
+      body: JSON.stringify({_id: this.props.id, newRating}),
       headers: {'content-type': 'application/json'}
     })
       .then(response => response.json())

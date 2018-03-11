@@ -25,6 +25,7 @@
     "QUOTE_DELETED": "The quote is deleted.",
     "SHOWING_RESULTS": "Showing results for search term",
     "LOGIN_REQUIRED": "You must be logged in",
+    "ARGUMENTS_ERROR": "You haven't send all required fields.",
     "CAN_VOTE_ONCE": "You can vote just once!",
     "NETWORK_PROBLEM": "Problem with network, please try again later."
   },
@@ -36,7 +37,7 @@
     "RANDOM_QUOTE": "Random citat",
     "ALL_QUOTES": "Svi citati",
     "SEARCH_QUOTES": "Pretraži citate",
-    "SEARCH_AUTHORS": "Pretraži autore",
+    "SEARCH_AUTHORS": "Pretraži authore",
     "AUTHOR": "Autor",
     "AUTHOR_TIP": "ime sa en.wikipedije",
     "QUOTE_ENGLISH": "Citat na engleskom",
@@ -45,7 +46,7 @@
     "OPTIONAL": "opciono",
     "POST": "Pošalji",
     "ERROR_POPUP": "Doslo je do greške prolikom slanja, molimo pokušajte ponovo",
-    "REQUIRED_FIELDS": "Obavezni su autor i citat na bar jednom jeziku.",
+    "REQUIRED_FIELDS": "Obavezni su author i citat na bar jednom jeziku.",
     "SUCCESS_SAVED": "Hvala, citat je uspešno sačuvan.",
     "ADD_QUOTE": "Dodaj citat",
     "DAILY_QUOTE": "Dnevni citat",
@@ -54,6 +55,7 @@
     "QUOTE_DELETED": "Citat je obrisan.",
     "SHOWING_RESULTS": "Prikazuje rezultate za pojam",
     "LOGIN_REQUIRED": "Moraš biti prijavljen",
+    "ARGUMENTS_ERROR": "Niste poslali obavezna polja.",
     "CAN_VOTE_ONCE": "Možeš glasati samo jednom!",
     "NETWORK_PROBLEM": "Problem sa mrežom, pokušajte ponovo kasnije."
   }
