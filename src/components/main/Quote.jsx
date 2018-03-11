@@ -25,7 +25,7 @@ export default class Quote extends Component {
     fetch(API.delete, {
       method: 'delete',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({_id: this.props.id, password: this.props.password})
+      body: JSON.stringify({_id: this.props.quote._id, password: this.props.password})
     })
       .then(response => response.text())
       .then(response => this.setState({response: translate(response)}))

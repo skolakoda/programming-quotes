@@ -3,9 +3,9 @@ const domain = (process.env.REACT_APP_NODE_ENV === 'local')
   : 'https://baza-podataka.herokuapp.com'
 
 export const API = {
-  create: `${domain}/dodaj-citat/`,
-  read: `${domain}/citati/`,
-  update: `${domain}/azuriraj-citat/`,
-  delete: `${domain}/obrisi-citat/`,
-  rate: `${domain}/oceni-citat/`
+  create: `${domain}/quotes/create/`,
+  read: `${domain}/quotes/`,
+  update: `${domain}/quotes/update/`,
+  delete: `${domain}/quotes/delete/`,
+  rate: `${domain}/quotes/rate/`
 }
