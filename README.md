@@ -15,9 +15,9 @@ Backend API repo is [here](https://github.com/skolakoda/baza-podataka).
 
 Prerequisites: you should have Node.js and git installed.
 
-### Pokretanje
+### Start
 
-Klonirete projekat, uđete u njega i pokrenete sledeće komande:
+Clone repo, then:
 
 ```
 npm install
