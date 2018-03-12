@@ -51,6 +51,4 @@ Kodni standard na projektu je varijacija [*JavaScript Standard Style*](https://s
 - polunavodnici za strune
 - `===` umesto `==` za poređenje
 
-Da biste imali uživo upozorenja, potrebno je instalirati ESLint dodatak za editor koji koristite.
-
 Ovde možete preuzeti [ESLint config file](https://github.com/skolakoda/kodni-standard/blob/master/.eslintrc).
