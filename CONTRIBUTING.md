@@ -1,5 +1,5 @@
 # Contribution
-#### How to contribute to Programming Quotes
+#### How to contribute to Programming Quotes App
 
 1. Make sure you have a GitHub account.
 2. Fork the repository on GitHub.
