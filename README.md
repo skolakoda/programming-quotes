@@ -10,7 +10,7 @@
 
 Visit: [skolakoda.org/programerski-citati](https://skolakoda.org/programerski-citati/)
 
-Backend API repo is [here](https://github.com/skolakoda/baza-podataka).
+Backend API is [here](https://github.com/skolakoda/baza-podataka).
 
 ## Development
 
