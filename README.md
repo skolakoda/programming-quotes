@@ -9,7 +9,7 @@
 
 See it in action: na [skolakoda.org/programerski-citati](https://skolakoda.org/programerski-citati/)
 
-Backend API repo is [here](https://github.com/skolakoda/baza-podataka).
+Backend API git repo is [here](https://github.com/skolakoda/baza-podataka).
 
 ## Development
 
