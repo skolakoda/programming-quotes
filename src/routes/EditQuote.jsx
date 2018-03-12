@@ -34,7 +34,7 @@ class EditQuote extends Component {
       body: JSON.stringify({ author, sr, en, source, _id, password: this.props.password })
     })
       .then(res => res.text())
-      .catch(e => this.setState({ response: translate('ERROR_POPUP') }))
+      .catch(e => this.setState({ response: translate('POST_ERROR') }))
       .then(res => this.setState({ warning: '', response: translate(res) }))
   }
 

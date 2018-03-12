@@ -15,7 +15,7 @@
     "SOURCE": "Source",
     "OPTIONAL": "optional",
     "POST": "Post",
-    "ERROR_POPUP": "There was error while saving, please try again",
+    "POST_ERROR": "There was error while saving, please try again",
     "REQUIRED_FIELDS": "Author and at least one language is required.",
     "SUCCESS_SAVED": "Thanks, the quote has been successfully saved.",
     "ADD_QUOTE": "Add quote",
@@ -25,6 +25,7 @@
     "QUOTE_DELETED": "The quote is deleted.",
     "SHOWING_RESULTS": "Showing results for search term",
     "LOGIN_REQUIRED": "You must be logged in",
+    "ALREADY_EXISTS": "The quote already exists",
     "ARGUMENTS_ERROR": "You haven't send all required fields.",
     "CAN_VOTE_ONCE": "You can vote just once!",
     "NETWORK_PROBLEM": "Problem with network, please try again later."
@@ -45,7 +46,7 @@
     "SOURCE": "Izvor",
     "OPTIONAL": "opciono",
     "POST": "Pošalji",
-    "ERROR_POPUP": "Doslo je do greške prolikom slanja, molimo pokušajte ponovo",
+    "POST_ERROR": "Doslo je do greške prolikom slanja, molimo pokušajte ponovo",
     "REQUIRED_FIELDS": "Obavezni su author i citat na bar jednom jeziku.",
     "SUCCESS_SAVED": "Hvala, citat je uspešno sačuvan.",
     "ADD_QUOTE": "Dodaj citat",
@@ -55,6 +56,7 @@
     "QUOTE_DELETED": "Citat je obrisan.",
     "SHOWING_RESULTS": "Prikazuje rezultate za pojam",
     "LOGIN_REQUIRED": "Moraš biti prijavljen",
+    "ALREADY_EXISTS": "Citat već postoji.",
     "ARGUMENTS_ERROR": "Niste poslali obavezna polja.",
     "CAN_VOTE_ONCE": "Možeš glasati samo jednom!",
     "NETWORK_PROBLEM": "Problem sa mrežom, pokušajte ponovo kasnije."
