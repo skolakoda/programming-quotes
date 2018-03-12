@@ -31,7 +31,7 @@ npm start
 npm run deploy
 ```
 
-See deploy React on GitHub Pages [docs](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#github-pages).
+See CRA deploy on GitHub Pages [docs](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#github-pages).
 
 ## Kako se uključiti?
 
