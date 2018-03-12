@@ -36,12 +36,15 @@ export default class App extends Component {
     const http = new XMLHttpRequest()
     http.open('GET', url)
     http.send()
-    http.onload = () => this.initState(JSON.parse(http.responseText))
+    http.onload = () => {
+      const dbQuotes = JSON.parse(http.responseText)
+      this.initState(dbQuotes.length ? dbQuotes : cachedQuotes)
+    }
     http.onerror = () => this.initState(cachedQuotes)
   }
 
   initState = allQuotes => {
-    const allAuthors = new Set(allQuotes.map(quote => quote.autor).sort())
+    const allAuthors = new Set(allQuotes.map(quote => quote.author).sort())
     this.setState(() => ({allQuotes, allAuthors}))
     this.getAuthorThumbs(allAuthors)
   }

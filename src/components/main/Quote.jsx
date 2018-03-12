@@ -25,7 +25,7 @@ export default class Quote extends Component {
     fetch(API.delete, {
       method: 'delete',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({_id: this.props.id, password: this.props.password})
+      body: JSON.stringify({_id: this.props.quote._id, password: this.props.password})
     })
       .then(response => response.text())
       .then(response => this.setState({response: translate(response)}))
@@ -38,10 +38,10 @@ export default class Quote extends Component {
 
   render() {
     const { quote, language, password, cssClass } = this.props
-    const author = quote.autor
+    const author = quote.author
     const id = quote._id
     const authorLink = `/author/${author.replace(/ /g, '_')}`
-    const deleteStyle = `pointer ${this.state.shouldDelete ? 'red' : ''}`
+    const deleteCss = `pointer ${this.state.shouldDelete ? 'red' : ''}`
 
     return (
       <blockquote className={cssClass || 'small-quote'}>
@@ -50,11 +50,11 @@ export default class Quote extends Component {
           { password &&
             <span className="admin-actions">
               <Link to={`/edit-quote/${id}`}><span className="edit-icon">&#9998;</span></Link>&nbsp;
-              <span onClick={this.tryDelete} className={deleteStyle}>&#10005;</span>
+              <span onClick={this.tryDelete} className={deleteCss}>&#10005;</span>
             </span>
           }
         </p>
-        <Stars rating={quote.ocena} id={id} />
+        <Stars rating={quote.rating} id={id} />
         <span className="quote-author"> — <Link to={authorLink}>{author}</Link></span>
 
         {this.state.response && <MessagePopup message={this.state.response} closePopup={this.closePopup} />}

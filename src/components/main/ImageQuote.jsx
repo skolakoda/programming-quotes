@@ -8,7 +8,7 @@ export default class ImageQuote extends Component {
 
     return (
       <div className="quote-box">
-        <AuthorImage author={quote.autor} allImages={allImages} />
+        <AuthorImage author={quote.author} allImages={allImages} />
         <Quote language={language} quote={quote} password={password} cssClass="big-quote" />
       </div>
     )
