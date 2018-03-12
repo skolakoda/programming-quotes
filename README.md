@@ -5,7 +5,7 @@
 
 # Programming Quotes
 
-**Programming Quotes, the open source application and the database. Technologies: React, Node.js and MongoDB.**
+**Programming Quotes, open source application and database. Technologies: React, Node.js and MongoDB.**
 
 See it in action: na [skolakoda.org/programerski-citati](https://skolakoda.org/programerski-citati/)
 
