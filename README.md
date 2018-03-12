@@ -42,9 +42,9 @@ Ako želiš da se uključiš, ali ne znaš kako, pročitaj uputstvo: [Kako dopri
 
 [Ovde](https://trello.com/b/fBcFTxgo/programerski-citati) možeš videti šta je sve potrebno uraditi. Upoznaj se dobro sa projektom i konvencijama pre nego počneš doprinositi. Imamo politiku nulte tolerancije prema tehničkom dugu.
 
-## Kodni standard
+## Style Guide
 
-Kodni standard na projektu je [*JavaScript Standard Style*](https://standardjs.com/), čije su glavne značaljke:
+Kodni standard na projektu je varijacija [*JavaScript Standard Style*](https://standardjs.com/), čije su glavne značaljke:
 
 - bez tački-zareza
 - 2 razmaka za poravnanje
@@ -52,3 +52,5 @@ Kodni standard na projektu je [*JavaScript Standard Style*](https://standardjs.c
 - `===` umesto `==` za poređenje
 
 Da biste imali uživo upozorenja, potrebno je instalirati ESLint dodatak za editor koji koristite.
+
+Ovde možete preuzeti [ESLint config file](https://github.com/skolakoda/kodni-standard/blob/master/.eslintrc).
