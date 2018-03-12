@@ -34,7 +34,9 @@ npm run deploy
 
 See CRA deploy on GitHub Pages [docs](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#github-pages).
 
-## Kako se uključiti?
+## How to contribute
+
+See: [Contributing](CONTRIBUTING.md)
 
 Ako želiš da se uključiš, ali ne znaš kako, pročitaj uputstvo: [Kako doprinositi projektima?](http://skolakoda.org/kako-doprinositi/)
 
