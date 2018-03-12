@@ -3,17 +3,17 @@
 
 [![](screen.png)](https://skolakoda.org/programerski-citati/)
 
-# Programerski citati
+# Programming Quotes
 
-**Programerski citati, aplikacija otvorenog koda koju zajedno razvijamo. Tehnologije: React, Node.js i MongoDB.**
+**Programming Quotes, open source application and database. Technologies: React, Node.js and MongoDB.**
 
-Vidi kako radi: na [skolakoda.org/programerski-citati](https://skolakoda.org/programerski-citati/)
+See it in action: na [skolakoda.org/programerski-citati](https://skolakoda.org/programerski-citati/)
 
-Bekend API sa bazom podataka se nalazi [ovde](https://github.com/skolakoda/baza-podataka).
+Backend API repo is [here](https://github.com/skolakoda/baza-podataka).
 
-## Razvoj
+## Development
 
-Preduslovi su da imaš instaliran node.js i git.
+Prerequisites: you should have Node.js and git installed.
 
 ### Pokretanje
 
