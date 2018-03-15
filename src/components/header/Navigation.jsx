@@ -7,7 +7,7 @@ import './Navigation.css'
 const Navigation = ({language, setLang, password}) => {
   return (
     <header>
-      <Github repoUrl="https://github.com/skolakoda/programerski-citati" />
+      <Github repoUrl="https://github.com/skolakoda/programming-quotes" />
       <nav>
         <Link to="/">Random</Link>
         <Link to="/all-quotes">{translate('ALL_QUOTES')}</Link>
