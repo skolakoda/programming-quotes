@@ -1,9 +1,11 @@
 import React from 'react'
 import translate from '../shared/translate'
 import {LS} from '../config/localstorage'
+import {domain} from '../config/api'
 
 const Login = ({ setPassword }) => {
   const password = localStorage.getItem(LS.password)
+  const googleAuthLink = `${domain}/auth/google`
 
   const login = e => {
     e.preventDefault()
@@ -11,13 +13,13 @@ const Login = ({ setPassword }) => {
     setPassword(password)
   }
 
-  const logout = e => {
-    setPassword('')
-  }
+  const logout = e => setPassword('')
 
   return (
     <main>
       <h1>{translate(!password ? 'LOGIN' : 'LOGOUT')}</h1>
+      {/* TODO: dodati config logiku za host */}
+      <a href={googleAuthLink}>Google login</a>
       { !password ?
         <form onSubmit={login}>
           <p>Admin password:</p>
