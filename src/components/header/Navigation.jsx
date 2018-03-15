@@ -9,7 +9,7 @@ const Navigation = ({language, setLang, password}) => {
     <header>
       <Github repoUrl="https://github.com/skolakoda/programming-quotes" />
       <nav>
-        <Link to="/">Random</Link>
+        <Link to="/" replace={true}>Random</Link>
         <Link to="/all-quotes">{translate('ALL_QUOTES')}</Link>
         {password && <Link to="/add-quote">{translate('ADD_QUOTE')}</Link>}
         <Link to="/login">{translate(password ? 'LOGOUT' : 'LOGIN')}</Link>

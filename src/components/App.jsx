@@ -12,6 +12,7 @@ import EditQuote from '../routes/EditQuote'
 import ShowQuote from '../routes/ShowQuote'
 import RandomQuote from '../routes/RandomQuote'
 import Login from '../routes/Login'
+import Auth from '../routes/Auth'
 import cachedQuotes from '../data/quotes.json'
 import './App.css'
 
@@ -99,6 +100,10 @@ export default class App extends Component {
             )} />
             <Route path='/login' component={() => (
               <Login setPassword={this.setPassword} />
+            )} />
+            <Route path='/auth/:servis/:token' render={props => (
+              <Auth {...props}
+              />
             )} />
             <Route path='/author/:name' render={props => (
               <Author {...props}

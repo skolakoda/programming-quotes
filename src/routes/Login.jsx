@@ -18,7 +18,6 @@ const Login = ({ setPassword }) => {
   return (
     <main>
       <h1>{translate(!password ? 'LOGIN' : 'LOGOUT')}</h1>
-      {/* TODO: dodati config logiku za host */}
       <a href={googleAuthLink}>Google login</a>
       { !password ?
         <form onSubmit={login}>
