@@ -8,7 +8,7 @@
 
 **Programming Quotes, open source application and database. Technologies: React, Node.js and MongoDB.**
 
-Visit: [skolakoda.org/programerski-citati](https://skolakoda.org/programerski-citati/)
+Visit: [skolakoda.org/programming-quotes](https://skolakoda.org/programming-quotes/)
 
 Backend API is [here](https://github.com/skolakoda/baza-podataka).
 
