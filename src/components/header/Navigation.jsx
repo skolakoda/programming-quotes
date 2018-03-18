@@ -11,7 +11,10 @@ const Navigation = ({language, setLang, token}) => (
       <Link to="/" replace={true}>Random</Link>
       <Link to="/all-quotes">{translate('ALL_QUOTES')}</Link>
       {token && <Link to="/add-quote">{translate('ADD_QUOTE')}</Link>}
-      <Link to="/login">{translate(token ? 'PROFILE' : 'LOGIN')}</Link>
+      {token
+        ? <Link to="/profile">{translate('PROFILE')}</Link>
+        : <Link to="/login">{translate('LOGIN')}</Link>
+      }
       <div>
         <button
           onClick={() => setLang('en')}

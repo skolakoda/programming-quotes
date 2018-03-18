@@ -12,6 +12,7 @@ import EditQuote from '../routes/EditQuote'
 import ShowQuote from '../routes/ShowQuote'
 import RandomQuote from '../routes/RandomQuote'
 import Login from '../routes/Login'
+import Profile from '../routes/Profile'
 import Auth from '../routes/Auth'
 import cachedQuotes from '../data/quotes.json'
 import './App.css'
@@ -65,7 +66,7 @@ export default class App extends Component {
     this.setState({phrase})
   }
 
-  setUser = (token, admin) => {
+  setUser = (token, admin = false) => {
     this.setState({token, admin})
   }
 
@@ -99,7 +100,10 @@ export default class App extends Component {
                 token={this.state.token} />
             )} />
             <Route path='/login' component={() => (
-              <Login setUser={this.setUser} />
+              <Login/>
+            )} />
+            <Route path='/profile' component={() => (
+              <Profile setUser={this.setUser} />
             )} />
             <Route path='/auth/:service/:token' render={props => (
               <Auth {...props} setUser={this.setUser} />
