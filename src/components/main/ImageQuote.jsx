@@ -4,12 +4,12 @@ import Quote from './Quote'
 
 export default class ImageQuote extends Component {
   render() {
-    const { quote, language, allImages, password } = this.props
+    const { quote, language, allImages, token } = this.props
 
     return (
       <div className="quote-box">
         <AuthorImage author={quote.author} allImages={allImages} />
-        <Quote language={language} quote={quote} password={password} cssClass="big-quote" />
+        <Quote language={language} quote={quote} token={token} cssClass="big-quote" />
       </div>
     )
   }

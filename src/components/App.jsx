@@ -25,7 +25,8 @@ export default class App extends Component {
       allImages: new Map(),
       phrase: '',
       language: translate.currentLanguage,
-      password: localStorage.getItem(LS.password)
+      token: localStorage.getItem(LS.token),
+      admin: false
     }
   }
 
@@ -64,9 +65,8 @@ export default class App extends Component {
     this.setState({phrase})
   }
 
-  setPassword = password => {
-    this.setState({password})
-    localStorage.setItem(LS.password, password)
+  setUser = (token, admin) => {
+    this.setState({token, admin})
   }
 
   setLang = language => {
@@ -81,35 +81,35 @@ export default class App extends Component {
           <Navigation
             language={this.state.language}
             setLang={this.setLang}
-            password={this.state.password}
+            token={this.state.token}
           />
 
           <Switch>
             <Route path='/add-quote' component={props => (
-              <EditQuote {...props} password={this.state.password} />
+              <EditQuote {...props} token={this.state.token} />
             )} />
             <Route path='/edit-quote/:id' component={props => (
-              <EditQuote {...props} allQuotes={this.state.allQuotes} password={this.state.password} />
+              <EditQuote {...props} allQuotes={this.state.allQuotes} token={this.state.token} />
             )} />
             <Route path='/quote/:id' component={props => (
               <ShowQuote {...props}
                 language={this.state.language}
                 allQuotes={this.state.allQuotes}
                 allImages={this.state.allImages}
-                password={this.state.password} />
+                token={this.state.token} />
             )} />
             <Route path='/login' component={() => (
-              <Login setPassword={this.setPassword} />
+              <Login setUser={this.setUser} />
             )} />
-            <Route path='/auth/:servis/:token' render={props => (
-              <Auth {...props} />
+            <Route path='/auth/:service/:token' render={props => (
+              <Auth {...props} setUser={this.setUser} />
             )} />
             <Route path='/author/:name' render={props => (
               <Author {...props}
                 language={this.state.language}
                 allQuotes={this.state.allQuotes}
                 allImages={this.state.allImages}
-                password={this.state.password}
+                token={this.state.token}
                 phrase={this.state.phrase}
               />
             )} />
@@ -118,7 +118,7 @@ export default class App extends Component {
                 language={this.state.language}
                 allQuotes={this.state.allQuotes}
                 phrase={this.state.phrase}
-                password={this.state.password}
+                token={this.state.token}
                 setPhrase={this.setPhrase}
               />
             )} />
@@ -127,7 +127,7 @@ export default class App extends Component {
                 language={this.state.language}
                 allQuotes={this.state.allQuotes}
                 allImages={this.state.allImages}
-                password={this.state.password}
+                token={this.state.token}
               />
             )} />
           </Switch>

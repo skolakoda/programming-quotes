@@ -19,12 +19,12 @@ export default class Quotes extends Component {
   }
 
   render() {
-    const { language, loaded, currentQuotes, password } = this.props
+    const { language, loaded, currentQuotes, token } = this.props
     const startPosition = this.state.currentPage * quotesPerPage
     const preparedQuotes = currentQuotes
       .filter((q, i) => i >= startPosition && i < startPosition + quotesPerPage)
       .map(q =>
-        <Quote key={q._id} language={language} quote={q} password={password} />
+        <Quote key={q._id} language={language} quote={q} token={token} />
       )
     const pagination = []
     const totalPages = Math.ceil(currentQuotes.length / quotesPerPage)

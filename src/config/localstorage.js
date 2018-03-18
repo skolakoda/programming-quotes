@@ -1,4 +1,5 @@
 export const LS = {
-  password: 'programerskiCitatiPassword',
-  ratings: 'programerskicitatiocene'
+  service: 'programmingQuotesAuthService',
+  token: 'programmingQuotesToken', // jwt token
+  ratings: 'programmingQuotesVotes'
 }

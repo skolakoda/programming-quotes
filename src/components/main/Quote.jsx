@@ -25,7 +25,7 @@ export default class Quote extends Component {
     fetch(API.delete, {
       method: 'delete',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({_id: this.props.quote._id, password: this.props.password})
+      body: JSON.stringify({_id: this.props.quote._id, token: this.props.token})
     })
       .then(response => response.text())
       .then(response => this.setState({response: translate(response)}))
@@ -37,7 +37,7 @@ export default class Quote extends Component {
   }
 
   render() {
-    const { quote, language, password, cssClass } = this.props
+    const { quote, language, token, cssClass } = this.props
     const author = quote.author
     const id = quote._id
     const authorLink = `/author/${author.replace(/ /g, '_')}`
@@ -47,7 +47,7 @@ export default class Quote extends Component {
       <blockquote className={cssClass || 'small-quote'}>
         <p className="quote-text">
           <Link to={`/quote/${id}`} className="no-link">{quote[language]}</Link>&nbsp;
-          { password &&
+          { token &&
             <span className="admin-actions">
               <Link to={`/edit-quote/${id}`}><span className="edit-icon">&#9998;</span></Link>&nbsp;
               <span onClick={this.tryDelete} className={deleteCss}>&#10005;</span>
