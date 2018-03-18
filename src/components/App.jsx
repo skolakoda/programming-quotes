@@ -102,8 +102,7 @@ export default class App extends Component {
               <Login setPassword={this.setPassword} />
             )} />
             <Route path='/auth/:servis/:token' render={props => (
-              <Auth {...props}
-              />
+              <Auth {...props} />
             )} />
             <Route path='/author/:name' render={props => (
               <Author {...props}

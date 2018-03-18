@@ -9,7 +9,7 @@ const Auth = (props) => {
 
   return (
     <main>
-      <h1>Uspešno ste ulogovani preko {servis} naloga</h1>
+      <h1>Ulogovani ste preko {servis} naloga</h1>
       <p>Token je {token}</p>
       <a href={googleAuthLink}>Proveri token</a>
     </main>
