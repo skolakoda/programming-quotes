@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
-import {Link} from 'react-router-dom'
 import {LS} from '../config/localstorage'
 import {domain} from '../config/api'
+import translate from '../shared/translate'
 
 class Auth extends Component {
   componentDidMount() {
@@ -14,12 +14,10 @@ class Auth extends Component {
   }
 
   render() {
-    const {service} = this.props.match.params
     return (
       <main>
         <h1>Auth</h1>
-        <p>Uspešno ste ulogovani ste preko {service} naloga</p>
-        <Link to="/">Goto homepage</Link>
+        <p>{translate('SUCCESSFULLY_LOGIN')}</p>
       </main>
     )
   }

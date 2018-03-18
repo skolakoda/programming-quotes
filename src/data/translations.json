@@ -28,6 +28,8 @@
     "ALREADY_EXISTS": "The quote already exists",
     "ARGUMENTS_ERROR": "You haven't send all required fields.",
     "CAN_VOTE_ONCE": "You can vote just once!",
+    "SUCCESSFULLY_LOGIN": "You have been successfully logged in.",
+    "SUCCESSFULLY_LOGOUT": "You have been successfully logged out.",
     "NETWORK_PROBLEM": "Problem with network, please try again later."
   },
   "sr": {
@@ -59,6 +61,8 @@
     "ALREADY_EXISTS": "Citat već postoji.",
     "ARGUMENTS_ERROR": "Niste poslali obavezna polja.",
     "CAN_VOTE_ONCE": "Možeš glasati samo jednom!",
+    "SUCCESSFULLY_LOGIN": "Uspešno ste prijavljeni.",
+    "SUCCESSFULLY_LOGOUT": "Uspešno ste odjavljeni.",
     "NETWORK_PROBLEM": "Problem sa mrežom, pokušajte ponovo kasnije."
   }
 }

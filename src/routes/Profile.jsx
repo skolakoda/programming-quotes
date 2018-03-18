@@ -45,7 +45,7 @@ export default class Profile extends Component  {
             <p>admin: {this.state.admin ? 'yes' : 'no'}</p>
             <button onClick={this.logout}>{translate('LOGOUT')}</button>
           </div>
-          : <p>You have been successfully logged out.</p>
+          : <p>{translate('SUCCESSFULLY_LOGOUT')}</p>
         }
       </main>
     )
