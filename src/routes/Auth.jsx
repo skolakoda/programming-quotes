@@ -1,10 +1,11 @@
 import React, {Component} from 'react'
+import {Link} from 'react-router-dom'
 import {LS} from '../config/localstorage'
 import {domain} from '../config/api'
 import {checkToken} from '../shared/helpers'
 import translate from '../shared/translate'
 
-class Auth extends Component {
+export default class Auth extends Component {
   componentDidMount() {
     const {service, token} = this.props.match.params
     localStorage.setItem(LS.service, service)
@@ -17,9 +18,8 @@ class Auth extends Component {
       <main>
         <h1>Auth</h1>
         <p>{translate('SUCCESSFULLY_LOGIN')}</p>
+        <Link to="/"><code>goto</code> Homepage</Link>
       </main>
     )
   }
 }
-
-export default Auth
