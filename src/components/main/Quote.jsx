@@ -37,7 +37,7 @@ export default class Quote extends Component {
   }
 
   render() {
-    const { quote, language, token, cssClass } = this.props
+    const { quote, language, admin, cssClass } = this.props
     const author = quote.author
     const id = quote._id
     const authorLink = `/author/${author.replace(/ /g, '_')}`
@@ -47,7 +47,7 @@ export default class Quote extends Component {
       <blockquote className={cssClass || 'small-quote'}>
         <p className="quote-text">
           <Link to={`/quote/${id}`} className="no-link">{quote[language]}</Link>&nbsp;
-          { token &&
+          { admin &&
             <span className="admin-actions">
               <Link to={`/edit-quote/${id}`}><span className="edit-icon">&#9998;</span></Link>&nbsp;
               <span onClick={this.tryDelete} className={deleteCss}>&#10005;</span>

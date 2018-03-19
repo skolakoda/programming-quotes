@@ -49,7 +49,7 @@ class EditQuote extends Component {
     const quote = edit ? this.props.allQuotes.find(q => q._id === id) : null
     const quoteLink = `/quote/${id}`
 
-    if (!this.props.token) return <p>{translate('LOGIN_REQUIRED')}</p>
+    if (!this.props.admin) return <p>{translate('ADMIN_REQUIRED')}</p>
 
     return (
       <div>

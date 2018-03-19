@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import { Switch, Route } from 'react-router-dom'
 import translate from '../shared/translate'
-import {getallImages} from '../shared/helpers'
-import {API} from '../config/api'
+import {getallImages, checkToken} from '../shared/helpers'
+import {API, domain} from '../config/api'
 import {LS} from '../config/localstorage'
 import Navigation from './header/Navigation'
 import Sidebar from './sidebar/Sidebar'
@@ -33,6 +33,13 @@ export default class App extends Component {
 
   componentDidMount() {
     this.loadQuotes(API.read)
+    if (this.state.token) this.checkToken()
+  }
+
+  checkToken() {
+    const service = localStorage.getItem(LS.service)
+    const token = this.state.token
+    checkToken(`${domain}/auth/${service}/${token}`, token, this.setUser)
   }
 
   loadQuotes(url) {
@@ -83,21 +90,33 @@ export default class App extends Component {
             language={this.state.language}
             setLang={this.setLang}
             token={this.state.token}
+            admin={this.state.admin}
           />
 
           <Switch>
             <Route path='/add-quote' component={props => (
-              <EditQuote {...props} token={this.state.token} />
+              <EditQuote
+                {...props}
+                token={this.state.token}
+                admin={this.state.admin}
+              />
             )} />
             <Route path='/edit-quote/:id' component={props => (
-              <EditQuote {...props} allQuotes={this.state.allQuotes} token={this.state.token} />
+              <EditQuote
+                {...props}
+                allQuotes={this.state.allQuotes}
+                token={this.state.token}
+                admin={this.state.admin}
+              />
             )} />
             <Route path='/quote/:id' component={props => (
               <ShowQuote {...props}
                 language={this.state.language}
                 allQuotes={this.state.allQuotes}
                 allImages={this.state.allImages}
-                token={this.state.token} />
+                token={this.state.token}
+                admin={this.state.admin}
+              />
             )} />
             <Route path='/login' component={() => (
               <Login/>
@@ -115,6 +134,7 @@ export default class App extends Component {
                 allImages={this.state.allImages}
                 token={this.state.token}
                 phrase={this.state.phrase}
+                admin={this.state.admin}
               />
             )} />
             <Route path='/all-quotes' render={() => (
@@ -124,6 +144,7 @@ export default class App extends Component {
                 phrase={this.state.phrase}
                 token={this.state.token}
                 setPhrase={this.setPhrase}
+                admin={this.state.admin}
               />
             )} />
             <Route path='/' render={() => (
@@ -132,6 +153,7 @@ export default class App extends Component {
                 allQuotes={this.state.allQuotes}
                 allImages={this.state.allImages}
                 token={this.state.token}
+                admin={this.state.admin}
               />
             )} />
           </Switch>
