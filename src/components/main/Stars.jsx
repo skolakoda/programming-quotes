@@ -14,19 +14,23 @@ class Stars extends Component {
     }
   }
 
-  alreadyVoted(storage) {
-    return Array.isArray(storage) && storage.includes(this.props.id)
+  alreadyVoted(localVoted) {
+    return Array.isArray(localVoted) && localVoted.includes(this.props.id)
   }
 
   rate = newRating => {
-    const storage = JSON.parse(localStorage.getItem(LS.ratings))
-    if (this.alreadyVoted(storage)) return this.setState({ error: translate('CAN_VOTE_ONCE') })
+    const localVoted = JSON.parse(localStorage.getItem(LS.ratings))
+    if (this.alreadyVoted(localVoted)) return this.setState({ error: translate('CAN_VOTE_ONCE') })
 
-    const newStorage = storage ? [...storage, this.props.id] : [this.props.id]
+    const newStorage = localVoted ? [...localVoted, this.props.id] : [this.props.id]
 
     fetch(API.rate, {
       method: 'POST',
-      body: JSON.stringify({_id: this.props.id, newRating}),
+      body: JSON.stringify({
+        _id: this.props.id,
+        token: localStorage.getItem(LS.token),
+        newRating
+      }),
       headers: {'content-type': 'application/json'}
     })
       .then(response => response.json())
