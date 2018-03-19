@@ -5,7 +5,7 @@ import {LS} from '../../config/localstorage'
 import translate from '../../shared/translate'
 import './Stars.css'
 
-class Stars extends Component {
+export default class Stars extends Component {
   constructor(props) {
     super()
     this.state = {
@@ -14,16 +14,33 @@ class Stars extends Component {
     }
   }
 
-  alreadyVoted(localVoted) {
-    return Array.isArray(localVoted) && localVoted.includes(this.props.id)
+  componentDidMount() {
+    const token = localStorage.getItem(LS.token)
+    const localVotes = JSON.parse(localStorage.getItem(LS.ratings))
+    fetch(API.updateUserVotes, {
+      method: 'post',
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({token, localVotes})
+    }).then(res => res.json())
+      .then(res => this.updateLocalVotes(res))
+  }
+
+  updateLocalVotes(votes) {
+    localStorage.setItem(LS.ratings, JSON.stringify(votes))
+  }
+
+  alreadyVoted(localVotes) {
+    return Array.isArray(localVotes) && localVotes.includes(this.props.id)
   }
 
   rate = newRating => {
-    const localVoted = JSON.parse(localStorage.getItem(LS.ratings))
-    if (this.alreadyVoted(localVoted)) return this.setState({ error: translate('CAN_VOTE_ONCE') })
-
-    const newStorage = localVoted ? [...localVoted, this.props.id] : [this.props.id]
-
+    const localVotes = JSON.parse(localStorage.getItem(LS.ratings))
+    if (this.alreadyVoted(localVotes))
+      return this.setState({ error: translate('CAN_VOTE_ONCE') })
+    const newStorage = localVotes.length ? [...localVotes, this.props.id] : [this.props.id]
     fetch(API.rate, {
       method: 'POST',
       body: JSON.stringify({
@@ -39,7 +56,7 @@ class Stars extends Component {
   }
 
   setNewVote(newStorage, newAverage) {
-    localStorage.setItem(LS.ratings, JSON.stringify(newStorage))
+    this.updateLocalVotes(newStorage)
     this.setState({rating: newAverage})
   }
 
@@ -52,5 +69,3 @@ class Stars extends Component {
     )
   }
 }
-
-export default Stars

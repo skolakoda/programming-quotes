@@ -7,5 +7,6 @@ export const API = {
   read: `${domain}/quotes/`,
   update: `${domain}/quotes/update/`,
   delete: `${domain}/quotes/delete/`,
-  rate: `${domain}/quotes/rate/`
+  rate: `${domain}/quotes/rate/`,
+  updateUserVotes: `${domain}/users/update-votes/`
 }
