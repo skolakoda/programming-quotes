@@ -1,15 +1,14 @@
 import React, {Component} from 'react'
 import translate from '../shared/translate'
 import {LS} from '../config/localstorage'
-import {domain} from '../config/api'
+import {API, domain} from '../config/api'
 
 export default class Profile extends Component  {
   constructor(props) {
     super(props)
     this.state = {
       name: '',
-      email: '',
-      voted: [],
+      voted: JSON.parse(localStorage.getItem(LS.ratings)),
       admin: false,
       createdAt: new Date()
     }
@@ -23,9 +22,26 @@ export default class Profile extends Component  {
     fetch(googleAuthLink)
       .then(data => data.json())
       .then(data => {
-        const {name, email, admin, createdAt, voted} = data.user
-        this.setState({name, email, admin, createdAt, voted})
+        const {name, admin, createdAt, voted} = data.user
+        this.setState({name, admin, createdAt})
+        this.syncVotes(token, voted)
       })
+  }
+
+  syncVotes(token, remoteVotes) {
+    const localVotes = JSON.parse(localStorage.getItem(LS.ratings))
+    const voted = [...new Set(localVotes, remoteVotes)]
+    fetch(API.updateUserVotes, {
+      method: 'post',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({token, voted})
+    })
+    this.updateLocalVotes(voted)
+  }
+
+  updateLocalVotes(voted) {
+    this.setState({voted})
+    localStorage.setItem(LS.ratings, JSON.stringify(voted))
   }
 
   logout = e => {

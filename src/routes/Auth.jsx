@@ -18,7 +18,7 @@ export default class Auth extends Component {
       <main>
         <h1>Auth</h1>
         <p>{translate('SUCCESSFULLY_LOGIN')}</p>
-        <Link to="/"><code>goto</code> Homepage</Link>
+        <code>goto</code> <Link to="/profile">{translate('PROFILE')}</Link>
       </main>
     )
   }

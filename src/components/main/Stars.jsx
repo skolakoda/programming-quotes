@@ -14,21 +14,6 @@ export default class Stars extends Component {
     }
   }
 
-  componentDidMount() {
-    this.syncVotes()
-  }
-
-  syncVotes() {
-    const token = localStorage.getItem(LS.token)
-    const localVotes = JSON.parse(localStorage.getItem(LS.ratings))
-    fetch(API.updateUserVotes, {
-      method: 'post',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({token, localVotes})
-    }).then(res => res.json())
-      .then(res => this.updateLocalVotes(res))
-  }
-
   updateLocalVotes(votes) {
     localStorage.setItem(LS.ratings, JSON.stringify(votes))
   }
