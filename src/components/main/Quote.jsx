@@ -43,7 +43,7 @@ export default class Quote extends Component {
     const authorLink = `/author/${author.replace(/ /g, '_')}`
     const deleteCss = `pointer ${this.state.shouldDelete ? 'red' : ''}`
 
-    return (
+    return quote[language] ? (
       <blockquote className={cssClass || 'small-quote'}>
         <p className="quote-text">
           <Link to={`/quote/${id}`} className="no-link">{quote[language]}</Link>&nbsp;
@@ -59,6 +59,6 @@ export default class Quote extends Component {
 
         {this.state.response && <MessagePopup message={this.state.response} closePopup={this.closePopup} />}
       </blockquote>
-    )
+    ) : translate('NO_TRANSLATION')
   }
 }

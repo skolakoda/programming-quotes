@@ -31,6 +31,7 @@
     "CAN_VOTE_ONCE": "You can vote just once!",
     "SUCCESSFULLY_LOGIN": "You have been successfully logged in.",
     "SUCCESSFULLY_LOGOUT": "You have been successfully logged out.",
+    "NO_TRANSLATION": "No translation for this quote.",
     "NETWORK_PROBLEM": "Problem with network, please try again later."
   },
   "sr": {
@@ -65,6 +66,7 @@
     "CAN_VOTE_ONCE": "Možeš glasati samo jednom!",
     "SUCCESSFULLY_LOGIN": "Uspešno ste prijavljeni.",
     "SUCCESSFULLY_LOGOUT": "Uspešno ste odjavljeni.",
+    "NO_TRANSLATION": "Nema prevoda za ovaj citat.",
     "NETWORK_PROBLEM": "Problem sa mrežom, pokušajte ponovo kasnije."
   }
 }

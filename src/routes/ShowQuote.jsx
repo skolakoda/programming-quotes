@@ -7,7 +7,7 @@ export default class ShowQuote extends Component {
     const id = this.props.match.params.id
     const { language, allQuotes, token, admin } = this.props
     const quote = allQuotes.find(q => q._id === id)
-    if (!quote || !quote[language]) return null
+    if (!quote) return null
 
     return (
       <ImageQuote quote={quote} allImages={this.props.allImages} language={language} token={token} admin={admin} cssClass="big-quote" />
