@@ -31,7 +31,7 @@ class EditQuote extends Component {
     fetch(endpoint, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ author, sr, en, source, _id, password: this.props.password })
+      body: JSON.stringify({ author, sr, en, source, _id, token: this.props.token })
     })
       .then(res => res.text())
       .catch(e => this.setState({ response: translate('POST_ERROR') }))
@@ -49,7 +49,7 @@ class EditQuote extends Component {
     const quote = edit ? this.props.allQuotes.find(q => q._id === id) : null
     const quoteLink = `/quote/${id}`
 
-    if (!this.props.password) return <p>{translate('LOGIN_REQUIRED')}</p>
+    if (!this.props.admin) return <p>{translate('ADMIN_REQUIRED')}</p>
 
     return (
       <div>

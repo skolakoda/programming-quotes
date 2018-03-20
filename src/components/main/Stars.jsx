@@ -5,7 +5,7 @@ import {LS} from '../../config/localstorage'
 import translate from '../../shared/translate'
 import './Stars.css'
 
-class Stars extends Component {
+export default class Stars extends Component {
   constructor(props) {
     super()
     this.state = {
@@ -14,19 +14,26 @@ class Stars extends Component {
     }
   }
 
-  alreadyVoted(storage) {
-    return Array.isArray(storage) && storage.includes(this.props.id)
+  updateLocalVotes(votes) {
+    localStorage.setItem(LS.ratings, JSON.stringify(votes))
+  }
+
+  alreadyVoted(localVotes) {
+    return Array.isArray(localVotes) && localVotes.includes(this.props.id)
   }
 
   rate = newRating => {
-    const storage = JSON.parse(localStorage.getItem(LS.ratings))
-    if (this.alreadyVoted(storage)) return this.setState({ error: translate('CAN_VOTE_ONCE') })
-
-    const newStorage = storage ? [...storage, this.props.id] : [this.props.id]
-
+    const localVotes = JSON.parse(localStorage.getItem(LS.ratings))
+    if (this.alreadyVoted(localVotes))
+      return this.setState({ error: translate('CAN_VOTE_ONCE') })
+    const newStorage = localVotes.length ? [...localVotes, this.props.id] : [this.props.id]
     fetch(API.rate, {
       method: 'POST',
-      body: JSON.stringify({_id: this.props.id, newRating}),
+      body: JSON.stringify({
+        _id: this.props.id,
+        token: localStorage.getItem(LS.token),
+        newRating
+      }),
       headers: {'content-type': 'application/json'}
     })
       .then(response => response.json())
@@ -35,7 +42,7 @@ class Stars extends Component {
   }
 
   setNewVote(newStorage, newAverage) {
-    localStorage.setItem(LS.ratings, JSON.stringify(newStorage))
+    this.updateLocalVotes(newStorage)
     this.setState({rating: newAverage})
   }
 
@@ -48,5 +55,3 @@ class Stars extends Component {
     )
   }
 }
-
-export default Stars

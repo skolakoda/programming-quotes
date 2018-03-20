@@ -3,6 +3,7 @@
     "HOME": "Home",
     "LOGIN": "Login",
     "LOGOUT": "Logout",
+    "PROFILE": "My profile",
     "PROGRAMMING_QUOTES": "Programming quotes",
     "RANDOM_QUOTE": "Random quote",
     "ALL_QUOTES": "All quotes",
@@ -24,15 +25,20 @@
     "QUOTE_DELETED": "The quote is deleted.",
     "SHOWING_RESULTS": "Showing results for search term",
     "LOGIN_REQUIRED": "You must be logged in",
+    "ADMIN_REQUIRED": "You must have admin privilege.",
     "ALREADY_EXISTS": "The quote already exists",
     "ARGUMENTS_ERROR": "You haven't send all required fields.",
     "CAN_VOTE_ONCE": "You can vote just once!",
+    "SUCCESSFULLY_LOGIN": "You have been successfully logged in.",
+    "SUCCESSFULLY_LOGOUT": "You have been successfully logged out.",
+    "NO_TRANSLATION": "No translation for this quote.",
     "NETWORK_PROBLEM": "Problem with network, please try again later."
   },
   "sr": {
     "HOME": "Početna",
     "LOGIN": "Prijava",
     "LOGOUT": "Odjava",
+    "PROFILE": "Moj profil",
     "PROGRAMMING_QUOTES": "Programerski citati",
     "RANDOM_QUOTE": "Random citat",
     "ALL_QUOTES": "Svi citati",
@@ -54,9 +60,13 @@
     "QUOTE_DELETED": "Citat je obrisan.",
     "SHOWING_RESULTS": "Prikazuje rezultate za pojam",
     "LOGIN_REQUIRED": "Moraš biti prijavljen",
+    "ADMIN_REQUIRED": "Moraš biti administrator.",
     "ALREADY_EXISTS": "Citat već postoji.",
     "ARGUMENTS_ERROR": "Niste poslali obavezna polja.",
     "CAN_VOTE_ONCE": "Možeš glasati samo jednom!",
+    "SUCCESSFULLY_LOGIN": "Uspešno ste prijavljeni.",
+    "SUCCESSFULLY_LOGOUT": "Uspešno ste odjavljeni.",
+    "NO_TRANSLATION": "Nema prevoda za ovaj citat.",
     "NETWORK_PROBLEM": "Problem sa mrežom, pokušajte ponovo kasnije."
   }
 }

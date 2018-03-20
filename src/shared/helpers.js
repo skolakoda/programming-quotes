@@ -34,3 +34,12 @@ export function getallImages(authors) {
       return allImages
     })
 }
+
+export function checkToken(url, token, callback) {
+  fetch(url)
+    .then(response => response.json())
+    .then(response => {
+      if (response.user) callback(token, response.user.admin)
+      else callback('', false)
+    })
+}

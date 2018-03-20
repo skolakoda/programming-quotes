@@ -22,13 +22,13 @@ export default class RandomQuote extends Component {
   }
 
   render() {
-    const { language, password } = this.props
+    const { language, token, admin } = this.props
     if (!this.state.quote || !this.state.quote[language]) return null
 
     return (
       <main>
         <h1>{translate('QUOTE_OF_THE_DAY')}</h1>
-        <ImageQuote quote={this.state.quote} allImages={this.props.allImages} language={language} password={password} cssClass="big-quote" />
+        <ImageQuote quote={this.state.quote} allImages={this.props.allImages} language={language} token={token} admin={admin} cssClass="big-quote" />
         <button onClick={this.getRandom}>Gimme more!</button>
       </main>
     )
