@@ -14,7 +14,7 @@ Backend API is [here](https://github.com/skolakoda/baza-podataka).
 
 ## Development
 
-Prerequisites: you should have Node.js and git installed.
+Prerequisites: you should have Node.js and Git installed.
 
 ### Start
 
