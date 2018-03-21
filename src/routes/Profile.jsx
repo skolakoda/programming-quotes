@@ -30,6 +30,7 @@ export default class Profile extends Component  {
 
   syncVotes(token, remoteVotes) {
     const localVotes = JSON.parse(localStorage.getItem(LS.ratings))
+    if (!localVotes || !localVotes.length) return
     const voted = [...new Set(localVotes, remoteVotes)]
     fetch(API.updateUserVotes, {
       method: 'post',
