@@ -10,7 +10,7 @@
 
 Visit: [skolakoda.org/programming-quotes](https://skolakoda.org/programming-quotes/)
 
-See also: [Backend API and database](https://github.com/skolakoda/baza-podataka).
+See also: [Backend API and Database](https://github.com/skolakoda/baza-podataka).
 
 ## Development
 
