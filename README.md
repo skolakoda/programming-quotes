@@ -28,11 +28,11 @@ See: [Contributing](CONTRIBUTING.md)
 
 ## Style Guide
 
-Kodni standard na projektu je varijacija [*JavaScript Standard Style*](https://standardjs.com/), čije su glavne značaljke:
+We are using a variant of [*JavaScript Standard Style*](https://standardjs.com/). The main rules are:
 
-- bez tački-zareza
-- 2 razmaka za poravnanje
-- polunavodnici za strune
-- `===` umesto `==` za poređenje
+- No semicolons
+- 2 spaces for indentation
+- Single quotes for strings
+- Use `===` instead of `==` for comparisons
 
-Ovde možete preuzeti [ESLint config file](https://github.com/skolakoda/kodni-standard/blob/master/.eslintrc).
+You can find a ESLint config file [here](https://github.com/skolakoda/kodni-standard/blob/master/.eslintrc).
