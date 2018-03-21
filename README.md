@@ -28,11 +28,11 @@ See: [Contributing](CONTRIBUTING.md)
 
 ## Style Guide
 
-We are using a variant of [*JavaScript Standard Style*](https://standardjs.com/). The main rules are:
+We are using a variant of [*JavaScript Standard Style*](https://standardjs.com/), whitch main rules are:
 
 - No semicolons
 - 2 spaces for indentation
 - Single quotes for strings
 - Use `===` instead of `==` for comparisons
 
-You can find a ESLint config file [here](https://github.com/skolakoda/kodni-standard/blob/master/.eslintrc).
+You can find our ESLint config file [here](https://github.com/skolakoda/kodni-standard/blob/master/.eslintrc), but if you use pure JS Standard it's just fine.
