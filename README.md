@@ -25,6 +25,7 @@ npm start
 ## How to contribute
 
 See: [Contributing](CONTRIBUTING.md)
+
 See also: [Documentation](https://github.com/skolakoda/programming-quotes/wiki)
 
 ## Style Guide
