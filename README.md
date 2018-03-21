@@ -38,10 +38,6 @@ See CRA deploy on GitHub Pages [docs](https://github.com/facebookincubator/creat
 
 See: [Contributing](CONTRIBUTING.md)
 
-Ako želiš da se uključiš, ali ne znaš kako, pročitaj uputstvo: [Kako doprinositi projektima?](http://skolakoda.org/kako-doprinositi/)
-
-[Ovde](https://trello.com/b/fBcFTxgo/programming-quotes) možeš videti šta je sve potrebno uraditi. Upoznaj se dobro sa projektom i konvencijama pre nego počneš doprinositi. Imamo politiku nulte tolerancije prema tehničkom dugu.
-
 ## Style Guide
 
 Kodni standard na projektu je varijacija [*JavaScript Standard Style*](https://standardjs.com/), čije su glavne značaljke:
