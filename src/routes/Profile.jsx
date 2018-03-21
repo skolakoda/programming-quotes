@@ -24,7 +24,7 @@ export default class Profile extends Component  {
       .then(data => {
         const {name, admin, createdAt, voted} = data.user
         this.setState({name, admin, createdAt})
-        this.syncVotes(token, voted)
+        if (voted) this.syncVotes(token, voted)
       })
   }
 
