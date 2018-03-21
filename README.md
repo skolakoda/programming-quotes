@@ -35,4 +35,4 @@ We are using a variant of [*JavaScript Standard Style*](https://standardjs.com/)
 - Single quotes for strings
 - Use `===` instead of `==` for comparisons
 
-You can find our ESLint config file [here](https://github.com/skolakoda/kodni-standard/blob/master/.eslintrc), but if you use pure JS Standard it's just fine.
+You can find our ESLint config file [here](https://github.com/skolakoda/kodni-standard/blob/master/.eslintrc), but if you are using pure JS Standard it's just fine.
