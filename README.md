@@ -2,9 +2,9 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/skolakoda/programming-quotes/blob/master/LICENSE)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/skolakoda)
 
-# Programming Quotes
-
 [![](screen.png)](https://skolakoda.org/programming-quotes/)
+
+# Programming Quotes
 
 **Programming Quotes, open source React app.**
 
