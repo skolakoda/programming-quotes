@@ -8,7 +8,7 @@ export default class Profile extends Component  {
     super(props)
     this.state = {
       name: '',
-      voted: JSON.parse(localStorage.getItem(LS.ratings)),
+      voted: [],
       admin: false,
       createdAt: new Date()
     }
