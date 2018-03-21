@@ -14,10 +14,6 @@ Backend API is [here](https://github.com/skolakoda/baza-podataka).
 
 ## Development
 
-Prerequisites: you should have Node.js and Git installed.
-
-### Start
-
 Clone repo, then:
 
 ```
@@ -25,14 +21,6 @@ npm install
 npm start
 
 ```
-
-### Deploy
-
-```
-npm run deploy
-```
-
-See CRA deploy on GitHub Pages [docs](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#github-pages).
 
 ## How to contribute
 
