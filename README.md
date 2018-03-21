@@ -4,13 +4,13 @@
 
 # Programming Quotes
 
+[![](screen.png)](https://skolakoda.org/programming-quotes/)
+
 **Programming Quotes, open source React app.**
 
 Visit: [skolakoda.org/programming-quotes](https://skolakoda.org/programming-quotes/)
 
 Backend API is [here](https://github.com/skolakoda/baza-podataka).
-
-[![](screen.png)](https://skolakoda.org/programming-quotes/)
 
 ## Development
 
