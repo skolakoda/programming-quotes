@@ -8,7 +8,7 @@ const Navigation = ({language, setLang, token, admin}) => (
   <header>
     <Github repoUrl="https://github.com/skolakoda/programming-quotes" />
     <nav>
-      <Link to="/" replace={true}>Random</Link>
+      <Link to="/" replace={true}>{translate('DAILY_QUOTE')}</Link>
       <Link to="/all-quotes">{translate('ALL_QUOTES')}</Link>
       {admin && <Link to="/add-quote">{translate('ADD_QUOTE')}</Link>}
       {token
