@@ -15,7 +15,8 @@ class AuthorImage extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const loaded = this.props.author === nextProps.author
+    const {author, allImages} = this.props
+    const loaded = (author === nextProps.author) && Boolean(allImages.get(author))
     this.setState({loaded}, () =>
       this.setImage(nextProps))
   }
