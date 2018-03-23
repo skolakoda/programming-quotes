@@ -7,7 +7,7 @@ export default class RandomQuote extends Component {
     super()
     this.state = {
       quote: null,
-      shouldUpdate: true
+      found: false
     }
   }
 
@@ -16,23 +16,14 @@ export default class RandomQuote extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.getRandom()
+    if (!this.state.found) this.getRandom()
   }
 
   getRandom = () => {
     const allQuotes = this.props.allQuotes.filter(q => q[this.props.language])
     if (!allQuotes.length) return
     const quote = allQuotes[Math.floor(Math.random() * allQuotes.length)]
-    this.setState({quote, shouldUpdate: false}) // to stop random rerender
-  }
-
-  getNewRandom = () => {
-    this.setState({shouldUpdate: true}, this.getRandom)
-  }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    if (this.props.language !== nextProps.language) return true
-    return this.state.shouldUpdate
+    this.setState({quote, found: true})
   }
 
   render() {
@@ -43,7 +34,7 @@ export default class RandomQuote extends Component {
       <main>
         <h1>{translate('QUOTE_OF_THE_DAY')}</h1>
         <ImageQuote quote={this.state.quote} allImages={this.props.allImages} language={language} token={token} admin={admin} cssClass="big-quote" />
-        <button onClick={this.getNewRandom}>Gimme more!</button>
+        <button onClick={this.getRandom}>Gimme more!</button>
       </main>
     )
   }
