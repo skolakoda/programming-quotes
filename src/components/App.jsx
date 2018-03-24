@@ -32,6 +32,7 @@ export default class App extends Component {
   }
 
   componentDidMount() {
+    this.initState(cachedQuotes)
     this.loadQuotes(API.read)
     if (this.state.token) this.checkToken()
   }
