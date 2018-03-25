@@ -6,7 +6,7 @@
 
 # Programming Quotes
 
-**Programming Quotes, an open source React app.**
+**The Programming Quotes, an open source React app.**
 
 See: [skolakoda.org/programming-quotes](https://skolakoda.org/programming-quotes/)
 
