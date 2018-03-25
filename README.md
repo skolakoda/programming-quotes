@@ -8,9 +8,9 @@
 
 **Programming Quotes, open source React app.**
 
-Visit: [skolakoda.org/programming-quotes](https://skolakoda.org/programming-quotes/)
+See: [skolakoda.org/programming-quotes](https://skolakoda.org/programming-quotes/)
 
-See also: [Backend API and Database](https://github.com/skolakoda/baza-podataka).
+Backend API is [here](https://github.com/skolakoda/baza-podataka).
 
 ## Development
 
