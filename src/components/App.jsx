@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import { Switch, Route } from 'react-router-dom'
+import { connect } from 'react-redux'
 import translate from '../shared/translate'
 import {getallImages, checkToken} from '../shared/helpers'
 import {API, domain} from '../config/api'
@@ -17,7 +18,7 @@ import Auth from '../routes/Auth'
 import cachedQuotes from '../data/quotes.json'
 import './App.css'
 
-export default class App extends Component {
+class App extends Component {
   constructor() {
     super()
     this.state = {
@@ -169,3 +170,5 @@ export default class App extends Component {
     )
   }
 }
+
+export default connect()(App)
