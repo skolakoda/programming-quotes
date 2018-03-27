@@ -23,6 +23,11 @@ export const setLanguage = language => ({
   language
 })
 
+export const setToken = token => ({
+  type: 'SET_TOKEN',
+  token
+})
+
 export const setAdmin = admin => ({
   type: 'SET_ADMIN',
   admin
