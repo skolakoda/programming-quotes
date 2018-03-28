@@ -1,5 +1,4 @@
 import { createStore } from 'redux'
-import translate from '../shared/translate'
 import {LS} from '../config/localstorage'
 
 const intialState = {
@@ -7,7 +6,7 @@ const intialState = {
   allAuthors: new Set(),
   allImages: new Map(),
   phrase: '',
-  language: translate.currentLanguage,
+  language: 'en',
   token: localStorage.getItem(LS.token),
   admin: false
 }

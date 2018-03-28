@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import { Switch, Route } from 'react-router-dom'
 import {store} from '../state/reducer'
 import {setQuotes, setAuthors, setImages, setPhase, setLanguage, setToken, setAdmin} from '../state/actions'
-import translate from '../shared/translate'
 import {getallImages, checkToken} from '../shared/helpers'
 import {API, domain} from '../config/api'
 import {LS} from '../config/localstorage'
@@ -24,7 +23,7 @@ const {dispatch} = store
 class App extends Component {
   constructor() {
     super()
-    store.subscribe(() => console.log(store.getState()))
+    // store.subscribe(() => console.log(store.getState()))
     store.subscribe(this.render.bind(this))
   }
 
@@ -79,20 +78,13 @@ class App extends Component {
 
   setLang = language => {
     dispatch(setLanguage(language))
-    translate.setLanguage(language)
   }
 
   render() {
     return (
       <div className="App">
         <section className="right-section">
-          <Navigation
-            language={store.getState().language}
-            setLang={this.setLang}
-            token={store.getState().token}
-            admin={store.getState().admin}
-          />
-
+          <Navigation />
           <Switch>
             <Route path='/add-quote' component={props => (
               <EditQuote
