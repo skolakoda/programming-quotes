@@ -17,8 +17,16 @@
 
 @media (min-width: 800px) {
   .big-quote .quote-text {
-    font-size: 1.5em;
+    font-size: 1em;
   }
+}
+
+.quote-box {
+    position: absolute;
+    top:15.8%;
+    left:25%;
+    width:55%;
+    height:70%;
 }
 
 .big-quote .quote-author {
