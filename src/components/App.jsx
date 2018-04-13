@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import { Switch, Route } from 'react-router-dom'
-import translate from '../shared/translate'
+import {store} from '../state/reducer'
+import {setQuotes, setAuthors, setImages, setPhase, setLanguage, setToken, setAdmin} from '../state/actions'
 import {getallImages, checkToken} from '../shared/helpers'
 import {API, domain} from '../config/api'
 import {LS} from '../config/localstorage'
@@ -17,29 +18,24 @@ import Auth from '../routes/Auth'
 import cachedQuotes from '../data/quotes.json'
 import './App.css'
 
-export default class App extends Component {
+const {dispatch} = store
+
+class App extends Component {
   constructor() {
     super()
-    this.state = {
-      allQuotes: [],
-      allAuthors: new Set(),
-      allImages: new Map(),
-      phrase: '',
-      language: translate.currentLanguage,
-      token: localStorage.getItem(LS.token),
-      admin: false
-    }
+    // store.subscribe(() => console.log(store.getState()))
+    store.subscribe(this.render.bind(this))
   }
 
   componentDidMount() {
     this.initState(cachedQuotes)
     this.loadQuotes(API.read)
-    if (this.state.token) this.checkToken()
+    if (store.getState().token) this.checkToken()
   }
 
   checkToken() {
     const service = localStorage.getItem(LS.service)
-    const token = this.state.token
+    const token = store.getState().token
     checkToken(`${domain}/auth/${service}/${token}`, token, this.setUser)
   }
 
@@ -56,7 +52,8 @@ export default class App extends Component {
 
   initState = allQuotes => {
     const allAuthors = new Set(allQuotes.map(quote => quote.author).sort())
-    this.setState(() => ({allQuotes, allAuthors}))
+    dispatch(setQuotes(allQuotes))
+    dispatch(setAuthors(allAuthors))
     this.getAuthorThumbs(allAuthors)
   }
 
@@ -66,57 +63,51 @@ export default class App extends Component {
     for (let i = 0; i < [...allAuthors].length; i += wikiApiLimit)
       promises.push(getallImages([...allAuthors].slice(i, i + wikiApiLimit)))
     Promise.all(promises).then(data =>
-      this.setState({ allImages: data.reduce((a, b) => new Map([...a, ...b])) })
+      dispatch(setImages(data.reduce((a, b) => new Map([...a, ...b]))))
     )
   }
 
   setPhrase = phrase => {
-    this.setState({phrase})
+    dispatch(setPhase(phrase))
   }
 
   setUser = (token, admin = false) => {
-    this.setState({token, admin})
+    dispatch(setToken(token))
+    dispatch(setAdmin(admin))
   }
 
   setLang = language => {
-    this.setState({language})
-    translate.setLanguage(language)
+    dispatch(setLanguage(language))
   }
 
   render() {
     return (
       <div className="App">
         <section className="right-section">
-          <Navigation
-            language={this.state.language}
-            setLang={this.setLang}
-            token={this.state.token}
-            admin={this.state.admin}
-          />
-
+          <Navigation />
           <Switch>
             <Route path='/add-quote' component={props => (
               <EditQuote
                 {...props}
-                token={this.state.token}
-                admin={this.state.admin}
+                token={store.getState().token}
+                admin={store.getState().admin}
               />
             )} />
             <Route path='/edit-quote/:id' component={props => (
               <EditQuote
                 {...props}
-                allQuotes={this.state.allQuotes}
-                token={this.state.token}
-                admin={this.state.admin}
+                allQuotes={store.getState().allQuotes}
+                token={store.getState().token}
+                admin={store.getState().admin}
               />
             )} />
             <Route path='/quote/:id' component={props => (
               <ShowQuote {...props}
-                language={this.state.language}
-                allQuotes={this.state.allQuotes}
-                allImages={this.state.allImages}
-                token={this.state.token}
-                admin={this.state.admin}
+                language={store.getState().language}
+                allQuotes={store.getState().allQuotes}
+                allImages={store.getState().allImages}
+                token={store.getState().token}
+                admin={store.getState().admin}
               />
             )} />
             <Route path='/login' component={() => (
@@ -130,42 +121,44 @@ export default class App extends Component {
             )} />
             <Route path='/author/:name' render={props => (
               <Author {...props}
-                language={this.state.language}
-                allQuotes={this.state.allQuotes}
-                allImages={this.state.allImages}
-                token={this.state.token}
-                phrase={this.state.phrase}
-                admin={this.state.admin}
+                language={store.getState().language}
+                allQuotes={store.getState().allQuotes}
+                allImages={store.getState().allImages}
+                token={store.getState().token}
+                phrase={store.getState().phrase}
+                admin={store.getState().admin}
               />
             )} />
             <Route path='/all-quotes' render={() => (
               <AllQuotes
-                language={this.state.language}
-                allQuotes={this.state.allQuotes}
-                phrase={this.state.phrase}
-                token={this.state.token}
+                language={store.getState().language}
+                allQuotes={store.getState().allQuotes}
+                phrase={store.getState().phrase}
+                token={store.getState().token}
                 setPhrase={this.setPhrase}
-                admin={this.state.admin}
+                admin={store.getState().admin}
               />
             )} />
             <Route path='/' render={() => (
               <RandomQuote
-                language={this.state.language}
-                allQuotes={this.state.allQuotes}
-                allImages={this.state.allImages}
-                token={this.state.token}
-                admin={this.state.admin}
+                language={store.getState().language}
+                allQuotes={store.getState().allQuotes}
+                allImages={store.getState().allImages}
+                token={store.getState().token}
+                admin={store.getState().admin}
               />
             )} />
           </Switch>
         </section>
 
         <Sidebar
-          authors={this.state.allAuthors}
-          allImages={this.state.allImages}
+          authors={store.getState().allAuthors}
+          allImages={store.getState().allImages}
           setPhrase={this.setPhrase}
         />
       </div>
     )
   }
 }
+
+export default App

@@ -5,11 +5,11 @@ import './AuthorBox.css'
 
 export default class AuthorBox extends Component {
   render() {
-    const { author } = this.props
+    const { author, allImages } = this.props
     return (
       <div className="thumbnail">
         <h3 className="hide-sm">{author}</h3>
-        <AuthorImage author={author} allImages={this.props.allImages} showUnknown={true} />
+        <AuthorImage author={author} allImages={allImages} showUnknown={true} />
         <AuthorInfo author={author} />
       </div>
     )
