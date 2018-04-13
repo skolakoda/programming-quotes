@@ -1,8 +1,8 @@
 {
   "name": "programming-quotes",
   "version": "0.1.0",
-  "homepage": "https://skolakoda.github.io/programming-quotes",
-  "repository": "https://github.com/skolakoda/programming-quotes",
+  "homepage": "https://Cvellle.github.io/programming-quotes",
+  "repository": "https://github.com/Cvellle/programming-quotes.git",
   "license": "MIT",
   "dependencies": {
     "gh-pages": "^1.1.0",
