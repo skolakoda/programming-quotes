@@ -6,6 +6,8 @@ import {API, domain} from '../config/api'
 import {LS} from '../config/localstorage'
 import Navigation from './header/Navigation'
 import Sidebar from './sidebar/Sidebar'
+import Chart from './Chart/Chart'
+
 import AllQuotes from '../routes/AllQuotes'
 import Author from '../routes/Author'
 import EditQuote from '../routes/EditQuote'
@@ -17,12 +19,18 @@ import Auth from '../routes/Auth'
 import cachedQuotes from '../data/quotes.json'
 import './App.css'
 
+const url = "https://raw.githubusercontent.com/skolakoda/skolakoda.github.io/master/_data/quotes.json"
+
+
 export default class App extends Component {
   constructor() {
     super()
     this.state = {
       allQuotes: [],
       allAuthors: new Set(),
+      recnikAutora:{},
+      names: [],
+      entr: [],
       allImages: new Map(),
       phrase: '',
       language: translate.currentLanguage,
@@ -30,12 +38,14 @@ export default class App extends Component {
       admin: false
     }
   }
-
+  
   componentDidMount() {
     this.initState(cachedQuotes)
     this.loadQuotes(API.read)
     if (this.state.token) this.checkToken()
+    
   }
+
 
   checkToken() {
     const service = localStorage.getItem(LS.service)
@@ -56,8 +66,20 @@ export default class App extends Component {
 
   initState = allQuotes => {
     const allAuthors = new Set(allQuotes.map(quote => quote.author).sort())
-    this.setState(() => ({allQuotes, allAuthors}))
+    
     this.getAuthorThumbs(allAuthors)
+    
+    //Number of quotes per author - Object
+    const citati = allQuotes.map(quote => quote.author)
+    const recnikAutora = {};
+    citati.forEach(function(i) { recnikAutora[i] = (recnikAutora[i]||0) + 1; });
+
+    const entr = Object.entries(recnikAutora);
+    const names = Object.keys(recnikAutora);
+ 
+    this.setState(() => ({allQuotes, allAuthors, recnikAutora, names, entr}))
+
+    // console.log(entr)
   }
 
   getAuthorThumbs(allAuthors) {
@@ -68,7 +90,9 @@ export default class App extends Component {
     Promise.all(promises).then(data =>
       this.setState({ allImages: data.reduce((a, b) => new Map([...a, ...b])) })
     )
+
   }
+
 
   setPhrase = phrase => {
     this.setState({phrase})
@@ -82,6 +106,8 @@ export default class App extends Component {
     this.setState({language})
     translate.setLanguage(language)
   }
+
+
 
   render() {
     return (
@@ -158,6 +184,7 @@ export default class App extends Component {
               />
             )} />
           </Switch>
+          <Chart className="chart" recnikAutora={this.state.recnikAutora} names={this.state.names} entr={this.state.entr} allQuotes={this.state.allQuotes}/>
         </section>
 
         <Sidebar
@@ -165,6 +192,8 @@ export default class App extends Component {
           allImages={this.state.allImages}
           setPhrase={this.setPhrase}
         />
+
+
       </div>
     )
   }

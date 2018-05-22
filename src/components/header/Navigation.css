@@ -3,6 +3,10 @@ nav > * {
   margin-right: 20px;
 }
 
+nav {
+  width:90%;
+}
+
 nav .active {
   font-weight: bold;
 }

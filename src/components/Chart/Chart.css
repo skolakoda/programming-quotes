@@ -1,0 +1,47 @@
+.chartdiv {
+  position:relative;
+  background:lightgrey;
+  left:78%;
+  top:0%;
+  width:20%;
+  height:1.5%;
+  border-top: 0.3rem solid lightgrey;
+  /* border-bottom: 1rem solid grey; */
+}
+
+/* .chartdiv::after {
+  position:absolute;
+} */
+
+.chartlist {
+  position:relative;
+  left:-5%;
+}
+
+.listpart {
+  position:relative;
+  /* height:0.5em; */
+  font-size:0.8em;
+  right:0%;
+  list-style-type: none;
+}
+
+
+.blue {
+  
+  
+}
+
+.number {
+  -webkit-transform:translateY(-80%) translatex(7rem);
+  font-size: 0.9em;
+  position:relative;
+}
+
+/* chart {
+  position: relative;
+  top:95%;
+  font-size:0.5em;
+  right:0%;
+  list-style-type: none;
+}  */
