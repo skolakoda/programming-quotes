@@ -1,8 +1,13 @@
 {
   "name": "programming-quotes",
   "version": "0.1.0",
+<<<<<<< HEAD
   "homepage": "https://github.com/Cvellle/programming-quotes",
   "repository": "https://github.com/Cvellle/programming-quotes",
+=======
+  "homepage": "https://cvellle.github.io/programming-quotes/",
+  "repository": "https://github.com/Cvellle/programming-quotes/",
+>>>>>>> ab5ee6b519f23a0d2b606ca8897b0746e3155d2d
   "license": "MIT",
   "dependencies": {
     "gh-pages": "^1.1.0",
