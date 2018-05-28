@@ -1,12 +1,20 @@
 .chartdiv {
   position:relative;
-  background:lightgrey;
+  background:lightgray;
+  opacity:0.9;
   left:78%;
   top:0%;
   width:20%;
   height:1.5%;
-  border-top: 0.3rem solid lightgrey;
+  display:-webkit-flex;
+  align-items: center;
+  padding-top:1rem;
+  /* border-top: 0.3rem solid lightgrey; */
   /* border-bottom: 1rem solid grey; */
+}
+
+.chartdiv:nth-child(even) {
+  filter:brightness(1.1);
 }
 
 /* .chartdiv::after {
@@ -26,10 +34,13 @@
   list-style-type: none;
 }
 
+/* .listpart:nth-child(even) {
+  background:grey;
+} */
 
-.blue {
-  
-  
+.size {
+   background:darkblue;
+  opacity: 0.8;
 }
 
 .number {

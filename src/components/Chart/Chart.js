@@ -21,7 +21,7 @@ class Chart extends React.Component {
       <ul className="chartlist">
         <li className="listpart"> 
        {num[0]}: 
-          <div className="blue" style={{background:'blue', width:(((num[1])*100/allQuotes.length))*5+'%', height:"1em"}} key={i}>
+          <div className="size" style={{width:(((num[1])*100/allQuotes.length))*5+'%', height:"1em"}} key={i}>
           </div>
           <div className="number">{(num[1]/(allQuotes.length)*100).toFixed(1)+'%'}</div>
         </li> 
