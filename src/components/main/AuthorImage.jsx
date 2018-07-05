@@ -1,4 +1,6 @@
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
+
 import unknownImage from '../../assets/images/unknown.jpg'
 
 const responsiveBreakpoint = 800
@@ -6,7 +8,10 @@ const responsiveBreakpoint = 800
 class AuthorImage extends Component {
   constructor() {
     super()
-    this.state = {loaded: false}
+    this.state = {
+      loaded: false,
+      src: '',
+    }
   }
 
   componentDidMount() {
@@ -17,8 +22,7 @@ class AuthorImage extends Component {
   componentWillReceiveProps(nextProps) {
     const {author, allImages} = this.props
     const loaded = (author === nextProps.author) && Boolean(allImages.get(author))
-    this.setState({loaded}, () =>
-      this.setImage(nextProps))
+    this.setState({loaded}, () => this.setImage(nextProps))
   }
 
   setImage(props) {
@@ -43,4 +47,6 @@ class AuthorImage extends Component {
   }
 }
 
-export default AuthorImage
+const mapStateToProps = ({allImages}) => ({allImages})
+
+export default connect(mapStateToProps)(AuthorImage)

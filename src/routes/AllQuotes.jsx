@@ -1,8 +1,10 @@
 import React from 'react'
+import {connect} from 'react-redux'
+
 import translate from '../shared/translate'
 import Quotes from '../components/main/Quotes'
 
-const AllQuotes = ({ language, allQuotes, phrase, token, admin }) => {
+const AllQuotes = ({ language, allQuotes, phrase }) => {
   const filtered = allQuotes
     .filter(quote => quote[language] && quote[language].toLowerCase().includes(phrase.toLowerCase()))
 
@@ -10,9 +12,11 @@ const AllQuotes = ({ language, allQuotes, phrase, token, admin }) => {
     <main>
       <h1>{translate('PROGRAMMING_QUOTES')}</h1>
       {phrase && <small>{translate('SHOWING_RESULTS')} "{phrase}":</small>}
-      <Quotes language={language} loaded={allQuotes.length} currentQuotes={filtered} token={token} admin={admin} />
+      <Quotes loaded={allQuotes.length} currentQuotes={filtered} />
     </main>
   )
 }
 
-export default AllQuotes
+const mapStateToProps = ({language, allQuotes, phrase}) => ({language, allQuotes, phrase})
+
+export default connect(mapStateToProps)(AllQuotes)

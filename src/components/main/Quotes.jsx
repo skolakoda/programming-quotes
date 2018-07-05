@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+
 import Quote from './Quote'
 import preloader from '../../assets/images/preloader.gif'
 
@@ -19,12 +20,12 @@ export default class Quotes extends Component {
   }
 
   render() {
-    const { language, loaded, currentQuotes, token, admin } = this.props
+    const { loaded, currentQuotes } = this.props
     const startPosition = this.state.currentPage * quotesPerPage
     const preparedQuotes = currentQuotes
       .filter((q, i) => i >= startPosition && i < startPosition + quotesPerPage)
       .map(q =>
-        <Quote key={q._id} language={language} quote={q} token={token} admin={admin} />
+        <Quote key={q._id} quote={q} />
       )
     const pagination = []
     const totalPages = Math.ceil(currentQuotes.length / quotesPerPage)

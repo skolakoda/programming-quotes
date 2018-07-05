@@ -1,21 +1,23 @@
-import React, {Component} from 'react'
+import React from 'react'
+import {connect} from 'react-redux'
+
 import AuthorThumb from './AuthorThumb'
 const shortid = require('shortid')
 
-export default class Authors extends Component {
-
-  render() {
-    const preparedAuthors = this.props.authors.map(author =>
-      <AuthorThumb
-        key={shortid.generate()}
-        author={author}
-        image={this.props.allImages.get(author)}
-      />
-    )
-    return (
-      <div className="authors">
-        {preparedAuthors}
-      </div>
-    )
-  }
+const Authors = props => {
+  return (
+    <div className="authors">
+      {props.authors.map(author =>
+        <AuthorThumb
+          key={shortid.generate()}
+          author={author}
+          image={props.allImages.get(author)}
+        />
+      )}
+    </div>
+  )
 }
+
+const mapStateToProps = ({allImages}) => ({allImages})
+
+export default connect(mapStateToProps)(Authors)

@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
+
 import translate from '../shared/translate'
 import MessagePopup from '../components/main/MessagePopup'
 import {API} from '../config/api'
@@ -87,4 +89,6 @@ class EditQuote extends Component {
   }
 }
 
-export default EditQuote
+const mapStateToProps = ({allQuotes, token, admin}) => ({allQuotes, token, admin})
+
+export default connect(mapStateToProps)(EditQuote)

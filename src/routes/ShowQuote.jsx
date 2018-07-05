@@ -1,16 +1,22 @@
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
+
 import ImageQuote from './../components/main/ImageQuote'
 import './ShowQuote.css'
 
-export default class ShowQuote extends Component {
+class ShowQuote extends Component {
   render() {
     const id = this.props.match.params.id
-    const { language, allQuotes, token, admin } = this.props
+    const { allQuotes } = this.props
     const quote = allQuotes.find(q => q._id === id)
     if (!quote) return null
 
     return (
-      <ImageQuote quote={quote} allImages={this.props.allImages} language={language} token={token} admin={admin} cssClass="big-quote" />
+      <ImageQuote quote={quote} cssClass="big-quote" />
     )
   }
 }
+
+const mapStateToProps = ({allQuotes}) => ({allQuotes})
+
+export default connect(mapStateToProps)(ShowQuote)

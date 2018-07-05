@@ -1,4 +1,7 @@
 import React from 'react'
+import {connect} from 'react-redux'
+
+import {setPhrase} from '../../store'
 import './Filters.css'
 import translate from '../../shared/translate'
 
@@ -12,4 +15,6 @@ const Filters = ({ setPhrase, filterAuthors }) => (
   </div>
 )
 
-export default Filters
+const mapDispatchToProps = { setPhrase }
+
+export default connect(null, mapDispatchToProps)(Filters)
