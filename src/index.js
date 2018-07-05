@@ -9,7 +9,6 @@ import App from './components/App'
 import './index.css'
 
 const store = createStore(reducer)
-// console.log(store)
 
 render(
   <Provider store={store}>

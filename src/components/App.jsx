@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Route, withRouter} from 'react-router-dom'
+import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 
 import {getallImages, checkToken} from '../shared/helpers'
@@ -7,18 +7,12 @@ import {API, domain} from '../config/api'
 import {LS} from '../config/localstorage'
 import Navigation from './header/Navigation'
 import Sidebar from './sidebar/Sidebar'
-import AllQuotes from '../routes/AllQuotes'
-import Author from '../routes/Author'
-import EditQuote from '../routes/EditQuote'
-import ShowQuote from '../routes/ShowQuote'
-import RandomQuote from '../routes/RandomQuote'
-import Login from '../routes/Login'
-import Profile from '../routes/Profile'
-import Auth from '../routes/Auth'
+import Router from './Router'
+
 import cachedQuotes from '../data/quotes.json'
 import './App.css'
 
-import {setAllQuotes, setAllAuthors, setAllImages, setToken, setAdmin} from '../store'
+import {setAllQuotes, setAllAuthors, setAllImages, setUser} from '../store'
 
 class App extends Component {
   componentDidMount() {
@@ -30,7 +24,7 @@ class App extends Component {
   checkToken() {
     const service = localStorage.getItem(LS.service)
     const token = this.props.token
-    checkToken(`${domain}/auth/${service}/${token}`, token, this.setUser)
+    checkToken(`${domain}/auth/${service}/${token}`, token, this.props.setUser)
   }
 
   loadQuotes(url) {
@@ -61,34 +55,19 @@ class App extends Component {
     )
   }
 
-  setUser = (token, admin = false) => {
-    this.props.setToken(token)
-    this.props.setAdmin(admin)
-  }
-
   render() {
     return (
       <div className="App">
         <section className="right-section">
           <Navigation />
-
-          <Route exact path='/' component={RandomQuote} />
-          <Route path='/all-quotes' component={AllQuotes} />
-          <Route path='/login' component={Login} />
-          <Route path='/quote/:id' component={ShowQuote} />
-          <Route path='/author/:name' component={Author} />
-          <Route path='/add-quote' component={EditQuote} />
-          <Route path='/edit-quote/:id' component={EditQuote} />
-          <Route path='/profile' component={Profile} />
-          <Route path='/auth/:service/:token' component={Auth} />
+          <Router />
         </section>
-
         <Sidebar/>
       </div>
     )
   }
 }
 
-const mapDispatchToProps = {setAllQuotes, setAllAuthors, setAllImages, setToken, setAdmin}
+const mapDispatchToProps = {setAllQuotes, setAllAuthors, setAllImages, setUser}
 
 export default withRouter(connect(null, mapDispatchToProps)(App))

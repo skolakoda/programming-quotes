@@ -18,10 +18,11 @@
       "no-dupe-keys": "error",
       "no-unreachable": "error",
       "block-scoped-var": "error",
+      "class-methods-use-this": "warn",
       "no-param-reassign": "error",
       "vars-on-top": "error",
       "no-shadow-restricted-names": "error",
-      "indent": ["warn", 2],
+      "indent": ["warn", 2, { "SwitchCase": 1 }],
       "operator-assignment": ["error", "always"],
       "space-before-blocks": "warn",
       "space-before-function-paren": ["warn", "never"],
@@ -46,11 +47,12 @@
       "new-cap": "warn"
   },
   "parserOptions": {
-      "ecmaVersion": 2017,
+      "ecmaVersion": 8,
       "sourceType": "module",
       "ecmaFeatures": {
           "impliedStrict": true,
+          "experimentalObjectRestSpread": true,
           "jsx": true
-      },
+      }
   }
 }
