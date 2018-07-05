@@ -1,9 +1,12 @@
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
+
+import {setUser} from '../store'
 import translate from '../shared/translate'
 import {LS} from '../config/localstorage'
 import {API, domain} from '../config/api'
 
-export default class Profile extends Component  {
+class Profile extends Component  {
   constructor(props) {
     super(props)
     this.state = {
@@ -68,3 +71,7 @@ export default class Profile extends Component  {
     )
   }
 }
+
+const mapDispatchToProps = {setUser}
+
+export default connect(null, mapDispatchToProps)(Profile)

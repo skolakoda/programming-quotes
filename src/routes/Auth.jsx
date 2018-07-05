@@ -1,11 +1,14 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
+
+import {setUser} from '../store'
 import {LS} from '../config/localstorage'
 import {domain} from '../config/api'
 import {checkToken} from '../shared/helpers'
 import translate from '../shared/translate'
 
-export default class Auth extends Component {
+class Auth extends Component {
   componentDidMount() {
     const {service, token} = this.props.match.params
     localStorage.setItem(LS.service, service)
@@ -23,3 +26,7 @@ export default class Auth extends Component {
     )
   }
 }
+
+const mapDispatchToProps = {setUser}
+
+export default connect(null, mapDispatchToProps)(Auth)

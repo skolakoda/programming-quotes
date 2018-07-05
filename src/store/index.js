@@ -27,6 +27,8 @@ export const reducer = (state = initialState, action) => {
       return {...state, token: action.token }
     case 'SET_ADMIN':
       return {...state, admin: action.admin }
+    case 'SET_USER':
+      return {...state, token: action.token, admin: action.admin }
     default:
       return state
   }
@@ -40,3 +42,8 @@ export const setLanguage = language => ({type: 'SET_LANGUAGE', language})
 export const setToken = token => ({type: 'SET_TOKEN', token})
 export const setAdmin = admin => ({type: 'SET_ADMIN', admin})
 
+export const setUser = (token, admin = false) => ({
+  type: 'SET_USER',
+  token,
+  admin
+})

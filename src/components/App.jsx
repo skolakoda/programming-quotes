@@ -79,8 +79,8 @@ class App extends Component {
           <Route path='/author/:name' component={Author} />
           <Route path='/add-quote' component={EditQuote} />
           <Route path='/edit-quote/:id' component={EditQuote} />
-          <Route path='/profile' component={() => <Profile setUser={this.setUser} />} />
-          <Route path='/auth/:service/:token' component={props => <Auth {...props} setUser={this.setUser} />} />
+          <Route path='/profile' component={Profile} />
+          <Route path='/auth/:service/:token' component={Auth} />
         </section>
 
         <Sidebar/>
