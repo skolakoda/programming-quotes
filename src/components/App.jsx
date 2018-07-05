@@ -71,16 +71,15 @@ class App extends Component {
       <div className="App">
         <section className="right-section">
           <Navigation />
-
-          <Route path='/add-quote' component={props => <EditQuote {...props} />} />
-          <Route path='/edit-quote/:id' component={props => <EditQuote {...props} />} />
-          <Route path='/quote/:id' component={props => <ShowQuote {...props} />} />
+          <Route exact path='/' component={RandomQuote} />
+          <Route path='/all-quotes' component={AllQuotes} />
           <Route path='/login' component={Login} />
+          <Route path='/quote/:id' component={ShowQuote} />
+          <Route path='/author/:name' component={Author} />
+          <Route path='/add-quote' component={EditQuote} />
+          <Route path='/edit-quote/:id' component={EditQuote} />
           <Route path='/profile' component={() => <Profile setUser={this.setUser} />} />
           <Route path='/auth/:service/:token' component={props => <Auth {...props} setUser={this.setUser} />} />
-          <Route path='/author/:name' component={props => <Author {...props} />} />
-          <Route path='/all-quotes' component={AllQuotes} />
-          <Route exact path='/' component={RandomQuote} />
         </section>
 
         <Sidebar/>
