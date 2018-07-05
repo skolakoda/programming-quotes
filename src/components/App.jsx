@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {Route} from 'react-router-dom'
 import {connect} from 'react-redux'
+import { HashRouter as Router } from 'react-router-dom'
 
 import {getallImages, checkToken} from '../shared/helpers'
 import {API, domain} from '../config/api'
@@ -68,22 +69,24 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <section className="right-section">
-          <Navigation />
-          <Route exact path='/' component={RandomQuote} />
-          <Route path='/all-quotes' component={AllQuotes} />
-          <Route path='/login' component={Login} />
-          <Route path='/quote/:id' component={ShowQuote} />
-          <Route path='/author/:name' component={Author} />
-          <Route path='/add-quote' component={EditQuote} />
-          <Route path='/edit-quote/:id' component={EditQuote} />
-          <Route path='/profile' component={() => <Profile setUser={this.setUser} />} />
-          <Route path='/auth/:service/:token' component={props => <Auth {...props} setUser={this.setUser} />} />
-        </section>
+      <Router>
+        <div className="App">
+          <section className="right-section">
+            <Navigation />
+            <Route exact path='/' component={RandomQuote} />
+            <Route path='/all-quotes' component={AllQuotes} />
+            <Route path='/login' component={Login} />
+            <Route path='/quote/:id' component={ShowQuote} />
+            <Route path='/author/:name' component={Author} />
+            <Route path='/add-quote' component={EditQuote} />
+            <Route path='/edit-quote/:id' component={EditQuote} />
+            <Route path='/profile' component={() => <Profile setUser={this.setUser} />} />
+            <Route path='/auth/:service/:token' component={props => <Auth {...props} setUser={this.setUser} />} />
+          </section>
 
-        <Sidebar/>
-      </div>
+          <Sidebar/>
+        </div>
+      </Router>
     )
   }
 }
