@@ -7,12 +7,12 @@ import Sidebar from './sidebar/Sidebar'
 import Router from './Router'
 import './App.css'
 
-import {fetchQuotes, checkUser} from '../store/actions'
+import {getAuthorThumbs, checkUser} from '../store/actions'
 
 class App extends Component {
   componentDidMount() {
-    this.props.fetchQuotes()
-    this.props.checkUser()
+    this.props.getAuthorThumbs(this.props.allAuthors)
+    // this.props.checkUser()
   }
 
   render() {
@@ -28,6 +28,7 @@ class App extends Component {
   }
 }
 
-const mapDispatchToProps = {fetchQuotes, checkUser}
+const mapStateToProps = ({allAuthors}) => ({allAuthors})
+const mapDispatchToProps = {getAuthorThumbs, checkUser}
 
-export default withRouter(connect(null, mapDispatchToProps)(App))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))

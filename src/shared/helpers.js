@@ -8,7 +8,7 @@ export function findValue(object, searchKey) {
 }
 
 export function fetchImage(title, size, callback) {
-  fetch(`https://en.wikipedia.org/w/api.php?action=query&titles=${title}&prop=pageimages&format=json&pithumbsize=${size}&origin=*`)
+  fetch(`https://sh.wikipedia.org/w/api.php?action=query&titles=${title}&prop=pageimages&format=json&pithumbsize=${size}&origin=*`)
     .then(response => response.json())
     .then(obj => {
       const imgSrc = findValue(obj, 'source')
@@ -21,7 +21,7 @@ export function fetchImage(title, size, callback) {
 @return Map(author name: image src)
 */
 export function getallImages(authors) {
-  return fetch(`https://en.wikipedia.org/w/api.php?action=query&titles=${authors.join('|')}&prop=pageimages&format=json&pithumbsize=50&origin=*`)
+  return fetch(`https://sh.wikipedia.org/w/api.php?action=query&titles=${authors.join('|')}&prop=pageimages&format=json&pithumbsize=50&origin=*`)
     .then(res => res.json())
     .then(res => {
       if (!res.query.pages) return

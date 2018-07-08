@@ -19,13 +19,13 @@ export default class AuthorInfo extends Component {
 
   prepareInfo(info) {
     if (!info) return ''
-    const wikiUrl = `https://en.wikipedia.org/wiki/${encodeURIComponent(this.props.author)}`
+    const wikiUrl = `https://sh.wikipedia.org/wiki/${encodeURIComponent(this.props.author)}`
     return `${info} <a href=${wikiUrl} target="_blank">Wikipedia</a>`
   }
 
   getInfo(author) {
     this.setState({info: ''})
-    fetch(`https://en.wikipedia.org/w/api.php?action=query&titles=${encodeURIComponent(author)}&prop=extracts&format=json&origin=*&redirects=1&exsentences=2&exintro=1`)
+    fetch(`https://sh.wikipedia.org/w/api.php?action=query&titles=${encodeURIComponent(author)}&prop=extracts&format=json&origin=*&redirects=1&exsentences=2&exintro=1`)
       .then(response => response.json())
       .then(obj => {
         const info = findValue(obj, 'extract')

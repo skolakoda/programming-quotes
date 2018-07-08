@@ -9,10 +9,10 @@ import './Navigation.css'
 
 const Navigation = ({language, token, admin, setLanguage}) => {
 
-  const setLang = language => {
-    setLanguage(language)
-    translate.setLanguage(language)
-  }
+  // const setLang = language => {
+  //   setLanguage(language)
+  //   translate.setLanguage(language)
+  // }
 
   return (
     <header>
@@ -20,22 +20,22 @@ const Navigation = ({language, token, admin, setLanguage}) => {
       <nav>
         <Link to="/" replace={true}>{translate('DAILY_QUOTE')}</Link>
         <Link to="/all-quotes">{translate('ALL_QUOTES')}</Link>
-        {admin && <Link to="/add-quote">{translate('ADD_QUOTE')}</Link>}
+        {/* {admin && <Link to="/add-quote">{translate('ADD_QUOTE')}</Link>}
         {token
           ? <Link to="/profile">{translate('PROFILE')}</Link>
           : <Link to="/login">{translate('LOGIN')}</Link>
-        }
-        <div>
+        } */}
+        {/* <div>
           <button
             onClick={() => setLang('en')}
-            className={language === 'en' ? 'active' : ''}>ENG</button>
+            className={language === 'en' ? 'active' : ''}>EN</button>
           <button
             onClick={() => setLang('sr')}
-            className={language === 'sr' ? 'active' : ''}>SRB</button>
-        </div>
+            className={language === 'sr' ? 'active' : ''}>SH</button>
+        </div> */}
       </nav>
     </header>
-)}
+  )}
 
 const mapStateToProps = ({language, token, admin}) => ({language, token, admin})
 const mapDispatchToProps = {setLanguage}

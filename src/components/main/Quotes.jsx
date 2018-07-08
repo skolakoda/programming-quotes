@@ -24,13 +24,13 @@ export default class Quotes extends Component {
     const startPosition = this.state.currentPage * quotesPerPage
     const preparedQuotes = currentQuotes
       .filter((q, i) => i >= startPosition && i < startPosition + quotesPerPage)
-      .map(q =>
-        <Quote key={q._id} quote={q} />
+      .map((q, i) =>
+        <Quote key={i} quote={q} />
       )
     const pagination = []
     const totalPages = Math.ceil(currentQuotes.length / quotesPerPage)
     for (let i = 0; i < totalPages; i++)
-      pagination.push(<button value={i} onClick={this.turnThePage} key={i}>{i}</button>)
+      pagination.push(<button value={i} onClick={this.turnThePage} key={i}>{i + 1}</button>)
 
     return loaded ?
       (

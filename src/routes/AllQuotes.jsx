@@ -10,7 +10,7 @@ const AllQuotes = ({ language, allQuotes, phrase }) => {
 
   return (
     <main>
-      <h1>{translate('PROGRAMMING_QUOTES')}</h1>
+      <h1>{translate('SACRED_QUOTES')}</h1>
       {phrase && <small>{translate('SHOWING_RESULTS')} "{phrase}":</small>}
       <Quotes loaded={allQuotes.length} currentQuotes={filtered} />
     </main>
