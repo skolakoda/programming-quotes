@@ -1,3 +1,9 @@
+export const fetchQuotesRequest = () => ({type: 'FETCH_QUOTES_REQUEST'})
+
+export const fetchQuotesFailure = () => ({type: 'FETCH_QUOTES_FAILURE'})
+
+export const fetchQuotesSuccess = allQuotes => ({type: 'FETCH_QUOTES_SUCCESS', allQuotes})
+
 export const setAllQuotes = allQuotes => ({type: 'SET_ALL_QUOTES', allQuotes})
 
 export const setAllAuthors = allAuthors => ({type: 'SET_ALL_AUTHORS', allAuthors})
