@@ -1,8 +1,12 @@
+import {getallImages} from '../shared/helpers'
+import {LS} from '../config/localstorage'
+import {API, domain} from '../config/api'
+
 export const fetchQuotesRequest = () => ({type: 'FETCH_QUOTES_REQUEST'})
 
-export const fetchQuotesFailure = () => ({type: 'FETCH_QUOTES_FAILURE'})
+export const fetchQuotesFailure = error => ({type: 'FETCH_QUOTES_FAILURE', error})
 
-export const fetchQuotesSuccess = allQuotes => ({type: 'FETCH_QUOTES_SUCCESS', allQuotes})
+export const fetchQuotesSuccess = () => ({type: 'FETCH_QUOTES_SUCCESS'})
 
 export const setAllQuotes = allQuotes => ({type: 'SET_ALL_QUOTES', allQuotes})
 
@@ -23,3 +27,47 @@ export const setUser = (token, admin = false) => ({
   token,
   admin
 })
+
+/* THUNK */
+
+export const getAuthorThumbs = allAuthors => dispatch => {
+  const wikiApiLimit = 50
+  const promises = []
+  for (let i = 0; i < [...allAuthors].length; i += wikiApiLimit)
+    promises.push(getallImages([...allAuthors].slice(i, i + wikiApiLimit)))
+  Promise.all(promises)
+    .then(data =>
+      dispatch(setAllImages(data.reduce((a, b) => new Map([...a, ...b]))))
+    )
+}
+
+export const initState = allQuotes => dispatch => {
+  dispatch(setAllQuotes(allQuotes))
+  const allAuthors = new Set(allQuotes.map(quote => quote.author).sort())
+  dispatch(setAllAuthors(allAuthors))
+  dispatch(getAuthorThumbs(allAuthors))
+}
+
+export const fetchQuotes = () => dispatch => {
+  dispatch(fetchQuotesRequest(API.read))
+  return fetch(API.read)
+    .then(response => response.json(), error => fetchQuotesFailure(error))
+    .then(json => {
+      dispatch(fetchQuotesSuccess())
+      dispatch(initState(json))
+    })
+}
+
+export const checkUser = () => (dispatch, getState) => {
+  const {token} = getState()
+  if (!token) return
+  const service = localStorage.getItem(LS.service)
+  fetch(`${domain}/auth/${service}/${token}`)
+    .then(response => response.json())
+    .then(response => {
+      dispatch(setUser(
+        response.user ? token : '',
+        response.user ? response.user.admin : false)
+      )
+    })
+}

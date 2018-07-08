@@ -2,10 +2,8 @@ import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 
-import {setUser} from '../store/actions'
+import {checkUser, setUser} from '../store/actions'
 import {LS} from '../config/localstorage'
-import {domain} from '../config/api'
-import {checkToken} from '../shared/helpers'
 import translate from '../shared/translate'
 
 class Auth extends Component {
@@ -13,7 +11,7 @@ class Auth extends Component {
     const {service, token} = this.props.match.params
     localStorage.setItem(LS.service, service)
     localStorage.setItem(LS.token, token)
-    checkToken(`${domain}/auth/${service}/${token}`, token, this.props.setUser)
+    this.props.checkUser()
   }
 
   render() {
@@ -27,6 +25,6 @@ class Auth extends Component {
   }
 }
 
-const mapDispatchToProps = {setUser}
+const mapDispatchToProps = {checkUser, setUser}
 
 export default connect(null, mapDispatchToProps)(Auth)

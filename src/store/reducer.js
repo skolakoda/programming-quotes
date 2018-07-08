@@ -17,9 +17,9 @@ export const reducer = (state = initialState, action) => {
     case 'FETCH_QUOTES_REQUEST':
       return {...state, isFetching: true }
     case 'FETCH_QUOTES_FAILURE':
-      return {...state, isFetching: false, error: 'Došlo je do greške prilikom učitavanja.' }
+      return {...state, isFetching: false, error: action.error }
     case 'FETCH_QUOTES_SUCCESS':
-      return {...state, isFetching: false, allQuotes: action.allQuotes }
+      return {...state, isFetching: false }
     case 'SET_ALL_QUOTES':
       return {...state, allQuotes: action.allQuotes }
     case 'SET_ALL_AUTHORS':
