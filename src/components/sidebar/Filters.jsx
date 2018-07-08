@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import {setPhrase} from '../../store'
+import {setPhrase} from '../../store/actions'
 import './Filters.css'
 import translate from '../../shared/translate'
 

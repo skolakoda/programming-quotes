@@ -12,7 +12,7 @@ import Router from './Router'
 import cachedQuotes from '../data/quotes.json'
 import './App.css'
 
-import {setAllQuotes, setAllAuthors, setAllImages, setUser} from '../store'
+import {setAllQuotes, setAllAuthors, setAllImages, setUser} from '../store/actions'
 
 class App extends Component {
   componentDidMount() {

@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
-import {setUser} from '../store'
+import {setUser} from '../store/actions'
 import translate from '../shared/translate'
 import {LS} from '../config/localstorage'
 import {API, domain} from '../config/api'

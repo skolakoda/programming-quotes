@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import {setLanguage} from '../../store'
+import {setLanguage} from '../../store/actions'
 import Github from './Github'
 import {Link} from 'react-router-dom'
 import translate from '../../shared/translate'
