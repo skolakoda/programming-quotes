@@ -1,11 +1,12 @@
-import cachedQuotes from '../data/quotes.json'
+import quotes from '../data/quotes.json'
 import {LS} from '../config/localstorage'
 import translate from '../shared/translate'
+import shortid from 'shortid'
 
 const initialState = {
   isFetching: false,
-  allQuotes: cachedQuotes,
-  allAuthors: new Set(cachedQuotes.map(quote => quote.author).sort()),
+  allQuotes: quotes.sort(() => 0.5 - Math.random()).map(q => ({...q, _id: shortid.generate()})),
+  allAuthors: new Set(quotes.map(quote => quote.author).sort()),
   allImages: new Map(),
   phrase: '',
   language: translate.currentLanguage,

@@ -24,8 +24,8 @@ export default class Quotes extends Component {
     const startPosition = this.state.currentPage * quotesPerPage
     const preparedQuotes = currentQuotes
       .filter((q, i) => i >= startPosition && i < startPosition + quotesPerPage)
-      .map((q, i) =>
-        <Quote key={i} quote={q} />
+      .map(q =>
+        <Quote key={q._id} quote={q} />
       )
     const pagination = []
     const totalPages = Math.ceil(currentQuotes.length / quotesPerPage)

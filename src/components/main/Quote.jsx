@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 
-import Stars from './Stars'
+// import Stars from './Stars'
 import MessagePopup from './MessagePopup'
 import translate from '../../shared/translate'
 import {API} from '../../config/api'
@@ -48,7 +48,9 @@ class Quote extends Component {
     return quote[language] ? (
       <blockquote className={cssClass || 'small-quote'}>
         <p className="quote-text">
-          <Link to={`/quote/${id}`} className="no-link">{quote[language]}</Link>&nbsp;
+          <Link to={`/quote/${id}`} className="no-link">
+            {quote[language]}
+          </Link>&nbsp;
           { admin &&
             <span className="admin-actions">
               <Link to={`/edit-quote/${id}`}><span className="edit-icon">&#9998;</span></Link>&nbsp;
@@ -56,7 +58,7 @@ class Quote extends Component {
             </span>
           }
         </p>
-        <Stars rating={quote.rating} id={id} />
+        {/* <Stars rating={quote.rating} id={id} /> */}
         <span className="quote-author"> — <Link to={authorLink}>{author}</Link></span>
 
         {this.state.response && <MessagePopup message={this.state.response} closePopup={this.closePopup} />}

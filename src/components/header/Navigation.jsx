@@ -16,7 +16,7 @@ const Navigation = ({language, token, admin, setLanguage}) => {
 
   return (
     <header>
-      <Github repoUrl="https://github.com/skolakoda/programming-quotes" />
+      <Github repoUrl="https://github.com/mudroljub/sacred-quotes" />
       <nav>
         <Link to="/" replace={true}>{translate('DAILY_QUOTE')}</Link>
         <Link to="/all-quotes">{translate('ALL_QUOTES')}</Link>

@@ -1,7 +1,16 @@
+.small-quote .quote-text::first-letter {
+  font-size: 1.25em;
+  color: darkred;
+}
+
+.small-quote .quote-author a {
+  color: #888;
+  text-decoration: none;
+  font-style: italic;
+}
+
 .small-quote .quote-text {
   margin: 0;
-  font-size: 1em;
-  font-style: italic;
 }
 
 .small-quote .quote-author {

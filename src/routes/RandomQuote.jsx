@@ -35,7 +35,7 @@ class RandomQuote extends Component {
       <main>
         <h1>{translate('QUOTE_OF_THE_DAY')}</h1>
         <ImageQuote quote={this.state.quote} cssClass="big-quote" />
-        <button onClick={this.getRandom}>Gimme more!</button>
+        <button onClick={this.getRandom}>Još mudrosti!</button>
       </main>
     )
   }
