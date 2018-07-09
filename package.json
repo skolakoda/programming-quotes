@@ -1,8 +1,8 @@
 {
-  "name": "sacred-quotes",
+  "name": "svetemisli",
   "version": "0.1.0",
-  "homepage": "https://mudroljub.github.io/sacred-quotes",
-  "repository": "https://github.com/mudroljub/sacred-quotes",
+  "homepage": "https://mudroljub.github.io/svetemisli",
+  "repository": "https://github.com/mudroljub/svetemisli",
   "license": "MIT",
   "dependencies": {
     "gh-pages": "^1.1.0",
