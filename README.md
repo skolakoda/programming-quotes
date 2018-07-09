@@ -1,9 +1,16 @@
-# Sacred Quotes
+[![](screen.png)](https://mudroljub.github.io/svetemisli)
 
-## Development
+# Svete misli
+
+Zbirka citata osnivača velikih religija, mudraca i svetaca.
+
+Svaki put su drugačije izreke na naslovnoj. 
+ 
+Vidi na: [mudroljub.github.io/svetemisli](https://mudroljub.github.io/svetemisli)
+
+## Razvoj
 
 ```
 npm install
 npm start
-
 ```
