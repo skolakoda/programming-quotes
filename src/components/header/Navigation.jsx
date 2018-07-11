@@ -9,11 +9,6 @@ import './Navigation.css'
 
 const Navigation = ({language, token, admin, setLanguage}) => {
 
-  // const setLang = language => {
-  //   setLanguage(language)
-  //   translate.setLanguage(language)
-  // }
-
   return (
     <header>
       <Github repoUrl="https://github.com/mudroljub/svetemisli" />
@@ -27,10 +22,10 @@ const Navigation = ({language, token, admin, setLanguage}) => {
         } */}
         {/* <div>
           <button
-            onClick={() => setLang('en')}
+            onClick={() => setLanguage('en')}
             className={language === 'en' ? 'active' : ''}>EN</button>
           <button
-            onClick={() => setLang('sr')}
+            onClick={() => setLanguage('sr')}
             className={language === 'sr' ? 'active' : ''}>SH</button>
         </div> */}
       </nav>

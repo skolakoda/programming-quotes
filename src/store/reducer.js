@@ -1,6 +1,5 @@
 import quotes from '../data/quotes.json'
 import {LS} from '../config/localstorage'
-import translate from '../shared/translate'
 import shortid from 'shortid'
 
 const initialState = {
@@ -9,7 +8,7 @@ const initialState = {
   allAuthors: new Set(quotes.map(quote => quote.author).sort()),
   allImages: new Map(),
   phrase: '',
-  language: translate.currentLanguage,
+  language: 'sr',
   token: localStorage.getItem(LS.token),
   admin: false
 }
