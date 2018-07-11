@@ -1,6 +1,5 @@
 import cachedQuotes from '../data/quotes.json'
 import {LS} from '../config/localstorage'
-import translate from '../shared/translate'
 
 const initialState = {
   isFetching: false,
@@ -8,7 +7,7 @@ const initialState = {
   allAuthors: new Set(cachedQuotes.map(quote => quote.author).sort()),
   allImages: new Map(),
   phrase: '',
-  language: translate.currentLanguage,
+  language: 'en',
   token: localStorage.getItem(LS.token),
   admin: false
 }

@@ -1,9 +1,7 @@
 import translations from '../data/translations'
+import {store} from '../store'
 
-export default function translate(key, lang) {
-  return translations[translate.currentLanguage][key] || key
+export default function translate(key) {
+  const {language} = store.getState()
+  return translations[language][key] || key
 }
-
-translate.currentLanguage = 'en'
-
-translate.setLanguage = lang => translate.currentLanguage = lang
