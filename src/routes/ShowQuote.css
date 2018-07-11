@@ -17,6 +17,7 @@
 @media (min-width: 800px) {
   .quote-box {
     flex-wrap: nowrap;
+    margin-right: 40px;
     padding: 40px 60px;
   }
 
