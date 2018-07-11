@@ -8,7 +8,7 @@ import './Sidebar.css'
 class Sidebar extends Component {
   constructor(props) {
     super(props)
-    this.state = {authors: []}
+    this.state = {authors: [...this.props.allAuthors]}
   }
 
   componentWillReceiveProps(nextProps) {
