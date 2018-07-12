@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 
-import {checkUser, setUser} from '../store/actions'
+import {checkUser} from '../store/actions'
 import {LS} from '../config/localstorage'
 import translate from '../shared/translate'
 
@@ -25,6 +25,6 @@ class Auth extends Component {
   }
 }
 
-const mapDispatchToProps = {checkUser, setUser}
+const mapDispatchToProps = {checkUser}
 
 export default connect(null, mapDispatchToProps)(Auth)

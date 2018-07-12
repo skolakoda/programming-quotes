@@ -22,13 +22,15 @@ export const setToken = token => ({type: 'SET_TOKEN', token})
 
 export const setAdmin = admin => ({type: 'SET_ADMIN', admin})
 
-export const setUser = (token, admin = false) => ({
-  type: 'SET_USER',
-  token,
-  admin
-})
+export const setName = name => ({type: 'SET_NAME', name})
 
 /* THUNK */
+
+export const setUser = (token, admin = false, name = '') => dispatch => {
+  dispatch(setToken(token))
+  dispatch(setAdmin(admin))
+  dispatch(setName(name))
+}
 
 export const getAuthorThumbs = allAuthors => dispatch => {
   const wikiApiLimit = 50

@@ -8,8 +8,10 @@ const initialState = {
   allImages: new Map(),
   phrase: '',
   language: 'en',
+  // user
   token: localStorage.getItem(LS.token),
-  admin: false
+  admin: false,
+  name: ''
 }
 
 export const reducer = (state = initialState, action) => {
@@ -34,8 +36,8 @@ export const reducer = (state = initialState, action) => {
       return {...state, token: action.token }
     case 'SET_ADMIN':
       return {...state, admin: action.admin }
-    case 'SET_USER':
-      return {...state, token: action.token, admin: action.admin }
+    case 'SET_NAME':
+      return {...state, name: action.name }
     default:
       return state
   }

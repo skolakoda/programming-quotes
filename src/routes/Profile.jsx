@@ -10,10 +10,8 @@ class Profile extends Component  {
   constructor(props) {
     super(props)
     this.state = {
-      name: '',
       voted: [],
-      admin: false,
-      createdAt: new Date()
+      createdAt: null
     }
   }
 
@@ -26,7 +24,9 @@ class Profile extends Component  {
       .then(data => data.json())
       .then(data => {
         const {name, admin, createdAt, voted} = data.user
-        this.setState({name, admin, createdAt})
+        this.setState({createdAt})
+        console.log(token, admin, name)
+        this.props.setUser(token, admin, name)
         if (voted) this.syncVotes(token, voted)
       })
   }
@@ -57,12 +57,12 @@ class Profile extends Component  {
     return (
       <main>
         <h1>{translate('PROFILE')}</h1>
-        {localStorage.getItem(LS.token) ?
+        {this.props.token ?
           <div>
-            <p>name: {this.state.name}</p>
+            <p>name: {this.props.name}</p>
             <p>member since: {new Date(this.state.createdAt).toISOString().slice(0, 10)}</p>
             <p>quotes voted: {this.state.voted.length}</p>
-            <p>admin: {this.state.admin ? 'yes' : 'no'}</p>
+            <p>admin: {this.props.admin ? 'yes' : 'no'}</p>
             <button onClick={this.logout}>{translate('LOGOUT')}</button>
           </div>
           : <p>{translate('SUCCESSFULLY_LOGOUT')}</p>
@@ -72,6 +72,7 @@ class Profile extends Component  {
   }
 }
 
+const mapStateToProps = ({token, admin, name}) => ({token, admin, name})
 const mapDispatchToProps = {setUser}
 
-export default connect(null, mapDispatchToProps)(Profile)
+export default connect(mapStateToProps, mapDispatchToProps)(Profile)
