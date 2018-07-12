@@ -55,7 +55,7 @@ export const initState = allQuotes => dispatch => {
 export const fetchQuotes = () => dispatch => {
   dispatch(fetchQuotesRequest(API.read))
   return fetch(API.read)
-    .then(response => response.json(), error => fetchQuotesFailure(error))
+    .then(response => response.json())
     .then(json => {
       dispatch(fetchQuotesSuccess())
       dispatch(initState(json))
