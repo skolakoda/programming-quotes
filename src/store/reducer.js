@@ -1,10 +1,9 @@
 import quotes from '../data/quotes.json'
 import {LS} from '../config/localstorage'
-import shortid from 'shortid'
 
 const initialState = {
   isFetching: false,
-  allQuotes: quotes.sort(() => 0.5 - Math.random()).map(q => ({...q, _id: shortid.generate()})),
+  allQuotes: quotes.sort(() => 0.5 - Math.random()),
   allAuthors: new Set(quotes.map(quote => quote.author).sort()),
   allImages: new Map(),
   phrase: '',
