@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 
+import {addQuote} from '../store/actions'
 import translate from '../shared/translate'
 import MessagePopup from '../components/main/MessagePopup'
 import {API} from '../config/api'
@@ -35,14 +36,16 @@ class EditQuote extends Component {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ author, sr, en, source, _id, token: this.props.token })
     })
-      .then(res => res.text())
+      .then(res => res.json())
+      .then(res => {
+        this.setState({ warning: '', response: translate(res.message) })
+        if (res.message === 'SUCCESS_SAVED') this.props.addQuote(res.quote)
+      })
       .catch(e => this.setState({ response: translate('POST_ERROR') }))
-      .then(res => this.setState({ warning: '', response: translate(res) }))
   }
 
   closePopup = () => {
     this.setState({ response: '' })
-    window.location.reload() // TODO: push new quote into allQuotes
   }
 
   render() {
@@ -90,5 +93,6 @@ class EditQuote extends Component {
 }
 
 const mapStateToProps = ({allQuotes, token, admin}) => ({allQuotes, token, admin})
+const mapDispatchToProps = {addQuote}
 
-export default connect(mapStateToProps)(EditQuote)
+export default connect(mapStateToProps, mapDispatchToProps)(EditQuote)
