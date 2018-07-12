@@ -1,17 +1,17 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
-import {setUser} from '../store/actions'
+import {setUser, logout} from '../store/actions'
 import translate from '../shared/translate'
 import {LS} from '../config/localstorage'
-import {API, domain} from '../config/api'
+import {domain} from '../config/api'
 
 class Profile extends Component  {
   constructor(props) {
     super(props)
     this.state = {
-      voted: [],
-      createdAt: null
+      createdAt: null,
+      name: '',
     }
   }
 
@@ -24,32 +24,18 @@ class Profile extends Component  {
       .then(data => data.json())
       .then(data => {
         const {name, admin, createdAt, voted} = data.user
-        this.setState({createdAt})
-        console.log(token, admin, name)
-        this.props.setUser(token, admin, name)
-        if (voted) this.syncVotes(token, voted)
+        this.setState({createdAt, name})
+        this.props.setUser(token, admin)
+        if (voted) this.updateLocalVotes(voted)
       })
   }
 
-  syncVotes(token, remoteVotes) {
-    const localVotes = JSON.parse(localStorage.getItem(LS.ratings))
-    if (!localVotes || !localVotes.length) return
-    const voted = [...new Set(localVotes, remoteVotes)]
-    fetch(API.updateUserVotes, {
-      method: 'post',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({token, voted})
-    })
-    this.updateLocalVotes(voted)
-  }
-
   updateLocalVotes(voted) {
-    this.setState({voted})
     localStorage.setItem(LS.ratings, JSON.stringify(voted))
   }
 
   logout = e => {
-    this.props.setUser('')
+    this.props.logout()
     localStorage.setItem(LS.token, '')
   }
 
@@ -59,9 +45,9 @@ class Profile extends Component  {
         <h1>{translate('PROFILE')}</h1>
         {this.props.token ?
           <div>
-            <p>name: {this.props.name}</p>
+            <p>name: {this.state.name}</p>
             <p>member since: {new Date(this.state.createdAt).toISOString().slice(0, 10)}</p>
-            <p>quotes voted: {this.state.voted.length}</p>
+            <p>quotes voted: {localStorage.getItem(LS.ratings).length}</p>
             <p>admin: {this.props.admin ? 'yes' : 'no'}</p>
             <button onClick={this.logout}>{translate('LOGOUT')}</button>
           </div>
@@ -72,7 +58,7 @@ class Profile extends Component  {
   }
 }
 
-const mapStateToProps = ({token, admin, name}) => ({token, admin, name})
-const mapDispatchToProps = {setUser}
+const mapStateToProps = ({token, admin}) => ({token, admin})
+const mapDispatchToProps = {setUser, logout}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile)

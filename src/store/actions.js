@@ -22,14 +22,16 @@ export const setToken = token => ({type: 'SET_TOKEN', token})
 
 export const setAdmin = admin => ({type: 'SET_ADMIN', admin})
 
-export const setName = name => ({type: 'SET_NAME', name})
-
 /* THUNK */
 
-export const setUser = (token, admin = false, name = '') => dispatch => {
+export const setUser = (token, admin = false) => dispatch => {
   dispatch(setToken(token))
   dispatch(setAdmin(admin))
-  dispatch(setName(name))
+}
+
+export const logout = () => dispatch => {
+  dispatch(setToken(''))
+  dispatch(setAdmin(false))
 }
 
 export const getAuthorThumbs = allAuthors => dispatch => {
