@@ -6,6 +6,7 @@ import Stars from './Stars'
 import MessagePopup from './MessagePopup'
 import translate from '../../shared/translate'
 import {API} from '../../config/api'
+import {deleteQuote} from '../../store/actions'
 import './Quote.css'
 
 class Quote extends Component {
@@ -24,18 +25,21 @@ class Quote extends Component {
   }
 
   deleteQuote = () => {
+    const _id = this.props.quote._id
     fetch(API.delete, {
       method: 'delete',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({_id: this.props.quote._id, token: this.props.token})
+      body: JSON.stringify({_id, token: this.props.token})
     })
       .then(response => response.text())
-      .then(response => this.setState({response: translate(response)}))
+      .then(response => {
+        this.setState({response: translate(response)})  // ne otvara popup
+        if (response === 'QUOTE_DELETED') this.props.deleteQuote(_id)
+      })
   }
 
   closePopup = () => {
-    this.setState({ response: '' })
-    window.location.reload() // TODO: remove quote from allQuotes
+    this.setState({response: ''})
   }
 
   render() {
@@ -66,5 +70,6 @@ class Quote extends Component {
 }
 
 const mapStateToProps = ({language, admin, token}) => ({language, admin, token})
+const mapDispatchToProps = {deleteQuote}
 
-export default connect(mapStateToProps)(Quote)
+export default connect(mapStateToProps, mapDispatchToProps)(Quote)

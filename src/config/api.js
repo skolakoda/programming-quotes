@@ -1,5 +1,6 @@
-// 'http://localhost:5000'
-export const domain = 'https://baza-podataka.herokuapp.com'
+// http://localhost:5000
+// https://baza-podataka.herokuapp.com
+export const domain = 'http://localhost:5000'
 
 export const API = {
   create: `${domain}/quotes/create/`,
@@ -7,5 +8,4 @@ export const API = {
   update: `${domain}/quotes/update/`,
   delete: `${domain}/quotes/delete/`,
   rate: `${domain}/quotes/rate/`,
-  updateUserVotes: `${domain}/users/update-votes/`
 }
