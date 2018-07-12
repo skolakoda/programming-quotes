@@ -24,6 +24,8 @@ export const setAdmin = admin => ({type: 'SET_ADMIN', admin})
 
 export const addQuote = quote => ({type: 'ADD_QUOTE', quote})
 
+export const updateQuote = quote => ({type: 'UPDATE_QUOTE', quote})
+
 export const deleteQuote = _id => ({type: 'DELETE_QUOTE', _id})
 
 /* THUNK */

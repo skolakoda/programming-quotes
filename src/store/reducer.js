@@ -37,9 +37,16 @@ export const reducer = (state = initialState, action) => {
       return {...state, admin: action.admin }
     case 'ADD_QUOTE':
       return {...state, allQuotes: [...state.allQuotes, action.quote]}
-    case 'DELETE_QUOTE':
+    case 'UPDATE_QUOTE': {
+      const allQuotes = state.allQuotes.map(q => 
+        q._id === action.quote._id ? action.quote : q
+      )
+      return {...state, allQuotes}
+    }
+    case 'DELETE_QUOTE': {
       const allQuotes = state.allQuotes.filter(q => q._id !== action._id)
       return {...state, allQuotes}
+    }
     default:
       return state
   }

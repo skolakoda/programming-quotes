@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 
-import {addQuote} from '../store/actions'
+import {addQuote, updateQuote} from '../store/actions'
 import translate from '../shared/translate'
 import MessagePopup from '../components/main/MessagePopup'
 import {API} from '../config/api'
@@ -39,9 +39,10 @@ class EditQuote extends Component {
       .then(res => res.json())
       .then(res => {
         this.setState({ warning: '', response: translate(res.message) })
-        if (res.message === 'SUCCESS_SAVED') this.props.addQuote(res.quote)
+        if (res.message !== 'SUCCESS_SAVED') return
+        if (endpoint === API.create) this.props.addQuote(res.quote)
+        if (endpoint === API.update) this.props.updateQuote(res.quote)
       })
-      .catch(e => this.setState({ response: translate('POST_ERROR') }))
   }
 
   closePopup = () => {
@@ -93,6 +94,6 @@ class EditQuote extends Component {
 }
 
 const mapStateToProps = ({allQuotes, token, admin}) => ({allQuotes, token, admin})
-const mapDispatchToProps = {addQuote}
+const mapDispatchToProps = {addQuote, updateQuote}
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditQuote)
