@@ -15,11 +15,11 @@ const Navigation = ({language, token, admin, setLanguage}) => {
       <nav>
         <Link to="/" replace={true}>{translate('DAILY_QUOTE')}</Link>
         <Link to="/all-quotes">{translate('ALL_QUOTES')}</Link>
-        {/* {admin && <Link to="/add-quote">{translate('ADD_QUOTE')}</Link>}
+        {admin && <Link to="/add-quote">{translate('ADD_QUOTE')}</Link>}
         {token
           ? <Link to="/profile">{translate('PROFILE')}</Link>
           : <Link to="/login">{translate('LOGIN')}</Link>
-        } */}
+        }
         {/* <div>
           <button
             onClick={() => setLanguage('en')}
