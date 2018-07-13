@@ -5,7 +5,7 @@ import {domain} from '../config/api'
 const Login = () => (
   <main>
     <h1>{translate('LOGIN')}</h1>
-    <a href={`${domain}/auth/google`}>Google login</a>
+    <a href={`${domain}/auth/google`} referrerpolicy="unsafe-url">Google login</a>
   </main>
 )
 
