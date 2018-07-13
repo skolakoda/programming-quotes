@@ -88,7 +88,6 @@ class EditQuote extends Component {
 
           {this.state.warning && <p>{this.state.warning}</p>}
           <button type="submit">{translate('POST')}</button>
-          <button onClick={this.emptyFields}>Empty fields </button>
         </form>
 
         {this.state.response && <MessagePopup message={this.state.response} closePopup={this.closePopup} />}
