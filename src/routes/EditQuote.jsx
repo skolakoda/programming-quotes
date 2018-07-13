@@ -65,22 +65,22 @@ class EditQuote extends Component {
         <h1>{translate(edit ? 'EDIT_QUOTE' : 'ADD_QUOTE')} {edit && <small><sup>(<Link to={quoteLink}>show</Link>)</sup></small>}</h1>
 
         <form onSubmit={this.postQuote}>
-          <input type="hidden" name="_id" defaultValue={quote._id} />
+          <input type="hidden" name="_id" defaultValue={quote && quote._id} />
           <p>
             <label htmlFor="author" >{translate('AUTHOR')} <small>({translate('AUTHOR_TIP')})</small> </label><br/>
-            <input name="author" defaultValue={quote.author} autoFocus />
+            <input name="author" defaultValue={quote && quote.author} autoFocus />
           </p>
           <p>
             <label htmlFor="en" >{translate('QUOTE_ENGLISH')}</label><br />
-            <textarea name="en" defaultValue={quote.en} cols="60" rows="5"></textarea>
+            <textarea name="en" defaultValue={quote && quote.en} cols="60" rows="5"></textarea>
           </p>
           <p>
             <label htmlFor="sr" >{translate('QUOTE_SERBIAN')}</label><br />
-            <textarea name="sr" defaultValue={quote.sr} cols="60" rows="5"></textarea>
+            <textarea name="sr" defaultValue={quote && quote.sr} cols="60" rows="5"></textarea>
           </p>
           <p>
             <label>{translate('SOURCE')} <small>({translate('OPTIONAL')})</small>: </label><br/>
-            <input name='source' defaultValue={quote.source} />
+            <input name='source' defaultValue={quote && quote.source} />
           </p>
           <p>
             <small>* {translate('REQUIRED_FIELDS')}</small>
