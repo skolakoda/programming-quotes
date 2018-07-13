@@ -62,7 +62,10 @@ class EditQuote extends Component {
 
     return (
       <div>
-        <h1>{translate(edit ? 'EDIT_QUOTE' : 'ADD_QUOTE')} {edit && <small><sup>(<Link to={quoteLink}>show</Link>)</sup></small>}</h1>
+        <h1>
+          {translate(edit ? 'EDIT_QUOTE' : 'ADD_QUOTE')} 
+          {edit && <small><sup>(<Link to={quoteLink}>show</Link>)</sup></small>}
+        </h1>
 
         <form onSubmit={this.postQuote}>
           <input type="hidden" name="_id" defaultValue={quote && quote._id} />
