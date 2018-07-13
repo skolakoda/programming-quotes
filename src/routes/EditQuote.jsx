@@ -71,12 +71,12 @@ class EditQuote extends Component {
             <input name="author" defaultValue={quote && quote.author} autoFocus />
           </p>
           <p>
-            <label htmlFor="en" >{translate('QUOTE_ENGLISH')}</label><br />
-            <textarea name="en" defaultValue={quote && quote.en} cols="60" rows="5"></textarea>
-          </p>
-          <p>
             <label htmlFor="sr" >{translate('QUOTE_SERBIAN')}</label><br />
             <textarea name="sr" defaultValue={quote && quote.sr} cols="60" rows="5"></textarea>
+          </p>
+          <p>
+            <label htmlFor="en" >{translate('QUOTE_ENGLISH')}</label><br />
+            <textarea name="en" defaultValue={quote && quote.en} cols="60" rows="5"></textarea>
           </p>
           <p>
             <label>{translate('SOURCE')} <small>({translate('OPTIONAL')})</small>: </label><br/>
