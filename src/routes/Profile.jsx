@@ -24,9 +24,9 @@ class Profile extends Component  {
       .then(data => data.json())
       .then(data => {
         const {name, admin, createdAt, voted} = data.user
-        this.setState({createdAt, name})
+        this.setState({createdAt, name, voted})
         this.props.setUser(token, admin)
-        if (voted) this.updateLocalVotes(voted)
+        // if (voted) this.updateLocalVotes(voted) glasanje ne radi?
       })
   }
 
@@ -47,7 +47,7 @@ class Profile extends Component  {
           <div>
             <p>name: {this.state.name}</p>
             <p>member since: {new Date(this.state.createdAt).toISOString().slice(0, 10)}</p>
-            <p>quotes voted: {localStorage.getItem(LS.ratings).length}</p>
+            {/* <p>quotes voted: {this.state.voted.length}</p> */}
             <p>admin: {this.props.admin ? 'yes' : 'no'}</p>
             <button onClick={this.logout}>{translate('LOGOUT')}</button>
           </div>
