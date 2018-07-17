@@ -14,3 +14,7 @@ Vidi na: [mudroljub.github.io/svetemisli](https://mudroljub.github.io/svetemisli
 npm install
 npm start
 ```
+
+## TODO 
+
+- dodati deljenje
