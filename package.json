@@ -17,7 +17,7 @@
     "shortid": "^2.2.8"
   },
   "scripts": {
-    "save": "wget https://baza-podataka.herokuapp.com/quotes/ -d src/data/quotes.json",
+    "save": "wget https://baza-podataka.herokuapp.com/thoughts/ -d src/data/quotes.json",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "backup": "concurrently \"npm run save\" \"react-scripts start\"",
