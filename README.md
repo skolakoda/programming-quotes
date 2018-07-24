@@ -18,3 +18,4 @@ npm start
 ## TODO 
 
 - dodati deljenje
+- prazniti polja tek nakon što uspešno sačuva citat
