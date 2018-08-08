@@ -17,5 +17,6 @@ npm start
 
 ## TODO 
 
+- srediti prevod, prosledjivati jezik kao argument
 - dodati deljenje
 - prazniti polja tek nakon što uspešno sačuva citat
