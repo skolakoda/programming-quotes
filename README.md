@@ -10,7 +10,7 @@
 
 See: [skolakoda.org/programming-quotes](https://skolakoda.org/programming-quotes/)
 
-Using public [Programming Quotes API](https://github.com/skolakoda/programming-quotes-api).
+Using [Programming Quotes API](https://github.com/skolakoda/programming-quotes-api).
 
 ## Development
 
