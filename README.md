@@ -10,7 +10,7 @@
 
 See: [skolakoda.org/programming-quotes](https://skolakoda.org/programming-quotes/)
 
-Backend API is [here](https://github.com/skolakoda/baza-podataka).
+Using public [Programming Quotes API](https://github.com/skolakoda/programming-quotes-api).
 
 ## Development
 
@@ -27,4 +27,3 @@ npm start
 See: [Contributing](CONTRIBUTING.md)
 
 See also: [Documentation](https://github.com/skolakoda/programming-quotes/wiki)
-
