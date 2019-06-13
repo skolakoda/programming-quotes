@@ -26,19 +26,19 @@ export default class Stars extends Component {
     const localVotes = JSON.parse(localStorage.getItem(LS.ratings))
     if (this.alreadyVoted(localVotes))
       return this.setState({ error: translate('CAN_VOTE_ONCE') })
-    const newStorage = localVotes ? [...localVotes, this.props.id] : [this.props.id]
-    fetch(API.rate, {
-      method: 'POST',
-      body: JSON.stringify({
-        _id: this.props.id,
-        token: localStorage.getItem(LS.token),
-        newRating
-      }),
-      headers: {'content-type': 'application/json'}
-    })
-      .then(response => response.json())
-      .then(response => this.setNewVote(newStorage, response))
-      .catch(e => this.setState({ error: translate('NETWORK_PROBLEM') }))
+    // const newStorage = localVotes ? [...localVotes, this.props.id] : [this.props.id]
+    // fetch(API.rate, {
+    //   method: 'POST',
+    //   body: JSON.stringify({
+    //     _id: this.props.id,
+    //     token: localStorage.getItem(LS.token),
+    //     newRating
+    //   }),
+    //   headers: {'content-type': 'application/json'}
+    // })
+    //   .then(response => response.json())
+    //   .then(response => this.setNewVote(newStorage, response))
+    //   .catch(e => this.setState({ error: translate('NETWORK_PROBLEM') }))
   }
 
   setNewVote(newStorage, newAverage) {

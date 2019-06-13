@@ -34,8 +34,9 @@ class EditQuote extends Component {
 
     this.emptyFields(e)
     const endpoint = _id ? API.update : API.create
+    const method = _id ? 'PUT' : 'POST'
     fetch(endpoint, {
-      method: 'POST',
+      method,
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ author, sr, en, source, _id, token: this.props.token })
     })
@@ -63,7 +64,7 @@ class EditQuote extends Component {
     return (
       <div>
         <h1>
-          {translate(edit ? 'EDIT_QUOTE' : 'ADD_QUOTE')} 
+          {translate(edit ? 'EDIT_QUOTE' : 'ADD_QUOTE')}
           {edit && <small><sup>(<Link to={quoteLink}>show</Link>)</sup></small>}
         </h1>
 

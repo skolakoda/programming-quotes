@@ -1,12 +1,11 @@
 // http://localhost:5000
-// https://baza-podataka.herokuapp.com
-export const domain = 'https://baza-podataka.herokuapp.com'
+// https://pqapi.herokuapp.com
+export const domain = 'https://pqapi.herokuapp.com'
 
 export const API = {
-  create: `${domain}/thoughts/create/`,
-  read: `${domain}/thoughts/`,
-  update: `${domain}/thoughts/update/`,
-  delete: `${domain}/thoughts/delete/`,
-  rate: `${domain}/thoughts/rate/`,
-  updateUserVotes: `${domain}/users/update-votes/`
+  create: `${domain}/svetemisli/`,
+  read: `${domain}/svetemisli/`,
+  update: `${domain}/svetemisli/`,
+  delete: `${domain}/svetemisli/`,
+  // rate: `${domain}/svetemisli/`,
 }
