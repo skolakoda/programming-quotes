@@ -5,7 +5,7 @@
   "repository": "https://github.com/skolakoda/programming-quotes",
   "license": "MIT",
   "scripts": {
-    "save": "wget https://pqapi.herokuapp.com/quotes/ -d src/data/quotes.json",
+    "save": "wget https://programming-quotes-api.herokuapp.com/quotes/ -d src/data/quotes.json",
     "predeploy": "npm run build",
     "start": "REACT_APP_ENV=development react-scripts start",
     "build": "REACT_APP_ENV=production react-scripts build",
