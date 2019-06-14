@@ -5,11 +5,11 @@
   "repository": "https://github.com/mudroljub/svetemisli",
   "license": "MIT",
   "scripts": {
+    "save": "wget https://pqapi.herokuapp.com/svetemisli/ -d src/data/quotes.json",
     "predeploy": "npm run build",
     "start": "REACT_APP_ENV=development react-scripts start",
-    "deploy": "gh-pages -d build",
     "build": "REACT_APP_ENV=production react-scripts build",
-    "save": "wget https://pqapi.herokuapp.com/svetemisli/ -d src/data/quotes.json",
+    "deploy": "gh-pages -d build",
     "eject": "react-scripts eject"
   },
   "dependencies": {

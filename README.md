@@ -15,6 +15,12 @@ npm install
 npm start
 ```
 
+Merge upstream:
+
+```
+git pull https://github.com/skolakoda/programming-quotes.git master
+```
+
 ## TODO 
 
 - srediti prevod, prosledjivati jezik kao argument
