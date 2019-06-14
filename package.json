@@ -19,11 +19,9 @@
   "scripts": {
     "save": "wget https://pqapi.herokuapp.com/quotes/ -d src/data/quotes.json",
     "predeploy": "npm run build",
+    "start": "REACT_APP_ENV=development react-scripts start",
+    "build": "REACT_APP_ENV=production react-scripts build",
     "deploy": "gh-pages -d build",
-    "backup": "concurrently \"npm run save\" \"react-scripts start\"",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
