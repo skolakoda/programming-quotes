@@ -4,6 +4,14 @@
   "homepage": "https://mudroljub.github.io/svetemisli",
   "repository": "https://github.com/mudroljub/svetemisli",
   "license": "MIT",
+  "scripts": {
+    "save": "wget https://pqapi.herokuapp.com/svetemisli/ -d src/data/quotes.json",
+    "predeploy": "npm run build",
+    "start": "REACT_APP_ENV=development react-scripts start",
+    "build": "REACT_APP_ENV=production react-scripts build",
+    "deploy": "gh-pages -d build",
+    "eject": "react-scripts eject"
+  },
   "dependencies": {
     "gh-pages": "^1.1.0",
     "react": "^16.2.0",
@@ -15,16 +23,6 @@
     "redux": "^4.0.0",
     "redux-thunk": "^2.3.0",
     "shortid": "^2.2.8"
-  },
-  "scripts": {
-    "save": "wget https://pqapi.herokuapp.com/svetemisli/ -d src/data/quotes.json",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "backup": "concurrently \"npm run save\" \"react-scripts start\"",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
   },
   "devDependencies": {
     "concurrently": "^3.5.1",
