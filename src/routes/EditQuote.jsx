@@ -12,17 +12,19 @@ class EditQuote extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      warning: '',
+      validation: '',
       response: ''
     }
   }
 
-  emptyFields = e => {
-    [...e.target.elements].map(field => field.value = '')
+  emptyFields = fields => {
+    [...fields].forEach(field => field.value = '')
   }
 
   postQuote = e => {
+    e.persist() // react fix
     e.preventDefault()
+    this.setState({ validation: '' })
     const fields = e.target.elements
     const author = fields.author.value.trim(),
       en = fields.en.value.trim(),
@@ -30,9 +32,8 @@ class EditQuote extends Component {
       source = fields.source.value.trim(),
       _id = fields._id.value.trim()
     const condition = author && (sr || en)
-    if (!condition) return this.setState({ warning: translate('REQUIRED_FIELDS') })
+    if (!condition) return this.setState({ validation: translate('REQUIRED_FIELDS') })
 
-    this.emptyFields(e)
     const endpoint = _id ? API.update : API.create
     const method = _id ? 'PUT' : 'POST'
     fetch(endpoint, {
@@ -42,11 +43,13 @@ class EditQuote extends Component {
     })
       .then(res => res.json())
       .then(res => {
-        this.setState({ warning: '', response: translate(res.message) })
+        this.setState({ response: translate(res.message) })
         if (res.message !== 'SUCCESS_SAVED') return
+        this.emptyFields(fields)
         if (_id) this.props.updateQuote(res.quote)
-        if (!_id) this.props.addQuote(res.quote)
+        else this.props.addQuote(res.quote)
       })
+      .catch(err => this.setState({ response: translate('NETWORK_PROBLEM') }))
   }
 
   closePopup = () => {
@@ -90,7 +93,7 @@ class EditQuote extends Component {
             <small>* {translate('REQUIRED_FIELDS')}</small>
           </p>
 
-          {this.state.warning && <p>{this.state.warning}</p>}
+          {this.state.validation && <p>{this.state.validation}</p>}
           <button type="submit">{translate('POST')}</button>
         </form>
 
