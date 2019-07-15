@@ -25,4 +25,3 @@ git pull https://github.com/skolakoda/programming-quotes.git master
 
 - srediti prevod, prosledjivati jezik kao argument
 - dodati deljenje
-- prazniti polja tek nakon što uspešno sačuva citat
