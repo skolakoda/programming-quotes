@@ -44,9 +44,12 @@ class EditQuote extends Component {
       .then(res => {
         this.setState({ response: translate(res.message) })
         if (res.message !== 'SUCCESS_SAVED') return
-        this.emptyFields(fields)
-        if (_id) this.props.updateQuote(res.quote)
-        else this.props.addQuote(res.quote)
+        if (_id) {
+          this.props.updateQuote(res.quote)
+        } else {
+          this.emptyFields(fields)
+          this.props.addQuote(res.quote)
+        }
       })
       .catch(err => this.setState({ response: translate('NETWORK_PROBLEM') }))
   }
