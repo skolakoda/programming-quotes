@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 
-// import Stars from './Stars'
 import MessagePopup from './MessagePopup'
 import translate from '../../shared/translate'
 import {API} from '../../config/api'
