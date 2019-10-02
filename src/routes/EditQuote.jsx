@@ -30,7 +30,7 @@ class EditQuote extends Component {
       sr = fields.sr.value.trim(),
       source = fields.source.value.trim(),
       _id = fields._id.value.trim()
-    const condition = author && (sr)
+    const condition = author && sr
     if (!condition) return this.setState({ validation: translate('REQUIRED_FIELDS') })
 
     const endpoint = _id ? API.update : API.create
@@ -83,9 +83,6 @@ class EditQuote extends Component {
           <p>
             <label>{translate('SOURCE')} <small>({translate('OPTIONAL')})</small>: </label><br/>
             <input name='source' defaultValue={quote && quote.source} />
-          </p>
-          <p>
-            <small>* {translate('REQUIRED_FIELDS')}</small>
           </p>
 
           {this.state.validation && <p>{this.state.validation}</p>}
