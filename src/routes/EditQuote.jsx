@@ -27,11 +27,10 @@ class EditQuote extends Component {
     this.setState({ validation: '' })
     const fields = e.target.elements
     const author = fields.author.value.trim(),
-      en = fields.en.value.trim(),
       sr = fields.sr.value.trim(),
       source = fields.source.value.trim(),
       _id = fields._id.value.trim()
-    const condition = author && (sr || en)
+    const condition = author && (sr)
     if (!condition) return this.setState({ validation: translate('REQUIRED_FIELDS') })
 
     const endpoint = _id ? API.update : API.create
@@ -39,7 +38,7 @@ class EditQuote extends Component {
     fetch(endpoint, {
       method,
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ author, sr, en, source, _id, token: this.props.token })
+      body: JSON.stringify({ author, sr, source, _id, token: this.props.token })
     })
       .then(res => res.json())
       .then(res => {
@@ -80,10 +79,6 @@ class EditQuote extends Component {
           <p>
             <label htmlFor="sr" >{translate('QUOTE_SERBIAN')}</label><br />
             <textarea name="sr" defaultValue={quote && quote.sr} cols="60" rows="5"></textarea>
-          </p>
-          <p>
-            <label htmlFor="en" >{translate('QUOTE_ENGLISH')}</label><br />
-            <textarea name="en" defaultValue={quote && quote.en} cols="60" rows="5"></textarea>
           </p>
           <p>
             <label>{translate('SOURCE')} <small>({translate('OPTIONAL')})</small>: </label><br/>

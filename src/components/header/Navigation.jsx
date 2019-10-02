@@ -20,14 +20,6 @@ const Navigation = ({language, token, admin, setLanguage}) => {
           ? <Link to="/profile">{translate('PROFILE')}</Link>
           : <Link to="/login">{translate('LOGIN')}</Link>
         }
-        {/* <div>
-          <button
-            onClick={() => setLanguage('en')}
-            className={language === 'en' ? 'active' : ''}>EN</button>
-          <button
-            onClick={() => setLanguage('sr')}
-            className={language === 'sr' ? 'active' : ''}>SH</button>
-        </div> */}
       </nav>
     </header>
   )}

@@ -8,7 +8,6 @@ const initialState = {
   allImages: new Map(),
   phrase: '',
   language: 'sr',
-  // user
   token: localStorage.getItem(LS.token),
   admin: false,
 }
