@@ -23,15 +23,10 @@ class Profile extends Component  {
     fetch(googleAuthLink)
       .then(data => data.json())
       .then(data => {
-        const {name, admin, memberSince, voted} = data.user
-        this.setState({memberSince, name, voted})
+        const {name, admin, memberSince} = data.user
+        this.setState({memberSince, name})
         this.props.setUser(token, admin)
-        // if (voted) this.updateLocalVotes(voted) glasanje ne radi?
       })
-  }
-
-  updateLocalVotes(voted) {
-    localStorage.setItem(LS.ratings, JSON.stringify(voted))
   }
 
   logout = e => {
@@ -47,7 +42,6 @@ class Profile extends Component  {
           <div>
             <p>name: {this.state.name}</p>
             <p>member since: {new Date(this.state.memberSince).toISOString().slice(0, 10)}</p>
-            {/* <p>quotes voted: {this.state.voted.length}</p> */}
             <p>admin: {this.props.admin ? 'yes' : 'no'}</p>
             <button onClick={this.logout}>{translate('LOGOUT')}</button>
           </div>

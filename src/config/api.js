@@ -7,5 +7,4 @@ export const API = {
   read: `${domain}/svetemisli/`,
   update: `${domain}/svetemisli/`,
   delete: `${domain}/svetemisli/`,
-  vote: `${domain}/svetemisli/vote/`,
 }

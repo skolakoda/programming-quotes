@@ -62,7 +62,6 @@ class Quote extends Component {
             </span>
           }
         </p>
-        {/* <Stars rating={quote.rating} id={id} /> */}
         <span className="quote-author"> — <Link to={authorLink}>{author}</Link></span>
 
         {this.state.response && <MessagePopup message={this.state.response} closePopup={this.closePopup} />}
