@@ -13,7 +13,7 @@ const Navigation = ({language, token, admin, setLanguage}) => {
     <header>
       <Github repoUrl="https://github.com/mudroljub/svetemisli" />
       <nav>
-        <Link to="/" replace={true}>{translate('DAILY_QUOTE')}</Link>
+        <Link to="/" replace={true}>{translate('HOME')}</Link>
         <Link to="/all-quotes">{translate('ALL_QUOTES')}</Link>
         {admin && <Link to="/add-quote">{translate('ADD_QUOTE')}</Link>}
         {token
