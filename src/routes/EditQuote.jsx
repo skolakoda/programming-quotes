@@ -13,8 +13,16 @@ class EditQuote extends Component {
     super(props)
     this.state = {
       validation: '',
-      response: ''
+      response: '',
+      quote: null
     }
+  }
+
+  componentDidMount() {
+    const {id} = this.props.match.params
+    fetch(`${API.read}/id/${id}`)
+      .then(res => res.json())
+      .then(quote => this.setState({quote}))
   }
 
   emptyFields = fields => {
@@ -60,18 +68,17 @@ class EditQuote extends Component {
   }
 
   render() {
-    const edit = (this.props.match.path === '/edit-quote/:id')
-    const id = edit ? this.props.match.params.id : ''
-    const quote = edit ? this.props.allQuotes.find(q => q._id === id) : {}
-    const quoteLink = `/quote/${id}`
-
     if (!this.props.admin) return <p>{translate('ADMIN_REQUIRED')}</p>
+
+    const {id} = this.props.match.params
+    const quote = id ? this.state.quote : {}
+    const quoteLink = `/quote/${id}`
 
     return (
       <div>
         <h1>
-          {translate(edit ? 'EDIT_QUOTE' : 'ADD_QUOTE')}
-          {edit && <small><sup>(<Link to={quoteLink}>show</Link>)</sup></small>}
+          {translate(id ? 'EDIT_QUOTE' : 'ADD_QUOTE')}
+          {id && <small><sup>(<Link to={quoteLink}>show</Link>)</sup></small>}
         </h1>
 
         <form onSubmit={this.postQuote}>
