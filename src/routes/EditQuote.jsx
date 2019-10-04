@@ -14,7 +14,7 @@ class EditQuote extends Component {
     this.state = {
       validation: '',
       response: '',
-      quote: null
+      quote: {}
     }
   }
 
@@ -82,22 +82,22 @@ class EditQuote extends Component {
         </h1>
 
         <form onSubmit={this.postQuote}>
-          <input type="hidden" name="_id" defaultValue={quote && quote._id} />
+          <input type="hidden" name="_id" defaultValue={quote._id} />
           <p>
             <label htmlFor="author" title={translate('AUTHOR_TIP')}>{translate('AUTHOR')} *</label><br/>
-            <input name="author" id="author" defaultValue={quote && quote.author} autoFocus />
+            <input name="author" id="author" defaultValue={quote.author} autoFocus />
           </p>
           <p>
             <label htmlFor="sr" >{translate('QUOTE_SERBIAN')} *</label><br />
-            <textarea name="sr" id="sr" defaultValue={quote && quote.sr} cols="60" rows="5"></textarea>
+            <textarea name="sr" id="sr" defaultValue={quote.sr} cols="60" rows="5"></textarea>
           </p>
           <p>
             <label htmlFor="tags">Oznake </label><br/>
-            <input name='tags' id='tags' defaultValue={quote && quote.tags} />
+            <input name='tags' id='tags' defaultValue={quote.tags} />
           </p>
           <p>
             <label htmlFor="source">{translate('SOURCE')} </label><br/>
-            <input name='source' id='source' defaultValue={quote && quote.source} />
+            <input name='source' id='source' defaultValue={quote.source} />
           </p>
           {this.state.validation && <p>{this.state.validation}</p>}
           <button type="submit">{translate('POST')}</button>
