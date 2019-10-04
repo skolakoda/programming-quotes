@@ -85,12 +85,12 @@ class EditQuote extends Component {
             <textarea name="sr" id="sr" defaultValue={quote && quote.sr} cols="60" rows="5"></textarea>
           </p>
           <p>
-            <label htmlFor="source">{translate('SOURCE')} </label><br/>
-            <input name='source' id='source' defaultValue={quote && quote.source} />
-          </p>
-          <p>
             <label htmlFor="tags">Oznake </label><br/>
             <input name='tags' id='tags' defaultValue={quote && quote.tags} />
+          </p>
+          <p>
+            <label htmlFor="source">{translate('SOURCE')} </label><br/>
+            <input name='source' id='source' defaultValue={quote && quote.source} />
           </p>
           {this.state.validation && <p>{this.state.validation}</p>}
           <button type="submit">{translate('POST')}</button>
