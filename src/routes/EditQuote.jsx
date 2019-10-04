@@ -29,6 +29,7 @@ class EditQuote extends Component {
     const author = fields.author.value.trim(),
       sr = fields.sr.value.trim(),
       source = fields.source.value.trim(),
+      tags = fields.tags.value.trim(),
       _id = fields._id.value.trim()
     const condition = author && sr
     if (!condition) return this.setState({ validation: translate('REQUIRED_FIELDS') })
@@ -38,7 +39,7 @@ class EditQuote extends Component {
     fetch(endpoint, {
       method,
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ author, sr, source, _id, token: this.props.token })
+      body: JSON.stringify({ author, sr, source, tags, _id, token: this.props.token })
     })
       .then(res => res.json())
       .then(res => {
@@ -76,18 +77,21 @@ class EditQuote extends Component {
         <form onSubmit={this.postQuote}>
           <input type="hidden" name="_id" defaultValue={quote && quote._id} />
           <p>
-            <label htmlFor="author" >{translate('AUTHOR')} <small>({translate('AUTHOR_TIP')})</small> </label><br/>
-            <input name="author" defaultValue={quote && quote.author} autoFocus />
+            <label htmlFor="author" title={translate('AUTHOR_TIP')}>{translate('AUTHOR')} *</label><br/>
+            <input name="author" id="author" defaultValue={quote && quote.author} autoFocus />
           </p>
           <p>
-            <label htmlFor="sr" >{translate('QUOTE_SERBIAN')}</label><br />
-            <textarea name="sr" defaultValue={quote && quote.sr} cols="60" rows="5"></textarea>
+            <label htmlFor="sr" >{translate('QUOTE_SERBIAN')} *</label><br />
+            <textarea name="sr" id="sr" defaultValue={quote && quote.sr} cols="60" rows="5"></textarea>
           </p>
           <p>
-            <label>{translate('SOURCE')} <small>({translate('OPTIONAL')})</small>: </label><br/>
-            <input name='source' defaultValue={quote && quote.source} />
+            <label htmlFor="source">{translate('SOURCE')} </label><br/>
+            <input name='source' id='source' defaultValue={quote && quote.source} />
           </p>
-
+          <p>
+            <label htmlFor="tags">Oznake </label><br/>
+            <input name='tags' id='tags' defaultValue={quote && quote.tags} />
+          </p>
           {this.state.validation && <p>{this.state.validation}</p>}
           <button type="submit">{translate('POST')}</button>
         </form>
