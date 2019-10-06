@@ -1,4 +1,24 @@
+uvid poznanje poznaja razumenje
 žudnja žedža
 bićima bitjima
 rad posao rabota
 sretja sreča radost
+izbacivati ć (će, biće)
+izbacivati jest gde može bez njega, kao u ruskom
+vratiti pЪln
+bitja ljudi
+ale al' no
+poštovanje uvaženje
+uzeti uzima
+voz vz
+rad posal rabota
+hče bude
+odeć
+buda prepreke religija
+kak čto proveriti
+
+večše boljše velje pogolemo veličejše, veljše, poveličati
+večš(\w){1,4}
+
+obrisati:
+5d971035aa30bb9ae3d6be80
