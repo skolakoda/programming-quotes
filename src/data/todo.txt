@@ -1,7 +1,6 @@
-uvid poznanje poznaja razumenje
-žudnja žedža
-bićima bitjima
-rad posao rabota
+podviž* podvig
+ćutanje molčanje
+rad posao rabota dělo
 sretja sreča radost
 izbacivati ć (će, biće)
 izbacivati jest gde može bez njega, kao u ruskom
@@ -16,9 +15,13 @@ hče bude
 odeć
 buda prepreke religija
 kak čto proveriti
+kretanje mrdanje dviženje
+vrlina čestnost
 
 večše boljše velje pogolemo veličejše, veljše, poveličati
 večš(\w){1,4}
+ě
 
 obrisati:
 5d971035aa30bb9ae3d6be80
+5d971035aa30bb9ae3d6bc0b
