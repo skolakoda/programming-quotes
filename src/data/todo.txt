@@ -1,9 +1,3 @@
-sved svěd
-Svaki
-rob rab
-velje, veljše ne može
-manju menj
-izbacivati ć (će, biće)
 izbacivati jest gde može bez njega, kao u ruskom
 vratiti pЪln
 bitja ljudi
@@ -33,9 +27,13 @@ budala glupy glupec durak glupan ludy obezuměni
 sa mnom s mnoju
 kraj konec
 gađenje gadnost
-sticanje iměnje
+sticanje imanje iměnje
+počast - považenje
+siroti siromašni - bedni
+izbacivati ć (će, biće)
+izbacivati ali, ale - no
 
-večše boljše velje pogolemo veličejše, veljše, poveličati
+večše boljše pogolemo veličejše, poveličati
 večš(\w){1,4}
 ě
 
