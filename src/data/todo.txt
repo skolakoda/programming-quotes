@@ -1,4 +1,7 @@
 sretja sreča radost
+sved svěd
+Svaki
+rob rab
 velje, veljše ne može
 manju menj
 izbacivati ć (će, biće)
@@ -9,13 +12,25 @@ ale al' no
 poštovanje uvaženje
 uzeti uzima
 voz vz
-rad posal rabota
 hče bude
 odeć
 buda prepreke religija
 kak čto proveriti
 kretanje mrdanje dviženje
 vrlina čestnost
+mlad mladića junoša
+dodati negde iže umesto koj ili ktori
+prijatni prijetni mili
+jesu sut
+gluv gluhi
+svijetu
+spasiti spasti
+grijte
+sedi
+brać bratj
+vred vrěd
+vređanje u uvredu ili poniženje, uniženje
+budala glupy glupec durak glupan ludy obezuměni
 
 večše boljše velje pogolemo veličejše, veljše, poveličati
 večš(\w){1,4}
