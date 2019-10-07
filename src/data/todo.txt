@@ -1,4 +1,4 @@
-izbacivati jest gde može bez njega, kao u ruskom
+izbacivati jest gde može (Kto jest žuril, pogrěšil jest)
 vratiti pЪln
 bitja ljudi
 ale al' no
@@ -32,6 +32,9 @@ počast - považenje
 siroti siromašni - bedni
 izbacivati ć (će, biće)
 izbacivati ali, ale - no
+ubijeno ubito
+sretno uklanjati
+sličan - podoban
 
 večše boljše pogolemo veličejše, poveličati
 večš(\w){1,4}
