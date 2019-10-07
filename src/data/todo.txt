@@ -35,6 +35,30 @@ izbacivati ali, ale - no
 ubijeno ubito
 sretno uklanjati
 sličan - podoban
+žuriti juriti brzati
+neka - da
+reći - kazati
+věrovanje - vera
+strepljenje - trplivost
+izbaciti vrsta i način
+brak - supružstvo
+ćerka - dočerka
+namer - naměr
+sprječava sprečava - sprěčava
+Šutnja
+već že
+sam jesm
+sanjati sniti, sni
+shvata - vidi
+dodati negde mněnje, mněti, mni
+smo - jesmo
+mirisati - njušiti
+ipak - ješče
+ružn
+to - toj
+neje - ne jest
+kalja, pogani
+si - jesi
 
 večše boljše pogolemo veličejše, poveličati
 večš(\w){1,4}
