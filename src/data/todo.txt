@@ -1,5 +1,3 @@
-vratiti pЪln
-bitja ljudi
 ale al' no
 poštovanje uvaženje
 uzeti uzima
@@ -74,6 +72,8 @@ rezultat - poslědica, poslědstvo, izhod
 osobina - svojstvo
 koj prebaciti u rodove
 sretn - radosn, blažen
+lutati - skitati, broditi, bluditi
+smo - vrv jesmo
 
 večše boljše pogolemo veličejše, poveličati
 večš(\w){1,4}
