@@ -58,7 +58,7 @@ ružn
 to - toj
 neje - ne jest
 kalja, pogani
-si - jesi
+si - jesi, nisu - ne jesu
 
 večše boljše pogolemo veličejše, poveličati
 večš(\w){1,4}
