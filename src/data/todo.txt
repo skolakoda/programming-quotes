@@ -67,6 +67,7 @@ lutati - skitati, broditi, bluditi
 smo - vrv jesmo
 poredjenje - sravnjenje
 lako - legko
+npr. oni ktoji plaču - plačujši
 
 večše boljše pogolemo veličejše, poveličati
 večš(\w){1,4}
