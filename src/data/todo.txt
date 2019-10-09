@@ -1,5 +1,5 @@
-reden
 hče
+put - raz, krat
 vrlina čestnost
 prijatni prijetni mili
 jesu sut
@@ -65,6 +65,8 @@ koj prebaciti u rodove
 sretn - radosn, blažen
 lutati - skitati, broditi, bluditi
 smo - vrv jesmo
+poredjenje - sravnjenje
+lako - legko
 
 večše boljše pogolemo veličejše, poveličati
 večš(\w){1,4}
