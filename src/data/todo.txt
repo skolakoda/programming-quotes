@@ -11,7 +11,7 @@ sedi
 brać bratj
 vred vrěd
 vređanje u uvredu ili poniženje, uniženje
-budala glupy glupec durak glupan ludy obezuměni
+budala - glupy glupec durak glupan ludy obezuměni
 sa mnom s mnoju
 kraj konec
 gađenje gadnost
@@ -68,10 +68,15 @@ smo - vrv jesmo
 poredjenje - sravnjenje
 lako - legko
 npr. oni ktoji plaču - plačujši
+běs - gněv
+postupak - dělo
 
 večše boljše pogolemo veličejše, poveličati
 večš(\w){1,4}
 ě
+
+spojiti:
+5d971035aa30bb9ae3d6bc65 i 5d971035aa30bb9ae3d6bc67
 
 obrisati:
 5d971035aa30bb9ae3d6be80
