@@ -1,17 +1,4 @@
-jesu sut
-gluv gluhi
-svijetu
-spasiti spasti
-grijte
-sedi
-brać bratj
-vred vrěd
-vređanje u uvredu ili poniženje, uniženje
-budala - glupy glupec durak glupan ludy obezuměni
-sa mnom s mnoju
-kraj konec
-gađenje gadnost
-sticanje imanje iměnje
+sticanje, imanje - iměnje, zarabotanje, nabyvati, dobyvati
 počast - považenje
 siroti siromašni - bedni
 izbacivati ć (će, biće)
@@ -38,7 +25,7 @@ dodati negde mněnje, mněti, mni
 smo - jesmo
 mirisati - njušiti
 ipak - ješče
-ružn - grozan, nekrasny, skaredny
+ružn - grozan, nekrasny, skaredny, gadny
 to - toj
 neje - ne jest ili ne
 kalja, pogani
@@ -70,7 +57,10 @@ izljev
 njim, njih, njom... - jim, jih...
 nek, neka - da, nehaj, pustiti
 voleti - ljubiti
+kudi
+mogu - možno
 hče
+dodati že umesto da ili čto: Dokaz že maly princ jestvoval jest to že on smějal se.
 
 večše boljše pogolemo veličejše, poveličati
 večš(\w){1,4}
