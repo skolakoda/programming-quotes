@@ -1,4 +1,3 @@
-hče
 put - raz, krat
 vrlina čestnost
 prijatni prijetni mili
@@ -71,6 +70,10 @@ npr. oni ktoji plaču - plačujši
 běs, srdnja - gněv
 postupak - dělo
 izljev
+njim, njih, njom... - jim, jih...
+nek, neka - da, nehaj, pustiti
+voleti - ljubiti
+hče
 
 večše boljše pogolemo veličejše, poveličati
 večš(\w){1,4}
