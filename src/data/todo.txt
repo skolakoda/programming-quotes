@@ -1,9 +1,5 @@
-počast - považenje
-siroti siromašni - bedni
-izbacivati ć (će, biće)
-izbacivati ali, ale - no
-ubijeno ubito
-sretno uklanjati
+nek - nehaj, da
+sret - ščestje, ščestliv
 sličan - podoban
 žuriti juriti brzati
 neka - da
@@ -59,11 +55,15 @@ voleti - ljubiti
 kudi
 mogu - možno
 hče
+izbacivati ć (će, biće)
 dodati že umesto da ili čto: Dokaz že maly princ jestvoval jest to že on smějal se.
+prevod ostalih reči
+gramatika
 
 večše boljše pogolemo veličejše, poveličati
 večš(\w){1,4}
 ě
+ъ
 
 spojiti:
 5d971035aa30bb9ae3d6bc65 i 5d971035aa30bb9ae3d6bc67
