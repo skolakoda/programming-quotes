@@ -1,7 +1,4 @@
-svog - svojeg
-sret - ščestje, ščestliv
-sličan - podoban
-žuriti juriti brzati
+žuriti juriti - brzati, pospěšiti
 neka - da
 reći - kazati
 věrovanje - vera
@@ -55,6 +52,7 @@ voleti - ljubiti
 kudi
 mogu - možno
 hče
+
 izbacivati ć (će, biće)
 dodati že umesto da ili čto: Dokaz že maly princ jestvoval jest to že on smějal se.
 prevod ostalih reči
