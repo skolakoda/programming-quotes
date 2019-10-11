@@ -1,8 +1,7 @@
-neka - da
-reći - kazati
-věrovanje - vera
-bujic
-strepljenje - trplivost
+mane
+bilo čto - čto bilo 
+bolje
+za - dlja (ponegde)
 izbaciti vrsta i način
 brak - supružstvo
 ćerka - dočerka
@@ -49,9 +48,9 @@ izljev
 njim, njih, njom... - jim, jih...
 nek, neka - da, nehaj, pustiti
 voleti - ljubiti
-kudi
 mogu - možno
 hče
+bujic
 
 izbacivati ć (će, biće)
 dodati že umesto da ili čto: Dokaz že maly princ jestvoval jest to že on smějal se.
@@ -72,3 +71,4 @@ obrisati:
 5d971035aa30bb9ae3d6be52
 5d971035aa30bb9ae3d6be7d
 5d971035aa30bb9ae3d6be61
+5d971035aa30bb9ae3d6bbf6
