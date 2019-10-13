@@ -1,12 +1,3 @@
-ružn - grozan, nekrasny, skaredny, gadny
-to - toj
-neje - ne jest ili ne
-kalja, pogani
-si - jesi, nisu - ne jesu
-dubok - glubok
-tužd - čudži
-onaj ktori - ktori
-prema - k, do
 isposnik, podvižnik, asketa, monah
 sabran - svěstny
 sujeta, taština, možda spojiti sa gordost
@@ -25,6 +16,7 @@ lako - legko
 npr. oni ktoji plaču - plačujši
 běs, srdnja, ljutnja - gněv
 postupak - dělo
+pa - i
 izljev
 njim, njih, njom... - jim, jih...
 nek, neka - da, nehaj, pustiti
