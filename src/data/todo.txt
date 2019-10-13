@@ -1,7 +1,3 @@
-dodati negde mněnje, mněti, mni
-smo - jesmo
-mirisati - njušiti
-ipak - ješče
 ružn - grozan, nekrasny, skaredny, gadny
 to - toj
 neje - ne jest ili ne
@@ -19,10 +15,10 @@ gramžljivost - lakomstvo, nenasytnost
 nahraniti - nasytiti
 objekat - prědmet
 rezultat - poslědica, poslědstvo, izhod
+uzroci
 osobina - svojstvo
 koj prebaciti u rodove
 sretn - radosn, blažen
-lutati - skitati, broditi, bluditi
 smo - vrv jesmo
 poredjenje - sravnjenje
 lako - legko
