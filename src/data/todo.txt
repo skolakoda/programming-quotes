@@ -1,16 +1,8 @@
-sigur
-pazi, spazi, opazi
-iztraživanja - izslědovanje, raziskyvanje
-bogataši
-prosjaci
-izbacivati ć (će, biće)
+boja - cvět
+izbacivati ć
 izbacivati đ
-dodati že umesto da ili čto: Dokaz že maly princ jestvoval jest to že on smějal se.
 prevod ostalih reči
-gramatika
 izbacivati ktory, koj, kto, onoga - npr. oni ktory plaču - plačujši
-želja
-pazi
 barem, bar
 srědstva
 patnja - muka
@@ -35,3 +27,6 @@ obrisati:
 5d971035aa30bb9ae3d6be61
 5d971035aa30bb9ae3d6bbf6
 5d971035aa30bb9ae3d6be69
+
+podeliti:
+5d971035aa30bb9ae3d6bd77
