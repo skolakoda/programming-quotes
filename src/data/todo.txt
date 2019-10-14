@@ -1,24 +1,23 @@
-postupak - dělo
-pa - i
-izljev
-njim, njih, njom... - jim, jih...
-nek, neka - da, nehaj, pustiti
-voleti - ljubiti
-mogu - možno
-hče
-bujic
 izbaciti dadakanje
+prosjaci
 izbacivati ć (će, biće)
 izbacivati đ
 dodati že umesto da ili čto: Dokaz že maly princ jestvoval jest to že on smějal se.
 prevod ostalih reči
 gramatika
-npr. oni ktoji plaču - plačujši
+izbacivati ktory - npr. oni ktory plaču - plačujši
+želja
+pazi
+barem, bar
+srědstva
 
 večše boljše pogolemo veličejše, poveličati
 večš(\w){1,4}
+hče
+
 ě
 ъ
+pъln
 
 spojiti:
 5d971035aa30bb9ae3d6bc65 i 5d971035aa30bb9ae3d6bc67
