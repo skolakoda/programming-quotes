@@ -1,16 +1,3 @@
-gramžljivost - lakomstvo, nenasytnost
-nahraniti - nasytiti
-objekat - prědmet
-rezultat - poslědica, poslědstvo, izhod
-uzroci
-osobina - svojstvo
-koj prebaciti u rodove
-sretn - radosn, blažen
-smo - vrv jesmo
-poredjenje - sravnjenje
-lako - legko
-npr. oni ktoji plaču - plačujši
-běs, srdnja, ljutnja - gněv
 postupak - dělo
 pa - i
 izljev
@@ -22,10 +9,11 @@ hče
 bujic
 izbaciti dadakanje
 izbacivati ć (će, biće)
+izbacivati đ
 dodati že umesto da ili čto: Dokaz že maly princ jestvoval jest to že on smějal se.
 prevod ostalih reči
 gramatika
-vratiti sretju
+npr. oni ktoji plaču - plačujši
 
 večše boljše pogolemo veličejše, poveličati
 večš(\w){1,4}
