@@ -1,5 +1,5 @@
-vratiti sretju
-vezivanja, vezanost - svez, lepljenje
+vezivanja, vezanost - svez, prilěpjenje, privezannost, svezannost, obvezny
+nema - ne ima
 sabran - svěstny
 sujeta, taština, možda spojiti sa gordost
 žudnja - žednost
@@ -30,6 +30,7 @@ izbacivati ć (će, biće)
 dodati že umesto da ili čto: Dokaz že maly princ jestvoval jest to že on smějal se.
 prevod ostalih reči
 gramatika
+vratiti sretju
 
 večše boljše pogolemo veličejše, poveličati
 večš(\w){1,4}
