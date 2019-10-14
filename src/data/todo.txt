@@ -1,15 +1,19 @@
-izbaciti dadakanje
+sigur
+pazi, spazi, opazi
+iztraživanja - izslědovanje, raziskyvanje
+bogataši
 prosjaci
 izbacivati ć (će, biće)
 izbacivati đ
 dodati že umesto da ili čto: Dokaz že maly princ jestvoval jest to že on smějal se.
 prevod ostalih reči
 gramatika
-izbacivati ktory - npr. oni ktory plaču - plačujši
+izbacivati ktory, koj, kto, onoga - npr. oni ktory plaču - plačujši
 želja
 pazi
 barem, bar
 srědstva
+patnja - muka
 
 večše boljše pogolemo veličejše, poveličati
 večš(\w){1,4}
@@ -21,6 +25,7 @@ pъln
 
 spojiti:
 5d971035aa30bb9ae3d6bc65 i 5d971035aa30bb9ae3d6bc67
+5d971035aa30bb9ae3d6bc2c i 5d971035aa30bb9ae3d6be69
 
 obrisati:
 5d971035aa30bb9ae3d6be80
@@ -29,3 +34,4 @@ obrisati:
 5d971035aa30bb9ae3d6be7d
 5d971035aa30bb9ae3d6be61
 5d971035aa30bb9ae3d6bbf6
+5d971035aa30bb9ae3d6be69
