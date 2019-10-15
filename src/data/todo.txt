@@ -1,14 +1,8 @@
+izbacivati ktory, koj, kto, onoga - npr. oni ktory plaču - plačujši
 izbacivati ć
 izbacivati đ
 prevod ostalih reči
-izbacivati ktory, koj, kto, onoga - npr. oni ktory plaču - plačujši
-barem, bar
 srědstva
-patnja - muka
-
-večše boljše pogolemo veličejše, poveličati
-večš(\w){1,4}
-hče
 
 ě
 ъ
