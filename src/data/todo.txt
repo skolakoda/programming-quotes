@@ -1,12 +1,13 @@
-ono čto
-ov - toj, ta, to
-izbacivati koj, kto, onoga, někto - npr. oni ktory plaču - plačujši
+sada - nyně
+izbacivati ktor, koj, kto, onoga, někto - npr. oni ktory plaču - plačujši
 izbacivati ć
 izbacivati đ
 srědstva
 ov po padežima
 prevod ostalih reči
-makar
+makar, tek
+vežb
+brig
 
 ě
 ъ
@@ -23,6 +24,7 @@ obrisati:
 5d971035aa30bb9ae3d6be61
 5d971035aa30bb9ae3d6bbf6
 5d971035aa30bb9ae3d6be69
+5d971035aa30bb9ae3d6bbf1
 
 podeliti:
 5d971035aa30bb9ae3d6bd77
