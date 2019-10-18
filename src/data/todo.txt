@@ -1,7 +1,14 @@
-Prosite i daće vam se, iščite i najdtiće: tolcite i otvoriće vam se.
-Jer vsaky proseči prijma, i iskajuči nalazi, i tolkučemu otvara se.
+5d971035aa30bb9ae3d6bc7a
+Ne mnite jako prijdoh doneti mir na zemju. Ne prijdoh doneti mir, no meč. Prijdoh razlučiti člověka ot otca jego, i dočeru ot mater jej, i nevěstu ot svekrov jej. I vrazi sut člověku domašny jego.
+
+Kto ljubi otca ili mater pače mene, nest mene dostoin: i iže ljubit syna ili dočeru pače mene, nest mene dostoin:
+Kto ljubi otca ili majku vyše no mene, nest mene dostojan, i kto ljubi sina ili dočeru vyše no mene, ne jest mene dostojan.
+
+i iže ne priimet kresta svoego i vsled mene gŕadet, nest mene dostoin.
+I ktory ne vzme svoj krst i ne ide za mnoju, ne jest mene dostojan.
 
 izbacivati ktor, koj, kto, onoga, někto - npr. oni ktory plaču - plačujši
+izbacivati ne jest: nest, neje, nije, ne
 izbacivati ć
 izbacivati đ
 sovragstvo
@@ -21,6 +28,7 @@ obrisati:
 5d971035aa30bb9ae3d6bbf6
 5d971035aa30bb9ae3d6be69
 5d971035aa30bb9ae3d6bbf1
+5d971035aa30bb9ae3d6bc62
 
 podeliti:
 5d971035aa30bb9ae3d6bd77
