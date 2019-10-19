@@ -1,19 +1,14 @@
-5d971035aa30bb9ae3d6bc7a
-Ne mnite jako prijdoh doneti mir na zemju. Ne prijdoh doneti mir, no meč. Prijdoh razlučiti člověka ot otca jego, i dočeru ot mater jej, i nevěstu ot svekrov jej. I vrazi sut člověku domašny jego.
-
-Kto ljubi otca ili mater pače mene, nest mene dostoin: i iže ljubit syna ili dočeru pače mene, nest mene dostoin:
-Kto ljubi otca ili majku vyše no mene, nest mene dostojan, i kto ljubi sina ili dočeru vyše no mene, ne jest mene dostojan.
-
-i iže ne priimet kresta svoego i vsled mene gŕadet, nest mene dostoin.
-I ktory ne vzme svoj krst i ne ide za mnoju, ne jest mene dostojan.
-
-izbacivati ktor, koj, kto, onoga, někto - npr. oni ktory plaču - plačujši
+izbacivati kto, onoga, někto - npr. oni ktory plaču - plačujši
 izbacivati ne jest: nest, neje, nije, ne
 izbacivati ć
 izbacivati đ
 sovragstvo
+skren, skret - obrnuti
+ponašanje - postupati, obhoditi, odnositi
 ě
 ъ
+
+nakon utovara dodati izvore za Isusove citate i staroslovenske verzije gde treba
 
 spojiti:
 5d971035aa30bb9ae3d6bc65 i 5d971035aa30bb9ae3d6bc67
@@ -32,3 +27,13 @@ obrisati:
 
 podeliti:
 5d971035aa30bb9ae3d6bd77
+
+dodati:
+matt 11:28
+Prijdite k mně vsi trudeči i obrěmenny, i ja upokoju vy. Vozmite igo moje na sebe i naučite se ot mene, jako krotky jesm i smiren srdcem: i obraščete pokoj dušam vašim.
+
+matt 13:44
+Podobno jest carstvo nebesno blagu skryvenu na nivi, že našavši člověk skry, i ot radosti otide prodavši vse že iměše, i kupi nivu tu.
+
+matt 13:45
+Podobno jest carstvo nebesno člověku kupcu, iščuču dobryh biserej. On najde jedin mnogocěnny biser, šed prodade vse že iměše i kupi jego.
