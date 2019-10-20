@@ -1,5 +1,8 @@
 izbacivati ć
 odmah
+suština - suštnost, sutnost, suščnost, istota, jestestvo
+teret - brěme, obrěmeniti
+postojeće - istnujučе, byvajuče
 
 ě
 ъ
@@ -20,6 +23,7 @@ obrisati:
 5d971035aa30bb9ae3d6be69
 5d971035aa30bb9ae3d6bbf1
 5d971035aa30bb9ae3d6bc62
+5d971035aa30bb9ae3d6be39
 
 podeliti:
 5d971035aa30bb9ae3d6bd77
