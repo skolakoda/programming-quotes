@@ -1,5 +1,5 @@
 preći sve redom, finalno srediti prevod i gramatiku:
-5d971035aa30bb9ae3d6bbd1
+5d971035aa30bb9ae3d6bbd4
 
 dodati ponegde ob (kada naredna reč počinje sa o ili samoglasnikom)
 ě
