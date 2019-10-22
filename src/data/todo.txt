@@ -1,13 +1,9 @@
-napustanja - ostaviti, ostavjati, opustiti, opuščati, opuščenje
-odbojn
-obmana - obman
-lukavost - lukavstvo
-dodati ponegde ob
+preći sve redom, finalno srediti prevod i gramatiku
+
+uvěrenje - mněnje
 
 ě
-ъ
-preći sve redom, finalno srediti prevod i gramatiku
-nakon utovara dodati izvore za Isusove citate i staroslovenske verzije gde treba
+nakon utovara dodati izvore za Isusove citate i ostale i uporediti staroslovenske verzije gde treba
 
 spojiti:
 5d971035aa30bb9ae3d6bc65 i 5d971035aa30bb9ae3d6bc67
