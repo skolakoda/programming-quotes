@@ -1,4 +1,5 @@
-preći sve redom, finalno srediti prevod i gramatiku
+preći sve redom, finalno srediti prevod i gramatiku:
+5d971035aa30bb9ae3d6bbc9
 
 sobstvo - sebstvo, sebe, osobstvo, ja
 ici - iki
