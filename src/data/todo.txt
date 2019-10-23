@@ -1,8 +1,6 @@
 preći sve redom, finalno srediti prevod i gramatiku:
 5d971035aa30bb9ae3d6bbea
 
-izbacivati že, nije isto kao čto
-
 že introduces a subordinate clause. It is a particle.
 čto is a pronoun
 "On rěkl, že ta kniga je interesna". ("He said that the book was interesting")
