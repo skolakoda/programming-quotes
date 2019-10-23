@@ -1,6 +1,8 @@
 preći sve redom, finalno srediti prevod i gramatiku:
 5d971035aa30bb9ae3d6bbd9
 
+posědati umesto obsědati
+dodati negde prěstati umesto iščez
 dodati ponegde ob (kada naredna reč počinje sa o ili samoglasnikom)
 ě
 nakon utovara dodati izvore za Isusove citate i ostale i uporediti staroslovenske verzije gde treba
