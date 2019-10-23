@@ -1,13 +1,7 @@
 preći sve redom, finalno srediti prevod i gramatiku:
-5d971035aa30bb9ae3d6bbea
+5d971035aa30bb9ae3d6bbf4
 
-že introduces a subordinate clause. It is a particle.
-čto is a pronoun
-"On rěkl, že ta kniga je interesna". ("He said that the book was interesting")
-But
-"On rěkl, čto znal" ("He said what he knew").
-
-posědati umesto obsědati?
+posědati, posesti (posede) - umesto obsědati?
 umenjuju - umenšajut, uvećaju - uveličajut
 dodati ponegde ob (kada naredna reč počinje sa o ili samoglasnikom)
 ě
