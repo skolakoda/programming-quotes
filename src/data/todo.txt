@@ -1,5 +1,5 @@
 preći sve redom, finalno srediti prevod i gramatiku:
-5d971035aa30bb9ae3d6bc0f
+5d971035aa30bb9ae3d6bc11
 
 nastaje - nastava, nastane - v(oz)nika, v(oz)nikaje, v(oz)nikne, vnikati, vniknuti
 
