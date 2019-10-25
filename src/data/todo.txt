@@ -1,5 +1,5 @@
 preći sve redom, finalno srediti prevod i gramatiku:
-5d971035aa30bb9ae3d6bc1d
+5d971035aa30bb9ae3d6bc21
 
 umenjuju - umenšajut, uvećaju - uveličajut
 dodati ponegde ob (kada naredna reč počinje sa o ili samoglasnikom)
