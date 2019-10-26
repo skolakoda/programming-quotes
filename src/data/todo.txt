@@ -1,9 +1,13 @@
 preći sve redom, finalno srediti prevod i gramatiku:
-5d971035aa30bb9ae3d6bc2a
+5d971035aa30bb9ae3d6bc31
 
 umenjuju - umenšajut, uvećaju - uveličajut
+
 dodati ponegde ob (kada naredna reč počinje sa o ili samoglasnikom)
+ponegde za - dlja
+ponegde s - so (kad naredna počinje s s)
 ě
+
 nakon utovara dodati izvore za Isusove citate i ostale i uporediti staroslovenske verzije gde treba
 
 spojiti:
