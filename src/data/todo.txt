@@ -1,16 +1,20 @@
 preći sve redom, finalno srediti prevod i gramatiku:
-5d971035aa30bb9ae3d6bc3d
+5d971035aa30bb9ae3d6bcab
 
-Ne odgovoriti na gněv gněvim slovami
+odgovoriti gněvim slovami
 ili
-Ne odgovoriti na gněv so gněvim slovami
-dodavati s(o)?
+odgovoriti so gněvim slovami
 
-umenjuju - umenšajut, uvećaju - uveličajut
+osvoboditi se zavisti
+ili
+osvoboditi se ot zavisti
 
+bol - bolj, mysl, myslj
 dodati ponegde ob (kada naredna reč počinje sa o ili samoglasnikom)
 ponegde za - dlja
 ponegde s - so (kad naredna počinje s s)
+ponegde no - ale
+
 ě
 
 nakon utovara dodati izvore za Isusove citate i ostale i uporediti staroslovenske verzije gde treba
