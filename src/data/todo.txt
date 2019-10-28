@@ -1,8 +1,6 @@
 preći sve redom, finalno srediti prevod i gramatiku:
 5d971035aa30bb9ae3d6bcb4
 
-to - toj
-
 odgovoriti gněvim slovami
 ili
 odgovoriti so gněvim slovami
