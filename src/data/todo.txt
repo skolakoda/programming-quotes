@@ -1,5 +1,5 @@
 preći sve redom, finalno srediti prevod i gramatiku:
-5d971035aa30bb9ae3d6bcb4
+5d971035aa30bb9ae3d6bcce
 
 odgovoriti gněvim slovami
 ili
@@ -38,6 +38,7 @@ obrisati:
 
 podeliti:
 5d971035aa30bb9ae3d6bd77
+5d971035aa30bb9ae3d6bcb9
 
 dodati:
 matt 11:28
