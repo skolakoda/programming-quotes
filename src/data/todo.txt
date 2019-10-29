@@ -1,5 +1,4 @@
-preći sve redom, finalno srediti prevod i gramatiku:
-5d971035aa30bb9ae3d6bd04
+5d971035aa30bb9ae3d6bd1a
 
 odgovoriti gněvim slovami
 ili
@@ -14,6 +13,7 @@ dodati ponegde ob (kada naredna reč počinje sa o ili samoglasnikom)
 ponegde za - dlja
 ponegde s - so (kad naredna počinje s s)
 ponegde no - ale
+ponegde jer - ibo
 
 ě
 
