@@ -584,7 +584,7 @@
   {
     "tags": "",
     "author": "Gautama Buddha",
-    "ms": "Rybar zabaci primamku v jezero. Nakon čto gladna ryba progolta mamac, rybar može činiti jej čto mu volja. Podobno, iměnje, uvaženje i slava sut primamke. Ribar jest diavol. Sladeči se iměnjem, uvaženjem i slavom jest progoltavši primamku, i diavol može činiti s jim čto mu volja.",
+    "ms": "Rybar zabaci primamku v jezero. Kogda gladna ryba progolta mamac, rybar može činiti jej čto mu volja. Podobno, iměnje, uvaženje i slava sut primamke. Ribar jest diavol. Sladeči se iměnjem, uvaženjem i slavom jest progoltavši primamku, i diavol može činiti s jim čto mu volja.",
     "id": "5d971035aa30bb9ae3d6bc1c"
   },
   {
@@ -1316,6 +1316,12 @@
   {
     "tags": "",
     "author": "Muhamed",
+    "ms": "Najvyša dobrota i velikodušnost jest: obhoditi kto tebe ne obhodi, dati kto tebe odbi, i prostiti kto ti nepravdu čini.",
+    "id": "5d971035aa30bb9ae3d6bcb5"
+  },
+  {
+    "tags": "",
+    "author": "Muhamed",
     "ms": "Najtežja izkušenja imali sut proroci, a potom jim podobny. Člověk trpi udare i nevolje prěmy sili věre. Ako věra tvrda, izkušenje bude težje, ako věra slaba i povrhna, izkušenje bude srazměrno.",
     "id": "5d971035aa30bb9ae3d6bc9a"
   },
@@ -1478,12 +1484,6 @@
   {
     "tags": "",
     "author": "Muhamed",
-    "ms": "Najvyša dobrota i velikodušnost jest: obhoditi kto tebe ne obhodi, dati kto tebe odbi, i prostiti kto ti nepravdu čini.",
-    "id": "5d971035aa30bb9ae3d6bcb5"
-  },
-  {
-    "tags": "",
-    "author": "Muhamed",
     "ms": "Děli jelo i poželaj mir znanom i neznanom.",
     "id": "5d971035aa30bb9ae3d6bcb6"
   },
@@ -1592,6 +1592,12 @@
   {
     "tags": "",
     "author": "Muhamed",
+    "ms": "Ako ti něčto dušu tiska, ostavi to.",
+    "id": "5d971035aa30bb9ae3d6bccf"
+  },
+  {
+    "tags": "",
+    "author": "Muhamed",
     "ms": "Najdražeja věra bogu jest čista istinna věra.",
     "id": "5d971035aa30bb9ae3d6bcc8"
   },
@@ -1630,12 +1636,6 @@
     "author": "Muhamed",
     "ms": "Neh nikto ne bude bezhrebetny i kaže: Ja jesm s ljudami, ako oni dělajut dobro i ja hoču dobrodějati, a ako oni grěšet i ja hoču grěšiti. Ne budite takovi, budite doslědni. Ako ljudi čine dobro vy se pridružite, a ako grěše vozdržite se.",
     "id": "5d971035aa30bb9ae3d6bcce"
-  },
-  {
-    "tags": "",
-    "author": "Muhamed",
-    "ms": "Ako ti něčto dušu tiska, ostavi to.",
-    "id": "5d971035aa30bb9ae3d6bccf"
   },
   {
     "tags": "",
@@ -1802,7 +1802,7 @@
   {
     "tags": "",
     "author": "Muhamed",
-    "ms": "Ako ti nesgoda sluči se ne kaži: da sdělah tako, by bylo onako, no kaži: tak bog oprěděli. Jer, čto hoče, on čini. Slovesa da byh i by byl otvarajut dveri diavlu.",
+    "ms": "Ako tobě nesgoda sluči se ne kaži: da sdělah tako, by bylo onako, no kaži: tak bog oprěděli. Jer, čto hoče, on čini. Slovesa da byh i by byl otvarajut dveri diavlu.",
     "id": "5d971035aa30bb9ae3d6bceb"
   },
   {
@@ -2186,7 +2186,7 @@
   {
     "tags": "",
     "author": "Muhamed",
-    "ms": "Ostavi čto ti sumnlivo i drži čto ne imaš sumněnja.",
+    "ms": "Ostavi čto tobě sumnlivo i drži čto ne imaš sumněnja.",
     "id": "5d971035aa30bb9ae3d6bd2b"
   },
   {
@@ -2348,7 +2348,7 @@
   {
     "tags": "",
     "author": "Muhamed",
-    "ms": "Kto ti priča že Muhamed vidě svojeg gospodara, lže.",
+    "ms": "Kto priča že Muhamed vidě svojeg gospodara, lže.",
     "id": "5d971035aa30bb9ae3d6bd46"
   },
   {
@@ -2570,7 +2570,7 @@
   {
     "tags": "",
     "author": "Zhuang Zhou",
-    "ms": "Někogda ja, Čuang Ce, snih že jesm motylj. Trepetah okolo, radostny i vesely, dělah čto mi volja. Ne běh svěstny že jesm Čuang Ce. Iznenada, probudih se, i gle, nanovo běh Čuang Ce. Segda ne věm jesam li člověk snivši že bě motylj, ili motylj snijuči že jest člověk?",
+    "ms": "Někogda ja, Čuang Ce, snih že jesm motylj. Trepetah okolo, radostny i vesely, dělah čto mi volja. Ne běh svěstny že jesm Čuang Ce. Iznenada, probudih se, i gle, nanovo běh Čuang Ce. Segda ne věm jesam li člověk ktory sniše že bě motylj, ili motylj ktory sni že jest člověk?",
     "id": "5d971035aa30bb9ae3d6bd6b"
   },
   {
@@ -2618,13 +2618,13 @@
   {
     "tags": "",
     "author": "Zhuang Zhou",
-    "ms": "Člověk v snu pije vino, a utrom plače i kuka. Člověk plače v snu, no utrom veselo hodi v lov. Snivši, ne zna da v snu jest. V snu pokušava objasniti son. Probudivši se, vidi da sniše. Nakon velikog budenja budemo viděli že vse veliky son bě. Budale mysle že sut budni i že sut kneževi ili seljani. V istinnost, vy i ja jesmo son. I dokolě vam govorim že snite, jest son. Veliki mudrec sposobny proniknuti v tu tajnu težko se bude pojavil v světu i za deset tiseč godina.",
+    "ms": "Člověk v snu pije vino, a utrom plače i kuka. Člověk v snu plače, a utrom veselo hodi v lov. Snivši, ne zna da snije. V snu pokušava objasniti son. Probudivši se, vidi v snu běše. Poslě velikog budenja budemo viděti vse veliky son bě. Budale myslet budny sut i knezi sut ili seljani. V istinnosti, vy i ja jesmo son. I govoreči vam kak snite jest son. Veliky mudrec sposobny proniknuti v tajnu težko se bude pojaviti v světu i za deset tiseč godov.",
     "id": "5d971035aa30bb9ae3d6bd73"
   },
   {
     "tags": "",
     "author": "Zhuang Zhou",
-    "ms": "V pokretu, v dělu, děte jest bez cělja, bez naměre.",
+    "ms": "V dviženju, v dělu, děte jest bez cělja, bez naměre.",
     "id": "5d971035aa30bb9ae3d6bd74"
   },
   {
@@ -2636,31 +2636,31 @@
   {
     "tags": "",
     "author": "Muhamed",
-    "ms": "Vse imaje svoj osnov, a osnov věre jest molitva.",
+    "ms": "Vse imaje svoju osnovu, a osnova věre jest molitva.",
     "id": "5d971035aa30bb9ae3d6bd76"
   },
   {
     "tags": "",
     "author": "Zhuang Zhou",
-    "ms": "Mudrecu ne jest stalo znati začto živi. Ne mu stalo znati začto mre. On ne zna čto dolazi prě, čto poslě. Slědujuči prirodni tok on postade něčto, i prosto čeka dalji prěobražaj. Kogda člověk prolazi prěobražaj, može li byti uvěrjeny da ne bude prěobražen? A kogda ne prolazi prěobražaj, može li byti uvěrjeny uže ne jest prěobražen?",
+    "ms": "Mudrec ne opeka znati začto živi. Ne opeka znati začto mre. On ne zna čto prě, čto poslě. Slědujuči prirodny tok postade něčto, i prosto čeka dalje prěobraženje. Kogda člověk projde prěobraženje, može li znati da ne bude prěobraženy? A kogda ne projde prěobraženje, može li znati uže ne jest prěobraženy?",
     "id": "5d971035aa30bb9ae3d6bd77"
   },
   {
     "tags": "",
     "author": "Zhuang Zhou",
-    "ms": "Život jest ograničen, znanje ne. Ako ograničeno koristiš za dosegnuti bezgranično, budeš v opasnosti. Ješče opasnije ako to razuměš, a dalje težiš znanju.",
+    "ms": "Život jest ograničeny, znanje ne. Ako ograničeno koristiš za dosegnuti bezgranično, ty v nevolji. Ješče gorše ako to razuměš i dalje siliš se znanju.",
     "id": "5d971035aa30bb9ae3d6bd78"
   },
   {
     "tags": "prirodno, umetno",
     "author": "Zhuang Zhou",
-    "ms": "Ono čto jest prirodno, to vnutrišne. Ono čto jest člověkovo, to vněšnje. Prirodno volovi i konji imajut četyri noge. Stavljanje ulara konju na glavu ili uzice v gubicu vola, to člověkovo dělo.",
+    "ms": "Prirodno jest vnutrišne, člověkovo vněšnje. Prirodno konji i voli imajut četyri nogy. Stavljanje jarma konju ili vezala v gubicu vola, to člověkovo dělo.",
     "id": "5d971035aa30bb9ae3d6bd79"
   },
   {
     "tags": "",
     "author": "Zhuang Zhou",
-    "ms": "Ljudam v snu duh skita, v budnom stanu těla jim hitaju. Vse čto strětnu, vežut jih. Denj za denom, koriste duh za sporove; někogda velike, někogda lukave, někogda male. Jih maly strahovi sut zli i potresni, veliky grozny i prěplavjajušči. Izlěču kak strěle iz samostrěla, ubědženy že mogut suditi o dobru i zlu. Drže se za jih položenje kak bogom dani, uvěrjeny že jih nosi k pobědi. Gasnu kak jesenj i zima i sahnu denj za denom. Tonu v ono čto dělajut - ne možeš jih navěsti vratiti se. Postajut mračny, kak zapečateni - takovi sut izhodi jih pozdnih goda.",
+    "ms": "Ljudam v snu duh skita, na javi těla spěšet. Vse čto strětut, veže jih. Denj za denjom, koristajut duh za sporov, někogda velike, někogda lukave, někogda male. Maly strahovi jim zly i potresny, veliky grozny i poplavjajuči. Lětajut kak strěle, ubědženy že mogut suditi ob dobru i zlu. Držet se položenja kak bogom dany, uvěrjeny že idut k pobědi. Gasnut kak jesenj i sahnut denj za denjom. Tonu v ono čto dělajut, postajut mračny, kak zapečetany. Takovi sut izhodi jih pozdnih lěta.",
     "id": "5d971035aa30bb9ae3d6bd7a"
   },
   {
@@ -2762,7 +2762,7 @@
   {
     "tags": "",
     "author": "Isak Sirin",
-    "ms": "Čto ti se gluboko spojilo s dušom smatraj iměnjem ne samo v ovom veku.",
+    "ms": "Čto tobě gluboko spojilo se s dušom smatraj iměnjem ne samo v ovom veku.",
     "id": "5d971035aa30bb9ae3d6bd8b"
   },
   {
@@ -3103,7 +3103,7 @@
   },
   {
     "tags": "",
-    "ms": "Ne možeš se osloniti ni na kogo. Ne imaje vodiča, ne imaje učitelja, ne imaje autoriteta. Tu jesi samo ty – tvoja svez s drugym i s světom – ničto drugo. Kogda pojmeš, to ti ili donosi veliko odčajanje, iz kojeg dolazi cinizam i ogorčenje, ili, suočivši se s činjenicom da nikto ini odgovorny za svět i tebe, tvoje mysli, čuvstva i děla, vsako samosažaljenje prěstaje.",
+    "ms": "Ne možeš se osloniti ni na kogo. Ne imaje vodiča, ne imaje učitelja, ne imaje autoriteta. Tu jesi samo ty – tvoja svez s drugym i s světom – ničto drugo. Kogda pojmeš, to tobě ili donosi veliko odčajanje, iz kojeg dolazi cinizam i ogorčenje, ili, suočivši se s činjenicom da nikto ini odgovorny za svět i tebe, tvoje mysli, čuvstva i děla, vsako samosažaljenje prěstaje.",
     "author": "Jiddu Krishnamurti",
     "id": "5d971035aa30bb9ae3d6bdc4"
   },
@@ -3637,7 +3637,7 @@
   },
   {
     "tags": "",
-    "ms": "Ne prězri savěst koja ti vsegda sovětuje dobro. Ona ti prědlaže božanske i angelske sověte, osvobadža ot tajnih oskvrnjenja srdca i daruje ti smělost prěmy bogu v vrěme smrti.",
+    "ms": "Ne prězri savěst koja tobě vsegda sovětuje dobro. Ona ti prědlaže božanske i angelske sověte, osvobadža ot tajnih oskvrnjenja srdca i daruje ti smělost prěmy bogu v vrěme smrti.",
     "author": "Maksim Ispovednik",
     "id": "5d971035aa30bb9ae3d6be1d"
   },
