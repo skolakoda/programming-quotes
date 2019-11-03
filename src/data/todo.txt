@@ -1,4 +1,4 @@
-5d971035aa30bb9ae3d6be64
+5d971035aa30bb9ae3d6be71
 
 srediti padeže
 http://steen.free.fr/interslavic/prepositions.html
@@ -17,6 +17,7 @@ ponegde s - so (kad naredna počinje s s)
 ponegde no - ale
 ponegde jer - ibo
 ponegde išče - iska
+ponegde tak - tako
 
 ě
 
