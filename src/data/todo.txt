@@ -2,6 +2,7 @@
 
 svědom - negde izbaciti ili vratiti svěst
 svěst - ne koristiti to za savest
+žednost - žedža
 
 srediti padeže
 http://steen.free.fr/interslavic/prepositions.html
