@@ -1,13 +1,6 @@
-5d971035aa30bb9ae3d6bdd5
-
-razščep
-
-padeži
-http://steen.free.fr/interslavic/prepositions.html
-
-ě
-
-nakon utovara dodati izvore za Isusove citate i ostale i uporediti staroslovenske verzije gde treba
+- utovariti
+- dodati izvore za Isusove citate i ostale 
+- uporediti staroslovenske verzije gde ima
 
 spojiti:
 5d971035aa30bb9ae3d6bc65 i 5d971035aa30bb9ae3d6bc67
@@ -29,6 +22,9 @@ obrisati:
 podeliti:
 5d971035aa30bb9ae3d6bd77
 5d971035aa30bb9ae3d6bcb9
+
+srediti:
+5d971035aa30bb9ae3d6bc6d
 
 dodati:
 matt 11:28
