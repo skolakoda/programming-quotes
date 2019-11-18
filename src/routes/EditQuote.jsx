@@ -61,6 +61,7 @@ class EditQuote extends Component {
         } else {
           this.emptyFields(fields)
           this.props.addQuote(res.quote)
+          this.setState({quote: res.quote})
         }
       })
       .catch(err => this.setState({ response: translate('NETWORK_PROBLEM') }))
@@ -73,7 +74,7 @@ class EditQuote extends Component {
   render() {
     if (!this.props.admin) return <p>{translate('ADMIN_REQUIRED')}</p>
 
-    const {id} = this.props.match.params
+    const {id} = this.props.match.params || this.state.quote
     const quote = id ? this.state.quote : {}
     const quoteLink = `/quote/${id}`
 
