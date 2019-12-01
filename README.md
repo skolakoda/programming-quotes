@@ -4,8 +4,8 @@
 
 Zbirka citata osnivača velikih religija, mudraca i svetaca.
 
-Svaki put su drugačije izreke na naslovnoj. 
- 
+Svaki put su drugačije izreke na naslovnoj.
+
 Vidi na: [mudroljub.github.io/svetemisli](https://mudroljub.github.io/svetemisli)
 
 ## Razvoj
@@ -21,7 +21,8 @@ Merge upstream:
 git pull https://github.com/skolakoda/programming-quotes.git master
 ```
 
-## TODO 
+## TODO
 
 - srediti prevod, prosledjivati jezik kao argument
 - dodati deljenje
+- scroll to top kada se menja citat ili strana citata
