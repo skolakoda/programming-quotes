@@ -1,9 +1,13 @@
-const citati = require('./filtrirano.json')
-console.log(citati)
+const fs = require('fs')
+const citati = require('./citati.json')
 
-citati.forEach(citat => {
-  const { ms } = citat
-  if (!ms) return
-  if (!ms.includes(':')) citat.ms = 'Ješua rěče: \n' + ms
-  console.log(citat)
-})
+const result = citati
+  .map(citat => {
+    const { ms, source } = citat
+    if (!ms.includes(':')) citat.ms = 'Ješua rěče: \n' + ms
+    citat.ms = source + '\n' + citat.ms + '\n'
+    return citat.ms
+  })
+  .join('\n')
+
+fs.writeFileSync('citati.txt', result)
