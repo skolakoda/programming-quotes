@@ -2,95 +2,44 @@
 
 ě
 
-James Robson, Christ in Islam (A. 48, M. 50.)
+"_id": "5dd3a8b279fbcd000417fdef",
+"ms": "Mutna voda mirujuči stava bistra.",
+"sr": "Mutna voda mirujući postane bistra."
+
+"_id": "5dd7b9d071b99700043e122a",
+"ms": "Zlo světa prestaje tam kde ukrotena sila strasti.",
+"sr": "Zlo sveta prestaje tamo gde je ukroćena sila strasti.",
+
+"_id": "5dfcd6d7e4417d0004072991",
+"ms": "Put naniže i naviše jest jedin jednaky.",
+"sr": "Put naniže i naviše jedan je isti.",
+"source": "Fragment 60"
+
+"_id": "5dfddd33b7181a00042af89a",
+"ms": "Člověk nigde ne najde pokoja kromve v bogu.",
+"sr": "Čovek nigde ne nalazi pokoja osim u bogu.",
+"source": "Dobrotoljublje"
+
+"_id": "5dc92e066f344d0004f3e8e2",
+"sr": "Koren svih pojava jeste želja.",
+Korenj vseh pojavah jest želanje.
+"source": "anguttara/an10-058"
+
+"_id": "5dd3a99979fbcd000417fdf0",
+"ms": "Podvižniki, ja jedam jednom dnevno. Tvoreči tak, slobodny jesam od bolezni i bolji, uživam v zdravju i snagy i dobro osěčam se.",
+"sr": "Podvižnici, ja jedem jednom dnevno. Čineći tako, oslobođen sam bolesti i bolova, uživam u zdravlju i snazi i dobro se osećam.",
+
+"_id": "5dfc85e94a3620000498676a",
+"ms": "Ako želaješ viděti istinu, ne budi za ni protiv.",
+"sr": "Ako želiš videti istinu, ne budi za ni protiv.",
+
+James Robson, Christ in Islam (A. 74, M. 63.)
 
 --------------------
-A., 60; M., 57.--
-Fine clothing is vanity of heart.
-
-Fina odeća je gordost srca.
-Fina oděž jest gordost srdca.
-
-A., 71; M., 62.--
-Jesus passed in his wandering a man asleep wrapped up in his cloak; then he wakened him and said,
-O sleeper, arise and glorify God.
-Then the man said,
-What do you want from me? Verily I have abandoned the world to its people.
-So he said to him,
-Sleep, then, my friend.
-
-Isus prođe pored čoveka koji spavaše umotan u ogrtač. On ga probudi i reče:
-O spavaču, ustani i proslavi boga!
-Tada je čovek rekao:
-Šta hoćeš od mene? Zaista sam prepustio svijet njegovim ljudima.
-Pa mu reče:
-Spavaj, onda, prijatelju.
-
-A., 72.--
-With difficulty does a rich man enter heaven.
-Teško bogataš moće ući u carstvo.
-
-A., 73; M., 18.--
-Verily I love poverty and hate comfort.
-
-Zaista volim siromaštvo i mrzim udobnost.
-
-A., 74; M., 63.--
-Do not look at the wealth of the people of this world, for the splendour of their wealth takes away the light of your faith.
-
-Ne gledaj u bogatstvo ljudi ovog sveta, jer sjaj njihovog bogatstva oduzima svetlost tvoje vere.
-
-A., 113.--
-It is astonishing how you work for this world, yet you receive provision in it without work; and how you do not work for the next world, yet you receive provision in it only with work.
-
-Zapanjujuće je koliko radite za ovaj svet, a dobijate opskrbu u njemu bez posla. I kako ne radite za naredni svet, a dobijate opskrbu u njemu samo radom.
-
-A., 118 .--
-I am he who has inverted the world on its face; so I have no wife to die and no house to be demolished.
-
-Ja sam taj koji je prevrnuo svet naglavačke; pa nemam ženu koja bi umrla i ni kuću koja bi bila srušena.
-
-A., 125.--
-The sweetness of this world is the bitterness of the next, and fine clothes are vanity of heart, meaning conceit and pride of heart. And fullness of the belly is abundance of passion, meaning its sustenance and its accumulation.
-
-Slatkoća ovog sveta je gorčina sledećeg. I lepa odeća je ispraznost srca, što znači umišljenost i gordost. I punoća stomaka je obilje strasti, što znači njihovo podržavanje i gomilanje.
-
-A., 126.--
-Jesus lifted up a stone and asked,
-Which of the two is dearer to you, this or a dînâr and a dirhem?
-They replied,
-A dînâr.
-He said,
-They are both alike to me.
-
-Isus je podigao kamen i dinar i pitao:
-Šta vam je od ova dva draže?
-Oni su odgovorili:
-A dinar.
-On reče:
-Meni su oba isti.
-
-A., 220.--
-Which of them is sweeter to your hearts?
-They said,
-The gold.
-He said,
-They are both alike to me.
-
-Isus uze zemlju u jednu ruku i zlato u drugu. Tada upita drugove:
-Koji je od njih slađi vašem srcu?
-Rekli su,
-Zlato.
-Rekao je,
-Oboje su mi slični.
-
 A., 193.--
 Know that the relation of your present life to your future life is like the relation of the east to the west. The more you approach the east, the farther you are from the west; and the more you approach the west, the farther do you increase in distance from the east.
 
 Znajte da je odnos vašeg sadašnjeg života prema vašem budućem životu sličan odnosu istoka prema zapadu. Što više pristupate istoku, to ste dalje od zapada; i što više pristupate zapadu, to se dalje povećava udaljenost od istoka.
-
-M., 19. There is no poor man poorer than I.
-Nema siromaha siromašnijeg od mene.
 
 A., 53; M., 54.
 O you learned men who are evil, you fast and pray and give alms, and do not do what you are commanded, and you teach what you do not perform.
@@ -105,19 +54,10 @@ Woe to you! What does it avail a dark house if a lamp is placed on its roof when
 
 Teško vama! Šta koristi tamnoj kući ako je na njenom krovu lampa, kad je unutra mrkli mrak? Slično, neće vam koristiti svetlost znanja u vašim ustima kad je unutar vas pustoš.
 
-O slaves of the world, you are not pious like slaves, or honourable like freemen.
-
-O robovi sveta, niste pobožni kao robovi, niti časni poput slobodnjaka.
-
 A., 61; M., 58.
 Why do you come to me wearing monks' clothing while your hearts are the hearts of ravenous wolves? Put on king's clothing and mortify your hearts with fear.
 
 Zašto dolazite kod mene noseći monašku odeću dok su vam srca besnih vukova? Bolje obucite kraljevu odeću i umrtvite svoja srca strahom.
-
-A., 161.--
-Be ashamed before God in your secret affairs, as you are ashamed before Him in your public affairs.
-
-Sramite se pred bogom u svojim tajnim poslovima, kao što se sramite u javnim.
 
 A., 197.--
 O jurists, you have sat on the road of the life to come, but you have not walked so that you might reach it, nor have you allowed anyone to pass you to it.
@@ -140,31 +80,3 @@ Pazite se učenjaka koji nose vunenu odeću i klanjaju se glavama ka zemlji, gle
 Their speech disagrees with their action. Who plucks grapes from thorns and figs from colocynth? Similarly the speech of a false learned man produces only falsehood.
 
 Njihov govor se ne slaže sa njihovim delima. Ko bere grožđe sa trnja i smokve sa kolocinta? Slično, govor lažnog učenjaka proizvodi samo laž.
-
-----------
-Hamza Yusuf, Walk on Water: The Wisdom of Jesus from Traditional Arabic Sources
----------
-Beware of the luxuries of this world, and fear them, for the luxuries of this world are filth in the sight of God.
-
-Čuvajte raskoši ovog sveta i plašite ih se, jer su raskoši ovog sveta prljavština pred bogom.
-
-Love of this world is the source of every wrong action, and there is much harm in wealth.
-They asked:
-“What is its harm?”
-Jesus replied:
-“Its possessor is never safe from pride and arrogance.”
-They said:
-“What if he is free of those two? Is there still harm?”
-Jesus responded:
-“Yes, for by nurturing his wealth, he is diverted from the remembrance of God.”
-
-Isus reče:
-Ljubav prema svetu je izvor svakog pogrešnog dela i ima mnogo štete u bogatstvu.
-Pitali su:
-Šta je šteta?
-Isus odgovori:
-Njegov posjednik nikada nije bezbedan od gordosti i oholosti.
-Rekli su:
-Šta ako je slobodan od ova dva? Ima li još štete?
-Isus odgovori:
-Da, jer se negujući svoje bogatstvo, odvraća se od sećanja na Boga.
