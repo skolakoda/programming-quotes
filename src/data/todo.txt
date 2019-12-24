@@ -1,46 +1,8 @@
-- prevesti neprevedeno
-
 ě
-
-"_id": "5dd3a8b279fbcd000417fdef",
-"ms": "Mutna voda mirujuči stava bistra.",
-"sr": "Mutna voda mirujući postane bistra."
-
-"_id": "5dd7b9d071b99700043e122a",
-"ms": "Zlo světa prestaje tam kde ukrotena sila strasti.",
-"sr": "Zlo sveta prestaje tamo gde je ukroćena sila strasti.",
-
-"_id": "5dfcd6d7e4417d0004072991",
-"ms": "Put naniže i naviše jest jedin jednaky.",
-"sr": "Put naniže i naviše jedan je isti.",
-"source": "Fragment 60"
-
-"_id": "5dfddd33b7181a00042af89a",
-"ms": "Člověk nigde ne najde pokoja kromve v bogu.",
-"sr": "Čovek nigde ne nalazi pokoja osim u bogu.",
-"source": "Dobrotoljublje"
-
-"_id": "5dc92e066f344d0004f3e8e2",
-"sr": "Koren svih pojava jeste želja.",
-Korenj vseh pojavah jest želanje.
-"source": "anguttara/an10-058"
-
-"_id": "5dd3a99979fbcd000417fdf0",
-"ms": "Podvižniki, ja jedam jednom dnevno. Tvoreči tak, slobodny jesam od bolezni i bolji, uživam v zdravju i snagy i dobro osěčam se.",
-"sr": "Podvižnici, ja jedem jednom dnevno. Čineći tako, oslobođen sam bolesti i bolova, uživam u zdravlju i snazi i dobro se osećam.",
-
-"_id": "5dfc85e94a3620000498676a",
-"ms": "Ako želaješ viděti istinu, ne budi za ni protiv.",
-"sr": "Ako želiš videti istinu, ne budi za ni protiv.",
 
 James Robson, Christ in Islam (A. 74, M. 63.)
 
 --------------------
-A., 193.--
-Know that the relation of your present life to your future life is like the relation of the east to the west. The more you approach the east, the farther you are from the west; and the more you approach the west, the farther do you increase in distance from the east.
-
-Znajte da je odnos vašeg sadašnjeg života prema vašem budućem životu sličan odnosu istoka prema zapadu. Što više pristupate istoku, to ste dalje od zapada; i što više pristupate zapadu, to se dalje povećava udaljenost od istoka.
-
 A., 53; M., 54.
 O you learned men who are evil, you fast and pray and give alms, and do not do what you are commanded, and you teach what you do not perform.
 
