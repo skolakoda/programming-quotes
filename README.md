@@ -23,8 +23,6 @@ git pull https://github.com/skolakoda/programming-quotes.git master
 
 ## TODO
 
-- srediti prevod, prosledjivati jezik kao argument
-- dodati deljenje
-- scroll to top kada se menja citat ili strana citata
+- dodati dugme za medjuslovenski
 - ставити фонт за старословенски https://en.wiktionary.org/wiki/%D0%B7%D0%BD%D0%B0%D1%82%D0%B8#Old_Church_Slavonic
 - admin deo za nalaženje neprevedenih

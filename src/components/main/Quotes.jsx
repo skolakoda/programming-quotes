@@ -17,6 +17,7 @@ export default class Quotes extends Component {
 
   turnThePage = e => {
     this.setState({currentPage: Number(e.target.value)})
+    window.scrollTo(0, 0)
   }
 
   render() {

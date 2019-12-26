@@ -26,6 +26,7 @@ class RandomQuote extends Component {
     if (!allQuotes.length) return
     const quote = allQuotes[Math.floor(Math.random() * allQuotes.length)]
     this.setState({quote, found: true})
+    window.scrollTo(0, 0)
   }
 
   render() {
