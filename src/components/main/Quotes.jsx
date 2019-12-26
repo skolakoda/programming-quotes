@@ -16,7 +16,7 @@ export default class Quotes extends Component {
   }
 
   turnThePage = e => {
-    this.setState({currentPage: e.target.value})
+    this.setState({currentPage: Number(e.target.value)})
   }
 
   render() {
@@ -29,8 +29,18 @@ export default class Quotes extends Component {
       )
     const pagination = []
     const totalPages = Math.ceil(currentQuotes.length / quotesPerPage)
+
     for (let i = 0; i < totalPages; i++)
-      pagination.push(<button value={i} onClick={this.turnThePage} key={i}>{i + 1}</button>)
+      pagination.push(
+        <button
+          value={i}
+          style={{ color: this.state.currentPage === i && 'darkred' }}
+          onClick={this.turnThePage}
+          key={i}
+        >
+          {i + 1}
+        </button>
+      )
 
     return loaded ?
       (

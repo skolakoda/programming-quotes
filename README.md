@@ -23,7 +23,6 @@ git pull https://github.com/skolakoda/programming-quotes.git master
 
 ## TODO
 
-- istaknuti aktivnu stranicu na paginaciji
 - srediti prevod, prosledjivati jezik kao argument
 - dodati deljenje
 - scroll to top kada se menja citat ili strana citata

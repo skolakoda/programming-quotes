@@ -28,6 +28,7 @@ textarea {
 
 button {
   cursor: pointer;
+  padding: 2px 8px;
 }
 
 blockquote {
