@@ -89,7 +89,7 @@ class EditQuote extends Component {
           <input type="hidden" name="_id" defaultValue={quote._id} />
           <p>
             <label htmlFor="author" title={translate('AUTHOR_TIP')}>{translate('AUTHOR')} *</label><br/>
-            <input name="author" id="author" defaultValue={quote.author} size="70" autoFocus />
+            <input name="author" id="author" defaultValue={quote.author} autoFocus />
           </p>
           <p>
             <label htmlFor="sr" >Tekst (srpski) *</label><br />
@@ -101,15 +101,15 @@ class EditQuote extends Component {
           </p>
           <p>
             <label htmlFor="tags">Oznake </label><br/>
-            <input name='tags' id='tags' defaultValue={quote.tags} size="70" />
+            <input name='tags' id='tags' defaultValue={quote.tags} />
           </p>
           <p>
             <label htmlFor="source">{translate('SOURCE')} </label><br/>
-            <input name='source' id='source' defaultValue={quote.source} size="70" />
+            <input name='source' id='source' defaultValue={quote.source} />
           </p>
           <p>
             <label htmlFor="wiki">Wiki </label><br/>
-            <input name='wiki' id='wiki' defaultValue={quote.wiki} size="70" />
+            <input name='wiki' id='wiki' defaultValue={quote.wiki} />
           </p>
           {this.state.validation && <p>{this.state.validation}</p>}
           <button type="submit">{translate('POST')}</button>
