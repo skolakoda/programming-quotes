@@ -26,7 +26,6 @@ git pull https://github.com/skolakoda/programming-quotes.git master
 - smanjiti paginaciju
 - dodati dugme za medjuslovenski
 - dodati preslovljavanje u cirilicu
-- ставити фонт за старословенски https://en.wiktionary.org/wiki/%D0%B7%D0%BD%D0%B0%D1%82%D0%B8#Old_Church_Slavonic
 - admin deo za nalaženje neprevedenih
 
 - proveriti na kojim citatima je najveca razlika u duzini jezika, i ujednaciti
