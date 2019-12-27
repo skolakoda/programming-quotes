@@ -37,13 +37,6 @@ blockquote {
   margin-right: 0;
 }
 
-@media (min-width: 800px) {
-  body {
-    background-size: contain;
-    line-height: 1.4;
-  }
-}
-
 .no-link {
   color: inherit;
   text-decoration: none;
@@ -62,6 +55,10 @@ blockquote {
 }
 
 @media (min-width: 800px) {
+  body {
+    background-size: contain;
+    line-height: 1.4;
+  }
   .hide-sm {
     display: block;
   }

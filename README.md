@@ -23,7 +23,6 @@ git pull https://github.com/skolakoda/programming-quotes.git master
 
 ## TODO
 
-- smanjiti paginaciju
 - dodati dugme za medjuslovenski
 - dodati preslovljavanje u cirilicu
 - admin deo za nalaženje neprevedenih
