@@ -6,7 +6,7 @@
   padding-bottom: 20px;
 }
 
-@media (min-width: 800px) {
+@media (min-width: 1200px) {
   .App {
     display: flex;
     justify-content: space-between;
@@ -19,4 +19,17 @@
     right: 0;
     width: 74%;
   }
+  .sidebar {
+    width: 22%;
+  }
+
+  .sidebar-inner {
+    position:fixed;
+    top: 0;
+    bottom:0;
+    overflow-y:scroll;
+    overflow-x:hidden;
+    padding-right: 2%;
+    width: inherit;
+  }  
 }

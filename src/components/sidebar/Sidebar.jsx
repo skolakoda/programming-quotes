@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 
 import Filters from './Filters'
 import Authors from './Authors'
-import './Sidebar.css'
 
 const Sidebar = ({ allAuthors }) => {
 
