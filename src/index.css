@@ -32,6 +32,11 @@ button {
   padding: 2px 8px;
 }
 
+button:disabled {
+  cursor: not-allowed;
+  pointer-events: all !important;
+}
+
 blockquote {
   margin-left: 0;
   margin-right: 0;
