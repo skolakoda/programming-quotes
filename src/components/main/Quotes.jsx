@@ -9,10 +9,10 @@ export default function Quotes({ loaded, currentQuotes }) {
   const [currentPage, setCurrentPage] = useState(0)
 
   if (!loaded) return <img src={preloader} alt="loading..." />
+  window.scrollTo(0, 0)
 
   const turnThePage = e => {
     setCurrentPage(Number(e.target.value))
-    window.scrollTo(0, 0)
   }
 
   const startPosition = currentPage * quotesPerPage

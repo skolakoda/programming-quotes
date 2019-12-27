@@ -7,13 +7,13 @@ import translate from './../shared/translate'
 const RandomQuote = ({ allQuotes, language }) => {
 
   const [quote, setQuote] = useState(null)
+  window.scrollTo(0, 0)
 
   const getRandom = useCallback(() => {
     const langQuotes = allQuotes.filter(q => q[language])
     if (!langQuotes.length) return
     const quote = langQuotes[Math.floor(Math.random() * langQuotes.length)]
     setQuote(quote)
-    window.scrollTo(0, 0)
   }, [allQuotes, language])
 
   useEffect(() => {
