@@ -25,7 +25,7 @@ git pull https://github.com/skolakoda/programming-quotes.git master
 
 - sakriti sidebar na naslovnoj i mozda na mobilnim ili bar napraviti otvaranje
 - dodati dugme za medjuslovenski
-- dodati preslovljavanje u cirilicu
+- dodati preslovljavanje u cirilicu (uzeti skripte sa vucka i medjuslovenskog)
 - admin deo za nalaženje neprevedenih
 
 - proveriti na kojim citatima je najveca razlika u duzini jezika, i ujednaciti
