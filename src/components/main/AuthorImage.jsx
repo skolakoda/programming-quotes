@@ -1,50 +1,31 @@
-import React, {Component} from 'react'
+import React, {useState, useEffect} from 'react'
 import {connect} from 'react-redux'
 
 import unknownImage from '../../assets/images/unknown.jpg'
 
-const responsiveBreakpoint = 800
+const mdMin = 800
 
-class AuthorImage extends Component {
-  constructor() {
-    super()
-    this.state = {
-      loaded: false,
-      src: '',
-    }
-  }
+const AuthorImage = ({ author, allImages }) => {
+  const [loaded, setLoaded] = useState(false)
+  const [src, setSrc] = useState('')
 
-  componentDidMount() {
-    this.setState({loaded: false}, () =>
-      this.setImage(this.props))
-  }
+  useEffect(() => {
+    setLoaded(false)
+    const authorSrc = allImages.get(author)
+    const imgWidth = window.innerWidth < mdMin ? window.innerWidth : 250
+    const newSrc = authorSrc ? authorSrc.replace(/\d+px/, `${imgWidth}px`) : unknownImage
+    setSrc(newSrc) 
+  }, [allImages, author])
 
-  componentWillReceiveProps(nextProps) {
-    const {author, allImages} = this.props
-    const loaded = (author === nextProps.author) && Boolean(allImages.get(author))
-    this.setState({loaded}, () => this.setImage(nextProps))
-  }
-
-  setImage(props) {
-    const {author, allImages, showUnknown} = props
-    const src = allImages.get(author)
-    const imgWidth = window.innerWidth < responsiveBreakpoint ? window.innerWidth : 250
-    const unknown = showUnknown ? unknownImage : ''
-    const newSrc = src ? src.replace(/\d+px/, `${imgWidth}px`) : unknown
-    this.setState({src: newSrc})
-  }
-
-  render() {
-    return (
-      <img
-        className="main-image"
-        src={this.state.src}
-        style={this.state.loaded ? {} : {display: 'none'}}
-        onLoad={() => this.setState({loaded: true})}
-        alt={'author'}
-      />
-    )
-  }
+  return (
+    <img
+      className="main-image"
+      src={src}
+      style={loaded ? {} : {display: 'none'}}
+      onLoad={() => setLoaded(true)}
+      alt={'author'}
+    />
+  )
 }
 
 const mapStateToProps = ({allImages}) => ({allImages})

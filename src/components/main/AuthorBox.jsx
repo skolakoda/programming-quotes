@@ -9,7 +9,7 @@ export default class AuthorBox extends Component {
     return (
       <div className="thumbnail">
         <h3 className="hide-sm">{author}</h3>
-        <AuthorImage author={author} showUnknown={true} />
+        <AuthorImage author={author} />
         <AuthorInfo author={author} />
       </div>
     )
