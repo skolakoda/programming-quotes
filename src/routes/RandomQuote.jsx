@@ -1,45 +1,34 @@
-import React, { Component } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import {connect} from 'react-redux'
 
 import ImageQuote from './../components/main/ImageQuote'
 import translate from './../shared/translate'
 
-class RandomQuote extends Component {
-  constructor() {
-    super()
-    this.state = {
-      quote: null,
-      found: false
-    }
-  }
+const RandomQuote = ({ allQuotes, language }) => {
 
-  componentDidMount() {
-    this.getRandom()
-  }
+  const [quote, setQuote] = useState(null)
 
-  componentWillReceiveProps(nextProps) {
-    if (!this.state.found) this.getRandom()
-  }
-
-  getRandom = () => {
-    const allQuotes = this.props.allQuotes.filter(q => q[this.props.language])
-    if (!allQuotes.length) return
-    const quote = allQuotes[Math.floor(Math.random() * allQuotes.length)]
-    this.setState({quote, found: true})
+  const getRandom = useCallback(() => {
+    const langQuotes = allQuotes.filter(q => q[language])
+    if (!langQuotes.length) return
+    const quote = langQuotes[Math.floor(Math.random() * langQuotes.length)]
+    setQuote(quote)
     window.scrollTo(0, 0)
-  }
+  }, [allQuotes, language])
 
-  render() {
-    if (!this.state.quote) return null
+  useEffect(() => {
+    if (!quote) getRandom()
+  }, [quote, getRandom])
 
-    return (
-      <main>
-        <h1>{translate('QUOTE_OF_THE_DAY')}</h1>
-        <ImageQuote quote={this.state.quote} cssClass="big-quote" />
-        <button onClick={this.getRandom}>Još mudrosti!</button>
-      </main>
-    )
-  }
+  if (!quote) return null
+
+  return (
+    <main>
+      <h1>{translate('QUOTE_OF_THE_DAY')}</h1>
+      <ImageQuote quote={quote} cssClass="big-quote" />
+      <button onClick={getRandom}>Još mudrosti!</button>
+    </main>
+  )
 }
 
 const mapStateToProps = ({allQuotes, language}) => ({allQuotes, language})
