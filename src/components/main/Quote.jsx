@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {useState} from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 
@@ -8,66 +8,59 @@ import {API} from '../../config/api'
 import {deleteQuote} from '../../store/actions'
 import './Quote.css'
 
-class Quote extends Component {
-  constructor() {
-    super()
-    this.state = {
-      shouldDelete: false,
-      response: ''
-    }
+const Quote = (props) => {
+
+  const [shouldDelete, setShouldDelete] = useState(false)
+  const [response, setResponse] = useState('')
+
+  const tryDelete = () => {
+    if (shouldDelete) deleteQuote()
+    setShouldDelete(true)
   }
 
-  tryDelete = () => {
-    if (this.state.shouldDelete)
-      this.deleteQuote()
-    this.setState({shouldDelete: true})
-  }
-
-  deleteQuote = () => {
-    const _id = this.props.quote._id
+  const deleteQuote = () => {
+    const _id = props.quote._id
     fetch(API.delete, {
       method: 'delete',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({_id, token: this.props.token})
+      body: JSON.stringify({_id, token: props.token})
     })
       .then(response => response.text())
       .then(response => {
-        this.setState({response: translate(response)})  // ne otvara popup
-        if (response === 'QUOTE_DELETED') this.props.deleteQuote(_id)
+        setResponse(translate(response)) // ne otvara popup
+        if (response === 'QUOTE_DELETED') props.deleteQuote(_id)
       })
   }
 
-  closePopup = () => {
-    this.setState({response: ''})
+  const closePopup = () => {
+    setResponse('')
   }
 
-  render() {
-    const { quote, language, admin, cssClass } = this.props
-    const author = quote.author
-    const id = quote._id
-    const authorLink = `/author/${author.replace(/ /g, '_')}`
-    const deleteCss = `pointer ${this.state.shouldDelete ? 'red' : ''}`
+  const { quote, language, admin, cssClass } = props
+  const author = quote.author
+  const id = quote._id
+  const authorLink = `/author/${author.replace(/ /g, '_')}`
+  const deleteCss = `pointer ${shouldDelete ? 'red' : ''}`
 
-    return quote[language] ? (
-      <blockquote className={cssClass || 'small-quote'}>
-        <p className="quote-text">
-          {quote[language]} &nbsp;
-          <span className="icons">
-            <Link to={`/quote/${id}`} className="no-link">↠</Link>&nbsp;
-            {admin &&
-              <span>
-                <Link to={`/edit-quote/${id}`}><span className="edit-icon">&#9998;</span></Link>&nbsp;
-                <span onClick={this.tryDelete} className={deleteCss}>&#10005;</span>
-              </span>
-            }
-          </span>
-        </p>
-        <span className="quote-author"> — <Link to={authorLink}>{author}</Link></span>
+  return quote[language] ? (
+    <blockquote className={cssClass || 'small-quote'}>
+      <p className="quote-text">
+        {quote[language]} &nbsp;
+        <span className="icons">
+          <Link to={`/quote/${id}`} className="no-link">↠</Link>&nbsp;
+          {admin &&
+            <span>
+              <Link to={`/edit-quote/${id}`}><span className="edit-icon">&#9998;</span></Link>&nbsp;
+              <span onClick={tryDelete} className={deleteCss}>&#10005;</span>
+            </span>
+          }
+        </span>
+      </p>
+      <span className="quote-author"> — <Link to={authorLink}>{author}</Link></span>
 
-        {this.state.response && <MessagePopup message={this.state.response} closePopup={this.closePopup} />}
-      </blockquote>
-    ) : translate('NO_TRANSLATION')
-  }
+      {response && <MessagePopup message={response} closePopup={closePopup} />}
+    </blockquote>
+  ) : translate('NO_TRANSLATION')
 }
 
 const mapStateToProps = ({language, admin, token}) => ({language, admin, token})
