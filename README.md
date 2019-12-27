@@ -23,7 +23,7 @@ git pull https://github.com/skolakoda/programming-quotes.git master
 
 ## TODO
 
-- sakriti sidebar na naslovnoj i mozda na mobilnim
+- sakriti sidebar na naslovnoj i mozda na mobilnim ili bar napraviti otvaranje
 - dodati dugme za medjuslovenski
 - dodati preslovljavanje u cirilicu
 - admin deo za nalaženje neprevedenih
