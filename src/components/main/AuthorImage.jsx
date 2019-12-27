@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {connect} from 'react-redux'
 
-import unknownImage from '../../assets/images/unknown.jpg'
+// import unknownImage from '../../assets/images/unknown.jpg'
 
 const mdMin = 800
 
@@ -13,7 +13,7 @@ const AuthorImage = ({ author, allImages }) => {
     setLoaded(false)
     const authorSrc = allImages.get(author)
     const imgWidth = window.innerWidth < mdMin ? window.innerWidth : 250
-    const newSrc = authorSrc ? authorSrc.replace(/\d+px/, `${imgWidth}px`) : unknownImage
+    const newSrc = authorSrc ? authorSrc.replace(/\d+px/, `${imgWidth}px`) : ''
     setSrc(newSrc) 
   }, [allImages, author])
 

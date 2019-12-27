@@ -1,12 +1,17 @@
+.quote-author a {
+  color: #888;
+  font-style: italic;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.quote-author a:hover {
+  color: darkkhaki;
+}
+
 .small-quote .quote-text::first-letter {
   font-size: 1.25em;
   color: darkred;
-}
-
-.small-quote .quote-author a {
-  color: #888;
-  text-decoration: none;
-  font-style: italic;
 }
 
 .small-quote .quote-text {
@@ -37,11 +42,6 @@
   margin-bottom: 1em;
   font-weight: bold;
   display: block;
-}
-
-.big-quote .quote-author a {
-  color: inherit;
-  text-decoration: none;
 }
 
 .icons {

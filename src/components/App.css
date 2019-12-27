@@ -2,6 +2,10 @@
   padding: 20px;
 }
 
+.main-section {
+  padding-bottom: 20px;
+}
+
 @media (min-width: 800px) {
   .App {
     display: flex;
@@ -10,7 +14,7 @@
     margin-right: 2%;
     padding: 0;
   }
-  .right-section {
+  .main-section {
     order: 2;
     right: 0;
     width: 74%;
