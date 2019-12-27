@@ -1,10 +1,9 @@
-import quotes from '../data/quotes.json'
 import {LS} from '../config/localstorage'
 
 const initialState = {
   isFetching: false,
-  allQuotes: quotes.sort(() => 0.5 - Math.random()),
-  allAuthors: new Set(quotes.map(quote => quote.author).sort()),
+  allQuotes: [],
+  allAuthors: new Set(),
   allImages: new Map(),
   phrase: '',
   language: 'sr',

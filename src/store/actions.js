@@ -1,3 +1,4 @@
+import quotes from '../data/quotes.json'
 import {getallImages} from '../shared/helpers'
 import {LS} from '../config/localstorage'
 import {API, domain} from '../config/api'
@@ -58,14 +59,17 @@ export const initState = allQuotes => dispatch => {
   dispatch(getAuthorThumbs(allAuthors))
 }
 
-export const fetchQuotes = () => dispatch => {
+export const fetchQuotes = () => async dispatch => {
   dispatch(fetchQuotesRequest(API.read))
-  return fetch(API.read)
-    .then(response => response.json())
-    .then(json => {
-      dispatch(fetchQuotesSuccess())
-      dispatch(initState(json))
-    })
+  try {
+    const response = await fetch(API.read)
+    const json = await response.json()
+    dispatch(fetchQuotesSuccess())
+    dispatch(initState(json))
+  } catch (error) {
+    console.log('nema interneta, ucitavam backup')
+    dispatch(initState(quotes))
+  }
 }
 
 export const checkUser = () => (dispatch, getState) => {

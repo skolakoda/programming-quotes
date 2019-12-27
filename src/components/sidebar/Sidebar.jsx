@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState, useEffect} from 'react'
 import {connect} from 'react-redux'
 
 import Filters from './Filters'
@@ -9,8 +9,12 @@ const Sidebar = ({ allAuthors }) => {
 
   const [visibleAuthors, setVisibleAuthors] = useState([...allAuthors])
 
+  useEffect(() => {
+    setVisibleAuthors([...allAuthors])
+  }, [allAuthors])
+
   const filterAuthors = text => {
-    const filtered = [...allAuthors]
+    const filtered = [...allAuthors] // set to array
       .filter(name => name.toLowerCase().includes(text.toLowerCase()))
     setVisibleAuthors(filtered)
   }
