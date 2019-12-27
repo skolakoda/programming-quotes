@@ -1,42 +1,26 @@
-import React, {Component} from 'react'
+import React, {useState, useEffect} from 'react'
 import {findValue} from '../../shared/helpers'
 import './AuthorBox.css'
 
-export default class AuthorInfo extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {info: ''}
-  }
+const prepareInfo = (author, info) => {
+  if (!info) return ''
+  const wikiUrl = `https://sh.wikipedia.org/wiki/${encodeURIComponent(author)}`
+  return `${info} <a href=${wikiUrl} target="_blank">Wikipedia</a>`
+}
 
-  componentDidMount() {
-    this.getInfo(this.props.author)
-  }
+export default function AuthorInfo({ author }) {
+  const [info, setInfo] = useState('')
 
-  componentWillReceiveProps(nextProps) {
-    if (this.props.author !== nextProps.author)
-      this.getInfo(nextProps.author)
-  }
-
-  prepareInfo(info) {
-    if (!info) return ''
-    const wikiUrl = `https://sh.wikipedia.org/wiki/${encodeURIComponent(this.props.author)}`
-    return `${info} <a href=${wikiUrl} target="_blank">Wikipedia</a>`
-  }
-
-  getInfo(author) {
-    this.setState({info: ''})
+  useEffect(() => {
     fetch(`https://sh.wikipedia.org/w/api.php?action=query&titles=${encodeURIComponent(author)}&prop=extracts&format=json&origin=*&redirects=1&exsentences=2&exintro=1`)
       .then(response => response.json())
       .then(obj => {
         const info = findValue(obj, 'extract')
-        this.setState({info: this.prepareInfo(info)}
-        )
+        setInfo(prepareInfo(author, info))
       })
-  }
+  }, [author])
 
-  render() {
-    return (
-      <small dangerouslySetInnerHTML={{__html: this.state.info}}></small>
-    )
-  }
+  return (
+    <small dangerouslySetInnerHTML={{__html: info}}></small>
+  )
 }
