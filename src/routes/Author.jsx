@@ -10,9 +10,9 @@ class Author extends Component {
     const author = this.props.match.params.name.replace(/_/g, ' ')
     const { language, allQuotes, phrase } = this.props
     const filtered = allQuotes
-      .filter(q => q.author === author)
-      .filter(quote => quote[language] && quote[language].toLowerCase().includes(phrase.toLowerCase()))
-   
+      .filter(q => q.author === author && q[language] && q[language].toLowerCase().includes(phrase.toLowerCase()))
+      .sort(() => 0.5 - Math.random())
+
     return (
       <main>
         <h1>{author}</h1>

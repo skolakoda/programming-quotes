@@ -7,6 +7,7 @@ import Quotes from '../components/main/Quotes'
 const AllQuotes = ({ language, allQuotes, phrase }) => {
   const filtered = allQuotes
     .filter(quote => quote[language] && quote[language].toLowerCase().includes(phrase.toLowerCase()))
+    .sort(() => 0.5 - Math.random())
 
   return (
     <main>
