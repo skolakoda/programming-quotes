@@ -46,9 +46,6 @@ export const reducer = (state = initialState, action) => {
       const allQuotes = state.allQuotes.filter(q => q._id !== action._id)
       return {...state, allQuotes}
     }
-    case 'TOGGLE_SIDEBAR': {
-      return {...state, sidebarOpen: !state.sidebarOpen }
-    }
     default:
       return state
   }

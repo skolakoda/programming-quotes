@@ -1,11 +1,12 @@
 import React, { useState, useEffect} from 'react'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 
 import Filters from './Filters'
 import Authors from './Authors'
 
-const Sidebar = ({ allAuthors, sidebarOpen }) => {
+const Sidebar = ({ allAuthors }) => {
   const [visibleAuthors, setVisibleAuthors] = useState([...allAuthors])
+  const [sidebarOpen, setSidebarOpen] = useState(false)
 
   useEffect(() => {
     setVisibleAuthors([...allAuthors])
@@ -17,8 +18,15 @@ const Sidebar = ({ allAuthors, sidebarOpen }) => {
     setVisibleAuthors(filtered)
   }
 
+  const toggle = () => {
+    setSidebarOpen(!sidebarOpen)
+  }
+
   return (
     <aside className="sidebar">
+      <button onClick={toggle} className="toggle-button">
+        <span role="img" aria-label="search" className="search">&#x1F50D;</span>
+      </button>
       {sidebarOpen && 
         <div className="sidebar-inner">
           <Filters filterAuthors={filterAuthors}/>
@@ -29,6 +37,6 @@ const Sidebar = ({ allAuthors, sidebarOpen }) => {
   )
 }
 
-const mapStateToProps = ({allAuthors, sidebarOpen}) => ({allAuthors, sidebarOpen})
+const mapStateToProps = ({allAuthors}) => ({allAuthors})
 
 export default connect(mapStateToProps)(Sidebar)

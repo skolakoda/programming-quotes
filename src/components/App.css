@@ -6,11 +6,21 @@
   padding-bottom: 20px;
 }
 
-.burger {
+.sidebar {
+  position: relative;
+}
+
+.toggle-button {
+  background: transparent;
+  border: 0;
   position: absolute;
-  left: 20px;
-  top: 20px;
-  cursor: pointer;
+  right: 0;
+  top: 4px;
+  z-index: 1;
+}
+
+.search {
+  font-size:1.5em;
 }
 
 @media (min-width: 1200px) {

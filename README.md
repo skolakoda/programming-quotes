@@ -23,9 +23,6 @@ git pull https://github.com/skolakoda/programming-quotes.git master
 
 ## TODO
 
-- dodati burger meni
-- dodati stanje sidebara u reducer
-- napraviti sidebar da izlazi sa strane
 - dodati dugme za medjuslovenski
 - dodati preslovljavanje u cirilicu (uzeti skripte sa vucka i medjuslovenskog)
 
