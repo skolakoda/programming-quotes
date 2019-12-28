@@ -9,6 +9,7 @@ const initialState = {
   language: 'sr',
   token: localStorage.getItem(LS.token),
   admin: false,
+  sidebarOpen: false,
 }
 
 export const reducer = (state = initialState, action) => {
@@ -44,6 +45,9 @@ export const reducer = (state = initialState, action) => {
     case 'DELETE_QUOTE': {
       const allQuotes = state.allQuotes.filter(q => q._id !== action._id)
       return {...state, allQuotes}
+    }
+    case 'TOGGLE_SIDEBAR': {
+      return {...state, sidebarOpen: !state.sidebarOpen }
     }
     default:
       return state

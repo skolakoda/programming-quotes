@@ -4,8 +4,7 @@ import {connect} from 'react-redux'
 import Filters from './Filters'
 import Authors from './Authors'
 
-const Sidebar = ({ allAuthors }) => {
-
+const Sidebar = ({ allAuthors, sidebarOpen }) => {
   const [visibleAuthors, setVisibleAuthors] = useState([...allAuthors])
 
   useEffect(() => {
@@ -20,14 +19,16 @@ const Sidebar = ({ allAuthors }) => {
 
   return (
     <aside className="sidebar">
-      <div className="sidebar-inner">
-        <Filters filterAuthors={filterAuthors}/>
-        <Authors authors={visibleAuthors}/>
-      </div>
+      {sidebarOpen && 
+        <div className="sidebar-inner">
+          <Filters filterAuthors={filterAuthors}/>
+          <Authors authors={visibleAuthors}/>
+        </div>
+      }
     </aside>
   )
 }
 
-const mapStateToProps = ({allAuthors}) => ({allAuthors})
+const mapStateToProps = ({allAuthors, sidebarOpen}) => ({allAuthors, sidebarOpen})
 
 export default connect(mapStateToProps)(Sidebar)

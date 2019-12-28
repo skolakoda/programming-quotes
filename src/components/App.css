@@ -6,6 +6,13 @@
   padding-bottom: 20px;
 }
 
+.burger {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  cursor: pointer;
+}
+
 @media (min-width: 1200px) {
   .App {
     display: flex;

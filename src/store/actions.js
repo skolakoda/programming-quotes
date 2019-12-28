@@ -29,6 +29,8 @@ export const updateQuote = quote => ({type: 'UPDATE_QUOTE', quote})
 
 export const deleteQuote = _id => ({type: 'DELETE_QUOTE', _id})
 
+export const toggleSidebar = () => ({type: 'TOGGLE_SIDEBAR' })
+
 /* THUNK */
 
 export const setUser = (token, admin = false) => dispatch => {
