@@ -23,6 +23,8 @@ git pull https://github.com/skolakoda/programming-quotes.git master
 
 ## TODO
 
+Svete myslji
+
 - dodati dugme za medjuslovenski
 - dodati preslovljavanje u cirilicu (uzeti skripte sa vucka i medjuslovenskog)
 
