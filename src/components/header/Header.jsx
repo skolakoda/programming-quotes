@@ -16,6 +16,18 @@ const Header = ({ token, admin }) => (
         : <Link to="/login">{translate('LOGIN')}</Link>
       }
     </nav>
+    <div>
+      <label htmlFor="jezyk">Jezyk: </label>
+      <select id="jezyk">
+        <option value="ms">medžuslovjansky</option>
+        <option value="sh">srbskohrvatsky</option>
+      </select>
+      <label htmlFor="jezyk" style={{ marginLeft: '8px' }}>Pismo: </label>
+      <select id="jezyk">
+        <option value="kir">kirilica</option>
+        <option value="lat">latinica</option>
+      </select>
+    </div>
   </header>
 )
 

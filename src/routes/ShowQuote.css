@@ -4,7 +4,6 @@
   display: flex;
   flex-wrap: wrap-reverse;
   margin: 20px 0;
-  max-width: 1200px;
   padding: 25px;
 }
 
@@ -17,7 +16,6 @@
 @media (min-width: 800px) {
   .quote-box {
     flex-wrap: nowrap;
-    margin-right: 40px;
     padding: 40px 60px;
   }
 
