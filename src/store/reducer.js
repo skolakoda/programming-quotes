@@ -1,15 +1,15 @@
 import {LS} from '../config/localstorage'
 
 const initialState = {
-  isFetching: false,
+  language: 'ms',
   allQuotes: [],
   allAuthors: new Set(),
   allImages: new Map(),
-  phrase: '',
-  language: 'sr',
   token: localStorage.getItem(LS.token),
   admin: false,
+  phrase: '',
   sidebarOpen: false,
+  isFetching: false,
 }
 
 export const reducer = (state = initialState, action) => {
