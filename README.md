@@ -27,6 +27,4 @@ Svete myslji
 
 - dodati dugme za izbor jezika (sh, ms) i pisma (cir, lat)
   - za preslovljavanje u cirilicu (uzeti skripte sa vucka i medjuslovenskog)
-- pokazati izvor ako postoji
-- pokazati wiki ako postoji
 - prazniti stanje na new quote
