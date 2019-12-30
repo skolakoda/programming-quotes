@@ -22,8 +22,8 @@ const Header = ({ token, admin }) => (
         <option value="ms">medžuslovjansky</option>
         <option value="sh">srbskohrvatsky</option>
       </select>
-      <label htmlFor="jezyk" style={{ marginLeft: '8px' }}>Pismo: </label>
-      <select id="jezyk">
+      <label htmlFor="pismo" style={{ marginLeft: '10px' }}>Pismo: </label>
+      <select id="pismo">
         <option value="kir">kirilica</option>
         <option value="lat">latinica</option>
       </select>
