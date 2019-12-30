@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 
-import Navigation from './header/Navigation'
+import Header from './header/Header'
 import Sidebar from './sidebar/Sidebar'
 import Router from './Router'
 import './App.css'
@@ -19,7 +19,7 @@ class App extends Component {
     return (
       <div className="App">
         <section className="main-section">
-          <Navigation />
+          <Header />
           <Router />
         </section>
         <Sidebar/>

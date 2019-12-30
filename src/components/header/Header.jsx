@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 
 import { Link } from 'react-router-dom'
 import translate from '../../shared/translate'
-import './Navigation.css'
+import './Header.css'
 
-const Navigation = ({ language, token, admin }) => {
+const Header = ({ language, token, admin }) => {
   return (
     <header>
       <nav>
@@ -23,4 +23,4 @@ const Navigation = ({ language, token, admin }) => {
 
 const mapStateToProps = ({ language, token, admin }) => ({ language, token, admin })
 
-export default connect(mapStateToProps)(Navigation)
+export default connect(mapStateToProps)(Header)
