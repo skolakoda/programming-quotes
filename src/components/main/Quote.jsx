@@ -13,6 +13,8 @@ const Quote = ({ quote, token, language, admin, cssClass }) => {
   const [shouldDelete, setShouldDelete] = useState(false)
   const [response, setResponse] = useState('')
 
+  if (!quote[language]) return translate('NO_TRANSLATION')
+
   const {_id, author} = quote
   const authorLink = `/author/${author.replace(/ /g, '_')}`
   const deleteCss = `pointer ${shouldDelete ? 'red' : ''}`
@@ -39,7 +41,7 @@ const Quote = ({ quote, token, language, admin, cssClass }) => {
     setResponse('')
   }
 
-  return quote[language] ? (
+  return (
     <blockquote className={cssClass || 'small-quote'}>
       <p className="quote-text">
         {quote[language]} &nbsp;
@@ -57,7 +59,7 @@ const Quote = ({ quote, token, language, admin, cssClass }) => {
 
       {response && <MessagePopup message={response} closePopup={closePopup} />}
     </blockquote>
-  ) : translate('NO_TRANSLATION')
+  )
 }
 
 const mapStateToProps = ({language, admin, token}) => ({language, admin, token})
