@@ -9,7 +9,6 @@ import {API} from '../config/api'
 import './EditQuote'
 
 const EditQuote = props => {
-
   const [validation, setValidation] = useState('')
   const [response, setResponse] = useState('')
   const [quote, setQuote] = useState({})
