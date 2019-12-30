@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import translate from '../../shared/translate'
 import './Header.css'
 
-const Header = ({ language, token, admin }) => {
+const Header = ({ token, admin }) => {
   return (
     <header>
       <nav>

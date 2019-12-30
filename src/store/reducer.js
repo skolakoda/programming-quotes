@@ -37,7 +37,7 @@ export const reducer = (state = initialState, action) => {
     case 'ADD_QUOTE':
       return {...state, allQuotes: [...state.allQuotes, action.quote]}
     case 'UPDATE_QUOTE': {
-      const allQuotes = state.allQuotes.map(q => 
+      const allQuotes = state.allQuotes.map(q =>
         q._id === action.quote._id ? action.quote : q
       )
       return {...state, allQuotes}
