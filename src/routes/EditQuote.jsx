@@ -8,7 +8,7 @@ import MessagePopup from '../components/main/MessagePopup'
 import {API} from '../config/api'
 import './EditQuote'
 
-const EditQuote = (props) => {
+const EditQuote = props => {
 
   const [validation, setValidation] = useState('')
   const [response, setResponse] = useState('')
@@ -23,7 +23,7 @@ const EditQuote = (props) => {
   }, [props.match.params])
 
   const emptyFields = fields => {
-    [...fields].forEach(field => field.value = '')
+    [...fields].forEach(field => {field.value = ''})
   }
 
   const postQuote = e => {
@@ -52,9 +52,9 @@ const EditQuote = (props) => {
       .then(res => {
         setResponse(translate(res.message))
         if (res.message !== 'SUCCESS_SAVED') return
-        if (_id) {
+        if (_id)
           props.updateQuote(res.quote)
-        } else {
+        else {
           emptyFields(fields)
           props.addQuote(res.quote)
           setQuote(res.quote)

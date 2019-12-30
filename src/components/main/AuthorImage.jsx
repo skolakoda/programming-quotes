@@ -14,7 +14,7 @@ const AuthorImage = ({ author, allImages }) => {
     const authorSrc = allImages.get(author)
     const imgWidth = window.innerWidth < mdMin ? window.innerWidth : 250
     const newSrc = authorSrc ? authorSrc.replace(/\d+px/, `${imgWidth}px`) : ''
-    setSrc(newSrc) 
+    setSrc(newSrc)
   }, [allImages, author])
 
   return (

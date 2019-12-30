@@ -6,7 +6,7 @@ import './ShowQuote.css'
 
 class ShowQuote extends Component {
   render() {
-    const id = this.props.match.params.id
+    const {id} = this.props.match.params
     const { allQuotes } = this.props
     const quote = allQuotes.find(q => q._id === id)
     if (!quote) return null

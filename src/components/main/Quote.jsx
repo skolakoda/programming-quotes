@@ -8,18 +8,12 @@ import {API} from '../../config/api'
 import {deleteQuote} from '../../store/actions'
 import './Quote.css'
 
-const Quote = (props) => {
-
+const Quote = props => {
   const [shouldDelete, setShouldDelete] = useState(false)
   const [response, setResponse] = useState('')
 
-  const tryDelete = () => {
-    if (shouldDelete) deleteQuote()
-    setShouldDelete(true)
-  }
-
   const deleteQuote = () => {
-    const _id = props.quote._id
+    const {_id} = props.quote
     fetch(API.delete, {
       method: 'delete',
       headers: {'Content-Type': 'application/json'},
@@ -32,12 +26,17 @@ const Quote = (props) => {
       })
   }
 
+  const tryDelete = () => {
+    if (shouldDelete) deleteQuote()
+    setShouldDelete(true)
+  }
+
   const closePopup = () => {
     setResponse('')
   }
 
   const { quote, language, admin, cssClass } = props
-  const author = quote.author
+  const {author} = quote
   const id = quote._id
   const authorLink = `/author/${author.replace(/ /g, '_')}`
   const deleteCss = `pointer ${shouldDelete ? 'red' : ''}`

@@ -34,7 +34,7 @@ export default function Quotes({ loaded, currentQuotes }) {
     setCurrentPage(currentPage + 1)
   }
 
-  const createButton = (i) => (
+  const createButton = i => (
     <button
       value={i}
       style={{ color: currentPage === i && 'darkred' }}
@@ -48,7 +48,7 @@ export default function Quotes({ loaded, currentQuotes }) {
   const range = 3
   const low = currentPage > range ? currentPage - range : 1
   const high = currentPage < totalPages - range ? currentPage + range : totalPages - 1
-    
+
   const pagination = []
   for (let i = low; i < high; i++)
     pagination.push(createButton(i))

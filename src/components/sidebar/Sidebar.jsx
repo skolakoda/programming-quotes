@@ -27,7 +27,7 @@ const Sidebar = ({ allAuthors }) => {
       <button onClick={toggle} className="toggle-button">
         <span role="img" aria-label="search" className="search">&#x1F50D;</span>
       </button>
-      {sidebarOpen && 
+      {sidebarOpen &&
         <div className="sidebar-inner">
           <Filters filterAuthors={filterAuthors}/>
           <Authors authors={visibleAuthors}/>
