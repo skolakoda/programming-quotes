@@ -25,7 +25,5 @@ git pull https://github.com/skolakoda/programming-quotes.git master
 
 Svete myslji
 
-- dodati dugme za medjuslovenski
-- dodati preslovljavanje u cirilicu (uzeti skripte sa vucka i medjuslovenskog)
-
-- proveriti na kojim citatima je najveca razlika u duzini jezika, i ujednaciti
+- dodati dugme za izbor jezika (sh, ms) i pisma (cir, lat)
+  - za preslovljavanje u cirilicu (uzeti skripte sa vucka i medjuslovenskog)

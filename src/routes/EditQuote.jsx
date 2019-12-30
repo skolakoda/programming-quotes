@@ -92,12 +92,12 @@ const EditQuote = (props) => {
           <textarea name="ms" id="ms" defaultValue={quote.ms} cols="60" rows="5"></textarea>
         </p>
         <p>
-          <label htmlFor="tags">Oznake </label><br/>
-          <input name='tags' id='tags' defaultValue={quote.tags} />
-        </p>
-        <p>
           <label htmlFor="source">{translate('SOURCE')} </label><br/>
           <input name='source' id='source' defaultValue={quote.source} />
+        </p>
+        <p>
+          <label htmlFor="tags">Oznake </label><br/>
+          <input name='tags' id='tags' defaultValue={quote.tags} />
         </p>
         <p>
           <label htmlFor="wiki">Wiki </label><br/>
