@@ -1,3 +1,10 @@
+// text = text.replace(/lj/g, 'ль')
+// text = text.replace(/nj/g, 'нь')
+// text = text.replace(/ś/g, 'сь')
+// text = text.replace(/ź/g, 'зь')
+// text = text.replace(/ě/g, 'ѣ')
+// text = text.replace(/y/g, 'ы')
+
 const vucko = text => text
   // prvo dupla
   .replace(/lj/g, 'љ')
