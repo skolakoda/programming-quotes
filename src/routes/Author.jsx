@@ -12,7 +12,6 @@ const Author = props => {
 
   const filtered = allQuotes
     .filter(q => q.author === author && q[lang] && q[lang].toLowerCase().includes(phrase.toLowerCase()))
-    .sort(() => 0.5 - Math.random())
 
   return (
     <main>

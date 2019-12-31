@@ -15,10 +15,6 @@ npm install
 npm start
 ```
 
-BUG:
-- kad promenim jezik na svi citati menja se sadrzaj. ne bi trebalo
-- kad opet kliknem link svi citati  menja se sadrzaj. ne bi trebalo
-
 ## TODO
 
 - prazniti stanje na new quote

@@ -64,9 +64,9 @@ export const getAuthorThumbs = allAuthors => dispatch => {
     )
 }
 
-export const initState = allQuotes => dispatch => {
-  dispatch(setAllQuotes(allQuotes))
-  const allAuthors = new Set(allQuotes.map(quote => quote.author).sort())
+export const initState = quotes => dispatch => {
+  dispatch(setAllQuotes(quotes.sort(() => 0.5 - Math.random())))
+  const allAuthors = new Set(quotes.map(quote => quote.author).sort())
   dispatch(setAllAuthors(allAuthors))
   dispatch(getAuthorThumbs(allAuthors))
 }
@@ -75,9 +75,9 @@ export const fetchQuotes = () => async dispatch => {
   dispatch(fetchQuotesRequest(API.read))
   try {
     const response = await fetch(API.read)
-    const json = await response.json()
+    const quotes = await response.json()
     dispatch(fetchQuotesSuccess())
-    dispatch(initState(json))
+    dispatch(initState(quotes))
   } catch (error) {
     console.log('nema interneta, ucitavam backup')
     dispatch(initState(quotes))

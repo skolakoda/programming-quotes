@@ -8,7 +8,7 @@ const AllQuotes = ({ lang, allQuotes, phrase }) => {
   const translate = useTranslate()
   const filtered = allQuotes
     .filter(quote => quote[lang] && quote[lang].toLowerCase().includes(phrase.toLowerCase()))
-    .sort(() => 0.5 - Math.random())
+    
 
   return (
     <main>
