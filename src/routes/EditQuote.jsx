@@ -16,7 +16,6 @@ const EditQuote = ({ match, token, admin }) => {
 
   useEffect(() => {
     const { id } = match.params
-    if (!id) return
     fetch(`${API.read}/id/${id}`)
       .then(res => res.json())
       .then(quote => setQuote(quote))
@@ -38,8 +37,7 @@ const EditQuote = ({ match, token, admin }) => {
       wiki = fields.wiki.value.trim(),
       tags = fields.tags.value.trim(),
       _id = fields._id.value.trim()
-    const condition = author && sr
-    if (!condition) return setValidation(translate('REQUIRED_FIELDS'))
+    if (!author || !sr) return setValidation(translate('REQUIRED_FIELDS'))
 
     const endpoint = _id ? API.update : API.create
     const method = _id ? 'PUT' : 'POST'
@@ -63,18 +61,13 @@ const EditQuote = ({ match, token, admin }) => {
       .catch(err => setResponse(translate('NETWORK_PROBLEM')))
   }
 
-  const closePopup = () => {
-    setResponse('')
-  }
-
   if (!admin) return <p>{translate('ADMIN_REQUIRED')}</p>
-  const quoteLink = `/quote/${quote.id}`
 
   return (
     <div>
       <h1>
         {translate(quote.id ? 'EDIT_QUOTE' : 'ADD_QUOTE')}
-        {quote.id && <small><sup>(<Link to={quoteLink}>show</Link>)</sup></small>}
+        {quote.id && <small><sup>(<Link to={`/quote/${quote.id}`}>show</Link>)</sup></small>}
       </h1>
 
       <form onSubmit={postQuote}>
@@ -107,7 +100,7 @@ const EditQuote = ({ match, token, admin }) => {
         <button type="submit">{translate('POST')}</button>
       </form>
 
-      {response && <MessagePopup message={response} closePopup={closePopup} />}
+      {response && <MessagePopup message={response} closePopup={() => setResponse('')} />}
     </div>
   )
 }
