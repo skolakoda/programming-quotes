@@ -104,3 +104,8 @@ export const useTranslate = () => {
     ? transliterate(translations[lang][key], script, lang)
     : key
 }
+
+export const useTransliterate = () => {
+  const {lang, script} = useSelector(state => state)
+  return text => transliterate(text, script, lang)
+}

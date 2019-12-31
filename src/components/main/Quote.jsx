@@ -3,14 +3,15 @@ import {Link} from 'react-router-dom'
 import {connect, useDispatch} from 'react-redux'
 
 import MessagePopup from './MessagePopup'
-import transliterate from '../../shared/transliterate'
 import {API} from '../../config/api'
-import {deleteQuote, useTranslate} from '../../store/actions'
+import {deleteQuote, useTranslate, useTransliterate} from '../../store/actions'
 import './Quote.css'
 
-const Quote = ({ quote, token, lang, script, admin, cssClass }) => {
+const Quote = ({ quote, token, lang, admin, cssClass }) => {
   const dispatch = useDispatch()
   const translate = useTranslate()
+  const transliterate = useTransliterate()
+
   const [shouldDelete, setShouldDelete] = useState(false)
   const [response, setResponse] = useState('')
   const text = quote[lang]
@@ -46,7 +47,7 @@ const Quote = ({ quote, token, lang, script, admin, cssClass }) => {
   return (
     <blockquote className={cssClass || 'small-quote'}>
       <p className="quote-text">
-        {transliterate(text, script, lang)} &nbsp;
+        {transliterate(text)} &nbsp;
         <span className="icons">
           <Link to={`/quote/${_id}`} className="no-link">↠</Link>&nbsp;
           {admin &&
@@ -64,6 +65,6 @@ const Quote = ({ quote, token, lang, script, admin, cssClass }) => {
   )
 }
 
-const mapStateToProps = ({lang, script, admin, token}) => ({lang, script, admin, token})
+const mapStateToProps = ({lang, admin, token}) => ({lang, admin, token})
 
 export default connect(mapStateToProps)(Quote)
