@@ -15,16 +15,9 @@ npm install
 npm start
 ```
 
-Merge upstream:
-
-```
-git pull https://github.com/skolakoda/programming-quotes.git master
-```
-
 ## TODO
 
 Svete myslji
 
-- dodati dugme za izbor jezika (sh, ms) i pisma (cir, lat)
-  - za preslovljavanje u cirilicu (uzeti skripte sa vucka i medjuslovenskog)
+- preslovljavanje u cirilicu (uzeti skripte sa vucka i medjuslovenskog)
 - prazniti stanje na new quote

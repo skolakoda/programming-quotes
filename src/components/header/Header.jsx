@@ -6,7 +6,7 @@ import translate from '../../shared/translate'
 import {setLanguage, setScript} from '../../store/actions'
 import './Header.css'
 
-const Header = ({ token, admin }) => {
+const Header = ({ token, admin, language, script }) => {
   const dispatch = useDispatch()
 
   const changeLang = e => {
@@ -30,12 +30,12 @@ const Header = ({ token, admin }) => {
       </nav>
       <div className="choose-lang">
         <label htmlFor="jezyk">{translate('LANGUAGE')}: </label>
-        <select id="jezyk" onChange={changeLang}>
+        <select id="jezyk" onChange={changeLang} value={language}>
           <option value="ms">medžuslovjansky</option>
           <option value="sr">srpskohrvatski</option>
         </select>
         <label htmlFor="pismo">Pismo: </label>
-        <select id="pismo" onChange={changeScript}>
+        <select id="pismo" onChange={changeScript} value={script}>
           <option value="kir">kirilica</option>
           <option value="lat">latinica</option>
         </select>
@@ -43,6 +43,6 @@ const Header = ({ token, admin }) => {
     </header>
   )}
 
-const mapStateToProps = ({ token, admin, language }) => ({ token, admin, language })
+const mapStateToProps = ({ token, admin, language, script }) => ({ token, admin, language, script })
 
 export default connect(mapStateToProps)(Header)

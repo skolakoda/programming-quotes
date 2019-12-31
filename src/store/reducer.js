@@ -1,8 +1,8 @@
 import {LS} from '../config/localstorage'
 
 const initialState = {
-  language: 'ms',
-  script: 'lat',
+  language: localStorage.getItem(LS.language) || 'sr',
+  script: localStorage.getItem(LS.script) || 'lat',
   allQuotes: [],
   allAuthors: new Set(),
   allImages: new Map(),
