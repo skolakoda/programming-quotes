@@ -17,13 +17,9 @@ export const setAllQuotes = allQuotes => ({type: 'SET_ALL_QUOTES', allQuotes})
 
 export const setAllAuthors = allAuthors => ({type: 'SET_ALL_AUTHORS', allAuthors})
 
-export const setFilteredAuthors = filteredAuthors => ({type: 'SET_FILTERED_AUTHORS', filteredAuthors})
-
 export const setAllImages = allImages => ({type: 'SET_ALL_IMAGES', allImages})
 
 export const setPhrase = phrase => ({type: 'SET_PHRASE', phrase})
-
-export const setAuthorPhrase = authorPhrase => ({type: 'SET_AUTHOR_PHRASE', authorPhrase})
 
 export const setLang = lang => {
   localStorage.setItem(LS.lang, lang)
@@ -44,6 +40,8 @@ export const addQuote = quote => ({type: 'ADD_QUOTE', quote})
 export const updateQuote = quote => ({type: 'UPDATE_QUOTE', quote})
 
 export const deleteQuote = _id => ({type: 'DELETE_QUOTE', _id})
+
+export const filterAuthors = phrase => ({type: 'FILTER_AUTHORS', phrase})
 
 /* THUNK */
 

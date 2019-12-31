@@ -1,4 +1,5 @@
 import {LS} from '../config/localstorage'
+import {includes} from '../shared/helpers'
 
 const initialState = {
   lang: localStorage.getItem(LS.lang) || 'sr',
@@ -29,12 +30,8 @@ export const reducer = (state = initialState, action) => {
       return {...state, allAuthors: action.allAuthors, filteredAuthors: [...action.allAuthors] }
     case 'SET_ALL_IMAGES':
       return {...state, allImages: action.allImages }
-    case 'SET_FILTERED_AUTHORS':
-      return {...state, filteredAuthors: action.filteredAuthors }
     case 'SET_PHRASE':
       return {...state, phrase: action.phrase }
-    case 'SET_AUTHOR_PHRASE':
-      return {...state, authorPhrase: action.authorPhrase }
     case 'SET_LANGUAGE':
       return {...state, lang: action.lang }
     case 'SET_SCRIPT':
@@ -54,6 +51,10 @@ export const reducer = (state = initialState, action) => {
     case 'DELETE_QUOTE': {
       const allQuotes = state.allQuotes.filter(q => q._id !== action._id)
       return {...state, allQuotes}
+    }
+    case 'FILTER_AUTHORS': {
+      const filteredAuthors = [...state.allAuthors].filter(name => includes(name, action.phrase))
+      return {...state, filteredAuthors, authorPhrase: action.phrase }
     }
     default:
       return state
