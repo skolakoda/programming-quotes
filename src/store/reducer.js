@@ -2,6 +2,7 @@ import {LS} from '../config/localstorage'
 
 const initialState = {
   language: 'ms',
+  script: 'lat',
   allQuotes: [],
   allAuthors: new Set(),
   allImages: new Map(),
@@ -30,6 +31,8 @@ export const reducer = (state = initialState, action) => {
       return {...state, phrase: action.phrase }
     case 'SET_LANGUAGE':
       return {...state, language: action.language }
+    case 'SET_SCRIPT':
+      return {...state, script: action.script }
     case 'SET_TOKEN':
       return {...state, token: action.token }
     case 'SET_ADMIN':

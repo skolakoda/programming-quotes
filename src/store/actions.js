@@ -19,6 +19,8 @@ export const setPhrase = phrase => ({type: 'SET_PHRASE', phrase})
 
 export const setLanguage = language => ({type: 'SET_LANGUAGE', language})
 
+export const setScript = script => ({type: 'SET_SCRIPT', script})
+
 export const setToken = token => ({type: 'SET_TOKEN', token})
 
 export const setAdmin = admin => ({type: 'SET_ADMIN', admin})

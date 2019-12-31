@@ -3,7 +3,7 @@ import { connect, useDispatch } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 
 import translate from '../../shared/translate'
-import {setLanguage} from '../../store/actions'
+import {setLanguage, setScript} from '../../store/actions'
 import './Header.css'
 
 const Header = ({ token, admin }) => {
@@ -11,6 +11,10 @@ const Header = ({ token, admin }) => {
 
   const changeLang = e => {
     dispatch(setLanguage(e.target.value))
+  }
+
+  const changeScript = e => {
+    dispatch(setScript(e.target.value))
   }
 
   return (
@@ -31,7 +35,7 @@ const Header = ({ token, admin }) => {
           <option value="sr">srpskohrvatski</option>
         </select>
         <label htmlFor="pismo">Pismo: </label>
-        <select id="pismo">
+        <select id="pismo" onChange={changeScript}>
           <option value="kir">kirilica</option>
           <option value="lat">latinica</option>
         </select>
