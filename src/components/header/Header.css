@@ -3,11 +3,24 @@ header {
   justify-content: space-between;
 }
 
-nav > * {
-  display: inline-block;
-  margin-right: 20px;
+nav a,
+.choose-lang label {
+  display: block;
 }
 
 nav .active {
   font-weight: bold;
+}
+
+@media(min-width: 800px) {
+  nav a,
+  .choose-lang label {
+    display: inline;
+  }
+  nav a {
+    margin-right: 20px;
+  }
+  .choose-lang label {
+    margin-left: 10px;
+  }
 }

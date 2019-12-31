@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect, useDispatch } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 import translate from '../../shared/translate'
 import {setLanguage} from '../../store/actions'
@@ -16,21 +16,21 @@ const Header = ({ token, admin }) => {
   return (
     <header>
       <nav>
-        <Link to="/" replace={true}>{translate('QUOTE_OF_THE_DAY')}</Link>
-        <Link to="/all-quotes">{translate('ALL_QUOTES')}</Link>
-        {admin && <Link to="/add-quote">{translate('ADD_QUOTE')}</Link>}
+        <NavLink to="/" replace={true} activeClassName="active" exact>{translate('QUOTE_OF_THE_DAY')}</NavLink>
+        <NavLink to="/all-quotes" activeClassName="active">{translate('ALL_QUOTES')}</NavLink>
+        {admin && <NavLink to="/add-quote" activeClassName="active">{translate('ADD_QUOTE')}</NavLink>}
         {token
-          ? <Link to="/profile">{translate('PROFILE')}</Link>
-          : <Link to="/login">{translate('LOGIN')}</Link>
+          ? <NavLink to="/profile" activeClassName="active">{translate('PROFILE')}</NavLink>
+          : <NavLink to="/login" activeClassName="active">{translate('LOGIN')}</NavLink>
         }
       </nav>
-      <div>
+      <div className="choose-lang">
         <label htmlFor="jezyk">{translate('LANGUAGE')}: </label>
         <select id="jezyk" onChange={changeLang}>
           <option value="ms">medžuslovjansky</option>
           <option value="sr">srpskohrvatski</option>
         </select>
-        <label htmlFor="pismo" style={{ marginLeft: '10px' }}>Pismo: </label>
+        <label htmlFor="pismo">Pismo: </label>
         <select id="pismo">
           <option value="kir">kirilica</option>
           <option value="lat">latinica</option>
