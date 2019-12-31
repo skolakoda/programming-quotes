@@ -1,13 +1,14 @@
 import React, {useState} from 'react'
 import {Link} from 'react-router-dom'
-import {connect, useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 
 import MessagePopup from './MessagePopup'
 import {API} from '../../config/api'
 import {deleteQuote, useTranslate, useTransliterate} from '../../store/actions'
 import './Quote.css'
 
-const Quote = ({ quote, token, lang, admin, cssClass }) => {
+const Quote = ({ quote, cssClass }) => {
+  const {token, lang, admin} = useSelector(state => state)
   const dispatch = useDispatch()
   const translate = useTranslate()
   const transliterate = useTransliterate()
@@ -65,6 +66,4 @@ const Quote = ({ quote, token, lang, admin, cssClass }) => {
   )
 }
 
-const mapStateToProps = ({lang, admin, token}) => ({lang, admin, token})
-
-export default connect(mapStateToProps)(Quote)
+export default Quote

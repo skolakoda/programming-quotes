@@ -1,6 +1,6 @@
 [![](screen.png)](https://mudroljub.github.io/svetemisli)
 
-# Svete misli
+# Svete misli / Svete myslji
 
 Zbirka citata osnivača velikih religija, mudraca i svetaca.
 
@@ -15,13 +15,12 @@ npm install
 npm start
 ```
 
-## TODO
+BUG:
+- kad promenim jezik na svi citati menja se sadrzaj. ne bi trebalo
+- kad opet kliknem link svi citati  menja se sadrzaj. ne bi trebalo
 
-Svete myslji
+## TODO
 
 - prazniti stanje na new quote
 - suziti centralnu kolonu desno
 - prikazati izvor
-BUG:
-- kad promenim jezik na svi citati menja se sadrzaj. ne bi trebalo
-- kad opet kliknem link svi citati  menja se sadrzaj. ne bi trebalo
