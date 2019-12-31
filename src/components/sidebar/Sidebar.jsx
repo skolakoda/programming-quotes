@@ -1,4 +1,5 @@
 import React, { useState, useEffect} from 'react'
+import {Link} from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import Filters from './Filters'
@@ -22,10 +23,15 @@ const Sidebar = ({ allAuthors }) => {
     setSidebarOpen(!sidebarOpen)
   }
 
+  const searchButton = <span role="img" aria-label="search" className="search">&#x1F50D;</span>
+
   return (
     <aside className="sidebar">
       <button onClick={toggle} className="toggle-button">
-        <span role="img" aria-label="search" className="search">&#x1F50D;</span>
+        {sidebarOpen ?
+          searchButton
+          : <Link to="/all-quotes" className="no-link">{searchButton}</Link>
+        }
       </button>
       {sidebarOpen &&
         <div className="sidebar-inner">

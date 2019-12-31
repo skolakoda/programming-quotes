@@ -17,7 +17,8 @@ npm start
 
 ## TODO
 
-- normalizovati pretragu (i - y i ě - e)
+- prebaciti autore u reducer, filtrirati pretragu
+- probati druge slovenske fontove
 - prazniti stanje na new quote
 - suziti centralnu kolonu desno
 - prikazati izvor

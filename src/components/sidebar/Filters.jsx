@@ -1,17 +1,20 @@
 import React from 'react'
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 
 import {setPhrase, useTranslate} from '../../store/actions'
 import './Filters.css'
 
 const Filters = ({ filterAuthors }) => {
+  const {phrase} = useSelector(state => state)
   const translate = useTranslate()
   const dispatch = useDispatch()
+
+  const changePhrase = e => dispatch(setPhrase(e.target.value))
 
   return (
     <div className="filters">
       <h3><label htmlFor="izreke">{translate('SEARCH_QUOTES')}</label></h3>
-      <input id="izreke" placeholder="latin input" onChange={e => dispatch(setPhrase(e.target.value))} />
+      <input id="izreke" value={phrase} placeholder="latin input" onChange={changePhrase} />
 
       <h3><label htmlFor="avtori">{translate('SEARCH_AUTHORS')}</label></h3>
       <input id="avtori" onChange={e => filterAuthors(e.target.value)} />
