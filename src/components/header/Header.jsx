@@ -2,13 +2,13 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 
-import translate from '../../shared/translate'
-import {setLang, setScript} from '../../store/actions'
+import {setLang, setScript, useTranslate} from '../../store/actions'
 import './Header.css'
 
 const Header = () => {
   const {lang, token, admin, script} = useSelector(state => state)
   const dispatch = useDispatch()
+  const translate = useTranslate()
 
   const changeLang = e => {
     dispatch(setLang(e.target.value))

@@ -1,5 +1,9 @@
+import { useSelector } from 'react-redux'
+
 import quotes from '../data/quotes.json'
+import translations from '../data/translations'
 import {getallImages} from '../shared/helpers'
+import transliterate from '../shared/transliterate'
 import {LS} from '../config/localstorage'
 import {API, domain} from '../config/api'
 
@@ -92,4 +96,12 @@ export const checkUser = () => (dispatch, getState) => {
         response.user ? response.user.admin : false)
       )
     })
+}
+
+export const useTranslate = () => {
+  const {lang, script} = useSelector(state => state)
+  return key => {
+    if (!translations[lang][key]) return key
+    return transliterate(translations[lang][key], script, lang)
+  }
 }
