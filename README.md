@@ -21,3 +21,5 @@ Svete myslji
 
 - preslovljavanje u cirilicu (uzeti skripte sa vucka i medjuslovenskog)
 - prazniti stanje na new quote
+- suziti centralnu kolonu desno
+- dodati izvor
