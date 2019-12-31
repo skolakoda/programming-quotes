@@ -4,26 +4,21 @@
   display: flex;
   flex-wrap: wrap-reverse;
   margin: 20px 0;
-  max-width: 1200px;
   padding: 25px;
 }
 
 .quote-box img {
-  align-self: center;
   flex: 0 0 auto;
-  width: 100%;
 }
 
 @media (min-width: 800px) {
   .quote-box {
     flex-wrap: nowrap;
-    margin-right: 40px;
     padding: 40px 60px;
   }
 
   .quote-box img {
     object-fit: contain;
     margin-right: 40px;
-    width: auto;
   }
 }

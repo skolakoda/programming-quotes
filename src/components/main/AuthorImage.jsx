@@ -1,29 +1,28 @@
 import React, {useState, useEffect} from 'react'
 import {connect} from 'react-redux'
 
-// import unknownImage from '../../assets/images/unknown.jpg'
-
 const mdMin = 800
 
 const AuthorImage = ({ author, allImages }) => {
   const [loaded, setLoaded] = useState(false)
   const [src, setSrc] = useState('')
+  const imgWidth = window.innerWidth < mdMin ? window.innerWidth : 250
 
   useEffect(() => {
     setLoaded(false)
     const authorSrc = allImages.get(author)
-    const imgWidth = window.innerWidth < mdMin ? window.innerWidth : 250
     const newSrc = authorSrc ? authorSrc.replace(/\d+px/, `${imgWidth}px`) : ''
     setSrc(newSrc)
-  }, [allImages, author])
+  }, [allImages, author, imgWidth])
 
   return (
     <img
       className="main-image"
       src={src}
-      style={loaded ? {} : {display: 'none'}}
+      style={{opacity: +loaded, transition: 'opacity .4s' }}
       onLoad={() => setLoaded(true)}
-      alt={'author'}
+      alt={author}
+      width={imgWidth + 'px'}
     />
   )
 }

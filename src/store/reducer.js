@@ -1,15 +1,16 @@
 import {LS} from '../config/localstorage'
 
 const initialState = {
-  isFetching: false,
+  lang: localStorage.getItem(LS.lang) || 'sr',
+  script: localStorage.getItem(LS.script) || 'lat',
   allQuotes: [],
   allAuthors: new Set(),
   allImages: new Map(),
-  phrase: '',
-  language: 'sr',
   token: localStorage.getItem(LS.token),
   admin: false,
+  phrase: '',
   sidebarOpen: false,
+  isFetching: false,
 }
 
 export const reducer = (state = initialState, action) => {
@@ -29,7 +30,9 @@ export const reducer = (state = initialState, action) => {
     case 'SET_PHRASE':
       return {...state, phrase: action.phrase }
     case 'SET_LANGUAGE':
-      return {...state, language: action.language }
+      return {...state, lang: action.lang }
+    case 'SET_SCRIPT':
+      return {...state, script: action.script }
     case 'SET_TOKEN':
       return {...state, token: action.token }
     case 'SET_ADMIN':

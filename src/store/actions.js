@@ -1,5 +1,9 @@
+import { useSelector } from 'react-redux'
+
 import quotes from '../data/quotes.json'
+import translations from '../data/translations'
 import {getallImages} from '../shared/helpers'
+import transliterate from '../shared/transliterate'
 import {LS} from '../config/localstorage'
 import {API, domain} from '../config/api'
 
@@ -17,7 +21,15 @@ export const setAllImages = allImages => ({type: 'SET_ALL_IMAGES', allImages})
 
 export const setPhrase = phrase => ({type: 'SET_PHRASE', phrase})
 
-export const setLanguage = language => ({type: 'SET_LANGUAGE', language})
+export const setLang = lang => {
+  localStorage.setItem(LS.lang, lang)
+  return { type: 'SET_LANGUAGE', lang }
+}
+
+export const setScript = script => {
+  localStorage.setItem(LS.script, script)
+  return { type: 'SET_SCRIPT', script }
+}
 
 export const setToken = token => ({type: 'SET_TOKEN', token})
 
@@ -52,9 +64,9 @@ export const getAuthorThumbs = allAuthors => dispatch => {
     )
 }
 
-export const initState = allQuotes => dispatch => {
-  dispatch(setAllQuotes(allQuotes))
-  const allAuthors = new Set(allQuotes.map(quote => quote.author).sort())
+export const initState = quotes => dispatch => {
+  dispatch(setAllQuotes(quotes.sort(() => 0.5 - Math.random())))
+  const allAuthors = new Set(quotes.map(quote => quote.author).sort())
   dispatch(setAllAuthors(allAuthors))
   dispatch(getAuthorThumbs(allAuthors))
 }
@@ -63,9 +75,9 @@ export const fetchQuotes = () => async dispatch => {
   dispatch(fetchQuotesRequest(API.read))
   try {
     const response = await fetch(API.read)
-    const json = await response.json()
+    const quotes = await response.json()
     dispatch(fetchQuotesSuccess())
-    dispatch(initState(json))
+    dispatch(initState(quotes))
   } catch (error) {
     console.log('nema interneta, ucitavam backup')
     dispatch(initState(quotes))
@@ -84,4 +96,16 @@ export const checkUser = () => (dispatch, getState) => {
         response.user ? response.user.admin : false)
       )
     })
+}
+
+export const useTranslate = () => {
+  const {lang, script} = useSelector(state => state)
+  return key => (translations[lang][key])
+    ? transliterate(translations[lang][key], script, lang)
+    : key
+}
+
+export const useTransliterate = () => {
+  const {lang, script} = useSelector(state => state)
+  return text => transliterate(text, script, lang)
 }

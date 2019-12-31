@@ -1,24 +1,47 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { NavLink } from 'react-router-dom'
 
-import { Link } from 'react-router-dom'
-import translate from '../../shared/translate'
+import {setLang, setScript, useTranslate} from '../../store/actions'
 import './Header.css'
 
-const Header = ({ token, admin }) => (
-  <header>
-    <nav>
-      <Link to="/" replace={true}>{translate('HOME')}</Link>
-      <Link to="/all-quotes">{translate('ALL_QUOTES')}</Link>
-      {admin && <Link to="/add-quote">{translate('ADD_QUOTE')}</Link>}
-      {token
-        ? <Link to="/profile">{translate('PROFILE')}</Link>
-        : <Link to="/login">{translate('LOGIN')}</Link>
-      }
-    </nav>
-  </header>
-)
+const Header = () => {
+  const {lang, token, admin, script} = useSelector(state => state)
+  const dispatch = useDispatch()
+  const translate = useTranslate()
 
-const mapStateToProps = ({ token, admin }) => ({ token, admin })
+  const changeLang = e => {
+    dispatch(setLang(e.target.value))
+  }
 
-export default connect(mapStateToProps)(Header)
+  const changeScript = e => {
+    dispatch(setScript(e.target.value))
+  }
+
+  return (
+    <header>
+      <nav>
+        <NavLink to="/" replace={true} activeClassName="active" exact>{translate('QUOTE_OF_THE_DAY')}</NavLink>
+        <NavLink to="/all-quotes" activeClassName="active">{translate('ALL_QUOTES')}</NavLink>
+        {admin && <NavLink to="/add-quote" activeClassName="active">{translate('ADD_QUOTE')}</NavLink>}
+        {token
+          ? <NavLink to="/profile" activeClassName="active">{translate('PROFILE')}</NavLink>
+          : <NavLink to="/login" activeClassName="active">{translate('LOGIN')}</NavLink>
+        }
+      </nav>
+      <div className="choose-lang">
+        <label htmlFor="jezyk">{translate('LANGUAGE')}: </label>
+        <select id="jezyk" onChange={changeLang} value={lang}>
+          <option value="ms">medžuslovjansky</option>
+          <option value="sr">srpskohrvatski</option>
+        </select>
+        <label htmlFor="pismo">Pismo: </label>
+        <select id="pismo" onChange={changeScript} value={script}>
+          <option value="kir">kirilica</option>
+          <option value="lat">latinica</option>
+        </select>
+      </div>
+    </header>
+  )}
+
+export default Header

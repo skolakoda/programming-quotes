@@ -1,26 +1,26 @@
 import React, { useEffect, useState } from 'react'
 import {Link} from 'react-router-dom'
-import {connect} from 'react-redux'
+import {connect, useDispatch} from 'react-redux'
 
-import {addQuote, updateQuote} from '../store/actions'
-import translate from '../shared/translate'
+import {addQuote, updateQuote, useTranslate} from '../store/actions'
 import MessagePopup from '../components/main/MessagePopup'
 import {API} from '../config/api'
 import './EditQuote'
 
-const EditQuote = props => {
-
+const EditQuote = ({ match, token, admin }) => {
+  const dispatch = useDispatch()
+  const translate = useTranslate()
   const [validation, setValidation] = useState('')
   const [response, setResponse] = useState('')
   const [quote, setQuote] = useState({})
 
   useEffect(() => {
-    const { id } = props.match.params
+    const { id } = match.params
     if (!id) return
     fetch(`${API.read}/id/${id}`)
       .then(res => res.json())
       .then(quote => setQuote(quote))
-  }, [props.match.params])
+  }, [match.params])
 
   const emptyFields = fields => {
     [...fields].forEach(field => {field.value = ''})
@@ -46,17 +46,17 @@ const EditQuote = props => {
     fetch(endpoint, {
       method,
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ author, sr, ms, source, wiki, tags, _id, token: props.token })
+      body: JSON.stringify({ author, sr, ms, source, wiki, tags, _id, token })
     })
       .then(res => res.json())
       .then(res => {
         setResponse(translate(res.message))
         if (res.message !== 'SUCCESS_SAVED') return
         if (_id)
-          props.updateQuote(res.quote)
+          dispatch(updateQuote(res.quote))
         else {
           emptyFields(fields)
-          props.addQuote(res.quote)
+          dispatch(addQuote(res.quote))
           setQuote(res.quote)
         }
       })
@@ -67,7 +67,7 @@ const EditQuote = props => {
     setResponse('')
   }
 
-  if (!props.admin) return <p>{translate('ADMIN_REQUIRED')}</p>
+  if (!admin) return <p>{translate('ADMIN_REQUIRED')}</p>
   const quoteLink = `/quote/${quote.id}`
 
   return (
@@ -84,11 +84,11 @@ const EditQuote = props => {
           <input name="author" id="author" defaultValue={quote.author} autoFocus />
         </p>
         <p>
-          <label htmlFor="sr" >Tekst (srpski) *</label><br />
+          <label htmlFor="sr" >Tekst ({translate('SERBOCROATIAN')}) *</label><br />
           <textarea name="sr" id="sr" defaultValue={quote.sr} cols="60" rows="5"></textarea>
         </p>
         <p>
-          <label htmlFor="ms" >Tekst (medžuslovjansky) </label><br />
+          <label htmlFor="ms" >Tekst ({translate('INTERSLAVIC')}) </label><br />
           <textarea name="ms" id="ms" defaultValue={quote.ms} cols="60" rows="5"></textarea>
         </p>
         <p>
@@ -96,7 +96,7 @@ const EditQuote = props => {
           <input name='source' id='source' defaultValue={quote.source} />
         </p>
         <p>
-          <label htmlFor="tags">Oznake </label><br/>
+          <label htmlFor="tags">{translate('TAGS')} </label><br/>
           <input name='tags' id='tags' defaultValue={quote.tags} />
         </p>
         <p>
@@ -112,7 +112,6 @@ const EditQuote = props => {
   )
 }
 
-const mapStateToProps = ({allQuotes, token, admin}) => ({allQuotes, token, admin})
-const mapDispatchToProps = {addQuote, updateQuote}
+const mapStateToProps = ({ token, admin, lang }) => ({ token, admin, lang })
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditQuote)
+export default connect(mapStateToProps)(EditQuote)
