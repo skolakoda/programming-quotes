@@ -23,14 +23,14 @@ const Sidebar = ({ allAuthors }) => {
     setSidebarOpen(!sidebarOpen)
   }
 
-  const searchButton = <span role="img" aria-label="search" className="search">&#x1F50D;</span>
+  const searchIcon = <span role="img" aria-label="search" className="search">&#x1F50D;</span>
 
   return (
     <aside className="sidebar">
       <button onClick={toggle} className="toggle-button">
         {sidebarOpen ?
-          searchButton
-          : <Link to="/all-quotes" className="no-link">{searchButton}</Link>
+          searchIcon
+          : <Link to="/all-quotes" className="no-link">{searchIcon}</Link>
         }
       </button>
       {sidebarOpen &&
