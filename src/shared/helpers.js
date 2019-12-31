@@ -7,6 +7,12 @@ export function findValue(object, searchKey) {
   return value
 }
 
+export const includes = (text, phrase) => {
+  if (!text) return false
+  const t = text.toLowerCase(), p = phrase.toLowerCase()
+  return t.includes(p) || t.replace(/ě/g, 'e').replace(/y/g, 'i').includes(p)
+}
+
 export function fetchImage(title, size, callback) {
   fetch(`https://sh.wikipedia.org/w/api.php?action=query&titles=${title}&prop=pageimages&format=json&pithumbsize=${size}&origin=*`)
     .then(response => response.json())

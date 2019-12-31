@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 import Filters from './Filters'
 import Authors from './Authors'
+import {includes} from '../../shared/helpers'
 
 const Sidebar = ({ allAuthors }) => {
   const [visibleAuthors, setVisibleAuthors] = useState([...allAuthors])
@@ -12,9 +13,8 @@ const Sidebar = ({ allAuthors }) => {
     setVisibleAuthors([...allAuthors])
   }, [allAuthors])
 
-  const filterAuthors = text => {
-    const filtered = [...allAuthors] // set to array
-      .filter(name => name.toLowerCase().includes(text.toLowerCase()))
+  const filterAuthors = phrase => {
+    const filtered = [...allAuthors].filter(name => includes(name, phrase))
     setVisibleAuthors(filtered)
   }
 
