@@ -29,7 +29,10 @@
     "SUCCESSFULLY_LOGIN": "Uspešno ste prijavljeni.",
     "SUCCESSFULLY_LOGOUT": "Uspešno ste odjavljeni.",
     "NO_TRANSLATION": "Nema prevoda za ovaj citat.",
-    "NETWORK_PROBLEM": "Problem sa mrežom, pokušajte ponovo kasnije."
+    "NETWORK_PROBLEM": "Problem sa mrežom, pokušajte ponovo kasnije.",
+    "SERBOCROATIAN": "srpskohrvatski",
+    "INTERSLAVIC": "međuslovenski",
+    "TAGS": "Oznake"
   },
   "ms": {
     "HOME": "Glavna",
@@ -61,6 +64,9 @@
     "SUCCESSFULLY_LOGIN": "Uspěšno jeste prijavjeni.",
     "SUCCESSFULLY_LOGOUT": "Uspěšno jeste odjavjeni.",
     "NO_TRANSLATION": "Ne ima prěklada za citat.",
-    "NETWORK_PROBLEM": "Problem so mrěžom, probujte ponovno pozdněje."
+    "NETWORK_PROBLEM": "Problem so mrěžom, probujte ponovno pozdněje.",
+    "SERBOCROATIAN": "srbskohrvatsky",
+    "INTERSLAVIC": "medžuslovjansky",
+    "TAGS": "Značke"
   }
 }

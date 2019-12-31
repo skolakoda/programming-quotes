@@ -16,7 +16,7 @@ const Header = ({ token, admin }) => {
   return (
     <header>
       <nav>
-        <Link to="/" replace={true}>{translate('HOME')}</Link>
+        <Link to="/" replace={true}>{translate('QUOTE_OF_THE_DAY')}</Link>
         <Link to="/all-quotes">{translate('ALL_QUOTES')}</Link>
         {admin && <Link to="/add-quote">{translate('ADD_QUOTE')}</Link>}
         {token
@@ -28,7 +28,7 @@ const Header = ({ token, admin }) => {
         <label htmlFor="jezyk">Jezyk: </label>
         <select id="jezyk" onChange={changeLang}>
           <option value="ms">medžuslovjansky</option>
-          <option value="sr">srbskohrvatsky</option>
+          <option value="sr">srpskohrvatski</option>
         </select>
         <label htmlFor="pismo" style={{ marginLeft: '10px' }}>Pismo: </label>
         <select id="pismo">
@@ -39,6 +39,6 @@ const Header = ({ token, admin }) => {
     </header>
   )}
 
-const mapStateToProps = ({ token, admin }) => ({ token, admin })
+const mapStateToProps = ({ token, admin, language }) => ({ token, admin, language })
 
 export default connect(mapStateToProps)(Header)
