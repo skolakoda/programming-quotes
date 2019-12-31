@@ -2,12 +2,11 @@ import React, { useEffect, useState, useCallback } from 'react'
 import {connect} from 'react-redux'
 
 import ImageQuote from './../components/main/ImageQuote'
-import translate from './../shared/translate'
+import {useTranslate} from '../store/actions'
 
 const RandomQuote = ({ allQuotes, lang }) => {
-
+  const translate = useTranslate()
   const [quote, setQuote] = useState(null)
-  window.scrollTo(0, 0)
 
   const getRandom = useCallback(() => {
     const langQuotes = allQuotes.filter(q => q[lang])
@@ -18,6 +17,7 @@ const RandomQuote = ({ allQuotes, lang }) => {
 
   useEffect(() => {
     if (!quote) getRandom()
+    window.scrollTo(0, 0)
   }, [quote, getRandom])
 
   if (!quote) return null

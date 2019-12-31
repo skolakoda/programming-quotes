@@ -1,13 +1,12 @@
 import React, {useState, useEffect} from 'react'
 import { connect, useDispatch} from 'react-redux'
 
-import {setUser, logout} from '../store/actions'
-import translate from '../shared/translate'
+import {setUser, logout, useTranslate} from '../store/actions'
 import {LS} from '../config/localstorage'
 import {domain} from '../config/api'
 
 const Profile = ({ token, admin }) =>  {
-
+  const translate = useTranslate()
   const [memberSince, setMemberSince] = useState(null)
   const [name, setName] = useState(null)
   const dispatch = useDispatch()

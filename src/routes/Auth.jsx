@@ -1,30 +1,28 @@
-import React, {Component} from 'react'
+import React, {useEffect} from 'react'
 import {Link} from 'react-router-dom'
-import {connect} from 'react-redux'
+import {useDispatch} from 'react-redux'
 
-import {checkUser} from '../store/actions'
+import {checkUser, useTranslate} from '../store/actions'
 import {LS} from '../config/localstorage'
-import translate from '../shared/translate'
 
-class Auth extends Component {
-  componentDidMount() {
-    const {service, token} = this.props.match.params
+const Auth = ({match}) => {
+  const dispatch = useDispatch()
+  const translate = useTranslate()
+
+  useEffect(() => {
+    const {service, token} = match.params
     localStorage.setItem(LS.service, service)
     localStorage.setItem(LS.token, token)
-    this.props.checkUser()
-  }
+    dispatch(checkUser())
+  }, [dispatch, match.params])
 
-  render() {
-    return (
-      <main>
-        <h1>Auth</h1>
-        <p>{translate('SUCCESSFULLY_LOGIN')}</p>
-        <code>goto</code> <Link to="/profile">{translate('PROFILE')}</Link>
-      </main>
-    )
-  }
+  return (
+    <main>
+      <h1>Auth</h1>
+      <p>{translate('SUCCESSFULLY_LOGIN')}</p>
+      <code>goto</code> <Link to="/profile">{translate('PROFILE')}</Link>
+    </main>
+  )
 }
 
-const mapDispatchToProps = {checkUser}
-
-export default connect(null, mapDispatchToProps)(Auth)
+export default Auth

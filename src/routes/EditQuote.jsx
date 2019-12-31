@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react'
 import {Link} from 'react-router-dom'
 import {connect, useDispatch} from 'react-redux'
 
-import {addQuote, updateQuote} from '../store/actions'
-import translate from '../shared/translate'
+import {addQuote, updateQuote, useTranslate} from '../store/actions'
 import MessagePopup from '../components/main/MessagePopup'
 import {API} from '../config/api'
 import './EditQuote'
 
 const EditQuote = ({ match, token, admin }) => {
   const dispatch = useDispatch()
+  const translate = useTranslate()
   const [validation, setValidation] = useState('')
   const [response, setResponse] = useState('')
   const [quote, setQuote] = useState({})

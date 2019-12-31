@@ -19,6 +19,7 @@ npm start
 
 Svete myslji
 
+- scrollTo u useEffect
 - preslovljavanje interfejsa u cirilicu, koristiti useSelector
   - zameniti translate funkciju
   - obrisati staru
@@ -26,3 +27,6 @@ Svete myslji
 - prazniti stanje na new quote
 - suziti centralnu kolonu desno
 - prikazati izvor
+BUG:
+- kad promenim jezik na svi citati menja se sadrzaj. ne bi trebalo
+- kad opet kliknem link svi citati  menja se sadrzaj. ne bi trebalo
