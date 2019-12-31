@@ -46,7 +46,7 @@ const Quote = ({ quote, token, language, script, admin, cssClass }) => {
   return (
     <blockquote className={cssClass || 'small-quote'}>
       <p className="quote-text">
-        {transliterate(text, script)} &nbsp;
+        {transliterate(text, script, language)} &nbsp;
         <span className="icons">
           <Link to={`/quote/${_id}`} className="no-link">↠</Link>&nbsp;
           {admin &&

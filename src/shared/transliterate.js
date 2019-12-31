@@ -1,12 +1,4 @@
-// text = text.replace(/lj/g, 'ль')
-// text = text.replace(/nj/g, 'нь')
-// text = text.replace(/ś/g, 'сь')
-// text = text.replace(/ź/g, 'зь')
-// text = text.replace(/ě/g, 'ѣ')
-// text = text.replace(/y/g, 'ы')
-
-const vucko = text => text
-  // prvo dupla
+const shSpecific = text => text
   .replace(/lj/g, 'љ')
   .replace(/Lj/g, 'Љ')
   .replace(/LJ/g, 'Љ')
@@ -16,7 +8,16 @@ const vucko = text => text
   .replace(/dž/g, 'џ')
   .replace(/Dž/g, 'Џ')
   .replace(/DŽ/g, 'Џ')
-  // mala
+
+const msSpecific = text => text
+  .replace(/lj/g, 'ль')
+  .replace(/Lj/g, 'Ль')
+  .replace(/LJ/g, 'Ль')
+  .replace(/nj/g, 'нь')
+  .replace(/Nj/g, 'Нь')
+  .replace(/NJ/g, 'Нь')
+
+const toCyrillic = text => text
   .replace(/a/g, 'а')
   .replace(/b/g, 'б')
   .replace(/c/g, 'ц')
@@ -25,10 +26,12 @@ const vucko = text => text
   .replace(/d/g, 'д')
   .replace(/đ/g, 'ђ')
   .replace(/e/g, 'е')
+  .replace(/ě/g, 'ѣ')
   .replace(/f/g, 'ф')
   .replace(/g/g, 'г')
   .replace(/h/g, 'х')
   .replace(/i/g, 'и')
+  .replace(/y/g, 'ы')
   .replace(/j/g, 'ј')
   .replace(/k/g, 'к')
   .replace(/l/g, 'л')
@@ -38,13 +41,15 @@ const vucko = text => text
   .replace(/p/g, 'п')
   .replace(/r/g, 'р')
   .replace(/s/g, 'с')
+  .replace(/ś/g, 'сь')
   .replace(/š/g, 'ш')
   .replace(/t/g, 'т')
   .replace(/u/g, 'у')
   .replace(/v/g, 'в')
   .replace(/z/g, 'з')
+  .replace(/ź/g, 'зь')
   .replace(/ž/g, 'ж')
-  // velika
+
   .replace(/A/g, 'А')
   .replace(/B/g, 'Б')
   .replace(/C/g, 'Ц')
@@ -53,10 +58,12 @@ const vucko = text => text
   .replace(/D/g, 'Д')
   .replace(/Đ/g, 'Ђ')
   .replace(/E/g, 'Е')
+  .replace(/Ě/g, 'Ѣ')
   .replace(/F/g, 'Ф')
   .replace(/G/g, 'Г')
   .replace(/H/g, 'Х')
   .replace(/I/g, 'И')
+  .replace(/Y/g, 'Ы')
   .replace(/J/g, 'Ј')
   .replace(/K/g, 'К')
   .replace(/L/g, 'Л')
@@ -66,13 +73,17 @@ const vucko = text => text
   .replace(/P/g, 'П')
   .replace(/R/g, 'Р')
   .replace(/S/g, 'С')
+  .replace(/Ś/g, 'Сь')
   .replace(/Š/g, 'Ш')
   .replace(/T/g, 'Т')
   .replace(/U/g, 'У')
   .replace(/V/g, 'В')
   .replace(/Z/g, 'З')
+  .replace(/Ź/g, 'Зь')
   .replace(/Ž/g, 'Ж')
 
-export default function transliterate(text, script) {
-  return script === 'lat' ? text : vucko(text)
+export default function transliterate(text, script, lang) {
+  return script === 'lat'
+    ? text
+    : toCyrillic(lang === 'sr' ? shSpecific(text) : msSpecific(text))
 }
