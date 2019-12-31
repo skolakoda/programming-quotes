@@ -1,15 +1,21 @@
 import React from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 
-import {setPhrase, useTranslate} from '../../store/actions'
+import {setPhrase, useTranslate, setFilteredAuthors} from '../../store/actions'
+import {includes} from '../../shared/helpers'
 import './Filters.css'
 
-const Filters = ({ filterAuthors }) => {
-  const {phrase} = useSelector(state => state)
+const Filters = () => {
+  const {allAuthors, phrase} = useSelector(state => state)
   const translate = useTranslate()
   const dispatch = useDispatch()
 
   const changePhrase = e => dispatch(setPhrase(e.target.value))
+
+  const filterAuthors = phrase => {
+    const filtered = [...allAuthors].filter(name => includes(name, phrase))
+    dispatch(setFilteredAuthors(filtered))
+  }
 
   return (
     <div className="filters">

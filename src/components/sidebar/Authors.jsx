@@ -1,20 +1,21 @@
 import React from 'react'
-import {connect} from 'react-redux'
+import { useSelector } from 'react-redux'
 
 import AuthorThumb from './AuthorThumb'
 
-const Authors = props => (
-  <div className="authors">
-    {props.authors.map(author =>
-      <AuthorThumb
-        key={author}
-        author={author}
-        image={props.allImages.get(author)}
-      />
-    )}
-  </div>
-)
+const Authors = () => {
+  const {allImages, filteredAuthors} = useSelector(state => state)
 
-const mapStateToProps = ({allImages}) => ({allImages})
+  return (
+    <div className="authors">
+      {filteredAuthors.map(author =>
+        <AuthorThumb
+          key={author}
+          author={author}
+          image={allImages.get(author)}
+        />
+      )}
+    </div>
+  )}
 
-export default connect(mapStateToProps)(Authors)
+export default Authors

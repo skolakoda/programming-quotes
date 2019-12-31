@@ -17,6 +17,8 @@ export const setAllQuotes = allQuotes => ({type: 'SET_ALL_QUOTES', allQuotes})
 
 export const setAllAuthors = allAuthors => ({type: 'SET_ALL_AUTHORS', allAuthors})
 
+export const setFilteredAuthors = filteredAuthors => ({type: 'SET_FILTERED_AUTHORS', filteredAuthors})
+
 export const setAllImages = allImages => ({type: 'SET_ALL_IMAGES', allImages})
 
 export const setPhrase = phrase => ({type: 'SET_PHRASE', phrase})
