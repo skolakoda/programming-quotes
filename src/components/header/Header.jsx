@@ -1,12 +1,13 @@
 import React from 'react'
-import { connect, useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 
 import translate from '../../shared/translate'
 import {setLanguage, setScript} from '../../store/actions'
 import './Header.css'
 
-const Header = ({ token, admin, language, script }) => {
+const Header = () => {
+  const {language, token, admin, script} = useSelector(state => state)
   const dispatch = useDispatch()
 
   const changeLang = e => {
@@ -43,6 +44,4 @@ const Header = ({ token, admin, language, script }) => {
     </header>
   )}
 
-const mapStateToProps = ({ token, admin, language, script }) => ({ token, admin, language, script })
-
-export default connect(mapStateToProps)(Header)
+export default Header

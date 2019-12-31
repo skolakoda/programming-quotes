@@ -19,7 +19,7 @@ npm start
 
 Svete myslji
 
-- preslovljavanje u cirilicu (uzeti skripte sa vucka i medjuslovenskog)
+- preslovljavanje interfejsa u cirilicu, koristiti useSelector
 - prazniti stanje na new quote
 - suziti centralnu kolonu desno
-- dodati izvor
+- prikazati izvor
