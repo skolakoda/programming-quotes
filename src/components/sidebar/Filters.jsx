@@ -15,7 +15,7 @@ const Filters = ({ setPhrase, filterAuthors }) => (
   </div>
 )
 
-const mapStateToProps = ({language}) => ({language})  // zbog rendera kad se promeni jezik
+const mapStateToProps = ({lang}) => ({lang})  // zbog rendera kad se promeni jezik
 const mapDispatchToProps = { setPhrase }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Filters)

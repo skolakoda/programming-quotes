@@ -4,9 +4,9 @@ import {connect} from 'react-redux'
 import translate from '../shared/translate'
 import Quotes from '../components/main/Quotes'
 
-const AllQuotes = ({ language, allQuotes, phrase }) => {
+const AllQuotes = ({ lang, allQuotes, phrase }) => {
   const filtered = allQuotes
-    .filter(quote => quote[language] && quote[language].toLowerCase().includes(phrase.toLowerCase()))
+    .filter(quote => quote[lang] && quote[lang].toLowerCase().includes(phrase.toLowerCase()))
     .sort(() => 0.5 - Math.random())
 
   return (
@@ -18,6 +18,6 @@ const AllQuotes = ({ language, allQuotes, phrase }) => {
   )
 }
 
-const mapStateToProps = ({language, allQuotes, phrase}) => ({language, allQuotes, phrase})
+const mapStateToProps = ({lang, allQuotes, phrase}) => ({lang, allQuotes, phrase})
 
 export default connect(mapStateToProps)(AllQuotes)

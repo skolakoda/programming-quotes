@@ -9,11 +9,11 @@ import {API} from '../../config/api'
 import {deleteQuote} from '../../store/actions'
 import './Quote.css'
 
-const Quote = ({ quote, token, language, script, admin, cssClass }) => {
+const Quote = ({ quote, token, lang, script, admin, cssClass }) => {
   const dispatch = useDispatch()
   const [shouldDelete, setShouldDelete] = useState(false)
   const [response, setResponse] = useState('')
-  const text = quote[language]
+  const text = quote[lang]
 
   if (!text) return translate('NO_TRANSLATION')
 
@@ -46,7 +46,7 @@ const Quote = ({ quote, token, language, script, admin, cssClass }) => {
   return (
     <blockquote className={cssClass || 'small-quote'}>
       <p className="quote-text">
-        {transliterate(text, script, language)} &nbsp;
+        {transliterate(text, script, lang)} &nbsp;
         <span className="icons">
           <Link to={`/quote/${_id}`} className="no-link">↠</Link>&nbsp;
           {admin &&
@@ -64,6 +64,6 @@ const Quote = ({ quote, token, language, script, admin, cssClass }) => {
   )
 }
 
-const mapStateToProps = ({language, script, admin, token}) => ({language, script, admin, token})
+const mapStateToProps = ({lang, script, admin, token}) => ({lang, script, admin, token})
 
 export default connect(mapStateToProps)(Quote)

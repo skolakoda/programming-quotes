@@ -1,6 +1,6 @@
 export const LS = {
   service: 'sveteMisli.authService',
   token: 'sveteMisli.token',
-  language: 'sveteMisli.language',
+  lang: 'sveteMisli.lang',
   script: 'sveteMisli.script',
 }

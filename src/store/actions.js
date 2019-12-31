@@ -17,9 +17,9 @@ export const setAllImages = allImages => ({type: 'SET_ALL_IMAGES', allImages})
 
 export const setPhrase = phrase => ({type: 'SET_PHRASE', phrase})
 
-export const setLanguage = language => {
-  localStorage.setItem(LS.language, language)
-  return { type: 'SET_LANGUAGE', language }
+export const setLang = lang => {
+  localStorage.setItem(LS.lang, lang)
+  return { type: 'SET_LANGUAGE', lang }
 }
 
 export const setScript = script => {

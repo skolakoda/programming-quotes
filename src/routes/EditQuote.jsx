@@ -112,6 +112,6 @@ const EditQuote = ({ match, token, admin }) => {
   )
 }
 
-const mapStateToProps = ({ token, admin, language }) => ({ token, admin, language })
+const mapStateToProps = ({ token, admin, lang }) => ({ token, admin, lang })
 
 export default connect(mapStateToProps)(EditQuote)

@@ -1,7 +1,7 @@
 import {LS} from '../config/localstorage'
 
 const initialState = {
-  language: localStorage.getItem(LS.language) || 'sr',
+  lang: localStorage.getItem(LS.lang) || 'sr',
   script: localStorage.getItem(LS.script) || 'lat',
   allQuotes: [],
   allAuthors: new Set(),
@@ -30,7 +30,7 @@ export const reducer = (state = initialState, action) => {
     case 'SET_PHRASE':
       return {...state, phrase: action.phrase }
     case 'SET_LANGUAGE':
-      return {...state, language: action.language }
+      return {...state, lang: action.lang }
     case 'SET_SCRIPT':
       return {...state, script: action.script }
     case 'SET_TOKEN':

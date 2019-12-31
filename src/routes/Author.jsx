@@ -8,9 +8,9 @@ import translate from '../shared/translate'
 class Author extends Component {
   render() {
     const author = this.props.match.params.name.replace(/_/g, ' ')
-    const { language, allQuotes, phrase } = this.props
+    const { lang, allQuotes, phrase } = this.props
     const filtered = allQuotes
-      .filter(q => q.author === author && q[language] && q[language].toLowerCase().includes(phrase.toLowerCase()))
+      .filter(q => q.author === author && q[lang] && q[lang].toLowerCase().includes(phrase.toLowerCase()))
       .sort(() => 0.5 - Math.random())
 
     return (
@@ -24,6 +24,6 @@ class Author extends Component {
   }
 }
 
-const mapStateToProps = ({language, allQuotes, phrase}) => ({language, allQuotes, phrase})
+const mapStateToProps = ({lang, allQuotes, phrase}) => ({lang, allQuotes, phrase})
 
 export default connect(mapStateToProps)(Author)

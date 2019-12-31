@@ -3,15 +3,15 @@ import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 
 import translate from '../../shared/translate'
-import {setLanguage, setScript} from '../../store/actions'
+import {setLang, setScript} from '../../store/actions'
 import './Header.css'
 
 const Header = () => {
-  const {language, token, admin, script} = useSelector(state => state)
+  const {lang, token, admin, script} = useSelector(state => state)
   const dispatch = useDispatch()
 
   const changeLang = e => {
-    dispatch(setLanguage(e.target.value))
+    dispatch(setLang(e.target.value))
   }
 
   const changeScript = e => {
@@ -31,7 +31,7 @@ const Header = () => {
       </nav>
       <div className="choose-lang">
         <label htmlFor="jezyk">{translate('LANGUAGE')}: </label>
-        <select id="jezyk" onChange={changeLang} value={language}>
+        <select id="jezyk" onChange={changeLang} value={lang}>
           <option value="ms">medžuslovjansky</option>
           <option value="sr">srpskohrvatski</option>
         </select>
