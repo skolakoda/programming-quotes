@@ -32,6 +32,8 @@
     "NETWORK_PROBLEM": "Problem sa mrežom, pokušajte ponovo kasnije.",
     "SERBOCROATIAN": "srpskohrvatski",
     "INTERSLAVIC": "međuslovenski",
+    "LANGUAGE": "Jezik",
+    "MORE_WISDOM": "Još mudrosti!",
     "TAGS": "Oznake"
   },
   "ms": {
@@ -67,6 +69,8 @@
     "NETWORK_PROBLEM": "Problem so mrěžom, probujte ponovno pozdněje.",
     "SERBOCROATIAN": "srbskohrvatsky",
     "INTERSLAVIC": "medžuslovjansky",
+    "LANGUAGE": "Jezyk",
+    "MORE_WISDOM": "Vyše mudrosti!",
     "TAGS": "Značke"
   }
 }

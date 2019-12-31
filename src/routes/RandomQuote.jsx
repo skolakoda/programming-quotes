@@ -26,7 +26,7 @@ const RandomQuote = ({ allQuotes, language }) => {
     <main>
       <h1>{translate('QUOTE_OF_THE_DAY')}</h1>
       <ImageQuote quote={quote} cssClass="big-quote" />
-      <button onClick={getRandom}>Još mudrosti!</button>
+      <button onClick={getRandom}>{translate('MORE_WISDOM')}</button>
     </main>
   )
 }

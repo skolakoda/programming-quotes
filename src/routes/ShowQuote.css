@@ -8,9 +8,7 @@
 }
 
 .quote-box img {
-  align-self: center;
   flex: 0 0 auto;
-  width: 100%;
 }
 
 @media (min-width: 800px) {
@@ -22,6 +20,5 @@
   .quote-box img {
     object-fit: contain;
     margin-right: 40px;
-    width: auto;
   }
 }

@@ -25,7 +25,7 @@ const Header = ({ token, admin }) => {
         }
       </nav>
       <div>
-        <label htmlFor="jezyk">Jezyk: </label>
+        <label htmlFor="jezyk">{translate('LANGUAGE')}: </label>
         <select id="jezyk" onChange={changeLang}>
           <option value="ms">medžuslovjansky</option>
           <option value="sr">srpskohrvatski</option>
