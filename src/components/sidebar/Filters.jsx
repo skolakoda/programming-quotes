@@ -8,11 +8,11 @@ const Filters = ({ setPhrase, filterAuthors }) => {
   const translate = useTranslate()
   return (
     <div className="filters">
-      <h3>{translate('SEARCH_QUOTES')}</h3>
-      <input onChange={e => setPhrase(e.target.value)} />
+      <h3><label htmlFor="izreke">{translate('SEARCH_QUOTES')}</label></h3>
+      <input id="izreke" placeholder="latin input" onChange={e => setPhrase(e.target.value)} />
 
-      <h3>{translate('SEARCH_AUTHORS')}</h3>
-      <input onChange={e => filterAuthors(e.target.value)} />
+      <h3><label htmlFor="avtori">{translate('SEARCH_AUTHORS')}</label></h3>
+      <input id="avtori" onChange={e => filterAuthors(e.target.value)} />
     </div>
   )}
 

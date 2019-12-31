@@ -17,6 +17,8 @@ npm start
 
 ## TODO
 
+- normalizovati pretragu (i - y i ě - e)
 - prazniti stanje na new quote
 - suziti centralnu kolonu desno
 - prikazati izvor
+- recnik imena autora

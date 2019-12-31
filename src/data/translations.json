@@ -21,7 +21,7 @@
     "QUOTE_OF_THE_DAY": "Mudrost dana",
     "EDIT_QUOTE": "Uredi citat",
     "QUOTE_DELETED": "Citat je obrisan.",
-    "SHOWING_RESULTS": "Prikazuje citate koji uključuju frazu",
+    "SHOWING_RESULTS": "Prikazuje citate koji uključuju izraz",
     "LOGIN_REQUIRED": "Moraš biti prijavljen",
     "ADMIN_REQUIRED": "Moraš biti administrator.",
     "ALREADY_EXISTS": "Citat već postoji.",
@@ -33,6 +33,7 @@
     "SERBOCROATIAN": "srpskohrvatski",
     "INTERSLAVIC": "međuslovenski",
     "LANGUAGE": "Jezik",
+    "SCRIPT": "Pismo",
     "MORE_WISDOM": "Još mudrosti!",
     "TAGS": "Oznake"
   },
@@ -70,6 +71,7 @@
     "SERBOCROATIAN": "srbskohrvatsky",
     "INTERSLAVIC": "medžuslovjansky",
     "LANGUAGE": "Jezyk",
+    "SCRIPT": "Pismo",
     "MORE_WISDOM": "Ješče mudrosti!",
     "TAGS": "Značke"
   }

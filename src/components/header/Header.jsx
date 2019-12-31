@@ -32,12 +32,12 @@ const Header = () => {
       <div className="choose-lang">
         <label htmlFor="jezyk">{translate('LANGUAGE')}: </label>
         <select id="jezyk" onChange={changeLang} value={lang}>
-          <option value="ms">medžuslovjansky</option>
-          <option value="sr">srpskohrvatski</option>
+          <option value="ms">{translate('INTERSLAVIC')}</option>
+          <option value="sr">{translate('SERBOCROATIAN')}</option>
         </select>
-        <label htmlFor="pismo">Pismo: </label>
+        <label htmlFor="pismo">{translate('SCRIPT')}: </label>
         <select id="pismo" onChange={changeScript} value={script}>
-          <option value="kir">kirilica</option>
+          <option value="kir">кирилица</option>
           <option value="lat">latinica</option>
         </select>
       </div>
