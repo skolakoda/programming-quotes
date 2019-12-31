@@ -9,6 +9,7 @@ const initialState = {
   token: localStorage.getItem(LS.token),
   admin: false,
   phrase: '',
+  authorPhrase: '',
   filteredAuthors: [],
   sidebarOpen: false,
   isFetching: false,
@@ -32,6 +33,8 @@ export const reducer = (state = initialState, action) => {
       return {...state, filteredAuthors: action.filteredAuthors }
     case 'SET_PHRASE':
       return {...state, phrase: action.phrase }
+    case 'SET_AUTHOR_PHRASE':
+      return {...state, authorPhrase: action.authorPhrase }
     case 'SET_LANGUAGE':
       return {...state, lang: action.lang }
     case 'SET_SCRIPT':
