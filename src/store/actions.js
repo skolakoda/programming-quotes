@@ -100,8 +100,7 @@ export const checkUser = () => (dispatch, getState) => {
 
 export const useTranslate = () => {
   const {lang, script} = useSelector(state => state)
-  return key => {
-    if (!translations[lang][key]) return key
-    return transliterate(translations[lang][key], script, lang)
-  }
+  return key => (translations[lang][key])
+    ? transliterate(translations[lang][key], script, lang)
+    : key
 }

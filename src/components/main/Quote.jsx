@@ -3,14 +3,14 @@ import {Link} from 'react-router-dom'
 import {connect, useDispatch} from 'react-redux'
 
 import MessagePopup from './MessagePopup'
-import translate from '../../shared/translate'
 import transliterate from '../../shared/transliterate'
 import {API} from '../../config/api'
-import {deleteQuote} from '../../store/actions'
+import {deleteQuote, useTranslate} from '../../store/actions'
 import './Quote.css'
 
 const Quote = ({ quote, token, lang, script, admin, cssClass }) => {
   const dispatch = useDispatch()
+  const translate = useTranslate()
   const [shouldDelete, setShouldDelete] = useState(false)
   const [response, setResponse] = useState('')
   const text = quote[lang]

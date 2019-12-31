@@ -1,10 +1,11 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import translate from '../shared/translate'
+import {useTranslate} from '../store/actions'
 import Quotes from '../components/main/Quotes'
 
 const AllQuotes = ({ lang, allQuotes, phrase }) => {
+  const translate = useTranslate()
   const filtered = allQuotes
     .filter(quote => quote[lang] && quote[lang].toLowerCase().includes(phrase.toLowerCase()))
     .sort(() => 0.5 - Math.random())

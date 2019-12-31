@@ -20,6 +20,9 @@ npm start
 Svete myslji
 
 - preslovljavanje interfejsa u cirilicu, koristiti useSelector
+  - zameniti translate funkciju
+  - obrisati staru
+  - zameniti transliterate sa useTransliterate
 - prazniti stanje na new quote
 - suziti centralnu kolonu desno
 - prikazati izvor
