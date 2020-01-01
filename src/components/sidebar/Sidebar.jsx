@@ -32,7 +32,7 @@ const Sidebar = () => {
   return (
     <aside className="sidebar">
       <button onClick={toggle} className="toggle-button">
-        {sidebarOpen ?
+        {sidebarOpen || window.location.hash.includes('author') ?
           searchIcon
           : <Link to="/all-quotes" className="no-link" replace>{searchIcon}</Link>
         }
