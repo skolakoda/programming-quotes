@@ -1,24 +1,29 @@
-import React, { useEffect, useState, useCallback } from 'react'
-import {connect} from 'react-redux'
+import React, { useEffect, useState } from 'react'
+import {useSelector} from 'react-redux'
 
 import ImageQuote from './../components/main/ImageQuote'
 import {useTranslate} from '../store/actions'
 
-const RandomQuote = ({ allQuotes, lang }) => {
+const getRand = (allQuotes, lang) => {
+  const langQuotes = allQuotes.filter(q => q[lang])
+  return langQuotes[Math.floor(Math.random() * langQuotes.length)]
+}
+
+const RandomQuote = () => {
+  const {allQuotes, lang} = useSelector(state => state)
   const translate = useTranslate()
-  const [quote, setQuote] = useState(null)
+  const [quote, setQuote] = useState(getRand(allQuotes, lang))
 
-  const getRandom = useCallback(() => {
-    const langQuotes = allQuotes.filter(q => q[lang])
-    if (!langQuotes.length) return
-    const quote = langQuotes[Math.floor(Math.random() * langQuotes.length)]
-    setQuote(quote)
-  }, [allQuotes, lang])
-
+  // proveriti da li su ucitani allQuotes, ako nisu slati ajax
   useEffect(() => {
-    if (!quote) getRandom()
+    if (quote) return
+    setQuote(getRand(allQuotes, lang))
     window.scrollTo(0, 0)
-  }, [quote, getRandom])
+  }, [allQuotes, lang, quote])
+
+  const setRand = () => {
+    setQuote(getRand(allQuotes, lang))
+  }
 
   if (!quote) return null
 
@@ -26,11 +31,9 @@ const RandomQuote = ({ allQuotes, lang }) => {
     <main>
       <h1>{translate('QUOTE_OF_THE_DAY')}</h1>
       <ImageQuote quote={quote} cssClass="big-quote" />
-      <button onClick={getRandom}>{translate('MORE_WISDOM')}</button>
+      <button onClick={setRand}>{translate('MORE_WISDOM')}</button>
     </main>
   )
 }
 
-const mapStateToProps = ({allQuotes, lang}) => ({allQuotes, lang})
-
-export default connect(mapStateToProps)(RandomQuote)
+export default RandomQuote
