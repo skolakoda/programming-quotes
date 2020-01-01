@@ -8,7 +8,7 @@ import {useTranslate, useTransliterate} from '../../store/actions'
 
 const quotesPerPage = 10
 
-export default function Paginated({quotes}) {
+export default function Quotes({quotes}) {
   const {isFetching, phrase} = useSelector(state => state)
   const translate = useTranslate()
   const transliterate = useTransliterate()

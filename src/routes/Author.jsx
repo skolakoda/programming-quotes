@@ -1,7 +1,7 @@
 import React from 'react'
 import {useSelector} from 'react-redux'
 
-import Paginated from '../components/main/Paginated'
+import Quotes from '../components/main/Quotes'
 import AuthorImage from '../components/main/AuthorImage'
 import AuthorInfo from '../components/main/AuthorInfo'
 
@@ -22,7 +22,7 @@ const Author = ({match}) => {
         <AuthorImage author={author} />
         <AuthorInfo author={author} />
       </div>
-      <Paginated quotes={filtered} />
+      <Quotes quotes={filtered} />
     </main>
   )
 }

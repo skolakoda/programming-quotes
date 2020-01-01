@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Paginated({totalPages, currentPage, setCurrentPage}) {
+export default function Pagination({totalPages, currentPage, setCurrentPage}) {
 
   const turnThePage = e => {
     setCurrentPage(Number(e.target.value))
