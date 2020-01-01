@@ -17,6 +17,7 @@ npm start
 
 ## TODO
 
+- da ne menja rutu na sidebar opet ako je autor ruta
 - prebaciti filter allQuotes u reducer
 - filteredQuotes u reducer
 - quote u reducer

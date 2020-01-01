@@ -7,7 +7,7 @@ import {useTranslate} from '../../store/actions'
 
 const quotesPerPage = 10
 
-export default function Paginated({ filteredQuotes }) {
+export default function Paginated({quotes}) {
   const {isFetching, phrase} = useSelector(state => state)
   const translate = useTranslate()
   const [currentPage, setCurrentPage] = useState(0)
@@ -15,10 +15,10 @@ export default function Paginated({ filteredQuotes }) {
   if (isFetching) return <img src={preloader} alt="loading..." />
   window.scrollTo(0, 0)
 
-  const totalPages = Math.ceil(filteredQuotes.length / quotesPerPage)
+  const totalPages = Math.ceil(quotes.length / quotesPerPage)
   const startPosition = currentPage * quotesPerPage
 
-  const mappedQuotes = filteredQuotes
+  const mappedQuotes = quotes
     .filter((q, i) => i >= startPosition && i < startPosition + quotesPerPage)
     .map(q => <Quote key={q._id} quote={q} />)
 

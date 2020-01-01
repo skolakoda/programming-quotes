@@ -31,8 +31,6 @@ export const reducer = (state = initialState, action) => {
       return {...state, allAuthors: action.allAuthors, filteredAuthors: [...action.allAuthors] }
     case 'SET_THUMBNAILS':
       return {...state, thumbnails: action.thumbnails }
-    case 'SET_PHRASE':
-      return {...state, phrase: action.phrase }
     case 'SET_LANGUAGE':
       return {...state, lang: action.lang }
     case 'SET_SCRIPT':
@@ -61,7 +59,6 @@ export const reducer = (state = initialState, action) => {
       const filteredQuotes = state.allQuotes.filter(quote => includes(quote[state.lang], action.phrase))
       return {...state, filteredQuotes, phrase: action.phrase }
     }
-    // dodati filter quotes, obrisati set phrase
     default:
       return state
   }

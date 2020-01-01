@@ -22,7 +22,7 @@ const Author = ({match}) => {
         <AuthorImage author={author} />
         <AuthorInfo author={author} />
       </div>
-      <Paginated filteredQuotes={filtered} />
+      <Paginated quotes={filtered} />
     </main>
   )
 }

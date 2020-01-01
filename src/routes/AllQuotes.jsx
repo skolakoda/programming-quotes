@@ -11,7 +11,7 @@ const AllQuotes = () => {
   return (
     <main>
       <h1>{translate('ALL_QUOTES')}</h1>
-      <Paginated filteredQuotes={filteredQuotes} />
+      <Paginated quotes={filteredQuotes} />
     </main>
   )
 }
