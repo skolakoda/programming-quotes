@@ -70,7 +70,6 @@ export const initState = quotes => dispatch => {
   dispatch(setAllQuotes(quotes.sort(() => 0.5 - Math.random())))
   const allAuthors = new Set(quotes.map(quote => quote.author).sort())
   dispatch(setAllAuthors(allAuthors))
-  dispatch(getAuthorThumbs(allAuthors))
 }
 
 export const fetchQuotes = () => async dispatch => {

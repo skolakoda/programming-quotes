@@ -1,13 +1,19 @@
-import React, { useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {Link} from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
 import Filters from './Filters'
 import AuthorThumb from './AuthorThumb'
+import {getAuthorThumbs} from '../../store/actions'
 
 const Sidebar = () => {
-  const {thumbnails, filteredAuthors} = useSelector(state => state)
+  const dispatch = useDispatch()
+  const {thumbnails, allAuthors, filteredAuthors} = useSelector(state => state)
   const [sidebarOpen, setSidebarOpen] = useState(false)
+
+  useEffect(() => {
+    if (sidebarOpen && allAuthors.size) dispatch(getAuthorThumbs(allAuthors))
+  }, [allAuthors, dispatch, sidebarOpen])
 
   const searchIcon = <span role="img" aria-label="search" className="search">&#x1F50D;</span>
 
