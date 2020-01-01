@@ -20,7 +20,7 @@ npm start
 - prebaciti filter allQuotes u reducer
 - filteredQuotes u reducer
 - author u reducer
-- allImages mozda nepotrebno, svaka slika zna svoj link
+- thumbnails mozda nepotrebno, svaka slika zna svoj link
 - refactor fetchQuotesSuccess
 - probati druge slovenske fontove
 - prazniti stanje na new quote

@@ -6,7 +6,7 @@ import Filters from './Filters'
 import AuthorThumb from './AuthorThumb'
 
 const Sidebar = () => {
-  const {allImages, filteredAuthors} = useSelector(state => state)
+  const {thumbnails, filteredAuthors} = useSelector(state => state)
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
   const searchIcon = <span role="img" aria-label="search" className="search">&#x1F50D;</span>
@@ -19,7 +19,7 @@ const Sidebar = () => {
     <AuthorThumb
       key={author}
       author={author}
-      image={allImages.get(author)}
+      image={thumbnails.get(author)}
     />
   )
 
