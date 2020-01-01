@@ -5,7 +5,6 @@ import {useTranslate} from '../store/actions'
 import EditForm from '../components/main/EditForm'
 import preloader from '../assets/images/preloader.gif'
 import {API} from '../config/api'
-import './EditQuote'
 
 const EditQuote = ({ match }) => {
   const { id } = match.params
@@ -16,7 +15,7 @@ const EditQuote = ({ match }) => {
   const [quote, setQuote] = useState(allQuotes.find(q => q._id === id))
 
   useEffect(() => {
-    if (!id || quote) return
+    if (quote) return
     setLoading(true)
     fetch(`${API.read}/id/${id}`)
       .then(res => res.json())
