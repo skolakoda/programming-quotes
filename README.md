@@ -17,7 +17,6 @@ npm start
 
 ## TODO
 
-- scrollTo lagano
 - probati druge slovenske fontove
 - prazniti stanje na new quote
 - suziti centralnu kolonu desno

@@ -4,6 +4,7 @@ import {useSelector} from 'react-redux'
 import ImageQuote from './../components/main/ImageQuote'
 import {useTranslate} from '../store/actions'
 import {API} from '../config/api'
+import {smoothscroll} from '../shared/helpers'
 
 const getRandom = (allQuotes, lang) => {
   const langQuotes = allQuotes.filter(q => q[lang])
@@ -24,7 +25,7 @@ const RandomQuote = () => {
 
   const setRandom = () => {
     setQuote(getRandom(allQuotes, lang))
-    window.scrollTo(0, 0)
+    smoothscroll()
   }
 
   if (!quote) return null
