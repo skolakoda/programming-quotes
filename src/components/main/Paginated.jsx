@@ -3,13 +3,14 @@ import {useSelector} from 'react-redux'
 
 import Quote from './Quote'
 import preloader from '../../assets/images/preloader.gif'
-import {useTranslate} from '../../store/actions'
+import {useTranslate, useTransliterate} from '../../store/actions'
 
 const quotesPerPage = 10
 
 export default function Paginated({quotes}) {
   const {isFetching, phrase} = useSelector(state => state)
   const translate = useTranslate()
+  const transliterate = useTransliterate()
   const [currentPage, setCurrentPage] = useState(0)
 
   if (isFetching) return <img src={preloader} alt="loading..." />
@@ -50,7 +51,7 @@ export default function Paginated({quotes}) {
 
   return (
     <div>
-      {phrase && <small>{translate('SHOWING_RESULTS')} "{phrase}":</small>}
+      {phrase && <small>{translate('SHOWING_RESULTS')} "{transliterate(phrase)}":</small>}
       {mappedQuotes}
       {totalPages > 1 && (
         <p>
