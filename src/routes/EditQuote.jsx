@@ -1,59 +1,58 @@
 import React, { useEffect, useState } from 'react'
 import {Link} from 'react-router-dom'
-import {connect, useDispatch} from 'react-redux'
+import {useSelector, useDispatch} from 'react-redux'
 
 import {addQuote, updateQuote, useTranslate} from '../store/actions'
 import MessagePopup from '../components/main/MessagePopup'
+import preloader from '../assets/images/preloader.gif'
 import {API} from '../config/api'
 import './EditQuote'
 
-const EditQuote = ({ match, token, admin }) => {
+const EditQuote = ({ match }) => {
+  const { id } = match.params
+  const {token, admin, allQuotes} = useSelector(state => state)
   const dispatch = useDispatch()
   const translate = useTranslate()
   const [validation, setValidation] = useState('')
   const [response, setResponse] = useState('')
-  const [quote, setQuote] = useState({})
+  const [quote, setQuote] = useState(allQuotes.find(q => q._id === id))
 
   useEffect(() => {
-    const { id } = match.params
+    if (quote) return
     fetch(`${API.read}/id/${id}`)
       .then(res => res.json())
       .then(quote => setQuote(quote))
-  }, [match.params])
+  }, [id, quote])
 
   const emptyFields = fields => {
     [...fields].forEach(field => {field.value = ''})
   }
 
+  // TODO: move to actions
   const postQuote = e => {
-    e.persist() // react fix
     e.preventDefault()
     setValidation('')
-    const fields = e.target.elements
-    const author = fields.author.value.trim(),
-      sr = fields.sr.value.trim(),
-      ms = fields.ms.value.trim(),
-      source = fields.source.value.trim(),
-      wiki = fields.wiki.value.trim(),
-      tags = fields.tags.value.trim(),
-      _id = fields._id.value.trim()
-    if (!author || !sr) return setValidation(translate('REQUIRED_FIELDS'))
+    const obj = Object.values(e.target.elements)
+      .filter(el => el.name)
+      .reduce((acc, el) => ({...acc, [el.name]: el.value.trim()}), {})
 
-    const endpoint = _id ? API.update : API.create
-    const method = _id ? 'PUT' : 'POST'
+    if (!obj.author || !obj.sr) return setValidation(translate('REQUIRED_FIELDS'))
+
+    const endpoint = obj._id ? API.update : API.create
+    const method = obj._id ? 'PUT' : 'POST'
     fetch(endpoint, {
       method,
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ author, sr, ms, source, wiki, tags, _id, token })
+      body: JSON.stringify({ ...obj, token })
     })
       .then(res => res.json())
       .then(res => {
         setResponse(translate(res.message))
         if (res.message !== 'SUCCESS_SAVED') return
-        if (_id)
+        if (obj._id)
           dispatch(updateQuote(res.quote))
         else {
-          emptyFields(fields)
+          emptyFields(e.target.elements)
           dispatch(addQuote(res.quote))
           setQuote(res.quote)
         }
@@ -61,13 +60,14 @@ const EditQuote = ({ match, token, admin }) => {
       .catch(err => setResponse(translate('NETWORK_PROBLEM')))
   }
 
+  if (!quote) return <img src={preloader} alt="loading..." />
   if (!admin) return <p>{translate('ADMIN_REQUIRED')}</p>
 
   return (
     <div>
       <h1>
-        {translate(quote.id ? 'EDIT_QUOTE' : 'ADD_QUOTE')}
-        {quote.id && <small><sup>(<Link to={`/quote/${quote.id}`}>show</Link>)</sup></small>}
+        {translate(quote._id ? 'EDIT_QUOTE' : 'ADD_QUOTE')}
+        {quote._id && <small><sup>(<Link to={`/quote/${quote._id}`}>show</Link>)</sup></small>}
       </h1>
 
       <form onSubmit={postQuote}>
@@ -105,6 +105,4 @@ const EditQuote = ({ match, token, admin }) => {
   )
 }
 
-const mapStateToProps = ({ token, admin, lang }) => ({ token, admin, lang })
-
-export default connect(mapStateToProps)(EditQuote)
+export default EditQuote

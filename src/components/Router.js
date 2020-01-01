@@ -12,7 +12,7 @@ import Auth from '../routes/Auth'
 
 const Router = () => (
   <Switch>
-    <Route exact path='/' component={RandomQuote} />
+    <Route path='/' exact component={RandomQuote} />
     <Route path='/all-quotes' component={AllQuotes} />
     <Route path='/login' component={Login} />
     <Route path='/quote/:id' component={ShowQuote} />

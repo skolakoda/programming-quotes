@@ -1,5 +1,5 @@
 import React from 'react'
-import {connect} from 'react-redux'
+import {useSelector} from 'react-redux'
 
 import Paginated from '../components/main/Paginated'
 import AuthorImage from '../components/main/AuthorImage'
@@ -8,9 +8,10 @@ import {useTranslate} from '../store/actions'
 import {includes} from '../shared/helpers'
 import './Author.css'
 
-const Author = props => {
+const Author = ({match}) => {
+  const {lang, allQuotes, phrase} = useSelector(state => state)
   const translate = useTranslate()
-  const {lang, allQuotes, phrase, match} = props
+
   const author = match.params.name.replace(/_/g, ' ')
 
   const filtered = allQuotes
@@ -30,6 +31,4 @@ const Author = props => {
   )
 }
 
-const mapStateToProps = ({lang, allQuotes, phrase}) => ({lang, allQuotes, phrase})
-
-export default connect(mapStateToProps)(Author)
+export default Author

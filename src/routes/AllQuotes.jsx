@@ -1,12 +1,14 @@
 import React from 'react'
-import {connect} from 'react-redux'
+import {useSelector} from 'react-redux'
 
 import {useTranslate} from '../store/actions'
 import Paginated from '../components/main/Paginated'
 import {includes} from '../shared/helpers'
 
-const AllQuotes = ({ lang, allQuotes, phrase }) => {
+const AllQuotes = () => {
+  const {lang, allQuotes, phrase} = useSelector(state => state)
   const translate = useTranslate()
+
   const filtered = allQuotes
     .filter(quote => includes(quote[lang], phrase))
 
@@ -19,6 +21,4 @@ const AllQuotes = ({ lang, allQuotes, phrase }) => {
   )
 }
 
-const mapStateToProps = ({lang, allQuotes, phrase}) => ({lang, allQuotes, phrase})
-
-export default connect(mapStateToProps)(AllQuotes)
+export default AllQuotes
