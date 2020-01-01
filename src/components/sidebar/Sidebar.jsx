@@ -1,10 +1,12 @@
 import React, { useState} from 'react'
 import {Link} from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 import Filters from './Filters'
-import Authors from './Authors'
+import AuthorThumb from './AuthorThumb'
 
 const Sidebar = () => {
+  const {allImages, filteredAuthors} = useSelector(state => state)
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
   const searchIcon = <span role="img" aria-label="search" className="search">&#x1F50D;</span>
@@ -12,6 +14,14 @@ const Sidebar = () => {
   const toggle = () => {
     setSidebarOpen(!sidebarOpen)
   }
+
+  const authors = filteredAuthors.map(author =>
+    <AuthorThumb
+      key={author}
+      author={author}
+      image={allImages.get(author)}
+    />
+  )
 
   return (
     <aside className="sidebar">
@@ -24,7 +34,9 @@ const Sidebar = () => {
       {sidebarOpen &&
         <div className="sidebar-inner">
           <Filters/>
-          <Authors/>
+          <div className="authors">
+            {authors}
+          </div>
         </div>
       }
     </aside>

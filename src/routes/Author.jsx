@@ -25,7 +25,7 @@ const Author = props => {
         <AuthorInfo author={author} />
       </div>
       {phrase && <small>{translate('SHOWING_RESULTS')} "{phrase}":</small>}
-      <Paginated loaded={allQuotes.length} currentQuotes={filtered} />
+      <Paginated loaded={allQuotes.length} filteredQuotes={filtered} />
     </main>
   )
 }

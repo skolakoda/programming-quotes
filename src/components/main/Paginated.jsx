@@ -6,17 +6,17 @@ import preloader from '../../assets/images/preloader.gif'
 
 const quotesPerPage = 10
 
-export default function Paginated({ currentQuotes }) {
+export default function Paginated({ filteredQuotes }) {
   const {isFetching} = useSelector(state => state)
   const [currentPage, setCurrentPage] = useState(0)
 
   if (isFetching) return <img src={preloader} alt="loading..." />
   window.scrollTo(0, 0)
 
-  const totalPages = Math.ceil(currentQuotes.length / quotesPerPage)
+  const totalPages = Math.ceil(filteredQuotes.length / quotesPerPage)
   const startPosition = currentPage * quotesPerPage
 
-  const mappedQuotes = currentQuotes
+  const mappedQuotes = filteredQuotes
     .filter((q, i) => i >= startPosition && i < startPosition + quotesPerPage)
     .map(q => <Quote key={q._id} quote={q} />)
 

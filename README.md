@@ -18,6 +18,7 @@ npm start
 ## TODO
 
 - prebaciti filter allQuotes u reducer
+- filteredQuotes u reducer
 - author u reducer
 - allImages mozda nepotrebno, svaka slika zna svoj link
 - refactor fetchQuotesSuccess
