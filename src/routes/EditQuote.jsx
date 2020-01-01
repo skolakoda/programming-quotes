@@ -13,22 +13,23 @@ const EditQuote = ({ match }) => {
   const {token, admin, allQuotes} = useSelector(state => state)
   const dispatch = useDispatch()
   const translate = useTranslate()
+
   const [validation, setValidation] = useState('')
   const [response, setResponse] = useState('')
+  const [loading, setLoading] = useState(false)
   const [quote, setQuote] = useState(allQuotes.find(q => q._id === id))
 
   useEffect(() => {
-    if (quote) return
+    if (!id || quote) return
+    setLoading(true)
     fetch(`${API.read}/id/${id}`)
       .then(res => res.json())
-      .then(quote => setQuote(quote))
+      .then(quote => {
+        setLoading(false)
+        setQuote(quote)
+      })
   }, [id, quote])
 
-  const emptyFields = fields => {
-    [...fields].forEach(field => {field.value = ''})
-  }
-
-  // TODO: move to actions
   const postQuote = e => {
     e.preventDefault()
     setValidation('')
@@ -52,7 +53,6 @@ const EditQuote = ({ match }) => {
         if (obj._id)
           dispatch(updateQuote(res.quote))
         else {
-          emptyFields(e.target.elements)
           dispatch(addQuote(res.quote))
           setQuote(res.quote)
         }
@@ -60,41 +60,41 @@ const EditQuote = ({ match }) => {
       .catch(err => setResponse(translate('NETWORK_PROBLEM')))
   }
 
-  if (!quote) return <img src={preloader} alt="loading..." />
+  if (loading) return <img src={preloader} alt="loading..." />
   if (!admin) return <p>{translate('ADMIN_REQUIRED')}</p>
 
   return (
     <div>
       <h1>
-        {translate(quote._id ? 'EDIT_QUOTE' : 'ADD_QUOTE')}
-        {quote._id && <small><sup>(<Link to={`/quote/${quote._id}`}>show</Link>)</sup></small>}
+        {translate(id ? 'EDIT_QUOTE' : 'ADD_QUOTE')}
+        {id && <small><sup>(<Link to={`/quote/${id}`}>show</Link>)</sup></small>}
       </h1>
 
       <form onSubmit={postQuote}>
-        <input type="hidden" name="_id" defaultValue={quote._id} />
+        <input type="hidden" name="_id" defaultValue={id} />
         <p>
           <label htmlFor="author" title={translate('AUTHOR_TIP')}>{translate('AUTHOR')} *</label><br/>
-          <input name="author" id="author" defaultValue={quote.author} autoFocus />
+          <input name="author" id="author" defaultValue={quote && quote.author} autoFocus />
         </p>
         <p>
           <label htmlFor="sr" >Tekst ({translate('SERBOCROATIAN')}) *</label><br />
-          <textarea name="sr" id="sr" defaultValue={quote.sr} cols="60" rows="5"></textarea>
+          <textarea name="sr" id="sr" defaultValue={quote && quote.sr} cols="60" rows="5"></textarea>
         </p>
         <p>
           <label htmlFor="ms" >Tekst ({translate('INTERSLAVIC')}) </label><br />
-          <textarea name="ms" id="ms" defaultValue={quote.ms} cols="60" rows="5"></textarea>
+          <textarea name="ms" id="ms" defaultValue={quote && quote.ms} cols="60" rows="5"></textarea>
         </p>
         <p>
           <label htmlFor="source">{translate('SOURCE')} </label><br/>
-          <input name='source' id='source' defaultValue={quote.source} />
+          <input name='source' id='source' defaultValue={quote && quote.source} />
         </p>
         <p>
           <label htmlFor="tags">{translate('TAGS')} </label><br/>
-          <input name='tags' id='tags' defaultValue={quote.tags} />
+          <input name='tags' id='tags' defaultValue={quote && quote.tags} />
         </p>
         <p>
           <label htmlFor="wiki">Wiki </label><br/>
-          <input name='wiki' id='wiki' defaultValue={quote.wiki} />
+          <input name='wiki' id='wiki' defaultValue={quote && quote.wiki} />
         </p>
         {validation && <p className="red">{validation}</p>}
         <button type="submit">{translate('POST')}</button>
