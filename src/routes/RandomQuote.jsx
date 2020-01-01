@@ -3,8 +3,9 @@ import {useSelector} from 'react-redux'
 
 import ImageQuote from './../components/main/ImageQuote'
 import {useTranslate} from '../store/actions'
+import {API} from '../config/api'
 
-const getRand = (allQuotes, lang) => {
+const getRandom = (allQuotes, lang) => {
   const langQuotes = allQuotes.filter(q => q[lang])
   return langQuotes[Math.floor(Math.random() * langQuotes.length)]
 }
@@ -12,17 +13,18 @@ const getRand = (allQuotes, lang) => {
 const RandomQuote = () => {
   const {allQuotes, lang} = useSelector(state => state)
   const translate = useTranslate()
-  const [quote, setQuote] = useState(getRand(allQuotes, lang))
+  const [quote, setQuote] = useState(getRandom(allQuotes, lang))
 
-  // proveriti da li su ucitani allQuotes, ako nisu slati ajax
   useEffect(() => {
     if (quote) return
-    setQuote(getRand(allQuotes, lang))
-    window.scrollTo(0, 0)
-  }, [allQuotes, lang, quote])
+    fetch(`${API.randomLang}${lang}`)
+      .then(res => res.json())
+      .then(quote => setQuote(quote))
+  }, [lang, quote])
 
-  const setRand = () => {
-    setQuote(getRand(allQuotes, lang))
+  const setRandom = () => {
+    setQuote(getRandom(allQuotes, lang))
+    window.scrollTo(0, 0)
   }
 
   if (!quote) return null
@@ -31,7 +33,7 @@ const RandomQuote = () => {
     <main>
       <h1>{translate('QUOTE_OF_THE_DAY')}</h1>
       <ImageQuote quote={quote} cssClass="big-quote" />
-      <button onClick={setRand}>{translate('MORE_WISDOM')}</button>
+      <button onClick={setRandom}>{translate('MORE_WISDOM')}</button>
     </main>
   )
 }
