@@ -5,7 +5,7 @@ import preloader from '../../assets/images/preloader.gif'
 
 const quotesPerPage = 10
 
-export default function Quotes({ loaded, currentQuotes }) {
+export default function Paginated({ loaded, currentQuotes }) {
   const [currentPage, setCurrentPage] = useState(0)
 
   if (!loaded) return <img src={preloader} alt="loading..." />
@@ -48,10 +48,8 @@ export default function Quotes({ loaded, currentQuotes }) {
   const range = 3
   const low = currentPage > range ? currentPage - range : 1
   const high = currentPage < totalPages - range ? currentPage + range : totalPages - 1
-
   const pagination = []
-  for (let i = low; i < high; i++)
-    pagination.push(createButton(i))
+  for (let i = low; i < high; i++) pagination.push(createButton(i))
 
   return (
     <div>

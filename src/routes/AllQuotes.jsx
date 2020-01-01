@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 import {useTranslate} from '../store/actions'
-import Quotes from '../components/main/Quotes'
+import Paginated from '../components/main/Paginated'
 import {includes} from '../shared/helpers'
 
 const AllQuotes = ({ lang, allQuotes, phrase }) => {
@@ -14,7 +14,7 @@ const AllQuotes = ({ lang, allQuotes, phrase }) => {
     <main>
       <h1>{translate('ALL_QUOTES')}</h1>
       {phrase && <small>{translate('SHOWING_RESULTS')} "{phrase}":</small>}
-      <Quotes loaded={allQuotes.length} currentQuotes={filtered} />
+      <Paginated loaded={allQuotes.length} currentQuotes={filtered} />
     </main>
   )
 }
