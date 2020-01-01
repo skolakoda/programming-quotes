@@ -5,6 +5,7 @@ import Quote from './Quote'
 import Pagionation from './Pagination'
 import preloader from '../../assets/images/preloader.gif'
 import {useTranslate, useTransliterate} from '../../store/actions'
+import {smoothscroll} from '../../shared/helpers'
 
 const quotesPerPage = 10
 
@@ -12,13 +13,14 @@ export default function Quotes({quotes}) {
   const {isFetching, phrase} = useSelector(state => state)
   const translate = useTranslate()
   const transliterate = useTransliterate()
-  const [current, setCurrent] = useState(0)
+  const [page, setPage] = useState(0)
 
   if (isFetching) return <img src={preloader} alt="loading..." />
-  window.scrollTo(0, 0)
+
+  smoothscroll()
 
   const totalPages = Math.ceil(quotes.length / quotesPerPage)
-  const startPosition = current * quotesPerPage
+  const startPosition = page * quotesPerPage
 
   const mappedQuotes = quotes
     .filter((q, i) => i >= startPosition && i < startPosition + quotesPerPage)
@@ -29,7 +31,7 @@ export default function Quotes({quotes}) {
       {phrase && <small>{translate('SHOWING_RESULTS')} "{transliterate(phrase)}":</small>}
       {mappedQuotes}
       {totalPages > 1 && (
-        <Pagionation totalPages={totalPages} current={current} setCurrent={setCurrent} />
+        <Pagionation totalPages={totalPages} page={page} setPage={setPage} />
       )}
     </div>
   )

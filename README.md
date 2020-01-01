@@ -17,14 +17,10 @@ npm start
 
 ## TODO
 
-- da ne menja rutu na sidebar opet ako je autor ruta
-- prebaciti filter allQuotes u reducer
-- filteredQuotes u reducer
-- quote u reducer
-- author u reducer
-- refactor fetchQuotesSuccess
+- scrollTo lagano
 - probati druge slovenske fontove
 - prazniti stanje na new quote
 - suziti centralnu kolonu desno
 - prikazati izvor
 - recnik imena autora
+- refactor fetchQuotesSuccess
