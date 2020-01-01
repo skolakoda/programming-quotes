@@ -19,6 +19,7 @@ npm start
 
 - prebaciti filter allQuotes u reducer
 - filteredQuotes u reducer
+- quote u reducer
 - author u reducer
 - refactor fetchQuotesSuccess
 - probati druge slovenske fontove

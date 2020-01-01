@@ -5,6 +5,7 @@ const initialState = {
   lang: localStorage.getItem(LS.lang) || 'sr',
   script: localStorage.getItem(LS.script) || 'lat',
   allQuotes: [],
+  filteredQuotes: [],
   allAuthors: new Set(),
   thumbnails: new Map(),
   token: localStorage.getItem(LS.token),
@@ -25,7 +26,7 @@ export const reducer = (state = initialState, action) => {
     case 'FETCH_QUOTES_SUCCESS':
       return {...state, isFetching: false }
     case 'SET_ALL_QUOTES':
-      return {...state, allQuotes: action.allQuotes }
+      return {...state, allQuotes: action.allQuotes, filteredQuotes: action.allQuotes }
     case 'SET_ALL_AUTHORS':
       return {...state, allAuthors: action.allAuthors, filteredAuthors: [...action.allAuthors] }
     case 'SET_THUMBNAILS':
@@ -56,6 +57,11 @@ export const reducer = (state = initialState, action) => {
       const filteredAuthors = [...state.allAuthors].filter(name => includes(name, action.phrase))
       return {...state, filteredAuthors, authorPhrase: action.phrase }
     }
+    case 'FILTER_QUOTES': {
+      const filteredQuotes = state.allQuotes.filter(quote => includes(quote[state.lang], action.phrase))
+      return {...state, filteredQuotes, phrase: action.phrase }
+    }
+    // dodati filter quotes, obrisati set phrase
     default:
       return state
   }

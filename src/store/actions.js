@@ -19,8 +19,6 @@ export const setAllAuthors = allAuthors => ({type: 'SET_ALL_AUTHORS', allAuthors
 
 export const setThumbnails = thumbnails => ({type: 'SET_THUMBNAILS', thumbnails})
 
-export const setPhrase = phrase => ({type: 'SET_PHRASE', phrase})
-
 export const setLang = lang => {
   localStorage.setItem(LS.lang, lang)
   return { type: 'SET_LANGUAGE', lang }
@@ -42,6 +40,8 @@ export const updateQuote = quote => ({type: 'UPDATE_QUOTE', quote})
 export const deleteQuote = _id => ({type: 'DELETE_QUOTE', _id})
 
 export const filterAuthors = phrase => ({type: 'FILTER_AUTHORS', phrase})
+
+export const filterQuotes = phrase => ({type: 'FILTER_QUOTES', phrase})
 
 /* THUNK */
 
@@ -98,6 +98,8 @@ export const checkUser = () => (dispatch, getState) => {
       )
     })
 }
+
+/* SELECTORS */
 
 export const useTranslate = () => {
   const {lang, script} = useSelector(state => state)
