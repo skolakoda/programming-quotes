@@ -12,13 +12,13 @@ export default function Quotes({quotes}) {
   const {isFetching, phrase} = useSelector(state => state)
   const translate = useTranslate()
   const transliterate = useTransliterate()
-  const [currentPage, setCurrentPage] = useState(0)
+  const [current, setCurrent] = useState(0)
 
   if (isFetching) return <img src={preloader} alt="loading..." />
   window.scrollTo(0, 0)
 
   const totalPages = Math.ceil(quotes.length / quotesPerPage)
-  const startPosition = currentPage * quotesPerPage
+  const startPosition = current * quotesPerPage
 
   const mappedQuotes = quotes
     .filter((q, i) => i >= startPosition && i < startPosition + quotesPerPage)
@@ -29,7 +29,7 @@ export default function Quotes({quotes}) {
       {phrase && <small>{translate('SHOWING_RESULTS')} "{transliterate(phrase)}":</small>}
       {mappedQuotes}
       {totalPages > 1 && (
-        <Pagionation totalPages={totalPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+        <Pagionation totalPages={totalPages} current={current} setCurrent={setCurrent} />
       )}
     </div>
   )
