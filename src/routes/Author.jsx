@@ -2,9 +2,11 @@ import React from 'react'
 import {connect} from 'react-redux'
 
 import Paginated from '../components/main/Paginated'
-import AuthorBox from '../components/main/AuthorBox'
+import AuthorImage from '../components/main/AuthorImage'
+import AuthorInfo from '../components/main/AuthorInfo'
 import {useTranslate} from '../store/actions'
 import {includes} from '../shared/helpers'
+import './Author.css'
 
 const Author = props => {
   const translate = useTranslate()
@@ -17,7 +19,11 @@ const Author = props => {
   return (
     <main>
       <h1>{author}</h1>
-      <AuthorBox author={author} />
+      <div className="thumbnail">
+        <h3 className="hide-sm">{author}</h3>
+        <AuthorImage author={author} />
+        <AuthorInfo author={author} />
+      </div>
       {phrase && <small>{translate('SHOWING_RESULTS')} "{phrase}":</small>}
       <Paginated loaded={allQuotes.length} currentQuotes={filtered} />
     </main>

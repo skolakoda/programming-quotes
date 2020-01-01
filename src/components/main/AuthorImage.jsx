@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from 'react'
-import {connect} from 'react-redux'
+import {useSelector} from 'react-redux'
 
 const mdMin = 800
 
-const AuthorImage = ({ author, allImages }) => {
+const AuthorImage = ({author}) => {
+  const {allImages} = useSelector(state => state)
   const [loaded, setLoaded] = useState(false)
   const [src, setSrc] = useState('')
   const imgWidth = window.innerWidth < mdMin ? window.innerWidth : 250
@@ -27,6 +28,4 @@ const AuthorImage = ({ author, allImages }) => {
   )
 }
 
-const mapStateToProps = ({allImages}) => ({allImages})
-
-export default connect(mapStateToProps)(AuthorImage)
+export default AuthorImage
