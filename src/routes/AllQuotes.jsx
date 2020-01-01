@@ -14,7 +14,7 @@ const AllQuotes = ({ lang, allQuotes, phrase }) => {
     <main>
       <h1>{translate('ALL_QUOTES')}</h1>
       {phrase && <small>{translate('SHOWING_RESULTS')} "{phrase}":</small>}
-      <Paginated loaded={allQuotes.length} currentQuotes={filtered} />
+      <Paginated currentQuotes={filtered} />
     </main>
   )
 }

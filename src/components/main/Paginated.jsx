@@ -1,14 +1,16 @@
 import React, {useState} from 'react'
+import {useSelector} from 'react-redux'
 
 import Quote from './Quote'
 import preloader from '../../assets/images/preloader.gif'
 
 const quotesPerPage = 10
 
-export default function Paginated({ loaded, currentQuotes }) {
+export default function Paginated({ currentQuotes }) {
+  const {isFetching} = useSelector(state => state)
   const [currentPage, setCurrentPage] = useState(0)
 
-  if (!loaded) return <img src={preloader} alt="loading..." />
+  if (isFetching) return <img src={preloader} alt="loading..." />
   window.scrollTo(0, 0)
 
   const totalPages = Math.ceil(currentQuotes.length / quotesPerPage)
@@ -16,9 +18,7 @@ export default function Paginated({ loaded, currentQuotes }) {
 
   const mappedQuotes = currentQuotes
     .filter((q, i) => i >= startPosition && i < startPosition + quotesPerPage)
-    .map(q =>
-      <Quote key={q._id} quote={q} />
-    )
+    .map(q => <Quote key={q._id} quote={q} />)
 
   const turnThePage = e => {
     setCurrentPage(Number(e.target.value))
@@ -34,13 +34,8 @@ export default function Paginated({ loaded, currentQuotes }) {
     setCurrentPage(currentPage + 1)
   }
 
-  const createButton = i => (
-    <button
-      value={i}
-      style={{ color: currentPage === i && 'darkred' }}
-      onClick={turnThePage}
-      key={i}
-    >
+  const button = i => (
+    <button value={i} className={currentPage === i ? 'red' : ''} onClick={turnThePage} key={i}>
       {i + 1}
     </button>
   )
@@ -49,7 +44,7 @@ export default function Paginated({ loaded, currentQuotes }) {
   const low = currentPage > range ? currentPage - range : 1
   const high = currentPage < totalPages - range ? currentPage + range : totalPages - 1
   const pagination = []
-  for (let i = low; i < high; i++) pagination.push(createButton(i))
+  for (let i = low; i < high; i++) pagination.push(button(i))
 
   return (
     <div>
@@ -57,11 +52,11 @@ export default function Paginated({ loaded, currentQuotes }) {
       {totalPages > 1 && (
         <p>
           <button onClick={prev} disabled={currentPage === 0} >‹</button>
-          {createButton(0)}
+          {button(0)}
           {currentPage > range + 1 && <span>...</span>}
           {pagination}
           {currentPage < totalPages - range - 1 && <span>...</span>}
-          {createButton(totalPages - 1)}
+          {button(totalPages - 1)}
           <button disabled={currentPage === totalPages - 1} onClick={next}>›</button>
         </p>
       )}
