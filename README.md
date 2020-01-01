@@ -17,7 +17,8 @@ npm start
 
 ## TODO
 
-- prebaciti autore u reducer, filtrirati pretragu
+- prebaciti filter allQuotes u reducer
+- refactor fetchQuotesSuccess
 - probati druge slovenske fontove
 - prazniti stanje na new quote
 - suziti centralnu kolonu desno

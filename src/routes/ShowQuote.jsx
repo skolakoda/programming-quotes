@@ -1,20 +1,21 @@
 import React, { useEffect, useState } from 'react'
+import {useSelector} from 'react-redux'
 
 import {API} from '../config/api'
 import ImageQuote from './../components/main/ImageQuote'
 import './ShowQuote.css'
 
 const ShowQuote = ({match}) => {
-  const [quote, setQuote] = useState(null)
+  const {id} = match.params
+  const {allQuotes} = useSelector(state => state)
+  const [quote, setQuote] = useState(allQuotes.find(q => q._id === id))
 
   useEffect(() => {
-    const { id } = match.params
+    if (quote) return
     fetch(`${API.read}/id/${id}`)
       .then(res => res.json())
       .then(quote => setQuote(quote))
-  }, [match.params])
-
-  if (!quote) return null
+  }, [id, quote])
 
   return (
     <ImageQuote quote={quote} cssClass="big-quote" />
