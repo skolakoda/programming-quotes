@@ -17,9 +17,7 @@ npm start
 
 ## TODO
 
-- probati druge slovenske fontove
-- prazniti stanje na new quote
+- recnik imena autora
 - suziti centralnu kolonu desno
 - prikazati izvor
-- recnik imena autora
 - refactor fetchQuotesSuccess

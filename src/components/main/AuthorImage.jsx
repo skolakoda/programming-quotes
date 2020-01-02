@@ -12,7 +12,7 @@ const AuthorImage = ({author}) => {
 
   useEffect(() => {
     setLoaded(false)
-    if (thumbnails.size)
+    if (thumbnails.size && thumbnails.get(author))
       return setSrc(thumbnails.get(author).replace(/\d+px/, `${imgWidth}px`))
 
     fetch(`https://sh.wikipedia.org/w/api.php?action=query&titles=${author}&prop=pageimages&format=json&pithumbsize=${imgWidth}&origin=*`)
