@@ -21,3 +21,4 @@ npm start
 - suziti centralnu kolonu desno
 - refactor fetchQuotesSuccess
 - proveriti budu bez izvora
+- dodati još manija http://gnosis.org/library/manis.htm http://www.gnosis.org/library/livgosp.htm
