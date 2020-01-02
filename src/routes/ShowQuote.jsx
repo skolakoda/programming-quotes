@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {useSelector} from 'react-redux'
+import { withRouter } from 'react-router'
 
 import {API} from '../config/api'
 import ImageQuote from './../components/main/ImageQuote'
@@ -11,7 +12,7 @@ const ShowQuote = ({match}) => {
   const [quote, setQuote] = useState(allQuotes.find(q => q._id === id))
 
   useEffect(() => {
-    if (quote) return
+    if (quote && quote.id === id) return
     fetch(`${API.read}/id/${id}`)
       .then(res => res.json())
       .then(quote => setQuote(quote))
@@ -22,4 +23,4 @@ const ShowQuote = ({match}) => {
   )
 }
 
-export default ShowQuote
+export default withRouter(ShowQuote)

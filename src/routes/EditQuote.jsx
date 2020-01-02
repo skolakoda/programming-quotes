@@ -15,7 +15,7 @@ const EditQuote = ({ match }) => {
   const [quote, setQuote] = useState(allQuotes.find(q => q._id === id))
 
   useEffect(() => {
-    if (quote) return
+    if (quote && quote.id === id) return
     setLoading(true)
     fetch(`${API.read}/id/${id}`)
       .then(res => res.json())

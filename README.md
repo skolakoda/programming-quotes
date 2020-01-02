@@ -17,7 +17,6 @@ npm start
 
 ## TODO
 
-- ne menja componentu kada se promeni ruta
 - rečnik imena autora
 - suziti centralnu kolonu desno
 - refactor fetchQuotesSuccess
