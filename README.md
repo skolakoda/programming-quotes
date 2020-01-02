@@ -17,7 +17,8 @@ npm start
 
 ## TODO
 
-- ažurirati evanđelje u evangelje
+- ne menja componentu kada se promeni ruta
 - rečnik imena autora
 - suziti centralnu kolonu desno
 - refactor fetchQuotesSuccess
+- proveriti budu bez izvora
