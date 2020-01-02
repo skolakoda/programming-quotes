@@ -7,7 +7,7 @@ import {API} from '../../config/api'
 import {deleteQuote, useTranslate, useTransliterate} from '../../store/actions'
 import './Quote.css'
 
-const Quote = ({ quote, cssClass }) => {
+const Quote = ({ quote, showSource, cssClass }) => {
   const {token, lang, admin} = useSelector(state => state)
   const dispatch = useDispatch()
   const translate = useTranslate()
@@ -45,6 +45,8 @@ const Quote = ({ quote, cssClass }) => {
     setResponse('')
   }
 
+  const shouldShow = showSource && quote.source
+
   return (
     <blockquote className={cssClass || 'small-quote'}>
       <p className="quote-text">
@@ -60,6 +62,13 @@ const Quote = ({ quote, cssClass }) => {
         </span>
       </p>
       <span className="quote-author"> — <Link to={authorLink}>{author}</Link></span>
+
+      {shouldShow &&
+      <p className="source-key">
+        <small>{translate('SOURCE')}: </small>
+        <small className="source-value">{quote.source}</small>
+      </p>
+      }
 
       {response && <MessagePopup message={response} closePopup={closePopup} />}
     </blockquote>

@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {Link} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
 
 import {addQuote, updateQuote, useTranslate} from '../../store/actions'
@@ -10,6 +10,7 @@ const EditForm = ({ quote }) => {
   const {token} = useSelector(state => state)
   const dispatch = useDispatch()
   const translate = useTranslate()
+  const history = useHistory()
 
   const [validation, setValidation] = useState('')
   const [response, setResponse] = useState('')
@@ -32,14 +33,10 @@ const EditForm = ({ quote }) => {
     })
       .then(res => res.json())
       .then(res => {
-        setResponse(translate(res.message))
         if (res.message !== 'SUCCESS_SAVED') return
-        if (obj._id)
-          dispatch(updateQuote(res.quote))
-        else {
-          dispatch(addQuote(res.quote))
-          // setQuote(res.quote)
-        }
+        const action = obj._id ? updateQuote : addQuote
+        dispatch(action(res.quote))
+        history.push(`/quote/${res.quote._id}`)
       })
       .catch(err => setResponse(translate('NETWORK_PROBLEM')))
   }
