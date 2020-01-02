@@ -1,22 +1,26 @@
 import React from 'react'
-import {connect} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 
-import {setPhrase, useTranslate} from '../../store/actions'
+import {filterQuotes, filterAuthors, useTranslate} from '../../store/actions'
 import './Filters.css'
 
-const Filters = ({ setPhrase, filterAuthors }) => {
+const Filters = () => {
+  const {phrase, authorPhrase} = useSelector(state => state)
   const translate = useTranslate()
+  const dispatch = useDispatch()
+
+  const changePhrase = e => dispatch(filterQuotes(e.target.value))
+
+  const changeAuthorPhrase = e => dispatch(filterAuthors(e.target.value))
+
   return (
     <div className="filters">
-      <h3>{translate('SEARCH_QUOTES')}</h3>
-      <input onChange={e => setPhrase(e.target.value)} />
+      <h3><label htmlFor="izreke">{translate('SEARCH_QUOTES')}</label></h3>
+      <input id="izreke" value={phrase} placeholder="latin input" onChange={changePhrase} />
 
-      <h3>{translate('SEARCH_AUTHORS')}</h3>
-      <input onChange={e => filterAuthors(e.target.value)} />
+      <h3><label htmlFor="avtori">{translate('SEARCH_AUTHORS')}</label></h3>
+      <input id="avtori" value={authorPhrase} onChange={changeAuthorPhrase} />
     </div>
   )}
 
-const mapStateToProps = ({lang}) => ({lang})  // zbog rendera kad se promeni jezik
-const mapDispatchToProps = { setPhrase }
-
-export default connect(mapStateToProps, mapDispatchToProps)(Filters)
+export default Filters

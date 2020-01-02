@@ -1,22 +1,25 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
+import React, { useEffect, useState } from 'react'
+import {useSelector} from 'react-redux'
 
+import {API} from '../config/api'
 import ImageQuote from './../components/main/ImageQuote'
 import './ShowQuote.css'
 
-class ShowQuote extends Component {
-  render() {
-    const {id} = this.props.match.params
-    const { allQuotes } = this.props
-    const quote = allQuotes.find(q => q._id === id)
-    if (!quote) return null
+const ShowQuote = ({match}) => {
+  const {id} = match.params
+  const {allQuotes} = useSelector(state => state)
+  const [quote, setQuote] = useState(allQuotes.find(q => q._id === id))
 
-    return (
-      <ImageQuote quote={quote} cssClass="big-quote" />
-    )
-  }
+  useEffect(() => {
+    if (quote) return
+    fetch(`${API.read}/id/${id}`)
+      .then(res => res.json())
+      .then(quote => setQuote(quote))
+  }, [id, quote])
+
+  return (
+    <ImageQuote quote={quote} cssClass="big-quote" />
+  )
 }
 
-const mapStateToProps = ({allQuotes}) => ({allQuotes})
-
-export default connect(mapStateToProps)(ShowQuote)
+export default ShowQuote

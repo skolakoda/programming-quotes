@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux'
 
 import quotes from '../data/quotes.json'
 import translations from '../data/translations'
-import {getallImages} from '../shared/helpers'
+import {getThumbnails} from '../shared/helpers'
 import transliterate from '../shared/transliterate'
 import {LS} from '../config/localstorage'
 import {API, domain} from '../config/api'
@@ -17,9 +17,7 @@ export const setAllQuotes = allQuotes => ({type: 'SET_ALL_QUOTES', allQuotes})
 
 export const setAllAuthors = allAuthors => ({type: 'SET_ALL_AUTHORS', allAuthors})
 
-export const setAllImages = allImages => ({type: 'SET_ALL_IMAGES', allImages})
-
-export const setPhrase = phrase => ({type: 'SET_PHRASE', phrase})
+export const setThumbnails = thumbnails => ({type: 'SET_THUMBNAILS', thumbnails})
 
 export const setLang = lang => {
   localStorage.setItem(LS.lang, lang)
@@ -41,6 +39,10 @@ export const updateQuote = quote => ({type: 'UPDATE_QUOTE', quote})
 
 export const deleteQuote = _id => ({type: 'DELETE_QUOTE', _id})
 
+export const filterAuthors = phrase => ({type: 'FILTER_AUTHORS', phrase})
+
+export const filterQuotes = phrase => ({type: 'FILTER_QUOTES', phrase})
+
 /* THUNK */
 
 export const setUser = (token, admin = false) => dispatch => {
@@ -57,10 +59,10 @@ export const getAuthorThumbs = allAuthors => dispatch => {
   const wikiApiLimit = 50
   const promises = []
   for (let i = 0; i < [...allAuthors].length; i += wikiApiLimit)
-    promises.push(getallImages([...allAuthors].slice(i, i + wikiApiLimit)))
+    promises.push(getThumbnails([...allAuthors].slice(i, i + wikiApiLimit)))
   Promise.all(promises)
     .then(data =>
-      dispatch(setAllImages(data.reduce((a, b) => new Map([...a, ...b]))))
+      dispatch(setThumbnails(data.reduce((a, b) => new Map([...a, ...b]))))
     )
 }
 
@@ -68,7 +70,6 @@ export const initState = quotes => dispatch => {
   dispatch(setAllQuotes(quotes.sort(() => 0.5 - Math.random())))
   const allAuthors = new Set(quotes.map(quote => quote.author).sort())
   dispatch(setAllAuthors(allAuthors))
-  dispatch(getAuthorThumbs(allAuthors))
 }
 
 export const fetchQuotes = () => async dispatch => {
@@ -97,6 +98,8 @@ export const checkUser = () => (dispatch, getState) => {
       )
     })
 }
+
+/* SELECTORS */
 
 export const useTranslate = () => {
   const {lang, script} = useSelector(state => state)

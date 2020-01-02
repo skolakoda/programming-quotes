@@ -7,4 +7,5 @@ export const API = {
   read: `${domain}/svetemisli/`,
   update: `${domain}/svetemisli/`,
   delete: `${domain}/svetemisli/`,
+  randomLang: `${domain}/svetemisli/random/lang/`, // + lang
 }

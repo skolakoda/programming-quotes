@@ -1,22 +1,22 @@
 import React, {useState, useEffect} from 'react'
-import { connect, useDispatch} from 'react-redux'
+import { useSelector, useDispatch} from 'react-redux'
 
 import {setUser, logout, useTranslate} from '../store/actions'
 import {LS} from '../config/localstorage'
 import {domain} from '../config/api'
 
-const Profile = ({ token, admin }) =>  {
+const Profile = () =>  {
+  const {token, admin} = useSelector(state => state)
   const translate = useTranslate()
+  const dispatch = useDispatch()
   const [memberSince, setMemberSince] = useState(null)
   const [name, setName] = useState(null)
-  const dispatch = useDispatch()
 
   useEffect(() => {
-    const token = localStorage.getItem(LS.token)
     if (!token) return
     const service = localStorage.getItem(LS.service)
-    const googleAuthLink = `${domain}/auth/${service}/${token}`
-    fetch(googleAuthLink)
+    const authLink = `${domain}/auth/${service}/${token}`
+    fetch(authLink)
       .then(data => data.json())
       .then(data => {
         const { name, admin, memberSince } = data.user
@@ -24,9 +24,9 @@ const Profile = ({ token, admin }) =>  {
         setName(name)
         dispatch(setUser(token, admin))
       })
-  }, [dispatch])
+  }, [dispatch, token])
 
-  const exit = e => {
+  const exit = () => {
     dispatch(logout())
     localStorage.setItem(LS.token, '')
   }
@@ -47,6 +47,4 @@ const Profile = ({ token, admin }) =>  {
   )
 }
 
-const mapStateToProps = ({token, admin}) => ({token, admin})
-
-export default connect(mapStateToProps)(Profile)
+export default Profile

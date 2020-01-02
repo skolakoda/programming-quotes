@@ -1,71 +1,37 @@
 import React, {useState} from 'react'
+import {useSelector} from 'react-redux'
 
 import Quote from './Quote'
+import Pagionation from './Pagination'
 import preloader from '../../assets/images/preloader.gif'
+import {useTranslate, useTransliterate} from '../../store/actions'
+import {smoothscroll} from '../../shared/helpers'
 
 const quotesPerPage = 10
 
-export default function Quotes({ loaded, currentQuotes }) {
-  const [currentPage, setCurrentPage] = useState(0)
+export default function Quotes({quotes}) {
+  const {isFetching, phrase} = useSelector(state => state)
+  const translate = useTranslate()
+  const transliterate = useTransliterate()
+  const [page, setPage] = useState(0)
 
-  if (!loaded) return <img src={preloader} alt="loading..." />
-  window.scrollTo(0, 0)
+  if (isFetching) return <img src={preloader} alt="loading..." />
 
-  const totalPages = Math.ceil(currentQuotes.length / quotesPerPage)
-  const startPosition = currentPage * quotesPerPage
+  smoothscroll()
 
-  const mappedQuotes = currentQuotes
+  const totalPages = Math.ceil(quotes.length / quotesPerPage)
+  const startPosition = page * quotesPerPage
+
+  const mappedQuotes = quotes
     .filter((q, i) => i >= startPosition && i < startPosition + quotesPerPage)
-    .map(q =>
-      <Quote key={q._id} quote={q} />
-    )
-
-  const turnThePage = e => {
-    setCurrentPage(Number(e.target.value))
-  }
-
-  const prev = () => {
-    if (currentPage <= 0) return
-    setCurrentPage(currentPage - 1)
-  }
-
-  const next = () => {
-    if (currentPage >= totalPages - 1) return
-    setCurrentPage(currentPage + 1)
-  }
-
-  const createButton = i => (
-    <button
-      value={i}
-      style={{ color: currentPage === i && 'darkred' }}
-      onClick={turnThePage}
-      key={i}
-    >
-      {i + 1}
-    </button>
-  )
-
-  const range = 3
-  const low = currentPage > range ? currentPage - range : 1
-  const high = currentPage < totalPages - range ? currentPage + range : totalPages - 1
-
-  const pagination = []
-  for (let i = low; i < high; i++)
-    pagination.push(createButton(i))
+    .map(q => <Quote key={q._id} quote={q} />)
 
   return (
     <div>
+      {phrase && <small>{translate('SHOWING_RESULTS')} "{transliterate(phrase)}":</small>}
       {mappedQuotes}
       {totalPages > 1 && (
-        <p>
-          <button onClick={prev} disabled={currentPage === 0} >‹</button>
-          {createButton(0)}
-          {currentPage > range + 1 && <span>...</span>}
-          {pagination}
-          {currentPage < totalPages - range - 1 && <span>...</span>}
-          {createButton(totalPages - 1)}
-          <button disabled={currentPage === totalPages - 1} onClick={next}>›</button>
-        </p>
+        <Pagionation totalPages={totalPages} page={page} setPage={setPage} />
       )}
     </div>
   )

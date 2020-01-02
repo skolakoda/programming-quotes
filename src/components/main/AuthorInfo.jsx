@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react'
 import {findValue} from '../../shared/helpers'
-import './AuthorBox.css'
 
 const prepareInfo = (author, info) => {
   if (!info) return ''

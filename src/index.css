@@ -7,8 +7,8 @@ body {
   background-image: url('assets/images/papir.png');
   background-repeat: no-repeat;
   color: #333;
-  font-family: BukyVede;
   /* font-family: Book Antiqua, Palatino, Palatino Linotype, Palatino LT STD, Georgia, serif; */
+  font-family: BukyVede;
   font-size: 1.25em;
   letter-spacing: 0.4px;
   margin: 0;
@@ -17,6 +17,10 @@ body {
 
 h1, h2 {
   color: darkred;
+}
+
+a {
+  color: #4d6e14;
 }
 
 img {
@@ -52,7 +56,7 @@ blockquote {
 }
 
 .red {
-  color: red;
+  color: darkred;
 }
 
 .hide-sm {

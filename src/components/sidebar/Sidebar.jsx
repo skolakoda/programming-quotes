@@ -1,42 +1,52 @@
-import React, { useState, useEffect} from 'react'
-import { connect } from 'react-redux'
+import React, {useState, useEffect} from 'react'
+import {Link} from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
 
 import Filters from './Filters'
-import Authors from './Authors'
+import AuthorThumb from './AuthorThumb'
+import {getAuthorThumbs} from '../../store/actions'
 
-const Sidebar = ({ allAuthors }) => {
-  const [visibleAuthors, setVisibleAuthors] = useState([...allAuthors])
+const Sidebar = () => {
+  const dispatch = useDispatch()
+  const {thumbnails, allAuthors, filteredAuthors} = useSelector(state => state)
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
   useEffect(() => {
-    setVisibleAuthors([...allAuthors])
-  }, [allAuthors])
+    if (sidebarOpen && allAuthors.size) dispatch(getAuthorThumbs(allAuthors))
+  }, [allAuthors, dispatch, sidebarOpen])
 
-  const filterAuthors = text => {
-    const filtered = [...allAuthors] // set to array
-      .filter(name => name.toLowerCase().includes(text.toLowerCase()))
-    setVisibleAuthors(filtered)
-  }
+  const searchIcon = <span role="img" aria-label="search" className="search">&#x1F50D;</span>
 
   const toggle = () => {
     setSidebarOpen(!sidebarOpen)
   }
 
+  const authors = filteredAuthors.map(author =>
+    <AuthorThumb
+      key={author}
+      author={author}
+      image={thumbnails.get(author)}
+    />
+  )
+
   return (
     <aside className="sidebar">
       <button onClick={toggle} className="toggle-button">
-        <span role="img" aria-label="search" className="search">&#x1F50D;</span>
+        {sidebarOpen || window.location.hash.includes('author') ?
+          searchIcon
+          : <Link to="/all-quotes" className="no-link" replace>{searchIcon}</Link>
+        }
       </button>
       {sidebarOpen &&
         <div className="sidebar-inner">
-          <Filters filterAuthors={filterAuthors}/>
-          <Authors authors={visibleAuthors}/>
+          <Filters/>
+          <div className="authors">
+            {authors}
+          </div>
         </div>
       }
     </aside>
   )
 }
 
-const mapStateToProps = ({allAuthors}) => ({allAuthors})
-
-export default connect(mapStateToProps)(Sidebar)
+export default Sidebar
