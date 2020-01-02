@@ -18,7 +18,7 @@ const ShowQuote = ({match}) => {
   }, [id, quote])
 
   return (
-    <ImageQuote quote={quote} cssClass="big-quote" />
+    <ImageQuote quote={quote} showSource={true} cssClass="big-quote" />
   )
 }
 

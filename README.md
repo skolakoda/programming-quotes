@@ -17,7 +17,7 @@ npm start
 
 ## TODO
 
-- recnik imena autora
+- ažurirati evanđelje u evangelje
+- rečnik imena autora
 - suziti centralnu kolonu desno
-- prikazati izvor
 - refactor fetchQuotesSuccess
