@@ -1,6 +1,7 @@
 import React from 'react'
 
 export default function Pagination({totalPages, page, setPage}) {
+  if (page >= totalPages) setPage(0)
 
   const turnThePage = e => {
     setPage(Number(e.target.value))

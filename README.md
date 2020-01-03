@@ -17,8 +17,8 @@ npm start
 
 ## TODO
 
-- u odnosu na zemlju iz koje dolazi setovati pismo
-- suziti centralnu kolonu desno
-- refactor fetchQuotesSuccess
 - proveriti budu bez izvora
+- kratiti preduge razlike
+- prikazati wiki link ako ima
 - dodati još manija http://gnosis.org/library/manis.htm http://www.gnosis.org/library/livgosp.htm
+- suziti centralnu kolonu desno
