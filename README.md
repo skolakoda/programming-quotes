@@ -18,6 +18,7 @@ npm start
 ## TODO
 
 - rumi medjuslovenski izlazi "Nema prevoda za citat". ili sakriti ili omoguciti edit ikonice
+- u odnosu na zemlju iz koje dolazi setovati pismo
 - suziti centralnu kolonu desno
 - refactor fetchQuotesSuccess
 - proveriti budu bez izvora

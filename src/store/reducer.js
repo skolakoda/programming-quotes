@@ -2,7 +2,7 @@ import {LS} from '../config/localstorage'
 import {includes} from '../shared/helpers'
 
 const initialState = {
-  lang: localStorage.getItem(LS.lang) || 'sr',
+  lang: localStorage.getItem(LS.lang) || 'ms',
   script: localStorage.getItem(LS.script) || 'lat',
   allQuotes: [],
   filteredQuotes: [],
