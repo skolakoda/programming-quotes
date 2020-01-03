@@ -17,7 +17,7 @@ npm start
 
 ## TODO
 
-- rečnik imena autora
+- rumi medjuslovenski izlazi "Nema prevoda za citat". ili sakriti ili omoguciti edit ikonice
 - suziti centralnu kolonu desno
 - refactor fetchQuotesSuccess
 - proveriti budu bez izvora

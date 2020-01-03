@@ -1,6 +1,6 @@
 {
   "ms": {
-    "Antonije Veliki": "Antonij Egiptsky",
+    "Antonije Veliki": "Antony Veliky",
     "Dželaludin Rumi": "Rumi",
     "Isak Sirin": "Isaak Sirijsky",
     "Gautama Buddha": "Buda",
@@ -8,16 +8,28 @@
     "Ivan Krstitelj": "Johanan Krestitelj",
     "Jakov Pravedni": "Jakov Spravědlivy",
     "Jiddu Krishnamurti": "Krišnamurti",
-    "Lao Tzu": "Lao-c",
+    "Lao Tzu": "Lao Cu",
     "Linji": "Linči",
-    "Makarije Egipatski": "Makarij Egiptsky",
+    "Makarije Egipatski": "Makary Egiptsky",
     "Maksim Ispovednik": "Maksim Izpovědnik",
-    "Mansur al-Haladž": "Mansur al-Haladž",
     "Muhamed": "Muhamad",
     "Pavle iz Tarsa": "Pavl od Tarsa",
     "Rabija al-Adevija": "Rabija od Basre",
     "Simeon Novi Teolog": "Simeon Novy Teolog",
     "Solomon": "Šalomon",
-    "Zhuang Zhou": "Čuang-c"
+    "Zhuang Zhou": "Čuang Cu"
+  },
+  "sr": {
+    "Dželaludin Rumi": "Rumi",
+    "Gautama Buddha": "Buda",
+    "Isus": "Ješua",
+    "Ivan Krstitelj": "Johanan Krstitelj",
+    "Jiddu Krishnamurti": "Krišnamurti",
+    "Lao Tzu": "Lao Cu",
+    "Linji": "Linči",
+    "Pavle iz Tarsa": "Pavle od Tarsa",
+    "Rabija al-Adevija": "Rabija od Basre",
+    "Solomon": "Šalomon",
+    "Zhuang Zhou": "Čuang Cu"
   }
 }
