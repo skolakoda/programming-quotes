@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux'
 
 import quotes from '../data/quotes.json'
 import translations from '../data/translations'
+import authors from '../data/authors.json'
 import {getThumbnails} from '../shared/helpers'
 import transliterate from '../shared/transliterate'
 import {LS} from '../config/localstorage'
@@ -111,4 +112,12 @@ export const useTranslate = () => {
 export const useTransliterate = () => {
   const {lang, script} = useSelector(state => state)
   return text => transliterate(text, script, lang)
+}
+
+export const useAuthorName = () => {
+  const { script, lang } = useSelector(state => state)
+  return author => {
+    const name = (authors[lang] && authors[lang][author]) || author
+    return transliterate(name, script, lang)
+  }
 }

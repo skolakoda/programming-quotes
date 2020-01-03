@@ -17,7 +17,8 @@ npm start
 
 ## TODO
 
-- ažurirati evanđelje u evangelje
-- rečnik imena autora
+- rumi medjuslovenski izlazi "Nema prevoda za citat". ili sakriti ili omoguciti edit ikonice
 - suziti centralnu kolonu desno
 - refactor fetchQuotesSuccess
+- proveriti budu bez izvora
+- dodati još manija http://gnosis.org/library/manis.htm http://www.gnosis.org/library/livgosp.htm

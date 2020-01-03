@@ -1,17 +1,20 @@
-import React, {Component} from 'react'
+import React from 'react'
 import {Link} from 'react-router-dom'
+
+import {useAuthorName} from '../../store/actions'
 import unknownImage from '../../assets/images/unknown.jpg'
 import './AuthorThumb.css'
 
-export default class AuthorThumb extends Component {
-  render() {
-    const {author, image} = this.props
-    const link = `/author/${author.replace(/ /g, '_')}`
-    return (
-      <Link className="author" to={link}>
-        <img src={image || unknownImage} alt="author" />
-        {author}
-      </Link>
-    )
-  }
+const AuthorThumb = ({ author, image }) => {
+  const getName = useAuthorName()
+  const link = `/author/${author.replace(/ /g, '_')}`
+
+  return (
+    <Link className="author" to={link}>
+      <img src={image || unknownImage} alt="author" />
+      {getName(author)}
+    </Link>
+  )
 }
+
+export default AuthorThumb

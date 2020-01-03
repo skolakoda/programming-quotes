@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from 'react-redux'
 
 import MessagePopup from './MessagePopup'
 import {API} from '../../config/api'
-import {deleteQuote, useTranslate, useTransliterate} from '../../store/actions'
+import {deleteQuote, useTranslate, useTransliterate, useAuthorName} from '../../store/actions'
 import './Quote.css'
 
 const Quote = ({ quote, showSource, cssClass }) => {
@@ -12,6 +12,7 @@ const Quote = ({ quote, showSource, cssClass }) => {
   const dispatch = useDispatch()
   const translate = useTranslate()
   const transliterate = useTransliterate()
+  const getName = useAuthorName()
 
   const [shouldDelete, setShouldDelete] = useState(false)
   const [response, setResponse] = useState('')
@@ -61,7 +62,7 @@ const Quote = ({ quote, showSource, cssClass }) => {
           }
         </span>
       </p>
-      <span className="quote-author"> — <Link to={authorLink}>{author}</Link></span>
+      <span className="quote-author"> — <Link to={authorLink}>{getName(author)}</Link></span>
 
       {shouldShow &&
       <p className="source-key">
