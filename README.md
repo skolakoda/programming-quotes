@@ -17,8 +17,7 @@ npm start
 
 ## TODO
 
-- proveriti budu bez izvora
 - kratiti preduge razlike
 - prikazati wiki link ako ima
-- dodati još manija http://gnosis.org/library/manis.htm http://www.gnosis.org/library/livgosp.htm
+- dodati pwa
 - suziti centralnu kolonu desno

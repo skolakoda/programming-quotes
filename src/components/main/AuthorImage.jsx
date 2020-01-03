@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import {useSelector} from 'react-redux'
 
+import unknownImage from '../../assets/images/unknown.jpg'
+
 const mdMin = 800
 
 const AuthorImage = ({author}) => {
@@ -28,6 +30,7 @@ const AuthorImage = ({author}) => {
           const obj = res.query.pages[key]
           if (obj.thumbnail) return setSrc(obj.thumbnail.source)
         }
+        if (!src) setSrc(unknownImage)
       })
   }, [author, imgWidth, src, thumbnails])
 
