@@ -11,10 +11,15 @@ const AuthorImage = ({author}) => {
   const [src, setSrc] = useState('')
 
   useEffect(() => {
-    setLoaded(false)
-    if (thumbnails.size && thumbnails.get(author))
-      return setSrc(thumbnails.get(author).replace(/\d+px/, `${imgWidth}px`))
+    const hasImage = () => thumbnails.size && thumbnails.get(author)
+    const getSrc = () => thumbnails.get(author).replace(/\d+px/, `${imgWidth}px`)
 
+    if (hasImage() && getSrc() === src) return // same image, do nothing
+
+    setLoaded(false)
+    if (hasImage()) return setSrc(getSrc()) // load different image size
+
+    // else ask api for new src
     fetch(`https://sh.wikipedia.org/w/api.php?action=query&titles=${author}&prop=pageimages&format=json&pithumbsize=${imgWidth}&origin=*`)
       .then(res => res.json())
       .then(res => {
@@ -24,7 +29,7 @@ const AuthorImage = ({author}) => {
           if (obj.thumbnail) return setSrc(obj.thumbnail.source)
         }
       })
-  }, [author, imgWidth, thumbnails])
+  }, [author, imgWidth, src, thumbnails])
 
   return (
     <img
