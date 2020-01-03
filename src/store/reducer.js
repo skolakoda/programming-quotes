@@ -26,13 +26,13 @@ export const reducer = (state = initialState, action) => {
     case 'FETCH_QUOTES_SUCCESS':
       return {...state, isFetching: false }
     case 'SET_ALL_QUOTES':
-      return {...state, allQuotes: action.allQuotes, filteredQuotes: action.allQuotes }
+      return {...state, allQuotes: action.allQuotes, filteredQuotes: action.allQuotes.filter(q => q[state.lang])}
     case 'SET_ALL_AUTHORS':
       return {...state, allAuthors: action.allAuthors, filteredAuthors: [...action.allAuthors] }
     case 'SET_THUMBNAILS':
       return {...state, thumbnails: action.thumbnails }
     case 'SET_LANGUAGE':
-      return {...state, lang: action.lang }
+      return {...state, lang: action.lang, filteredQuotes: state.allQuotes.filter(q => q[action.lang])}
     case 'SET_SCRIPT':
       return {...state, script: action.script }
     case 'SET_TOKEN':
@@ -60,7 +60,7 @@ export const reducer = (state = initialState, action) => {
       return {...state, filteredAuthors, authorPhrase: action.phrase }
     }
     case 'FILTER_QUOTES': {
-      const filteredQuotes = state.allQuotes.filter(quote => includes(quote[state.lang], action.phrase))
+      const filteredQuotes = state.allQuotes.filter(q => includes(q[state.lang], action.phrase))
       return {...state, filteredQuotes, phrase: action.phrase }
     }
     default:

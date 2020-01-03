@@ -18,8 +18,6 @@ const Quote = ({ quote, showSource, cssClass }) => {
   const [response, setResponse] = useState('')
   const text = quote[lang]
 
-  if (!text) return translate('NO_TRANSLATION')
-
   const {_id, author} = quote
   const authorLink = `/author/${author.replace(/ /g, '_')}`
   const deleteCss = `pointer ${shouldDelete ? 'red' : ''}`
@@ -51,7 +49,7 @@ const Quote = ({ quote, showSource, cssClass }) => {
   return (
     <blockquote className={cssClass || 'small-quote'}>
       <p className="quote-text">
-        {transliterate(text)} &nbsp;
+        {text ? transliterate(text) : translate('NO_TRANSLATION')} &nbsp;
         <span className="icons">
           <Link to={`/quote/${_id}`} className="no-link">↠</Link>&nbsp;
           {admin &&
