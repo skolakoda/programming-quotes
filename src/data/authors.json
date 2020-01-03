@@ -1,35 +1,24 @@
 {
-  "ms": {
-    "Antonije Veliki": "Antony Veliky",
+  "commons": {
     "Dželaludin Rumi": "Rumi",
-    "Isak Sirin": "Isaak Sirijsky",
     "Gautama Buddha": "Buda",
     "Isus": "Ješua",
-    "Ivan Krstitelj": "Johanan Krestitelj",
-    "Jakov Pravedni": "Jakov Spravědlivy",
     "Jiddu Krishnamurti": "Krišnamurti",
-    "Lao Tzu": "Lao Cu",
+    "Konfucije": "Kong Fu C'",
+    "Lao Tzu": "Lao C'",
     "Linji": "Linči",
+    "Solomon": "Šalomon",
+    "Zhuang Zhou": "Čuang C'"
+  },
+  "ms": {
+    "Antonije Veliki": "Antony Veliky",
+    "Isak Sirin": "Isaak Sirijsky",
+    "Johanan Krstitelj": "Johanan Krestitelj",
+    "Jakov Pravedni": "Jakov Spravědlivy",
     "Makarije Egipatski": "Makary Egiptsky",
     "Maksim Ispovednik": "Maksim Izpovědnik",
     "Muhamed": "Muhamad",
     "Pavle iz Tarsa": "Pavl od Tarsa",
-    "Rabija al-Adevija": "Rabija od Basre",
-    "Simeon Novi Teolog": "Simeon Novy Teolog",
-    "Solomon": "Šalomon",
-    "Zhuang Zhou": "Čuang Cu"
-  },
-  "sr": {
-    "Dželaludin Rumi": "Rumi",
-    "Gautama Buddha": "Buda",
-    "Isus": "Ješua",
-    "Ivan Krstitelj": "Johanan Krstitelj",
-    "Jiddu Krishnamurti": "Krišnamurti",
-    "Lao Tzu": "Lao Cu",
-    "Linji": "Linči",
-    "Pavle iz Tarsa": "Pavle od Tarsa",
-    "Rabija al-Adevija": "Rabija od Basre",
-    "Solomon": "Šalomon",
-    "Zhuang Zhou": "Čuang Cu"
+    "Simeon Novi Teolog": "Simeon Novy Teolog"
   }
 }

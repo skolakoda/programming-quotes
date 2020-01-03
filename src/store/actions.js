@@ -117,7 +117,7 @@ export const useTransliterate = () => {
 export const useAuthorName = () => {
   const { script, lang } = useSelector(state => state)
   return author => {
-    const name = (authors[lang] && authors[lang][author]) || author
+    const name = authors.commons[author] || (authors[lang] && authors[lang][author]) || author
     return transliterate(name, script, lang)
   }
 }
