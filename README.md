@@ -17,6 +17,8 @@ npm start
 
 ## TODO
 
+- sortirati autore po novom nazivu, npr rumi treba kasnije
+- nekad za random kaze nema prevod, iako postoji
 - kratiti preduge razlike
 - prikazati wiki link ako ima
 - dodati pwa
