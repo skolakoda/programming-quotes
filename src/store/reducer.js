@@ -29,8 +29,30 @@ export const reducer = (state = initialState, action) => {
       const {lang} = state
       const allQuotes = action.quotes.sort(() => 0.5 - Math.random())
 
-      const filteredAuthors = new Set()
+      let allAuthors = new Set()
+      let filteredAuthors = new Set()
       const filteredQuotes = allQuotes.filter(q => {
+        if (q[lang]) filteredAuthors.add(q.author)
+        allAuthors.add(q.author)
+        return q[lang]
+      })
+      allAuthors = [...allAuthors].sort((a, b) => compare(getName(a, lang), getName(b, lang)))
+      filteredAuthors = [...filteredAuthors].sort((a, b) => compare(getName(a, lang), getName(b, lang)))
+
+      return {
+        ...state,
+        allQuotes,
+        filteredQuotes,
+        allAuthors: new Set(allAuthors),
+        filteredAuthors
+      }
+    }
+    case 'SET_THUMBNAILS':
+      return {...state, thumbnails: action.thumbnails }
+    case 'SET_LANGUAGE':
+      const {lang} = action
+      const filteredAuthors = new Set()
+      const filteredQuotes = state.allQuotes.filter(q => {
         if (q[lang]) filteredAuthors.add(q.author)
         return q[lang]
       })
@@ -39,19 +61,9 @@ export const reducer = (state = initialState, action) => {
 
       return {
         ...state,
-        allQuotes,
+        lang,
         filteredQuotes,
-        allAuthors: new Set(sortedAuthors),
         filteredAuthors: sortedAuthors
-      }
-    }
-    case 'SET_THUMBNAILS':
-      return {...state, thumbnails: action.thumbnails }
-    case 'SET_LANGUAGE':
-      return {
-        ...state,
-        lang: action.lang,
-        filteredQuotes: state.allQuotes.filter(q => q[action.lang])
       }
     case 'SET_SCRIPT':
       return {...state, script: action.script }
@@ -71,19 +83,35 @@ export const reducer = (state = initialState, action) => {
       const allQuotes = state.allQuotes.map(q =>
         q._id === action.quote._id ? action.quote : q
       )
-      return {...state, allQuotes, filteredQuotes: allQuotes.filter(q => q[state.lang])}
+      return {
+        ...state,
+        allQuotes,
+        filteredQuotes: allQuotes.filter(q => q[state.lang])
+      }
     }
     case 'DELETE_QUOTE': {
       const allQuotes = state.allQuotes.filter(q => q._id !== action._id)
-      return {...state, allQuotes, filteredQuotes: allQuotes.filter(q => q[state.lang])}
+      return {
+        ...state,
+        allQuotes,
+        filteredQuotes: allQuotes.filter(q => q[state.lang])
+      }
     }
     case 'FILTER_AUTHORS': {
       const filteredAuthors = [...state.allAuthors].filter(name => includes(name, action.phrase))
-      return {...state, filteredAuthors, authorPhrase: action.phrase }
+      return {
+        ...state,
+        filteredAuthors,
+        authorPhrase: action.phrase
+      }
     }
     case 'FILTER_QUOTES': {
       const filteredQuotes = state.allQuotes.filter(q => includes(q[state.lang], action.phrase))
-      return {...state, filteredQuotes, phrase: action.phrase }
+      return {
+        ...state,
+        filteredQuotes,
+        phrase: action.phrase
+      }
     }
     default:
       return state
