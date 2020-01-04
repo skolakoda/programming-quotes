@@ -21,15 +21,6 @@ export function smoothscroll() {
   }
 }
 
-export function fetchImage(title, size, callback) {
-  fetch(`https://sh.wikipedia.org/w/api.php?action=query&titles=${title}&prop=pageimages&format=json&pithumbsize=${size}&origin=*`)
-    .then(response => response.json())
-    .then(obj => {
-      const imgSrc = findValue(obj, 'source')
-      callback(imgSrc)
-    })
-}
-
 /**
 @param authors: array
 @return Map(author name: image src)
