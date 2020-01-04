@@ -3,7 +3,7 @@ import {includes} from '../shared/helpers'
 
 const initialState = {
   lang: localStorage.getItem(LS.lang) || 'ms',
-  script: localStorage.getItem(LS.script) || 'lat',
+  script: localStorage.getItem(LS.script) || 'kir',
   allQuotes: [],
   filteredQuotes: [],
   allAuthors: new Set(),
