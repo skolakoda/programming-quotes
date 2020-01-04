@@ -2,25 +2,20 @@ import { useSelector } from 'react-redux'
 
 import quotes from '../data/quotes.json'
 import translations from '../data/translations'
-import authors from '../data/authors.json'
-import {getThumbnails, compare} from '../shared/helpers'
+import {getThumbnails, getName} from '../shared/helpers'
 import transliterate from '../shared/transliterate'
 import {LS} from '../config/localstorage'
 import {API, domain} from '../config/api'
 
-const getName = (author, lang) => authors.commons[author] || (authors[lang] && authors[lang][author]) || author
+const init = quotes => ({type: 'INIT', quotes})
 
-export const fetchQuotesRequest = () => ({type: 'FETCH_QUOTES_REQUEST'})
+const fetchQuotesRequest = () => ({type: 'FETCH_QUOTES_REQUEST'})
 
-export const fetchQuotesFailure = error => ({type: 'FETCH_QUOTES_FAILURE', error})
+const fetchQuotesFailure = error => ({type: 'FETCH_QUOTES_FAILURE', error})
 
-export const fetchQuotesSuccess = () => ({type: 'FETCH_QUOTES_SUCCESS'})
+const fetchQuotesSuccess = () => ({type: 'FETCH_QUOTES_SUCCESS'})
 
-export const setAllQuotes = allQuotes => ({type: 'SET_ALL_QUOTES', allQuotes})
-
-export const setAllAuthors = allAuthors => ({type: 'SET_ALL_AUTHORS', allAuthors})
-
-export const setThumbnails = thumbnails => ({type: 'SET_THUMBNAILS', thumbnails})
+const setThumbnails = thumbnails => ({type: 'SET_THUMBNAILS', thumbnails})
 
 export const setLang = lang => {
   localStorage.setItem(LS.lang, lang)
@@ -69,26 +64,17 @@ export const getAuthorThumbs = allAuthors => dispatch => {
     )
 }
 
-export const initState = quotes => (dispatch, getState) => {
-  dispatch(setAllQuotes(quotes.sort(() => 0.5 - Math.random())))
-  const {lang} = getState()
-  const sortedAuthors = quotes
-    .map(quote => quote.author)
-    .sort((a, b) => compare(getName(a, lang), getName(b, lang)))
-  const allAuthors = new Set(sortedAuthors)
-  dispatch(setAllAuthors(allAuthors))
-}
-
 export const fetchQuotes = () => async dispatch => {
   dispatch(fetchQuotesRequest(API.read))
   try {
     const response = await fetch(API.read)
     const quotes = await response.json()
     dispatch(fetchQuotesSuccess())
-    dispatch(initState(quotes))
+    dispatch(init(quotes))
   } catch (error) {
     console.log('nema interneta, ucitavam backup')
-    dispatch(initState(quotes))
+    dispatch(init(quotes))
+    dispatch(fetchQuotesFailure(error))
   }
 }
 

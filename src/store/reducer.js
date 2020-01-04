@@ -1,5 +1,5 @@
 import {LS} from '../config/localstorage'
-import {includes} from '../shared/helpers'
+import {includes, getName, compare} from '../shared/helpers'
 
 const initialState = {
   lang: localStorage.getItem(LS.lang) || 'ms',
@@ -25,14 +25,34 @@ export const reducer = (state = initialState, action) => {
       return {...state, isFetching: false, error: action.error }
     case 'FETCH_QUOTES_SUCCESS':
       return {...state, isFetching: false }
-    case 'SET_ALL_QUOTES':
-      return {...state, allQuotes: action.allQuotes, filteredQuotes: action.allQuotes.filter(q => q[state.lang])}
-    case 'SET_ALL_AUTHORS':
-      return {...state, allAuthors: action.allAuthors, filteredAuthors: [...action.allAuthors] }
+    case 'INIT': {
+      const {lang} = state
+      const allQuotes = action.quotes.sort(() => 0.5 - Math.random())
+
+      const filteredAuthors = new Set()
+      const filteredQuotes = allQuotes.filter(q => {
+        if (q[lang]) filteredAuthors.add(q.author)
+        return q[lang]
+      })
+      const sortedAuthors = [...filteredAuthors]
+        .sort((a, b) => compare(getName(a, lang), getName(b, lang)))
+
+      return {
+        ...state,
+        allQuotes,
+        filteredQuotes,
+        allAuthors: new Set(sortedAuthors),
+        filteredAuthors: sortedAuthors
+      }
+    }
     case 'SET_THUMBNAILS':
       return {...state, thumbnails: action.thumbnails }
     case 'SET_LANGUAGE':
-      return {...state, lang: action.lang, filteredQuotes: state.allQuotes.filter(q => q[action.lang])}
+      return {
+        ...state,
+        lang: action.lang,
+        filteredQuotes: state.allQuotes.filter(q => q[action.lang])
+      }
     case 'SET_SCRIPT':
       return {...state, script: action.script }
     case 'SET_TOKEN':

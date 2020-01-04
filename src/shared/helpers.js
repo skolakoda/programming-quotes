@@ -1,3 +1,5 @@
+import authors from '../data/authors.json'
+
 export function findValue(object, searchKey) {
   let value
   for (const key in object) {
@@ -26,6 +28,9 @@ export function compare(a, b) {
   if (a > b) return 1
   return 0
 }
+
+export const getName = (author, lang) =>
+  authors.commons[author] || (authors[lang] && authors[lang][author]) || author
 
 /**
 @param authors: array
