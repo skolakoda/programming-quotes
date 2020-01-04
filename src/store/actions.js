@@ -3,10 +3,12 @@ import { useSelector } from 'react-redux'
 import quotes from '../data/quotes.json'
 import translations from '../data/translations'
 import authors from '../data/authors.json'
-import {getThumbnails} from '../shared/helpers'
+import {getThumbnails, compare} from '../shared/helpers'
 import transliterate from '../shared/transliterate'
 import {LS} from '../config/localstorage'
 import {API, domain} from '../config/api'
+
+const getName = (author, lang) => authors.commons[author] || (authors[lang] && authors[lang][author]) || author
 
 export const fetchQuotesRequest = () => ({type: 'FETCH_QUOTES_REQUEST'})
 
@@ -67,9 +69,13 @@ export const getAuthorThumbs = allAuthors => dispatch => {
     )
 }
 
-export const initState = quotes => dispatch => {
+export const initState = quotes => (dispatch, getState) => {
   dispatch(setAllQuotes(quotes.sort(() => 0.5 - Math.random())))
-  const allAuthors = new Set(quotes.map(quote => quote.author).sort())
+  const {lang} = getState()
+  const sortedAuthors = quotes
+    .map(quote => quote.author)
+    .sort((a, b) => compare(getName(a, lang), getName(b, lang)))
+  const allAuthors = new Set(sortedAuthors)
   dispatch(setAllAuthors(allAuthors))
 }
 
@@ -117,7 +123,7 @@ export const useTransliterate = () => {
 export const useAuthorName = () => {
   const { script, lang } = useSelector(state => state)
   return author => {
-    const name = authors.commons[author] || (authors[lang] && authors[lang][author]) || author
+    const name = getName(author, lang)
     return transliterate(name, script, lang)
   }
 }
