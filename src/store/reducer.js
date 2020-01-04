@@ -40,20 +40,22 @@ export const reducer = (state = initialState, action) => {
     case 'SET_ADMIN':
       return {...state, admin: action.admin }
     case 'ADD_QUOTE':
+      const allQuotes = [...state.allQuotes, action.quote]
       return {
         ...state,
-        allQuotes: [...state.allQuotes, action.quote],
+        allQuotes,
+        filteredQuotes: allQuotes.filter(q => q[state.lang]),
         allAuthors: state.allAuthors.add(action.quote.author)
       }
     case 'UPDATE_QUOTE': {
       const allQuotes = state.allQuotes.map(q =>
         q._id === action.quote._id ? action.quote : q
       )
-      return {...state, allQuotes}
+      return {...state, allQuotes, filteredQuotes: allQuotes.filter(q => q[state.lang])}
     }
     case 'DELETE_QUOTE': {
       const allQuotes = state.allQuotes.filter(q => q._id !== action._id)
-      return {...state, allQuotes}
+      return {...state, allQuotes, filteredQuotes: allQuotes.filter(q => q[state.lang])}
     }
     case 'FILTER_AUTHORS': {
       const filteredAuthors = [...state.allAuthors].filter(name => includes(name, action.phrase))

@@ -15,7 +15,7 @@
     "OPTIONAL": "opciono",
     "POST": "Pošalji",
     "POST_ERROR": "Doslo je do greške prolikom slanja, molimo pokušajte ponovo",
-    "REQUIRED_FIELDS": "Obavezni su author i citat.",
+    "REQUIRED_FIELDS": "Obavezni su autor i citat.",
     "SUCCESS_SAVED": "Hvala, citat je uspešno sačuvan.",
     "ADD_QUOTE": "Dodaj citat",
     "QUOTE_OF_THE_DAY": "Mudrost dana",

@@ -17,7 +17,6 @@ npm start
 
 ## TODO
 
-- nekad za random kaze nema prevod, iako postoji
 - kratiti preduge razlike
 - prikazati wiki link ako ima
 - dodati pwa
