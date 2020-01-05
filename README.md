@@ -17,7 +17,6 @@ npm start
 
 ## TODO
 
-- favicon
 - nova slika za deljenje
 - pre render stranica?
 - kratiti preduge razlike
