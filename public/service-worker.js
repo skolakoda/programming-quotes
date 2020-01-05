@@ -6,6 +6,8 @@ const RUNTIME = 'runtime'
 const PRECACHE_URLS = [
   '/', // Alias for index.html
   'index.html',
+  'Bukyvede-updated.ttf',
+  'chakra.svg'
 ]
 
 // The install handler takes care of precaching the resources we always need.
