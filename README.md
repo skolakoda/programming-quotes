@@ -17,7 +17,6 @@ npm start
 
 ## TODO
 
-- nova slika za deljenje
 - pre render stranica?
 - kratiti preduge razlike
 - automatski dodati izvor za konfucija
@@ -25,3 +24,4 @@ npm start
 - dodati pwa
 - suziti centralnu kolonu desno
 - footer
+- nova slika za deljenje
