@@ -17,6 +17,11 @@ npm start
 
 ## TODO
 
+- veci pading na dugmicima i linkovima za mobilne i inline block
+- dugme jos mudrosti na singl citat
+- favicon
+- nova slika za deljenje
+- pre render stranica?
 - kratiti preduge razlike
 - automatski dodati izvor za konfucija
 - prikazati wiki link ako ima
