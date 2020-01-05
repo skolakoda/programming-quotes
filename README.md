@@ -17,8 +17,6 @@ npm start
 
 ## TODO
 
-- footer
-- dugme jos mudrosti na singl citat
 - favicon
 - nova slika za deljenje
 - pre render stranica?
@@ -27,3 +25,4 @@ npm start
 - prikazati wiki link ako ima
 - dodati pwa
 - suziti centralnu kolonu desno
+- footer
