@@ -21,7 +21,8 @@ const RandomQuote = () => {
     fetch(`${API.randomLang}${lang}`)
       .then(res => res.json())
       .then(quote => setQuote(quote))
-  }, [lang, quote])
+      .catch(() => setQuote(getRandom(allQuotes, lang)))
+  }, [allQuotes, lang, quote])
 
   const setRandom = () => {
     setQuote(getRandom(allQuotes, lang))
