@@ -17,8 +17,8 @@ npm start
 
 ## TODO
 
-- automatski dodati izvor za konfucija
 - kratiti preduge razlike
+- automatski dodati izvor za konfucija
 - prikazati wiki link ako ima
 - dodati pwa
 - suziti centralnu kolonu desno
