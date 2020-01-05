@@ -1,5 +1,5 @@
 import {LS} from '../config/localstorage'
-import {includes, getName, compare} from '../shared/helpers'
+import {includes, getName, compare} from '../utils/helpers'
 
 const initialState = {
   lang: localStorage.getItem(LS.lang) || 'ms',

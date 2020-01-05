@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {findValue} from '../../shared/helpers'
+import {findValue} from '../../utils/helpers'
 
 const prepareInfo = (author, info) => {
   if (!info) return ''

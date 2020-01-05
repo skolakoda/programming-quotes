@@ -5,7 +5,7 @@ import Quote from './Quote'
 import Pagionation from './Pagination'
 import preloader from '../../assets/images/preloader.gif'
 import {useTranslate, useTransliterate} from '../../store/actions'
-import {smoothscroll} from '../../shared/helpers'
+import {smoothscroll} from '../../utils/helpers'
 
 const quotesPerPage = 10
 

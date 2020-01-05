@@ -17,11 +17,11 @@ npm start
 
 ## TODO
 
-- pre render stranica?
-- kratiti preduge razlike
-- automatski dodati izvor za konfucija
 - prikazati wiki link ako ima
-- dodati pwa
+- bolja slika za deljenje
 - suziti centralnu kolonu desno
 - footer
-- nova slika za deljenje
+
+sadrzaj:
+- kratiti preduge razlike
+- automatski dodati izvor za konfucija

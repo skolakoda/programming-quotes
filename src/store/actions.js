@@ -2,8 +2,8 @@ import { useSelector } from 'react-redux'
 
 import quotes from '../data/quotes.json'
 import translations from '../data/translations'
-import {getThumbnails, getName} from '../shared/helpers'
-import transliterate from '../shared/transliterate'
+import {getThumbnails, getName} from '../utils/helpers'
+import transliterate from '../utils/transliterate'
 import {LS} from '../config/localstorage'
 import {API, domain} from '../config/api'
 
