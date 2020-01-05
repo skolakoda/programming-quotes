@@ -7,7 +7,7 @@ const PRECACHE_URLS = [
   '/', // Alias for index.html
   'index.html',
   'Bukyvede-updated.ttf',
-  'chakra.svg'
+  '/chakra.svg'
 ]
 
 // The install handler takes care of precaching the resources we always need.

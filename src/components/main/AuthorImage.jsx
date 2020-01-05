@@ -28,10 +28,10 @@ const AuthorImage = ({author}) => {
           const obj = res.query.pages[key]
           if (obj.thumbnail) return setSrc(obj.thumbnail.source)
         }
-        if (!src) setSrc('chakra.svg')
+        if (!src) setSrc('/chakra.svg')
       })
       .catch(() => {
-        setSrc('chakra.svg')
+        setSrc('/chakra.svg')
         setLoaded(true) // istu sliku ne ucitava opet, pa ostaje false
       })
   }, [author, imgWidth, src, thumbnails])
