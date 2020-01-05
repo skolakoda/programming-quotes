@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import {useSelector} from 'react-redux'
-import { withRouter } from 'react-router'
 import {Link} from 'react-router-dom'
 
 import {API} from '../config/api'
@@ -32,4 +31,4 @@ const ShowQuote = ({match}) => {
   )
 }
 
-export default withRouter(ShowQuote)
+export default ShowQuote
