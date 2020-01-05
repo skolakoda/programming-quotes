@@ -8,6 +8,10 @@ nav a,
   display: block;
 }
 
+nav a {
+  padding: 2px;
+}
+
 nav .active {
   font-weight: bold;
 }
@@ -15,12 +19,13 @@ nav .active {
 @media(min-width: 800px) {
   nav a,
   .choose-lang label {
-    display: inline;
+    display: inline-block;
   }
   nav a {
     margin-right: 20px;
   }
   .choose-lang label {
     margin-left: 10px;
+    padding: 2px;
   }
 }

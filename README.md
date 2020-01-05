@@ -17,7 +17,7 @@ npm start
 
 ## TODO
 
-- veci pading na dugmicima i linkovima za mobilne i inline block
+- footer
 - dugme jos mudrosti na singl citat
 - favicon
 - nova slika za deljenje

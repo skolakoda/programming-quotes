@@ -57,6 +57,11 @@
   white-space: nowrap;
 }
 
+.icons a {
+  padding: 4px;
+  display: inline-block;
+}
+
 .edit-icon {
   display: inline-block;
   transform: rotateZ(90deg);
