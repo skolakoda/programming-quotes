@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import {useSelector} from 'react-redux'
 
+import chakra from '../../assets/images/chakra.svg'
+
 const mdMin = 800
 
 const AuthorImage = ({author}) => {
@@ -28,10 +30,10 @@ const AuthorImage = ({author}) => {
           const obj = res.query.pages[key]
           if (obj.thumbnail) return setSrc(obj.thumbnail.source)
         }
-        if (!src) setSrc('/chakra.svg')
+        if (!src) setSrc(chakra)
       })
       .catch(() => {
-        setSrc('/chakra.svg')
+        setSrc(chakra)
         setLoaded(true) // istu sliku ne ucitava opet, pa ostaje false
       })
   }, [author, imgWidth, src, thumbnails])
