@@ -2,7 +2,6 @@ import React from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 
 import {filterQuotes, filterAuthors, useTranslate} from '../../store/actions'
-import './Filters.css'
 
 const Filters = () => {
   const {phrase, authorPhrase} = useSelector(state => state)

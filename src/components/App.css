@@ -6,23 +6,6 @@
   padding-bottom: 20px;
 }
 
-.sidebar {
-  position: relative;
-}
-
-.toggle-button {
-  background: transparent;
-  border: 0;
-  position: absolute;
-  right: 0;
-  top: 4px;
-  z-index: 1;
-}
-
-.search {
-  font-size:1.5em;
-}
-
 @media (min-width: 1200px) {
   .App {
     display: flex;
@@ -39,14 +22,4 @@
   .sidebar {
     width: 22%;
   }
-
-  .sidebar-inner {
-    position:fixed;
-    top: 0;
-    bottom:0;
-    overflow-y:scroll;
-    overflow-x:hidden;
-    padding-right: 2%;
-    width: inherit;
-  }  
 }

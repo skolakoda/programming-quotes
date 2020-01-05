@@ -1,0 +1,48 @@
+.sidebar {
+  position: relative;
+}
+
+.toggle-button {
+  background: transparent;
+  border: 0;
+}
+
+.search-icon {
+  font-size:1.5em;
+}
+
+.filters {
+  margin-bottom: 20px;
+}
+
+.filters input,
+.filters button {
+  font-size: inherit;
+}
+
+.filters input {
+  width: 100%;
+}
+
+.filters h3 {
+  margin: 10px 0;
+}
+
+
+@media (min-width: 1200px) {
+  .toggle-button {
+    position: absolute;
+    right: 0;
+    top: 4px;
+    z-index: 1;
+  }
+  .sidebar-inner {
+    position:fixed;
+    top: 0;
+    bottom:0;
+    overflow-y:scroll;
+    overflow-x:hidden;
+    padding-right: 2%;
+    width: inherit;
+  }
+}

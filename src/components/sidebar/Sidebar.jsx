@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import Filters from './Filters'
 import AuthorThumb from './AuthorThumb'
 import {getAuthorThumbs} from '../../store/actions'
+import './Sidebar.css'
 
 const Sidebar = () => {
   const dispatch = useDispatch()
@@ -15,7 +16,7 @@ const Sidebar = () => {
     if (sidebarOpen && allAuthors.size) dispatch(getAuthorThumbs(allAuthors))
   }, [allAuthors, dispatch, sidebarOpen])
 
-  const searchIcon = <span role="img" aria-label="search" className="search">&#x1F50D;</span>
+  const searchIcon = <span role="img" aria-label="search" className="search-icon">&#x1F50D;</span>
 
   const toggle = () => {
     setSidebarOpen(!sidebarOpen)
