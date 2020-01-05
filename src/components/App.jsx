@@ -13,6 +13,8 @@ const App = () => {
   useEffect(() => {
     dispatch(fetchQuotes())
     dispatch(checkUser())
+    if ('serviceWorker' in navigator)
+      navigator.serviceWorker.register('service-worker.js')
   }, [dispatch])
 
   return (
