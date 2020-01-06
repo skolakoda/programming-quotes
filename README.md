@@ -18,12 +18,14 @@ npm start
 ## TODO
 
 - prikazati wiki link ako ima
+- izlistati citate bez prevoda
 - bolja slika za deljenje
 - suziti centralnu kolonu desno
-- footer
 
 sadrzaj:
+- proveriti svuda gramatiku sa http://steen.free.fr/interslavic/spell_checker.html
 - kratiti preduge razlike
 - tovariti dobrotoljublje
 - automatski dodati izvor za konfucija
 - izvor za antonija dobrotoljublje
+- uraditi masovno tagovanje, kao na znacima
