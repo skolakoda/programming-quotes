@@ -24,4 +24,6 @@ npm start
 
 sadrzaj:
 - kratiti preduge razlike
+- tovariti dobrotoljublje
 - automatski dodati izvor za konfucija
+- izvor za antonija dobrotoljublje
