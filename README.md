@@ -17,6 +17,8 @@ npm start
 
 ## TODO
 
+- veca dugmad paginacija
+-chexbox i visina i cenrtiranje na sidebar
 - prikazati wiki link ako ima
 - izlistati citate bez prevoda
 - bolja slika za deljenje
