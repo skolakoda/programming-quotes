@@ -18,11 +18,14 @@ npm start
 ## TODO
 
 - prikazati wiki link ako ima
+- unaprediti pretragu autora da uključi prikazani naziv, npr buda
 - izlistati citate bez prevoda
 - bolja slika za deljenje
 - suziti centralnu kolonu desno
+- mozda jezike u srbsky i (novo)slovjansky
 
 sadrzaj:
+- zaratustra izvor
 - proveriti svuda gramatiku sa http://steen.free.fr/interslavic/spell_checker.html
 - kratiti preduge razlike
 - tovariti dobrotoljublje
