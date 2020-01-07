@@ -1,6 +1,6 @@
 [![](screen.png)](https://mudroljub.github.io/svetemisli)
 
-# Svete misli / Svete myslji
+# Svete mysli
 
 Zbirka citata osnivača velikih religija, mudraca i svetaca.
 
@@ -17,6 +17,8 @@ npm start
 
 ## TODO
 
+- veca dugmad paginacija
+- chexbox i visina i cenrtiranje na sidebar
 - prikazati wiki link ako ima
 - unaprediti pretragu autora da uključi prikazani naziv, npr buda
 - izlistati citate bez prevoda
