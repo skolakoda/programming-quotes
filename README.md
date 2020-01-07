@@ -17,14 +17,14 @@ npm start
 
 ## TODO
 
-- veca dugmad paginacija
-- chexbox i visina i cenrtiranje na sidebar
+- chexbox i visina i cenrtiranje na sidebar, filtriranje po autorima
 - prikazati wiki link ako ima
 - unaprediti pretragu autora da uključi prikazani naziv, npr buda
 - izlistati citate bez prevoda
 - bolja slika za deljenje
 - suziti centralnu kolonu desno
-- mozda jezike u srbsky i (novo)slovjansky
+- dodati pretragu po izvoru
+- isprobati grid fotogaleriju za citate, sa veličinom slova obrnuto srazmernom dužini citata
 
 sadrzaj:
 - zaratustra izvor
