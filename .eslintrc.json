@@ -49,6 +49,7 @@
     "prefer-const": "warn",
     "prefer-destructuring": ["warn", {"object": true, "array": false}],
     "prefer-spread": "error",
+    "quote-props": ["warn", "as-needed"],
     "quotes": ["warn", "single"],
     "semi": ["warn", "never"],
     "space-before-blocks": "warn",
