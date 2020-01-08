@@ -11,7 +11,7 @@ const Sidebar = () => {
   const dispatch = useDispatch()
   const {thumbnails, allAuthors, filteredAuthors} = useSelector(state => state)
 
-  const [sidebarOpen, setSidebarOpen] = useState(true)
+  const [sidebarOpen, setSidebarOpen] = useState(false)
   const [selectedAuthors, setSelectedAuthors] = useState(new Set())
 
   useEffect(() => {

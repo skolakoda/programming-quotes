@@ -6,26 +6,24 @@ import {useTranslate} from '../store/actions'
 import {API} from '../config/api'
 import {smoothscroll} from '../utils/helpers'
 
-const getRandom = (allQuotes, lang) => {
-  const langQuotes = allQuotes.filter(q => q[lang])
-  return langQuotes[Math.floor(Math.random() * langQuotes.length)]
-}
+const getRandom = filteredQuotes =>
+  filteredQuotes[Math.floor(Math.random() * filteredQuotes.length)]
 
 const RandomQuote = () => {
-  const {allQuotes, lang} = useSelector(state => state)
+  const {filteredQuotes, lang} = useSelector(state => state)
   const translate = useTranslate()
-  const [quote, setQuote] = useState(getRandom(allQuotes, lang))
+  const [quote, setQuote] = useState(getRandom(filteredQuotes))
 
   useEffect(() => {
     if (quote) return
     fetch(`${API.randomLang}${lang}`)
       .then(res => res.json())
       .then(quote => setQuote(quote))
-      .catch(() => setQuote(getRandom(allQuotes, lang)))
-  }, [allQuotes, lang, quote])
+      .catch(() => setQuote(getRandom(filteredQuotes)))
+  }, [filteredQuotes, lang, quote])
 
   const setRandom = () => {
-    setQuote(getRandom(allQuotes, lang))
+    setQuote(getRandom(filteredQuotes))
     smoothscroll()
   }
 
