@@ -39,7 +39,7 @@ export const deleteQuote = _id => ({type: 'DELETE_QUOTE', _id})
 
 export const filterAuthors = phrase => ({type: 'FILTER_AUTHORS', phrase})
 
-export const filterQuotes = phrase => ({type: 'FILTER_QUOTES', phrase})
+export const filterQuotes = (phrase, selectedAuthors) => ({type: 'FILTER_QUOTES', phrase, selectedAuthors})
 
 /* THUNK */
 

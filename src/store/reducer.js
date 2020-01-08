@@ -13,7 +13,6 @@ const initialState = {
   phrase: '',
   authorPhrase: '',
   filteredAuthors: [],
-  sidebarOpen: false,
   isFetching: false,
 }
 
@@ -106,7 +105,12 @@ export const reducer = (state = initialState, action) => {
       }
     }
     case 'FILTER_QUOTES': {
-      const filteredQuotes = state.allQuotes.filter(q => includes(q[state.lang], action.phrase))
+      const {phrase, selectedAuthors} = action
+      const filteredQuotes = state.allQuotes
+        .filter(q =>
+          (phrase ? includes(q[state.lang], phrase) : true) &&
+          (selectedAuthors ? selectedAuthors.has(q.author) : true)
+        )
       return {
         ...state,
         filteredQuotes,

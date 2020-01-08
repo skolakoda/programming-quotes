@@ -17,7 +17,7 @@ npm start
 
 ## TODO
 
-- chexbox na sidebar, filtriranje po autorima
+- filtriranje po autorima
 - prikazati wiki link ako ima
 - unaprediti pretragu autora da uključi prikazani naziv, npr buda
 - izlistati citate bez prevoda

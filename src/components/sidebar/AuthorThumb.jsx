@@ -5,11 +5,9 @@ import {useAuthorName} from '../../store/actions'
 import unknownImage from '../../assets/images/unknown.jpg'
 import './AuthorThumb.css'
 
-const AuthorThumb = ({ author, image }) => {
+const AuthorThumb = ({ author, image, handleCheck }) => {
   const getName = useAuthorName()
   const link = `/author/${author.replace(/ /g, '_')}`
-
-  // TODO: selektovati autore ako su u filteredAuthors
 
   return (
     <div className="author-wrap">
@@ -18,7 +16,7 @@ const AuthorThumb = ({ author, image }) => {
         {getName(author)}
       </Link>
       <label>
-        <input type="checkbox" value={author} checked={Math.random() > .5} />
+        <input type="checkbox" value={author} onChange={handleCheck} />
       </label>
     </div>
   )

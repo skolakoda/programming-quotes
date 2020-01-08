@@ -4,13 +4,15 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import Filters from './Filters'
 import AuthorThumb from './AuthorThumb'
-import {getAuthorThumbs} from '../../store/actions'
+import {getAuthorThumbs, filterQuotes} from '../../store/actions'
 import './Sidebar.css'
 
 const Sidebar = () => {
   const dispatch = useDispatch()
   const {thumbnails, allAuthors, filteredAuthors} = useSelector(state => state)
-  const [sidebarOpen, setSidebarOpen] = useState(false)
+
+  const [sidebarOpen, setSidebarOpen] = useState(true)
+  const [selectedAuthors, setSelectedAuthors] = useState(new Set())
 
   useEffect(() => {
     if (sidebarOpen && allAuthors.size) dispatch(getAuthorThumbs(allAuthors))
@@ -22,11 +24,19 @@ const Sidebar = () => {
     setSidebarOpen(!sidebarOpen)
   }
 
+  const handleCheck = ({target}) => {
+    const method = target.checked ? 'add' : 'delete'
+    selectedAuthors[method](target.value)
+    setSelectedAuthors(selectedAuthors)
+    dispatch(filterQuotes('', selectedAuthors))
+  }
+
   const authors = filteredAuthors.map(author =>
     <AuthorThumb
       key={author}
       author={author}
       image={thumbnails.get(author)}
+      handleCheck={handleCheck}
     />
   )
 
