@@ -10,10 +10,15 @@ const AuthorThumb = ({ author, image }) => {
   const link = `/author/${author.replace(/ /g, '_')}`
 
   return (
-    <Link className="author" to={link}>
-      <img src={image || unknownImage} alt="author" />
-      {getName(author)}
-    </Link>
+    <div className="author-wrap">
+      <Link className="author" to={link}>
+        <img src={image || unknownImage} alt="author" />
+        {getName(author)}
+      </Link>
+      <label>
+        <input type="checkbox" />
+      </label>
+    </div>
   )
 }
 
