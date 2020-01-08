@@ -34,7 +34,9 @@ export const get = (obj, lev1, lev2) => ((obj || {})[lev1] || {})[lev2]
 
 export const getName = (name, lang) => get(authors, name, 'common') || get(authors, name, lang) || name
 
-export const getSrcSize = (src = '', size) => src.replace(/\d+px/, `${size}px`)
+export const getSize = (src = '', size) => src.replace(/\d+px/, `${size}px`)
+
+export const getImg = author => get(authors, author, 'src')
 
 /**
 @param authors: array
@@ -45,12 +47,12 @@ export function getThumbnails(authors) {
     .then(res => res.json())
     .then(res => {
       if (!res.query.pages) return
-      const thumbnails = new Map()
+      const mapa = new Map()
       for (const key in res.query.pages) {
         const obj = res.query.pages[key]
         if (!obj.thumbnail) continue
-        thumbnails.set(obj.title, obj.thumbnail.source)
+        mapa.set(obj.title, obj.thumbnail.source)
       }
-      return thumbnails
+      return mapa
     })
 }

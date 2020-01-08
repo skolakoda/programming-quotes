@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux'
 
 import quotes from '../data/quotes.json'
 import translations from '../data/translations'
-import {getThumbnails, getName} from '../utils/helpers'
+import {getThumbnails, getName, getImg} from '../utils/helpers'
 import transliterate from '../utils/transliterate'
 import {LS} from '../config/localstorage'
 import {API, domain} from '../config/api'
@@ -55,16 +55,19 @@ export const logout = () => dispatch => {
 
 export const getAuthorThumbs = allAuthors => dispatch => {
   const wikiApiLimit = 50
-  // console.log(authors)
-  // console.log(allAuthors) // ovo je set
-  // zatraziti samo za koje nema
+  const withoutImg = [...allAuthors].filter(x => !getImg(x))
+  console.log(withoutImg)
+
   const promises = []
-  for (let i = 0; i < [...allAuthors].length; i += wikiApiLimit)
-    promises.push(getThumbnails([...allAuthors].slice(i, i + wikiApiLimit)))
+  for (let i = 0; i < [...withoutImg].length; i += wikiApiLimit)
+    promises.push(getThumbnails([...withoutImg].slice(i, i + wikiApiLimit)))
   Promise.all(promises)
-    .then(data =>
+    .then(data => {
+      // spojiti dobijene src autora sa postojecim
+      // mozda dodati akciju ADD_THUMBS
+      // TODO: ukloniti thumbnails iz stora, prebaciti u lokalno stanje Sidebar-a
       dispatch(setThumbnails(data.reduce((a, b) => new Map([...a, ...b]))))
-    )
+    })
 }
 
 export const fetchQuotes = () => async dispatch => {

@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react'
 
-import {get, getSrcSize} from '../../utils/helpers'
-import authors from '../../data/authors'
+import {getImg, getSize} from '../../utils/helpers'
 import chakra from '../../assets/images/chakra.svg'
 
 const mdMin = 800
@@ -12,7 +11,7 @@ const AuthorImage = ({author}) => {
   const [src, setSrc] = useState(null)
 
   useEffect(() => {
-    const nextSrc = getSrcSize(get(authors, author, 'src'), imgWidth)
+    const nextSrc = getSize(getImg(author), imgWidth)
 
     if (nextSrc === src) return // same image, do nothing
 
