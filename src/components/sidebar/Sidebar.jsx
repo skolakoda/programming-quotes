@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react'
-import {Link} from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 
 import Filters from './Filters'
@@ -17,8 +16,6 @@ const Sidebar = () => {
   useEffect(() => {
     if (sidebarOpen && allAuthors.size) dispatch(getAuthorThumbs(allAuthors))
   }, [allAuthors, dispatch, sidebarOpen])
-
-  const searchIcon = <span role="img" aria-label="search" className="search-icon">&#x1F50D;</span>
 
   const toggle = () => {
     setSidebarOpen(!sidebarOpen)
@@ -43,10 +40,7 @@ const Sidebar = () => {
   return (
     <aside className="sidebar">
       <button onClick={toggle} className="toggle-button">
-        {sidebarOpen || window.location.hash.includes('author') ?
-          searchIcon
-          : <Link to="/all-quotes" className="no-link" replace>{searchIcon}</Link>
-        }
+        <span role="img" aria-label="search" className="search-icon">&#x1F50D;</span>
       </button>
       {sidebarOpen &&
         <div className="sidebar-inner">

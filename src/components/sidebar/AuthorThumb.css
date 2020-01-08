@@ -18,6 +18,7 @@
   cursor: pointer;
   display: flex;
   margin: 8px 0;
+  padding-right: 16px;
   text-decoration: none;
 }
 
