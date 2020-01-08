@@ -97,11 +97,13 @@ export const reducer = (state = initialState, action) => {
       }
     }
     case 'FILTER_AUTHORS': {
-      const filteredAuthors = [...state.allAuthors].filter(name => includes(name, action.phrase))
+      const {phrase} = action
+      const filteredAuthors = [...state.allAuthors]
+        .filter(name => includes(name, phrase) || includes(getName(name, state.lang), phrase))
       return {
         ...state,
         filteredAuthors,
-        authorPhrase: action.phrase
+        authorPhrase: phrase
       }
     }
     case 'FILTER_QUOTES': {

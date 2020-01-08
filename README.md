@@ -17,10 +17,9 @@ npm start
 
 ## TODO
 
-- filtriranje po autorima
+- dodati ćiriličnu pretragu
 - dodati rucno slike, wiki api nekad pukne
 - prikazati wiki link ako ima
-- unaprediti pretragu autora da uključi prikazani naziv, npr buda
 - izlistati citate bez prevoda
 - bolja slika za deljenje
 - suziti centralnu kolonu desno
