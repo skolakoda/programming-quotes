@@ -55,6 +55,9 @@ export const logout = () => dispatch => {
 
 export const getAuthorThumbs = allAuthors => dispatch => {
   const wikiApiLimit = 50
+  // console.log(authors)
+  // console.log(allAuthors) // ovo je set
+  // zatraziti samo za koje nema
   const promises = []
   for (let i = 0; i < [...allAuthors].length; i += wikiApiLimit)
     promises.push(getThumbnails([...allAuthors].slice(i, i + wikiApiLimit)))
