@@ -8,11 +8,11 @@ import {useAuthorName} from '../store/actions'
 import './Author.css'
 
 const Author = ({match}) => {
-  const {filteredQuotes} = useSelector(state => state)
+  const {allQuotes, lang} = useSelector(state => state)
   const getName = useAuthorName()
 
   const author = match.params.name.replace(/_/g, ' ')
-  const filtered = filteredQuotes.filter(q => q.author === author)
+  const filtered = allQuotes.filter(q => q[lang] && q.author === author)
 
   return (
     <main>
