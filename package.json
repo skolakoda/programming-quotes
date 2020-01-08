@@ -5,7 +5,7 @@
   "repository": "https://github.com/mudroljub/svetemisli",
   "license": "MIT",
   "scripts": {
-    "save": "wget https://programming-quotes-api.herokuapp.com/svetemisli/ -d src/data/quotes.json",
+    "save": "wget https://programming-quotes-api.herokuapp.com/svetemisli/ -O src/data/quotes.json",
     "predeploy": "npm run build",
     "dev": "REACT_APP_ENV=development react-scripts start",
     "start": "REACT_APP_ENV=production react-scripts start",
