@@ -29,8 +29,10 @@ export function compare(a, b) {
   return 0
 }
 
-export const getName = (author, lang) =>
-  authors.commons[author] || (authors[lang] && authors[lang][author]) || author
+// get value from nested object
+const get = (obj, lev1, lev2) => ((obj || {})[lev1] || {})[lev2]
+
+export const getName = (name, lang) => get(authors, name, 'common') || get(authors, name, lang) || name
 
 /**
 @param authors: array

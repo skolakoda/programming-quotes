@@ -1,29 +1,94 @@
 {
-  "commons": {
-    "Dželaludin Rumi": "Rumi",
-    "Gautama Buddha": "Buda",
-    "Dōgen": "Dogen",
-    "Isus": "Ješua",
-    "Jiddu Krishnamurti": "Krišnamurti",
-    "Konfucije": "Kong Fu C'",
-    "Lao Tzu": "Lao C'",
-    "Linji": "Linči",
-    "Solomon": "Šalomon",
-    "Sveti Nuri": "Nuri",
-    "Shunryū Suzuki": "Šunrju Suzuki",
-    "Zhuang Zhou": "Čuang C'"
+  "Dželaludin Rumi": {
+    "imgSrc": "",
+    "common": "Rumi"
   },
-  "ms": {
-    "Antonije Veliki": "Antony Veliky",
-    "Ađan Ča": "Adžan Ča",
-    "Isak Sirin": "Isaak Sirijsky",
-    "Johanan Krstitelj": "Johanan Krestitelj",
-    "Jakov Pravedni": "Jakov Spravědlivy",
-    "Makarije Egipatski": "Makary Egiptsky",
-    "Maksim Ispovednik": "Maksim Izpovědnik",
-    "Muhamed": "Muhamad",
-    "Pavle iz Tarsa": "Pavl od Tarsa",
-    "Simeon Novi Teolog": "Simeon Novy Teolog",
-    "Zun-Nun Egipatski": "Zun-Nun Egiptsky"
+  "Gautama Buddha": {
+    "imgSrc": "",
+    "common": "Buda"
+  },
+  "Dōgen": {
+    "imgSrc": "",
+    "common": "Dogen"
+  },
+  "Isus": {
+    "imgSrc": "",
+    "common": "Ješua"
+  },
+  "Jiddu Krishnamurti": {
+    "imgSrc": "",
+    "common": "Krišnamurti"
+  },
+  "Konfucije": {
+    "imgSrc": "",
+    "common": "Kong Fu C'"
+  },
+  "Lao Tzu": {
+    "imgSrc": "",
+    "common": "Lao C'"
+  },
+  "Linji": {
+    "imgSrc": "",
+    "common": "Linči"
+  },
+  "Solomon": {
+    "imgSrc": "",
+    "common": "Šalomon"
+  },
+  "Sveti Nuri": {
+    "imgSrc": "",
+    "common": "Nuri"
+  },
+  "Shunryū Suzuki": {
+    "imgSrc": "",
+    "common": "Šunrju Suzuki"
+  },
+  "Zhuang Zhou": {
+    "imgSrc": "",
+    "common": "Čuang C'"
+  },
+  "Antonije Veliki": {
+    "imgSrc": "",
+    "ms": "Antony Veliky"
+  },
+  "Ađan Ča": {
+    "imgSrc": "",
+    "ms": "Adžan Ča"
+  },
+  "Isak Sirin": {
+    "imgSrc": "",
+    "ms": "Isaak Sirijsky"
+  },
+  "Johanan Krstitelj": {
+    "imgSrc": "",
+    "ms": "Johanan Krestitelj"
+  },
+  "Jakov Pravedni": {
+    "imgSrc": "",
+    "ms": "Jakov Spravědlivy"
+  },
+  "Makarije Egipatski": {
+    "imgSrc": "",
+    "ms": "Makary Egiptsky"
+  },
+  "Maksim Ispovednik": {
+    "imgSrc": "",
+    "ms": "Maksim Izpovědnik"
+  },
+  "Muhamed": {
+    "imgSrc": "",
+    "ms": "Muhamad"
+  },
+  "Pavle od Tarsa": {
+    "imgSrc": "",
+    "ms": "Pavl od Tarsa"
+  },
+  "Simeon Novi Teolog": {
+    "imgSrc": "",
+    "ms": "Simeon Novy Teolog"
+  },
+  "Zun-Nun Egipatski": {
+    "imgSrc": "",
+    "ms": "Zun-Nun Egiptsky"
   }
 }

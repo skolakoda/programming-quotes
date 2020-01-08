@@ -17,7 +17,6 @@ npm start
 
 ## TODO
 
-- dodati ćiriličnu pretragu
 - dodati rucno slike, wiki api nekad pukne
 - prikazati wiki link ako ima
 - izlistati citate bez prevoda

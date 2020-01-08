@@ -6,14 +6,14 @@ import unknownImage from '../../assets/images/unknown.jpg'
 import './AuthorThumb.css'
 
 const AuthorThumb = ({ author, image, handleCheck }) => {
-  const getName = useAuthorName()
+  const authorName = useAuthorName()
   const link = `/author/${author.replace(/ /g, '_')}`
 
   return (
     <div className="author-wrap">
       <Link className="author" to={link}>
         <img src={image || unknownImage} alt="author" />
-        {getName(author)}
+        {authorName(author)}
       </Link>
       <label>
         <input type="checkbox" value={author} onChange={handleCheck} />
