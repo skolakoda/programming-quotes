@@ -1,8 +1,10 @@
 .author {
+  align-items: center;
   color: inherit;
   cursor: pointer;
-  display: block;
+  display: flex;
   margin: 8px 0;
+  min-height: 40px;
   text-decoration: none;
 }
 
