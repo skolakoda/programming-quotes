@@ -9,6 +9,8 @@ const AuthorThumb = ({ author, image }) => {
   const getName = useAuthorName()
   const link = `/author/${author.replace(/ /g, '_')}`
 
+  // TODO: selektovati autore ako su u filteredAuthors
+
   return (
     <div className="author-wrap">
       <Link className="author" to={link}>
@@ -16,7 +18,7 @@ const AuthorThumb = ({ author, image }) => {
         {getName(author)}
       </Link>
       <label>
-        <input type="checkbox" />
+        <input type="checkbox" value={author} checked={Math.random() > .5} />
       </label>
     </div>
   )
