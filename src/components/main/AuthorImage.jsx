@@ -1,27 +1,27 @@
 import React, {useState, useEffect} from 'react'
-import {useSelector} from 'react-redux'
 
+import {getImg, getSize} from '../../utils/helpers'
 import chakra from '../../assets/images/chakra.svg'
 
 const mdMin = 800
+const imgWidth = window.innerWidth < mdMin ? window.innerWidth : 250
 
 const AuthorImage = ({author}) => {
-  const {thumbnails} = useSelector(state => state)
-  const imgWidth = window.innerWidth < mdMin ? window.innerWidth : 250
-
   const [loaded, setLoaded] = useState(false)
-  const [src, setSrc] = useState('')
+  const [src, setSrc] = useState(null)
 
   useEffect(() => {
-    const hasImage = () => thumbnails.size && thumbnails.get(author)
-    const getSrc = () => thumbnails.get(author).replace(/\d+px/, `${imgWidth}px`)
+    const nextSrc = getSize(getImg(author), imgWidth)
 
-    if (hasImage() && getSrc() === src) return // same image, do nothing
+    if (nextSrc === src) return // same image, do nothing
 
     setLoaded(false)
-    if (hasImage()) return setSrc(getSrc()) // load different image size
+    if (nextSrc) { // use nextSrc
+      setSrc(nextSrc)
+      return
+    }
 
-    // else ask api for new src
+    // ask api for src
     fetch(`https://sh.wikipedia.org/w/api.php?action=query&titles=${author}&prop=pageimages&format=json&pithumbsize=${imgWidth}&origin=*`)
       .then(res => res.json())
       .then(res => {
@@ -36,7 +36,7 @@ const AuthorImage = ({author}) => {
         setSrc(chakra)
         setLoaded(true) // istu sliku ne ucitava opet, pa ostaje false
       })
-  }, [author, imgWidth, src, thumbnails])
+  }, [author, src])
 
   return (
     <img

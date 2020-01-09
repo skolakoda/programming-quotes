@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux'
 
 import quotes from '../data/quotes.json'
 import translations from '../data/translations'
-import {getThumbnails, getName} from '../utils/helpers'
+import {getName} from '../utils/helpers'
 import transliterate from '../utils/transliterate'
 import {LS} from '../config/localstorage'
 import {API, domain} from '../config/api'
@@ -14,8 +14,6 @@ const fetchQuotesRequest = () => ({type: 'FETCH_QUOTES_REQUEST'})
 const fetchQuotesFailure = error => ({type: 'FETCH_QUOTES_FAILURE', error})
 
 const fetchQuotesSuccess = () => ({type: 'FETCH_QUOTES_SUCCESS'})
-
-const setThumbnails = thumbnails => ({type: 'SET_THUMBNAILS', thumbnails})
 
 export const setLang = lang => {
   localStorage.setItem(LS.lang, lang)
@@ -39,7 +37,7 @@ export const deleteQuote = _id => ({type: 'DELETE_QUOTE', _id})
 
 export const filterAuthors = phrase => ({type: 'FILTER_AUTHORS', phrase})
 
-export const filterQuotes = phrase => ({type: 'FILTER_QUOTES', phrase})
+export const filterQuotes = (phrase, selectedAuthors) => ({type: 'FILTER_QUOTES', phrase, selectedAuthors})
 
 /* THUNK */
 
@@ -51,17 +49,6 @@ export const setUser = (token, admin = false) => dispatch => {
 export const logout = () => dispatch => {
   dispatch(setToken(''))
   dispatch(setAdmin(false))
-}
-
-export const getAuthorThumbs = allAuthors => dispatch => {
-  const wikiApiLimit = 50
-  const promises = []
-  for (let i = 0; i < [...allAuthors].length; i += wikiApiLimit)
-    promises.push(getThumbnails([...allAuthors].slice(i, i + wikiApiLimit)))
-  Promise.all(promises)
-    .then(data =>
-      dispatch(setThumbnails(data.reduce((a, b) => new Map([...a, ...b]))))
-    )
 }
 
 export const fetchQuotes = () => async dispatch => {

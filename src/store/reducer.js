@@ -7,13 +7,11 @@ const initialState = {
   allQuotes: [],
   filteredQuotes: [],
   allAuthors: new Set(),
-  thumbnails: new Map(),
   token: localStorage.getItem(LS.token),
   admin: false,
   phrase: '',
   authorPhrase: '',
   filteredAuthors: [],
-  sidebarOpen: false,
   isFetching: false,
 }
 
@@ -47,8 +45,6 @@ export const reducer = (state = initialState, action) => {
         filteredAuthors
       }
     }
-    case 'SET_THUMBNAILS':
-      return {...state, thumbnails: action.thumbnails }
     case 'SET_LANGUAGE':
       const {lang} = action
       const filteredAuthors = new Set()
@@ -98,15 +94,22 @@ export const reducer = (state = initialState, action) => {
       }
     }
     case 'FILTER_AUTHORS': {
-      const filteredAuthors = [...state.allAuthors].filter(name => includes(name, action.phrase))
+      const {phrase} = action
+      const filteredAuthors = [...state.allAuthors]
+        .filter(name => includes(name, phrase) || includes(getName(name, state.lang), phrase))
       return {
         ...state,
         filteredAuthors,
-        authorPhrase: action.phrase
+        authorPhrase: phrase
       }
     }
     case 'FILTER_QUOTES': {
-      const filteredQuotes = state.allQuotes.filter(q => includes(q[state.lang], action.phrase))
+      const {phrase, selectedAuthors} = action
+      const filteredQuotes = state.allQuotes
+        .filter(q =>
+          (phrase ? includes(q[state.lang], phrase) : true) &&
+          (selectedAuthors ? selectedAuthors.has(q.author) : true)
+        )
       return {
         ...state,
         filteredQuotes,

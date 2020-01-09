@@ -1,22 +1,39 @@
+.author-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+.author-wrap:nth-child(odd) {
+  background: #e5e5e5;
+}
+
+.author-wrap:nth-child(even) {
+  background: #f5f5f5;
+}
+
 .author {
   align-items: center;
   color: inherit;
   cursor: pointer;
   display: flex;
   margin: 8px 0;
-  min-height: 40px;
+  padding-right: 8px;
   text-decoration: none;
-}
-
-.author:nth-child(odd) {
-  background: #e5e5e5;
-}
-
-.author:nth-child(even) {
-  background: #f5f5f5;
 }
 
 .author img {
   margin-right: 8px;
   width: 30px;
+}
+
+.author-wrap label {
+  align-items: center;
+  background: rgba(0,0,0,.02);
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-end;
+  min-height: 40px;
+  padding-right: 20px;
+  width: 60px;
 }
