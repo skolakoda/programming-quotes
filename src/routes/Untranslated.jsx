@@ -7,12 +7,12 @@ import Quotes from '../components/main/Quotes'
 const Untranslated = () => {
   const {allQuotes, lang} = useSelector(state => state)
   const translate = useTranslate()
-  const untranslated = allQuotes.filter(q => !q[lang])
+  const neprevedeno = allQuotes.filter(q => !q[lang])
 
   return (
     <main>
       <h1>{translate('UNTRANSLATED')}</h1>
-      <Quotes quotes={untranslated} />
+      <Quotes quotes={neprevedeno} />
     </main>
   )
 }

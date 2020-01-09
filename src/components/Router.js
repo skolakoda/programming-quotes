@@ -15,14 +15,14 @@ import Untranslated from '../routes/Untranslated'
 const Router = () => (
   <Switch>
     <Route path='/' exact component={RandomQuote} />
-    <Route path='/all-quotes' component={AllQuotes} />
-    <Route path='/login' component={Login} />
-    <Route path='/quote/:id' component={ShowQuote} />
-    <Route path='/author/:name' component={Author} />
-    <Route path='/add-quote' component={AddQuote} />
-    <Route path='/untranslated' component={Untranslated} />
-    <Route path='/edit-quote/:id' component={EditQuote} />
-    <Route path='/profile' component={Profile} />
+    <Route path='/citati' component={AllQuotes} />
+    <Route path='/prijava' component={Login} />
+    <Route path='/citat/:id' component={ShowQuote} />
+    <Route path='/autor/:name' component={Author} />
+    <Route path='/dodaj-citat' component={AddQuote} />
+    <Route path='/neprevedeno' component={Untranslated} />
+    <Route path='/edituj-citat/:id' component={EditQuote} />
+    <Route path='/moj-profil' component={Profile} />
     <Route path='/auth/:service/:token' component={Auth} />
   </Switch>
 )
