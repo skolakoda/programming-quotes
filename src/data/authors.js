@@ -1,4 +1,7 @@
 export default {
+  'Huangbo Xiyun': {
+    common: 'Huangbo Hsijun'
+  },
   'Dželaludin Rumi': {
     src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Mevlana_Statue%2C_Buca.jpg/37px-Mevlana_Statue%2C_Buca.jpg',
     common: 'Rumi'
