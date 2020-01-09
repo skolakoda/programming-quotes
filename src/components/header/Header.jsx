@@ -24,7 +24,7 @@ const Header = () => {
         <NavLink to="/" replace={true} activeClassName="active" exact>{translate('QUOTE_OF_THE_DAY')}</NavLink>
         <NavLink to="/all-quotes" activeClassName="active">{translate('ALL_QUOTES')}</NavLink>
         {admin && <NavLink to="/add-quote" activeClassName="active">{translate('ADD_QUOTE')}</NavLink>}
-        <NavLink to="/add-translation" activeClassName="active">{translate('ADD_TRANSLATION')}</NavLink>
+        <NavLink to="/untranslated" activeClassName="active">{translate('UNTRANSLATED')}</NavLink>
         {token
           ? <NavLink to="/profile" activeClassName="active">{translate('PROFILE')}</NavLink>
           : <NavLink to="/login" activeClassName="active">{translate('LOGIN')}</NavLink>

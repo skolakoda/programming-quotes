@@ -10,7 +10,7 @@ import RandomQuote from '../routes/RandomQuote'
 import Login from '../routes/Login'
 import Profile from '../routes/Profile'
 import Auth from '../routes/Auth'
-import AddTranslation from '../routes/AddTranslation'
+import Untranslated from '../routes/Untranslated'
 
 const Router = () => (
   <Switch>
@@ -20,7 +20,7 @@ const Router = () => (
     <Route path='/quote/:id' component={ShowQuote} />
     <Route path='/author/:name' component={Author} />
     <Route path='/add-quote' component={AddQuote} />
-    <Route path='/add-translation' component={AddTranslation} />
+    <Route path='/untranslated' component={Untranslated} />
     <Route path='/edit-quote/:id' component={EditQuote} />
     <Route path='/profile' component={Profile} />
     <Route path='/auth/:service/:token' component={Auth} />

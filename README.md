@@ -18,6 +18,7 @@ npm start
 ## TODO
 
 - izlistati citate bez prevoda
+- prevesti rute na slovenski?
 - footer sa kontaktom i pozivom na pomoc u prevodjenju i poboljsanju prevoda
 - bolja slika za deljenje
 - dodati pretragu po izvoru

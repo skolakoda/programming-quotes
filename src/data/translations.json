@@ -1,7 +1,7 @@
 {
   "sr": {
     "ADD_QUOTE": "Dodaj citat",
-    "ADD_TRANSLATION": "Dodaj prevod",
+    "UNTRANSLATED": "Neprevedeno",
     "ADMIN_REQUIRED": "Moraš biti administrator.",
     "ALL_QUOTES": "Svi citati",
     "ALREADY_EXISTS": "Citat već postoji.",
@@ -40,7 +40,7 @@
   },
   "ms": {
     "ADD_QUOTE": "Dodaj citat",
-    "ADD_TRANSLATION": "Dodaj prěvod",
+    "UNTRANSLATED": "Neprěvedeno",
     "ADMIN_REQUIRED": "Moraš byti administrator.",
     "ALL_QUOTES": "Vsi citati",
     "ALREADY_EXISTS": "Citat uže obstaja.",
