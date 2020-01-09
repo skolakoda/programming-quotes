@@ -36,7 +36,7 @@ const EditForm = ({ quote }) => {
         if (res.message !== 'SUCCESS_SAVED') return
         const action = obj._id ? updateQuote : addQuote
         dispatch(action(res.quote))
-        history.push(`/quote/${res.quote._id}`)
+        history.push(`/citat/${res.quote._id}`)
       })
       .catch(err => setResponse(translate('NETWORK_PROBLEM')))
   }
@@ -45,7 +45,7 @@ const EditForm = ({ quote }) => {
     <div>
       <h1>
         {translate(quote ? 'EDIT_QUOTE' : 'ADD_QUOTE')}
-        {quote && <small><sup>(<Link to={`/quote/${quote._id}`}>show</Link>)</sup></small>}
+        {quote && <small><sup>(<Link to={`/citat/${quote._id}`}>show</Link>)</sup></small>}
       </h1>
 
       <form onSubmit={postQuote}>

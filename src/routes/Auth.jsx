@@ -20,7 +20,7 @@ const Auth = ({match}) => {
     <main>
       <h1>Auth</h1>
       <p>{translate('SUCCESSFULLY_LOGIN')}</p>
-      <code>goto</code> <Link to="/profile">{translate('PROFILE')}</Link>
+      <code>goto</code> <Link to="/moj-profil">{translate('PROFILE')}</Link>
     </main>
   )
 }

@@ -7,7 +7,7 @@ import './AuthorThumb.css'
 
 const AuthorThumb = ({ author, image, handleCheck }) => {
   const authorName = useAuthorName()
-  const link = `/author/${author.replace(/ /g, '_')}`
+  const link = `/autor/${author.replace(/ /g, '_')}`
 
   return (
     <div className="author-wrap">

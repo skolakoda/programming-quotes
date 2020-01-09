@@ -17,9 +17,8 @@ npm start
 
 ## TODO
 
-- izlistati citate bez prevoda
+- footer sa kontaktom i pozivom na pomoc u prevodjenju i poboljsanju prevoda
 - bolja slika za deljenje
-- suziti centralnu kolonu desno
 - dodati pretragu po izvoru
 - isprobati grid fotogaleriju za citate, sa veličinom slova obrnuto srazmernom dužini citata
 
