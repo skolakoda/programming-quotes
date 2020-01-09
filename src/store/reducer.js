@@ -7,7 +7,6 @@ const initialState = {
   allQuotes: [],
   filteredQuotes: [],
   allAuthors: new Set(),
-  thumbnails: new Map(),
   token: localStorage.getItem(LS.token),
   admin: false,
   phrase: '',
@@ -46,8 +45,6 @@ export const reducer = (state = initialState, action) => {
         filteredAuthors
       }
     }
-    case 'SET_THUMBNAILS':
-      return {...state, thumbnails: action.thumbnails }
     case 'SET_LANGUAGE':
       const {lang} = action
       const filteredAuthors = new Set()

@@ -3,19 +3,34 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import Filters from './Filters'
 import AuthorThumb from './AuthorThumb'
-import {getAuthorThumbs, filterQuotes} from '../../store/actions'
+import {filterQuotes} from '../../store/actions'
+import {getThumbnails, getImg} from '../../utils/helpers'
 import './Sidebar.css'
 
 const Sidebar = () => {
   const dispatch = useDispatch()
-  const {thumbnails, allAuthors, filteredAuthors} = useSelector(state => state)
+  const {allAuthors, filteredAuthors} = useSelector(state => state)
+  const [thumbnails, setThumbnails] = useState(new Map())
 
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [selectedAuthors, setSelectedAuthors] = useState(new Set())
 
   useEffect(() => {
-    if (sidebarOpen && allAuthors.size) dispatch(getAuthorThumbs(allAuthors))
-  }, [allAuthors, dispatch, sidebarOpen])
+    const getAuthorThumbs = allAuthors => {
+      const withImg = [...allAuthors].filter(x => !getImg(x))
+      const withoutImg = [...allAuthors].filter(x => getImg(x))
+      getThumbnails(withImg)
+        .then(mapa => {
+          withoutImg.forEach(name => {
+            mapa.set(name, getImg(name))
+          })
+          setThumbnails(mapa)
+        })
+    }
+
+    if (sidebarOpen && allAuthors.size) getAuthorThumbs(allAuthors)
+
+  }, [allAuthors, sidebarOpen])
 
   const toggle = () => {
     setSidebarOpen(!sidebarOpen)
@@ -28,7 +43,7 @@ const Sidebar = () => {
     dispatch(filterQuotes('', selectedAuthors))
   }
 
-  const authors = filteredAuthors.map(author =>
+  const authorThumbs = filteredAuthors.map(author =>
     <AuthorThumb
       key={author}
       author={author}
@@ -46,7 +61,7 @@ const Sidebar = () => {
         <div className="sidebar-inner">
           <Filters/>
           <div className="authors">
-            {authors}
+            {authorThumbs}
           </div>
         </div>
       }
