@@ -11,25 +11,23 @@ const Sidebar = () => {
   const dispatch = useDispatch()
   const {allAuthors, filteredAuthors} = useSelector(state => state)
   const [thumbnails, setThumbnails] = useState(new Map())
-
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [selectedAuthors, setSelectedAuthors] = useState(new Set())
 
-  useEffect(() => {
-    const getAuthorThumbs = allAuthors => {
-      const withImg = [...allAuthors].filter(x => !getImg(x))
-      const withoutImg = [...allAuthors].filter(x => getImg(x))
-      getThumbnails(withImg)
-        .then(mapa => {
-          withoutImg.forEach(name => {
-            mapa.set(name, getImg(name))
-          })
-          setThumbnails(mapa)
+  const getAuthorThumbs = allAuthors => {
+    const withImg = [...allAuthors].filter(x => !getImg(x))
+    const withoutImg = [...allAuthors].filter(x => getImg(x))
+    getThumbnails(withImg)
+      .then(mapa => {
+        withoutImg.forEach(name => {
+          mapa.set(name, getImg(name))
         })
-    }
+        setThumbnails(mapa)
+      })
+  }
 
+  useEffect(() => {
     if (sidebarOpen && allAuthors.size) getAuthorThumbs(allAuthors)
-
   }, [allAuthors, sidebarOpen])
 
   const toggle = () => {
