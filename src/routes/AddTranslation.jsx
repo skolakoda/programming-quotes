@@ -4,7 +4,7 @@ import {useSelector} from 'react-redux'
 import {useTranslate} from '../store/actions'
 import Quotes from '../components/main/Quotes'
 
-const Untranslated = () => {
+const AddTranslation = () => {
   const {allQuotes, lang} = useSelector(state => state)
   const translate = useTranslate()
   const untranslated = allQuotes.filter(q => !q[lang])
@@ -17,4 +17,4 @@ const Untranslated = () => {
   )
 }
 
-export default Untranslated
+export default AddTranslation
