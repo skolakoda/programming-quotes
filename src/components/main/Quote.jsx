@@ -44,8 +44,6 @@ const Quote = ({ quote, showSource, cssClass }) => {
     setResponse('')
   }
 
-  const shouldShow = showSource && quote.source
-
   return (
     <blockquote className={cssClass || 'small-quote'}>
       <p className="quote-text">
@@ -62,12 +60,19 @@ const Quote = ({ quote, showSource, cssClass }) => {
       </p>
       <span className="quote-author"> — <Link to={authorLink}>{getName(author)}</Link></span>
 
-      {shouldShow &&
-      <p className="source-key">
-        <small>{translate('SOURCE')}: </small>
-        <small className="source-value">{quote.source}</small>
-      </p>
+      {showSource && quote.source &&
+        <p className="more-info">
+          <small>{translate('SOURCE')}: </small>
+          <small className="source-value">{quote.source}</small>
+        </p>
       }
+
+      {/* showSource && quote.wiki &&
+        <p className="more-info">
+          <small>{transliterate('Wiki')}: </small>
+          <small><a href={quote.wiki} target="_blank" rel="noopener noreferrer">{quote.wiki}</a></small>
+        </p>
+      */}
 
       {response && <MessagePopup message={response} closePopup={closePopup} />}
     </blockquote>
