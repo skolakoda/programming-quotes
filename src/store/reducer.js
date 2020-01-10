@@ -18,8 +18,8 @@ const initialState = {
 }
 
 export const reducer = (state = initialState, action) => {
-  const {allQuotes, allAuthors, selectedAuthors, lang, translateMode} = state
-  const {quote, phrase} = action
+  const {allQuotes, allAuthors, selectedAuthors, lang, translateMode, phrase} = state
+  const {quote} = action
 
   const ifLang = q => isLang(q, lang, translateMode)
   const sortAbc = (a, b) => compare(getName(a, lang), getName(b, lang))
@@ -49,6 +49,17 @@ export const reducer = (state = initialState, action) => {
         filteredAuthors: [...filteredAuthors].sort(sortAbc)
       }
     }
+    case 'FILTER_QUOTES': {
+      const filteredQuotes = allQuotes.filter(q =>
+        (phrase ? includes(q[lang], phrase) : true) &&
+        (selectedAuthors ? selectedAuthors.has(q.author) : true)
+      )
+      return {
+        ...state,
+        filteredQuotes,
+        phrase
+      }
+    }
     case 'SET_LANGUAGE':
       return {...state, lang: action.lang}
     case 'SET_SCRIPT':
@@ -57,6 +68,8 @@ export const reducer = (state = initialState, action) => {
       return {...state, token: action.token }
     case 'SET_ADMIN':
       return {...state, admin: action.admin }
+    case 'SET_PHRASE':
+      return {...state, phrase: action.phrase }
     case 'TOGGLE_TRANSLATE_MODE':
       return {...state, translateMode: !state.translateMode }
     case 'ADD_QUOTE':
@@ -89,18 +102,6 @@ export const reducer = (state = initialState, action) => {
         ...state,
         filteredAuthors,
         authorPhrase: phrase
-      }
-    }
-    case 'FILTER_QUOTES': {
-      const filteredQuotes = allQuotes
-        .filter(q =>
-          (phrase ? includes(q[lang], phrase) : true) &&
-          (selectedAuthors ? selectedAuthors.has(q.author) : true)
-        )
-      return {
-        ...state,
-        filteredQuotes,
-        phrase
       }
     }
     case 'TOGGLE_SELECTED_AUTHORS': {

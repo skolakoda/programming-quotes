@@ -36,7 +36,7 @@ const Sidebar = () => {
   const handleCheck = ({target}) => {
     const {checked, value} = target
     dispatch(toggleSelectedAuthors(checked, value))
-    dispatch(filterQuotes(''))
+    dispatch(filterQuotes())
   }
 
   const authorThumbs = filteredAuthors.map(author =>
