@@ -35,8 +35,9 @@ const Sidebar = () => {
   }
 
   const handleCheck = ({target}) => {
-    const method = target.checked ? 'add' : 'delete'
-    selectedAuthors[method](target.value)
+    const {checked, value} = target
+    if (checked) selectedAuthors.add(value)
+    else selectedAuthors.delete(value)
     setSelectedAuthors(selectedAuthors)
     dispatch(filterQuotes('', selectedAuthors))
   }
