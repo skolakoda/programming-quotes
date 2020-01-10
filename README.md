@@ -17,7 +17,8 @@ npm start
 
 ## TODO
 
-- napraviti prevodilački mod, gde sve radi isto samo sa neprevedenim citatima
+- dodati selectedAuthors u reducer
+- resetovati should delete nakon brisanja
 - footer sa kontaktom i pozivom na pomoc u prevodjenju i poboljsanju prevoda
 - bolja slika za deljenje
 - dodati pretragu po izvoru
