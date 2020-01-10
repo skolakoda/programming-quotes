@@ -51,13 +51,13 @@ export const reducer = (state = initialState, action) => {
     }
     case 'FILTER_QUOTES': {
       const filteredQuotes = allQuotes.filter(q =>
+        ifLang(q) &&
         (phrase ? includes(q[lang], phrase) : true) &&
-        (selectedAuthors ? selectedAuthors.has(q.author) : true)
+        (selectedAuthors.size ? selectedAuthors.has(q.author) : true)
       )
       return {
         ...state,
-        filteredQuotes,
-        phrase
+        filteredQuotes
       }
     }
     case 'SET_LANGUAGE':

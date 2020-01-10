@@ -9,6 +9,7 @@ const AuthorThumb = ({ author, image, handleCheck }) => {
   const authorName = useAuthorName()
   const link = `/autor/${author.replace(/ /g, '_')}`
 
+  // TODO: postaviti inicijalno čekirane
   return (
     <div className="author-wrap">
       <Link className="author" to={link}>

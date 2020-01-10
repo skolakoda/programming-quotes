@@ -33,6 +33,7 @@ const Sidebar = () => {
     setSidebarOpen(!sidebarOpen)
   }
 
+  // TODO: prebaciti u AuthorThumb
   const handleCheck = ({target}) => {
     const {checked, value} = target
     dispatch(toggleSelectedAuthors(checked, value))
