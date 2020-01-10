@@ -1,5 +1,5 @@
 import {LS} from '../config/localstorage'
-import {includes, getName, compare} from '../utils/helpers'
+import {includes, getName, compare, isLang} from '../utils/helpers'
 
 const initialState = {
   lang: localStorage.getItem(LS.lang) || 'ms',
@@ -13,9 +13,14 @@ const initialState = {
   authorPhrase: '',
   filteredAuthors: [],
   isFetching: false,
+  translateMode: false,
 }
 
 export const reducer = (state = initialState, action) => {
+  const {allQuotes, allAuthors, lang, translateMode} = state
+  const ifLang = q => isLang(q, lang, translateMode)
+  const sortAbc = (a, b) => compare(getName(a, lang), getName(b, lang))
+
   switch (action.type) {
     case 'FETCH_QUOTES_REQUEST':
       return {...state, isFetching: true }
@@ -24,43 +29,38 @@ export const reducer = (state = initialState, action) => {
     case 'FETCH_QUOTES_SUCCESS':
       return {...state, isFetching: false }
     case 'INIT': {
-      const {lang} = state
-      const allQuotes = action.quotes.sort(() => 0.5 - Math.random())
-
-      let allAuthors = new Set()
-      let filteredAuthors = new Set()
-      const filteredQuotes = allQuotes.filter(q => {
-        if (q[lang]) filteredAuthors.add(q.author)
+      const randAllQuotes = action.quotes.sort(() => 0.5 - Math.random())
+      const allAuthors = new Set()
+      const filteredAuthors = new Set()
+      const filteredQuotes = randAllQuotes.filter(q => {
+        if (ifLang(q)) filteredAuthors.add(q.author)
         allAuthors.add(q.author)
-        return q[lang]
+        return ifLang(q)
       })
-      allAuthors = [...allAuthors].sort((a, b) => compare(getName(a, lang), getName(b, lang)))
-      filteredAuthors = [...filteredAuthors].sort((a, b) => compare(getName(a, lang), getName(b, lang)))
 
       return {
         ...state,
-        allQuotes,
+        allQuotes: randAllQuotes,
         filteredQuotes,
-        allAuthors: new Set(allAuthors),
-        filteredAuthors
+        allAuthors: new Set([...allAuthors].sort(sortAbc)),
+        filteredAuthors: [...filteredAuthors].sort(sortAbc)
       }
     }
-    case 'SET_LANGUAGE':
+    case 'SET_LANGUAGE': {
       const {lang} = action
       const filteredAuthors = new Set()
-      const filteredQuotes = state.allQuotes.filter(q => {
-        if (q[lang]) filteredAuthors.add(q.author)
-        return q[lang]
+      const filteredQuotes = allQuotes.filter(q => {
+        if (ifLang(q)) filteredAuthors.add(q.author)
+        return ifLang(q)
       })
-      const sortedAuthors = [...filteredAuthors]
-        .sort((a, b) => compare(getName(a, lang), getName(b, lang)))
 
       return {
         ...state,
         lang,
         filteredQuotes,
-        filteredAuthors: sortedAuthors
+        filteredAuthors: [...filteredAuthors].sort(sortAbc)
       }
+    }
     case 'SET_SCRIPT':
       return {...state, script: action.script }
     case 'SET_TOKEN':
@@ -68,35 +68,32 @@ export const reducer = (state = initialState, action) => {
     case 'SET_ADMIN':
       return {...state, admin: action.admin }
     case 'ADD_QUOTE':
-      const allQuotes = [...state.allQuotes, action.quote]
       return {
         ...state,
-        allQuotes,
-        filteredQuotes: allQuotes.filter(q => q[state.lang]),
-        allAuthors: state.allAuthors.add(action.quote.author)
+        allQuotes: [...allQuotes, action.quote],
+        filteredQuotes: allQuotes.filter(q => ifLang(q)),
+        allAuthors: allAuthors.add(action.quote.author)
       }
     case 'UPDATE_QUOTE': {
-      const allQuotes = state.allQuotes.map(q =>
-        q._id === action.quote._id ? action.quote : q
-      )
+      const newQuotes = allQuotes.map(q => q._id === action.quote._id ? action.quote : q)
       return {
         ...state,
-        allQuotes,
-        filteredQuotes: allQuotes.filter(q => q[state.lang])
+        allQuotes: newQuotes,
+        filteredQuotes: newQuotes.filter(q => ifLang(q))
       }
     }
     case 'DELETE_QUOTE': {
-      const allQuotes = state.allQuotes.filter(q => q._id !== action._id)
+      const newQuotes = allQuotes.filter(q => q._id !== action._id)
       return {
         ...state,
-        allQuotes,
-        filteredQuotes: allQuotes.filter(q => q[state.lang])
+        allQuotes: newQuotes,
+        filteredQuotes: newQuotes.filter(q => ifLang(q))
       }
     }
     case 'FILTER_AUTHORS': {
       const {phrase} = action
-      const filteredAuthors = [...state.allAuthors]
-        .filter(name => includes(name, phrase) || includes(getName(name, state.lang), phrase))
+      const filteredAuthors = [...allAuthors]
+        .filter(name => includes(name, phrase) || includes(getName(name, lang), phrase))
       return {
         ...state,
         filteredAuthors,
@@ -105,9 +102,9 @@ export const reducer = (state = initialState, action) => {
     }
     case 'FILTER_QUOTES': {
       const {phrase, selectedAuthors} = action
-      const filteredQuotes = state.allQuotes
+      const filteredQuotes = allQuotes
         .filter(q =>
-          (phrase ? includes(q[state.lang], phrase) : true) &&
+          (phrase ? includes(q[lang], phrase) : true) &&
           (selectedAuthors ? selectedAuthors.has(q.author) : true)
         )
       return {

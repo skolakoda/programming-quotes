@@ -1,5 +1,8 @@
 import authors from '../data/authors'
 
+export const isLang = (q, lang, translateMode = false) =>
+  q[lang] && (translateMode ? !q.ms : true)
+
 export function findValue(object, searchKey) {
   let value
   for (const key in object) {
