@@ -18,6 +18,7 @@ const initialState = {
 
 export const reducer = (state = initialState, action) => {
   const {allQuotes, allAuthors, lang, translateMode} = state
+  const {quote, phrase} = action
   const ifLang = q => isLang(q, lang, translateMode)
   const sortAbc = (a, b) => compare(getName(a, lang), getName(b, lang))
 
@@ -70,12 +71,12 @@ export const reducer = (state = initialState, action) => {
     case 'ADD_QUOTE':
       return {
         ...state,
-        allQuotes: [...allQuotes, action.quote],
+        allQuotes: [...allQuotes, quote],
         filteredQuotes: allQuotes.filter(q => ifLang(q)),
-        allAuthors: allAuthors.add(action.quote.author)
+        allAuthors: allAuthors.add(quote.author)
       }
     case 'UPDATE_QUOTE': {
-      const newQuotes = allQuotes.map(q => q._id === action.quote._id ? action.quote : q)
+      const newQuotes = allQuotes.map(q => q._id === quote._id ? quote : q)
       return {
         ...state,
         allQuotes: newQuotes,
@@ -91,7 +92,6 @@ export const reducer = (state = initialState, action) => {
       }
     }
     case 'FILTER_AUTHORS': {
-      const {phrase} = action
       const filteredAuthors = [...allAuthors]
         .filter(name => includes(name, phrase) || includes(getName(name, lang), phrase))
       return {
@@ -101,7 +101,7 @@ export const reducer = (state = initialState, action) => {
       }
     }
     case 'FILTER_QUOTES': {
-      const {phrase, selectedAuthors} = action
+      const {selectedAuthors} = action
       const filteredQuotes = allQuotes
         .filter(q =>
           (phrase ? includes(q[lang], phrase) : true) &&
@@ -110,7 +110,7 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         filteredQuotes,
-        phrase: action.phrase
+        phrase
       }
     }
     default:
