@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import Filters from './Filters'
 import AuthorThumb from './AuthorThumb'
-import {filterQuotes} from '../../store/actions'
+import {filterQuotes, toggleSelectedAuthors} from '../../store/actions'
 import {getThumbnails, getImg} from '../../utils/helpers'
 import './Sidebar.css'
 

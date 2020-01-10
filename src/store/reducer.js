@@ -7,11 +7,12 @@ const initialState = {
   allQuotes: [],
   filteredQuotes: [],
   allAuthors: new Set(),
+  filteredAuthors: [], // shown in sidebar
+  selectedAuthors: new Set(), // selected from sidebar
   token: localStorage.getItem(LS.token),
   admin: false,
   phrase: '',
   authorPhrase: '',
-  filteredAuthors: [],
   isFetching: false,
   translateMode: false,
 }
@@ -101,6 +102,16 @@ export const reducer = (state = initialState, action) => {
         ...state,
         filteredQuotes,
         phrase
+      }
+    }
+    case 'TOGGLE_SELECTED_AUTHORS': {
+      const {shouldAdd, value} = action
+      const selectedAuthors = new Set([...state.selectedAuthors])
+      if (shouldAdd) selectedAuthors.add(value)
+      else selectedAuthors.delete(value)
+      return {
+        ...state,
+        selectedAuthors
       }
     }
     default:

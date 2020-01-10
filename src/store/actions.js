@@ -37,6 +37,8 @@ export const filterAuthors = phrase => ({type: 'FILTER_AUTHORS', phrase})
 
 export const filterQuotes = (phrase, selectedAuthors) => ({type: 'FILTER_QUOTES', phrase, selectedAuthors})
 
+export const toggleSelectedAuthors = ({shouldAdd, value}) => ({type: 'TOGGLE_SELECTED_AUTHORS', shouldAdd, value})
+
 /* THUNK */
 
 export const setUser = (token, admin = false) => dispatch => {
