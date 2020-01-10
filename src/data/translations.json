@@ -1,7 +1,8 @@
 {
   "sr": {
     "ADD_QUOTE": "Dodaj citat",
-    "UNTRANSLATED": "Neprevedeno",
+    "UNTRANSLATED": "Bez prevoda",
+    "NO_UNTRANSLATED": "Nema neprevednih citata za izabrani jezik",
     "ADMIN_REQUIRED": "Moraš biti administrator.",
     "ALL_QUOTES": "Svi citati",
     "ALREADY_EXISTS": "Citat već postoji.",
@@ -40,7 +41,8 @@
   },
   "ms": {
     "ADD_QUOTE": "Dodaj citat",
-    "UNTRANSLATED": "Neprěvedeno",
+    "UNTRANSLATED": "Bez prěvoda",
+    "NO_UNTRANSLATED": "Ne ima neprěvednyh citatov za izbrany jezyk",
     "ADMIN_REQUIRED": "Moraš byti administrator.",
     "ALL_QUOTES": "Vsi citati",
     "ALREADY_EXISTS": "Citat uže obstaja.",
