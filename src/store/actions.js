@@ -7,13 +7,11 @@ import transliterate from '../utils/transliterate'
 import {LS} from '../config/localstorage'
 import {API, domain} from '../config/api'
 
-const init = quotes => ({type: 'INIT', quotes})
-
 const fetchQuotesRequest = () => ({type: 'FETCH_QUOTES_REQUEST'})
 
-const fetchQuotesFailure = error => ({type: 'FETCH_QUOTES_FAILURE', error})
+const fetchQuotesSuccess = quotes => ({type: 'FETCH_QUOTES_SUCCESS', quotes})
 
-const fetchQuotesSuccess = () => ({type: 'FETCH_QUOTES_SUCCESS'})
+export const init = () => ({type: 'INIT'})
 
 export const setLang = lang => {
   localStorage.setItem(LS.lang, lang)
@@ -56,12 +54,12 @@ export const fetchQuotes = () => async dispatch => {
   try {
     const response = await fetch(API.read)
     const quotes = await response.json()
-    dispatch(fetchQuotesSuccess())
-    dispatch(init(quotes))
+    dispatch(fetchQuotesSuccess(quotes))
+    dispatch(init())
   } catch (error) {
     console.log('nema interneta, ucitavam backup')
-    dispatch(init(quotes))
-    dispatch(fetchQuotesFailure(error))
+    dispatch(fetchQuotesSuccess(quotes))
+    dispatch(init())
   }
 }
 

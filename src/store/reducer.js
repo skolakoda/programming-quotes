@@ -19,55 +19,45 @@ const initialState = {
 export const reducer = (state = initialState, action) => {
   const {allQuotes, allAuthors, lang, translateMode} = state
   const {quote, phrase} = action
+
   const ifLang = q => isLang(q, lang, translateMode)
   const sortAbc = (a, b) => compare(getName(a, lang), getName(b, lang))
 
   switch (action.type) {
     case 'FETCH_QUOTES_REQUEST':
       return {...state, isFetching: true }
-    case 'FETCH_QUOTES_FAILURE':
-      return {...state, isFetching: false, error: action.error }
-    case 'FETCH_QUOTES_SUCCESS':
-      return {...state, isFetching: false }
-    case 'INIT': {
-      const randAllQuotes = action.quotes.sort(() => 0.5 - Math.random())
+    case 'FETCH_QUOTES_SUCCESS': {
       const allAuthors = new Set()
-      const filteredAuthors = new Set()
-      const filteredQuotes = randAllQuotes.filter(q => {
-        if (ifLang(q)) filteredAuthors.add(q.author)
-        allAuthors.add(q.author)
-        return ifLang(q)
-      })
-
+      action.quotes.forEach(q => allAuthors.add(q.author))
       return {
         ...state,
-        allQuotes: randAllQuotes,
-        filteredQuotes,
+        isFetching: false,
+        allQuotes: action.quotes.sort(() => 0.5 - Math.random()),
         allAuthors: new Set([...allAuthors].sort(sortAbc)),
-        filteredAuthors: [...filteredAuthors].sort(sortAbc)
       }
     }
-    case 'SET_LANGUAGE': {
-      const {lang} = action
+    case 'INIT': {
       const filteredAuthors = new Set()
       const filteredQuotes = allQuotes.filter(q => {
         if (ifLang(q)) filteredAuthors.add(q.author)
         return ifLang(q)
       })
-
       return {
         ...state,
-        lang,
         filteredQuotes,
         filteredAuthors: [...filteredAuthors].sort(sortAbc)
       }
     }
+    case 'SET_LANGUAGE':
+      return {...state, lang: action.lang}
     case 'SET_SCRIPT':
       return {...state, script: action.script }
     case 'SET_TOKEN':
       return {...state, token: action.token }
     case 'SET_ADMIN':
       return {...state, admin: action.admin }
+    case 'TOGGLE_TRANSLATE_MODE':
+      return {...state, translateMode: !state.translateMode }
     case 'ADD_QUOTE':
       return {
         ...state,
