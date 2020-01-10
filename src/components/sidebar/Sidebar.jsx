@@ -1,14 +1,12 @@
 import React, {useState, useEffect} from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 import Filters from './Filters'
 import AuthorThumb from './AuthorThumb'
-import {filterQuotes, toggleSelectedAuthors} from '../../store/actions'
 import {getThumbnails, getImg} from '../../utils/helpers'
 import './Sidebar.css'
 
 const Sidebar = () => {
-  const dispatch = useDispatch()
   const {allAuthors, filteredAuthors} = useSelector(state => state)
   const [thumbnails, setThumbnails] = useState(new Map())
   const [sidebarOpen, setSidebarOpen] = useState(false)
@@ -33,19 +31,11 @@ const Sidebar = () => {
     setSidebarOpen(!sidebarOpen)
   }
 
-  // TODO: prebaciti u AuthorThumb
-  const handleCheck = ({target}) => {
-    const {checked, value} = target
-    dispatch(toggleSelectedAuthors(checked, value))
-    dispatch(filterQuotes())
-  }
-
   const authorThumbs = filteredAuthors.map(author =>
     <AuthorThumb
       key={author}
       author={author}
       image={thumbnails.get(author)}
-      handleCheck={handleCheck}
     />
   )
 
