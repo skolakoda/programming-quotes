@@ -17,10 +17,12 @@ npm start
 
 ## TODO
 
+- napraviti prevodilački mod, gde sve radi isto samo sa neprevedenim citatima
 - footer sa kontaktom i pozivom na pomoc u prevodjenju i poboljsanju prevoda
 - bolja slika za deljenje
 - dodati pretragu po izvoru
 - isprobati grid fotogaleriju za citate, sa veličinom slova obrnuto srazmernom dužini citata
+- node.js backend rendering
 
 sadrzaj:
 - proveriti svuda gramatiku sa http://steen.free.fr/interslavic/spell_checker.html

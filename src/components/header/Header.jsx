@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 
-import {setLang, setScript, useTranslate} from '../../store/actions'
+import {setLang, setScript, useTranslate, init} from '../../store/actions'
 import './Header.css'
 
 const Header = () => {
@@ -12,6 +12,7 @@ const Header = () => {
 
   const changeLang = e => {
     dispatch(setLang(e.target.value))
+    dispatch(init())
   }
 
   const changeScript = e => {

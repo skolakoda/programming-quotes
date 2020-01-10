@@ -1,43 +1,5 @@
 [
   {
-    "_id": "5d971035aa30bb9ae3d6bd5d",
-    "ms": "Odstupajuči, mudrec vsegda sprědu. Prěbyvajuči von, vsegda jest prisutny. Zar se vsi jego cělji ne izpolnjajut jer ne sili se nikakim cěljima?",
-    "sr": "Povlačeći se u pozadinu, mudrac je vazda u prvom redu. Ostajući spolja, uvek je prisutan. Zar se svi njegovi lični ciljevi ne ispunjavaju upravo zato što on ne teži nikakvim ličnim ciljevima?"
-  },
-  {
-    "_id": "5d971035aa30bb9ae3d6bd9c",
-    "ms": "Čto sol za jelo, pokoj jest za vsako dělo. Da go dostigne, člověk mora mněti o sobě krotko, so omalovaženjem i boljnym osudom. Ako go dostignemo, načini nas synam božjim.",
-    "sr": "Ono što je so za hranu, to je smirenost za svaku vrlinu. Da bi je stekao, čovek mora uvek misliti o sebi sa skrušenošću, samoomalovažavanjem i bolnim samoosuđivanjem. Ali ako je steknemo, načiniće nas sinovima Božijim."
-  },
-  {
-    "_id": "5d971035aa30bb9ae3d6bc0a",
-    "ms": "Strasti može okončati samo poznavši i prozrěvši jih, a ne nepoznavši i neprozrěvši.",
-    "sr": "Ja tvrdim, prosjaci, da izljeve strasti može da okonča samo onaj ko ih upozna i prozre, a ne onaj ko ne može da ih upozna i prozre.",
-    "source": "samyutta/sn22-023"
-  },
-  {
-    "_id": "5dcee857bb58e20004b51b65",
-    "ms": "Vsevyšnji bog govori: Sluge moje! Vy meni ne možete naškoditi. Ne možete mi donesti korist. Ako tvorite dobro, korist ide vami. Ako tvorite zlo, škoda ide samo vami.",
-    "sr": "Svevišnji Bog govori: »Sluge moje! Vi meni ne možete naneti štetu. Isto tako ne možete mi učiniti neku korist. Stoga, ako činite dobro, od toga korist pripada vama. Isto tako, ako činite zlo, šteta ide samo vama.«",
-    "source": "Ahmed Mehmedović, Tako je govorio Muhammed, Tuzla, 1991."
-  },
-  {
-    "_id": "5d971035aa30bb9ae3d6bda8",
-    "ms": "Često byva člověku jednom polovinom pojdti za gospodom, a drugom ostati v světu. A srdce se jego ne razděli od světa, no v sobě razděli.",
-    "sr": "Često biva s nekima da je jedna njihova polovina pošla za Gospodom, a druga polovina ostala u svetu, i njihovo se srce nije odvojilo od ovdašnjeg, već su se oni sami u sebi razdelili."
-  },
-  {
-    "_id": "5d971035aa30bb9ae3d6bd07",
-    "ms": "Ne vozmite žene krasnějše, ibo jih krasnost može upropastiti. Ne vozmite žene imějše, ibo jih iměnje može učiniti gnusnym. No vozmite žene dobre nravi, da imate čestne i marlive supruge.",
-    "sr": "Ne uzimajte žene zbog njihove lepote, jer ih lepota može upropastiti; ne uzimajte ih zbog njihova imetka, jer ih imetak može učiniti obesnim; no ih uzimajte zbog njihove naravi, pa ćete imati dobro odgojene, čestite i vredne supruge.",
-    "source": "Ahmed Mehmedović, Tako je govorio Muhammed, Tuzla, 1991."
-  },
-  {
-    "_id": "5d971035aa30bb9ae3d6bdaa",
-    "ms": "Podvig jest svezany s mukom, a izběgajuči muku bezsumno odděljavaš se od podviga. Ako želaš podvig, podaj se vsakom stradanju, jer nevolje radžajut pokoj. Dokolě ne dostignemo istinno poznanje, pokoju se bližimo črez izkušenja. Kto v podvigu prěbyva bez muke, otvorene jemu dveri gordosti.",
-    "sr": "Vrline su povezane sa patnjom, te onaj ko izbegava patnju nesumnjivo se odvaja i od vrline. Zato, ukoliko želiš vrlinski život, predaj se svakom stradanju, jer nevolje rađaju smirenje. Sve dok ne steknemo istinsko poznanje, smirenju se približavamo kroz iskušenja. Onome ko u vrlini prebiva bez patnje, otvorena su širom vrata gordosti."
-  },
-  {
     "_id": "5d971035aa30bb9ae3d6be79",
     "ms": "Ne vidim ničto drugo vslěd čega toliko dobra nastaje i zla prěstaje kak dobro družstvo.",
     "sr": "Ne vidim nijednu drugu stvar zbog koje tako sigurno povoljne stvari nastaju i nepovoljne stvari propadaju kao što je to dobro društvo.",

@@ -6,7 +6,7 @@ import {LS} from '../config/localstorage'
 import {domain} from '../config/api'
 
 const Profile = () =>  {
-  const {token, admin} = useSelector(state => state)
+  const {token, admin, translateMode} = useSelector(state => state)
   const translate = useTranslate()
   const dispatch = useDispatch()
   const [memberSince, setMemberSince] = useState(null)
@@ -31,6 +31,11 @@ const Profile = () =>  {
     localStorage.setItem(LS.token, '')
   }
 
+  const toggleTranslateMode = () => {
+    dispatch({type: 'TOGGLE_TRANSLATE_MODE'})
+    dispatch({type: 'INIT'})
+  }
+
   return (
     <main>
       <h1>{translate('PROFILE')}</h1>
@@ -39,7 +44,30 @@ const Profile = () =>  {
           <p>name: {name}</p>
           <p>member since: {new Date(memberSince).toISOString().slice(0, 10)}</p>
           <p>admin: {admin ? 'yes' : 'no'}</p>
-          <button onClick={exit}>{translate('LOGOUT')}</button>
+
+          <p>translation mode:</p>
+          <p>
+            <label>
+              <input
+                type="radio"
+                name="translation-mode"
+                value="off"
+                checked={!translateMode}
+                onChange={toggleTranslateMode}
+              /> off
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="translation-mode"
+                value="on"
+                checked={translateMode}
+                onChange={toggleTranslateMode}
+              /> on
+            </label>
+          </p>
+
+          <p style={{ textAlign: 'center'}}><button onClick={exit}>{translate('LOGOUT')}</button></p>
         </div>
         : <p>{translate('SUCCESSFULLY_LOGOUT')}</p>
       }

@@ -5,14 +5,15 @@ import Quotes from '../components/main/Quotes'
 import AuthorImage from '../components/main/AuthorImage'
 import AuthorInfo from '../components/main/AuthorInfo'
 import {useAuthorName} from '../store/actions'
+import {isLang} from '../utils/helpers'
 import './Author.css'
 
 const Author = ({match}) => {
-  const {allQuotes, lang} = useSelector(state => state)
+  const {allQuotes, lang, translateMode} = useSelector(state => state)
   const getName = useAuthorName()
 
   const author = match.params.name.replace(/_/g, ' ')
-  const filtered = allQuotes.filter(q => q[lang] && q.author === author)
+  const filtered = allQuotes.filter(q => isLang(q, lang, translateMode) && q.author === author)
 
   return (
     <main>
