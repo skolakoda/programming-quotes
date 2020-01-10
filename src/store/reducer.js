@@ -18,7 +18,7 @@ const initialState = {
 }
 
 export const reducer = (state = initialState, action) => {
-  const {allQuotes, allAuthors, lang, translateMode} = state
+  const {allQuotes, allAuthors, selectedAuthors, lang, translateMode} = state
   const {quote, phrase} = action
 
   const ifLang = q => isLang(q, lang, translateMode)
@@ -92,7 +92,6 @@ export const reducer = (state = initialState, action) => {
       }
     }
     case 'FILTER_QUOTES': {
-      const {selectedAuthors} = action
       const filteredQuotes = allQuotes
         .filter(q =>
           (phrase ? includes(q[lang], phrase) : true) &&
@@ -106,12 +105,12 @@ export const reducer = (state = initialState, action) => {
     }
     case 'TOGGLE_SELECTED_AUTHORS': {
       const {shouldAdd, value} = action
-      const selectedAuthors = new Set([...state.selectedAuthors])
-      if (shouldAdd) selectedAuthors.add(value)
-      else selectedAuthors.delete(value)
+      const authors = new Set([...selectedAuthors])
+      if (shouldAdd) authors.add(value)
+      else authors.delete(value)
       return {
         ...state,
-        selectedAuthors
+        selectedAuthors: authors
       }
     }
     default:

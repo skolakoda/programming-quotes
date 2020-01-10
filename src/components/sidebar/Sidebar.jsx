@@ -12,7 +12,6 @@ const Sidebar = () => {
   const {allAuthors, filteredAuthors} = useSelector(state => state)
   const [thumbnails, setThumbnails] = useState(new Map())
   const [sidebarOpen, setSidebarOpen] = useState(false)
-  const [selectedAuthors, setSelectedAuthors] = useState(new Set())
 
   const getAuthorThumbs = allAuthors => {
     const withImg = [...allAuthors].filter(x => !getImg(x))
@@ -36,10 +35,8 @@ const Sidebar = () => {
 
   const handleCheck = ({target}) => {
     const {checked, value} = target
-    if (checked) selectedAuthors.add(value)
-    else selectedAuthors.delete(value)
-    setSelectedAuthors(selectedAuthors)
-    dispatch(filterQuotes('', selectedAuthors))
+    dispatch(toggleSelectedAuthors(checked, value))
+    dispatch(filterQuotes(''))
   }
 
   const authorThumbs = filteredAuthors.map(author =>
