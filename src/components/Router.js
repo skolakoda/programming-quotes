@@ -20,7 +20,7 @@ const Router = () => (
     <Route path='/citat/:id' component={ShowQuote} />
     <Route path='/autor/:name' component={Author} />
     <Route path='/dodaj-citat' component={AddQuote} />
-    <Route path='/bez-prevoda' component={Untranslated} />
+    <Route path='/neprevedeno' component={Untranslated} />
     <Route path='/edituj-citat/:id' component={EditQuote} />
     <Route path='/moj-profil' component={Profile} />
     <Route path='/auth/:service/:token' component={Auth} />

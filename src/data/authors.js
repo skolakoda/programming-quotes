@@ -79,8 +79,7 @@ export default {
     ms: 'Maksim Izpovědnik'
   },
   Muhamed: {
-    src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Muhammad2.png/50px-Muhammad2.png',
-    ms: 'Muhamad'
+    src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Muhammad2.png/50px-Muhammad2.png'
   },
   'Pavle od Tarsa': {
     src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/File%22-Saint_Paul_Writing_His_Epistles%22_by_Valentin_de_Boulogne.jpg/50px-File%22-Saint_Paul_Writing_His_Epistles%22_by_Valentin_de_Boulogne.jpg',

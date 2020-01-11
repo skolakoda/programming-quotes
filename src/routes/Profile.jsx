@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { useSelector, useDispatch} from 'react-redux'
+import { NavLink } from 'react-router-dom'
 
 import {setUser, logout, useTranslate} from '../store/actions'
 import {LS} from '../config/localstorage'
@@ -44,9 +45,8 @@ const Profile = () =>  {
           <p>name: {name}</p>
           <p>member since: {new Date(memberSince).toISOString().slice(0, 10)}</p>
           <p>admin: {admin ? 'yes' : 'no'}</p>
-
-          <p>translation mode:</p>
-          <p>
+          <NavLink to="/neprevedeno" activeClassName="active">{translate('UNTRANSLATED').toLowerCase()}</NavLink>
+          <p>translation mode:{' '}
             <label>
               <input
                 type="radio"

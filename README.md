@@ -17,12 +17,11 @@ npm start
 
 ## TODO
 
-- dodati pretragu po izvoru
-- node.js backend rendering
-  - grid fotogaleriju za citate, sa veličinom slova obrnuto srazmernom dužini citata
-  - samo da svaki citat ima svoj url za svaki jezik
-
 sadrzaj:
 - proveriti svuda gramatiku sa http://steen.free.fr/interslavic/spell_checker.html
 - kratiti preduge razlike
 - uraditi masovno tagovanje, kao na znacima
+
+- node.js backend rendering
+  - grid fotogaleriju za citate, sa veličinom slova obrnuto srazmernom dužini citata
+  - samo da svaki citat ima svoj url za svaki jezik
