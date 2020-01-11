@@ -17,13 +17,12 @@ npm start
 
 ## TODO
 
-- dodati selectedAuthors u reducer
-- resetovati should delete nakon brisanja
 - footer sa kontaktom i pozivom na pomoc u prevodjenju i poboljsanju prevoda
 - bolja slika za deljenje
 - dodati pretragu po izvoru
-- isprobati grid fotogaleriju za citate, sa veličinom slova obrnuto srazmernom dužini citata
 - node.js backend rendering
+  - grid fotogaleriju za citate, sa veličinom slova obrnuto srazmernom dužini citata
+  - samo da svaki citat ima svoj url za svaki jezik
 
 sadrzaj:
 - proveriti svuda gramatiku sa http://steen.free.fr/interslavic/spell_checker.html
