@@ -30,8 +30,11 @@ const Quote = ({ quote, showSource, cssClass }) => {
     })
       .then(response => response.text())
       .then(response => {
-        setResponse(translate(response)) // ne otvara popup
-        if (response === 'QUOTE_DELETED') dispatch(deleteQuote(_id))
+        setResponse(translate(response))
+        if (response === 'QUOTE_DELETED') {
+          dispatch(deleteQuote(_id))
+          setShouldDelete(false)
+        }
       })
   }
 

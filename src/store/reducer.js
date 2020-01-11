@@ -7,18 +7,19 @@ const initialState = {
   allQuotes: [],
   filteredQuotes: [],
   allAuthors: new Set(),
+  filteredAuthors: [], // shown in sidebar
+  selectedAuthors: new Set(), // selected from sidebar
   token: localStorage.getItem(LS.token),
   admin: false,
   phrase: '',
   authorPhrase: '',
-  filteredAuthors: [],
   isFetching: false,
   translateMode: false,
 }
 
 export const reducer = (state = initialState, action) => {
-  const {allQuotes, allAuthors, lang, translateMode} = state
-  const {quote, phrase} = action
+  const {allQuotes, allAuthors, selectedAuthors, lang, translateMode, phrase} = state
+  const {quote} = action
 
   const ifLang = q => isLang(q, lang, translateMode)
   const sortAbc = (a, b) => compare(getName(a, lang), getName(b, lang))
@@ -48,6 +49,17 @@ export const reducer = (state = initialState, action) => {
         filteredAuthors: [...filteredAuthors].sort(sortAbc)
       }
     }
+    case 'FILTER_QUOTES': {
+      const filteredQuotes = allQuotes.filter(q =>
+        ifLang(q) &&
+        (phrase ? includes(q[lang], phrase) : true) &&
+        (selectedAuthors.size ? selectedAuthors.has(q.author) : true)
+      )
+      return {
+        ...state,
+        filteredQuotes
+      }
+    }
     case 'SET_LANGUAGE':
       return {...state, lang: action.lang}
     case 'SET_SCRIPT':
@@ -56,6 +68,8 @@ export const reducer = (state = initialState, action) => {
       return {...state, token: action.token }
     case 'SET_ADMIN':
       return {...state, admin: action.admin }
+    case 'SET_PHRASE':
+      return {...state, phrase: action.phrase }
     case 'TOGGLE_TRANSLATE_MODE':
       return {...state, translateMode: !state.translateMode }
     case 'ADD_QUOTE':
@@ -90,17 +104,14 @@ export const reducer = (state = initialState, action) => {
         authorPhrase: phrase
       }
     }
-    case 'FILTER_QUOTES': {
-      const {selectedAuthors} = action
-      const filteredQuotes = allQuotes
-        .filter(q =>
-          (phrase ? includes(q[lang], phrase) : true) &&
-          (selectedAuthors ? selectedAuthors.has(q.author) : true)
-        )
+    case 'TOGGLE_SELECTED_AUTHORS': {
+      const {shouldAdd, value} = action
+      const authors = new Set([...selectedAuthors])
+      if (shouldAdd) authors.add(value)
+      else authors.delete(value)
       return {
         ...state,
-        filteredQuotes,
-        phrase
+        selectedAuthors: authors
       }
     }
     default:

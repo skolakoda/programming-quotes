@@ -1,14 +1,17 @@
 import React from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 
-import {filterQuotes, filterAuthors, useTranslate} from '../../store/actions'
+import {filterQuotes, filterAuthors, useTranslate, setPhrase} from '../../store/actions'
 
 const Filters = () => {
   const {phrase, authorPhrase} = useSelector(state => state)
   const translate = useTranslate()
   const dispatch = useDispatch()
 
-  const changePhrase = e => dispatch(filterQuotes(e.target.value))
+  const changePhrase = e => {
+    dispatch(setPhrase(e.target.value))
+    dispatch(filterQuotes())
+  }
 
   const changeAuthorPhrase = e => dispatch(filterAuthors(e.target.value))
 
