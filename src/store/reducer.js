@@ -38,11 +38,9 @@ export const reducer = (state = initialState, action) => {
       }
     }
     case 'INIT': {
+      const filteredQuotes = allQuotes.filter(q => ifLang(q))
       const filteredAuthors = new Set()
-      const filteredQuotes = allQuotes.filter(q => {
-        if (ifLang(q)) filteredAuthors.add(q.author)
-        return ifLang(q)
-      })
+      filteredQuotes.forEach(q => filteredAuthors.add(q.author))
       return {
         ...state,
         filteredQuotes,

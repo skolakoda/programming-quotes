@@ -17,8 +17,6 @@ npm start
 
 ## TODO
 
-- footer sa kontaktom i pozivom na pomoc u prevodjenju i poboljsanju prevoda
-- bolja slika za deljenje
 - dodati pretragu po izvoru
 - node.js backend rendering
   - grid fotogaleriju za citate, sa veličinom slova obrnuto srazmernom dužini citata

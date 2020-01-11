@@ -70,12 +70,11 @@ const Quote = ({ quote, showSource, cssClass }) => {
         </p>
       }
 
-      {/* showSource && quote.wiki &&
+      {showSource && quote.wiki &&
         <p className="more-info">
-          <small>{transliterate('Wiki')}: </small>
-          <small><a href={quote.wiki} target="_blank" rel="noopener noreferrer">{quote.wiki}</a></small>
+          <small><a href={quote.wiki} target="_blank" rel="noopener noreferrer">wiki</a></small>
         </p>
-      */}
+      }
 
       {response && <MessagePopup message={response} closePopup={closePopup} />}
     </blockquote>
