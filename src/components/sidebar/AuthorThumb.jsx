@@ -1,5 +1,5 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
 
 import {useAuthorName, filterQuotes, toggleSelectedAuthors} from '../../store/actions'
@@ -9,6 +9,7 @@ import './AuthorThumb.css'
 const AuthorThumb = ({ author, image }) => {
   const dispatch = useDispatch()
   const authorName = useAuthorName()
+  const {selectedAuthors} = useSelector(state => state)
   const link = `/autor/${author.replace(/ /g, '_')}`
 
   const handleCheck = ({target}) => {
@@ -17,7 +18,6 @@ const AuthorThumb = ({ author, image }) => {
     dispatch(filterQuotes())
   }
 
-  // TODO: postaviti inicijalno čekirane
   return (
     <div className="author-wrap">
       <Link className="author" to={link}>
@@ -25,7 +25,12 @@ const AuthorThumb = ({ author, image }) => {
         {authorName(author)}
       </Link>
       <label>
-        <input type="checkbox" value={author} onChange={handleCheck} />
+        <input
+          type="checkbox"
+          value={author}
+          checked={selectedAuthors.has(author)}
+          onChange={handleCheck}
+        />
       </label>
     </div>
   )
