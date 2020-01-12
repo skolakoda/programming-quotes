@@ -17,6 +17,8 @@ npm start
 
 ## TODO
 
+ě
+
 sadrzaj:
 - proveriti svuda gramatiku sa http://steen.free.fr/interslavic/spell_checker.html
 - kratiti preduge razlike

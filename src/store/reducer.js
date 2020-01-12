@@ -23,6 +23,9 @@ export const reducer = (state = initialState, action) => {
 
   const ifLang = q => isLang(q, lang, translateMode)
   const sortAbc = (a, b) => compare(getName(a, lang), getName(b, lang))
+  const filterQ = q => ifLang(q)
+    && (phrase ? includes(q[lang], phrase) : true)
+    && (selectedAuthors.size ? selectedAuthors.has(q.author) : true)
 
   switch (action.type) {
     case 'FETCH_QUOTES_REQUEST':
@@ -38,7 +41,7 @@ export const reducer = (state = initialState, action) => {
       }
     }
     case 'INIT': {
-      const filteredQuotes = allQuotes.filter(q => ifLang(q))
+      const filteredQuotes = allQuotes.filter(filterQ)
       const filteredAuthors = new Set()
       filteredQuotes.forEach(q => filteredAuthors.add(q.author))
       return {
@@ -48,14 +51,9 @@ export const reducer = (state = initialState, action) => {
       }
     }
     case 'FILTER_QUOTES': {
-      const filteredQuotes = allQuotes.filter(q =>
-        ifLang(q) &&
-        (phrase ? includes(q[lang], phrase) : true) &&
-        (selectedAuthors.size ? selectedAuthors.has(q.author) : true)
-      )
       return {
         ...state,
-        filteredQuotes
+        filteredQuotes: allQuotes.filter(filterQ)
       }
     }
     case 'SET_LANGUAGE':
@@ -74,7 +72,7 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         allQuotes: [...allQuotes, quote],
-        filteredQuotes: allQuotes.filter(q => ifLang(q)),
+        filteredQuotes: allQuotes.filter(filterQ),
         allAuthors: allAuthors.add(quote.author)
       }
     case 'UPDATE_QUOTE': {
@@ -82,7 +80,7 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         allQuotes: newQuotes,
-        filteredQuotes: newQuotes.filter(q => ifLang(q))
+        filteredQuotes: newQuotes.filter(filterQ)
       }
     }
     case 'DELETE_QUOTE': {
@@ -90,7 +88,7 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         allQuotes: newQuotes,
-        filteredQuotes: newQuotes.filter(q => ifLang(q))
+        filteredQuotes: newQuotes.filter(filterQ)
       }
     }
     case 'FILTER_AUTHORS': {
