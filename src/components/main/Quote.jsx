@@ -66,13 +66,10 @@ const Quote = ({ quote, showSource, cssClass }) => {
       {showSource && quote.source &&
         <p className="more-info">
           <small>{translate('SOURCE')}: </small>
-          <small className="source-value">{quote.source}</small>
-        </p>
-      }
-
-      {showSource && quote.wiki &&
-        <p className="more-info">
-          <small><a href={quote.wiki} target="_blank" rel="noopener noreferrer">wiki</a></small>
+          <small className="source-value">{quote.source}</small>{' '}
+          {quote.wiki &&
+            <small><a href={quote.wiki} target="_blank" rel="noopener noreferrer">(wiki)</a></small>
+          }
         </p>
       }
 
