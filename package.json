@@ -8,7 +8,7 @@
     "save": "wget https://programming-quotes-api.herokuapp.com/svetemisli/ -O src/data/quotes.json",
     "predeploy": "npm run build",
     "dev": "REACT_APP_ENV=development react-scripts start",
-    "start": "REACT_APP_ENV=production react-scripts start",
+    "start": "npm run save && REACT_APP_ENV=production react-scripts start",
     "build": "REACT_APP_ENV=production react-scripts build",
     "deploy": "gh-pages -d build",
     "eject": "react-scripts eject"
