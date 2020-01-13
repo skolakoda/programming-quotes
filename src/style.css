@@ -31,6 +31,10 @@ input:not([type]), input[type="text"], textarea {
   width: 100%;
 }
 
+textarea {
+  font-size: inherit;
+}
+
 button {
   cursor: pointer;
   padding: 4px 10px;
