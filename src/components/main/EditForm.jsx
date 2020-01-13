@@ -38,7 +38,10 @@ const EditForm = ({ quote }) => {
         dispatch(action(res.quote))
         history.push(`/citat/${res.quote._id}`)
       })
-      .catch(err => setResponse(translate('NETWORK_PROBLEM')))
+      .catch(err => {
+        setResponse(translate('NETWORK_PROBLEM'))
+        console.log(err)
+      })
   }
 
   return (
