@@ -33,6 +33,7 @@ const Profile = () =>  {
   }
 
   const toggleTranslateMode = () => {
+    localStorage.setItem(LS.translateMode, !translateMode)
     dispatch({type: 'TOGGLE_TRANSLATE_MODE'})
     dispatch({type: 'INIT'})
   }

@@ -20,11 +20,12 @@ npm start
 ě
 
 sadrzaj:
-- pamtiti prevodil mod
 - proveriti svuda gramatiku sa http://steen.free.fr/interslavic/spell_checker.html
 - kratiti preduge razlike
 - uraditi masovno tagovanje, kao na znacima
 - negde zameniti muka sa stradanje
+- dodati izvor za Upanišade i Huangbo Xiyun
+- dodati url za ostale autore, i možda niz slika
 
 - node.js backend rendering
   - grid fotogaleriju za citate, sa veličinom slova obrnuto srazmernom dužini citata

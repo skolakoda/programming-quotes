@@ -3,4 +3,5 @@ export const LS = {
   token: 'sveteMisli.token',
   lang: 'sveteMisli.lang',
   script: 'sveteMisli.script',
+  translateMode: 'sveteMisli.translateMode',
 }

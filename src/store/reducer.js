@@ -2,19 +2,19 @@ import {LS} from '../config/localstorage'
 import {includes, getName, compare, isLang} from '../utils/helpers'
 
 const initialState = {
-  lang: localStorage.getItem(LS.lang) || 'ms',
-  script: localStorage.getItem(LS.script) || 'kir',
   allQuotes: [],
   filteredQuotes: [],
   allAuthors: new Set(),
   filteredAuthors: [], // shown in sidebar
   selectedAuthors: new Set(), // selected from sidebar
-  token: localStorage.getItem(LS.token),
   admin: false,
   phrase: '',
   authorPhrase: '',
   isFetching: false,
-  translateMode: false,
+  lang: localStorage.getItem(LS.lang) || 'ms',
+  script: localStorage.getItem(LS.script) || 'kir',
+  token: localStorage.getItem(LS.token),
+  translateMode: localStorage.getItem(LS.translateMode) === 'true', // to boolean
 }
 
 export const reducer = (state = initialState, action) => {
