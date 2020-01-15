@@ -20,6 +20,7 @@ npm start
 ě
 
 sadrzaj:
+- pamtiti prevodil mod
 - proveriti svuda gramatiku sa http://steen.free.fr/interslavic/spell_checker.html
 - kratiti preduge razlike
 - uraditi masovno tagovanje, kao na znacima
