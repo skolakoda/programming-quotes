@@ -20,12 +20,12 @@ npm start
 ě
 
 sadrzaj:
-- proveriti svuda gramatiku sa http://steen.free.fr/interslavic/spell_checker.html
+- dodati nova autore i slike, i možda niz slika
 - kratiti preduge razlike
-- uraditi masovno tagovanje, kao na znacima
-- negde zameniti muka sa stradanje
 - dodati izvor za Upanišade i Huangbo Xiyun
-- dodati url za ostale autore, i možda niz slika
+- proveriti svuda gramatiku sa http://steen.free.fr/interslavic/spell_checker.html
+- negde zameniti muka sa stradanje
+- uraditi masovno tagovanje, kao na znacima
 
 - node.js backend rendering
   - grid fotogaleriju za citate, sa veličinom slova obrnuto srazmernom dužini citata
