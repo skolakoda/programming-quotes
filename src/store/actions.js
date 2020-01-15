@@ -23,6 +23,17 @@ export const setScript = script => {
   return { type: 'SET_SCRIPT', script }
 }
 
+export const setTranslateMode = translateMode => {
+  localStorage.setItem(LS.translateMode, translateMode)
+  return { type: 'SET_TRANSLATE_MODE', translateMode }
+}
+
+export const toggleTranslateMode = () => (dispatch, getState) => {
+  const {translateMode} = getState()
+  dispatch(setTranslateMode(!translateMode))
+  dispatch(init())
+}
+
 export const setToken = token => ({type: 'SET_TOKEN', token})
 
 export const setAdmin = admin => ({type: 'SET_ADMIN', admin})
@@ -51,6 +62,7 @@ export const setUser = (token, admin = false) => dispatch => {
 export const logout = () => dispatch => {
   dispatch(setToken(''))
   dispatch(setAdmin(false))
+  localStorage.setItem(LS.token, '')
 }
 
 export const fetchQuotes = () => async dispatch => {

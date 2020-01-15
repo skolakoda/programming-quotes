@@ -66,8 +66,8 @@ export const reducer = (state = initialState, action) => {
       return {...state, admin: action.admin }
     case 'SET_PHRASE':
       return {...state, phrase: action.phrase }
-    case 'TOGGLE_TRANSLATE_MODE':
-      return {...state, translateMode: !state.translateMode }
+    case 'SET_TRANSLATE_MODE':
+      return {...state, translateMode: action.translateMode }
     case 'ADD_QUOTE':
       return {
         ...state,

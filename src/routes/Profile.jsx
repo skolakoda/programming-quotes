@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import { useSelector, useDispatch} from 'react-redux'
 import { NavLink } from 'react-router-dom'
 
-import {setUser, logout, useTranslate} from '../store/actions'
+import {setUser, logout, useTranslate, toggleTranslateMode} from '../store/actions'
 import {LS} from '../config/localstorage'
 import {domain} from '../config/api'
 
@@ -29,13 +29,10 @@ const Profile = () =>  {
 
   const exit = () => {
     dispatch(logout())
-    localStorage.setItem(LS.token, '')
   }
 
-  const toggleTranslateMode = () => {
-    localStorage.setItem(LS.translateMode, !translateMode)
-    dispatch({type: 'TOGGLE_TRANSLATE_MODE'})
-    dispatch({type: 'INIT'})
+  const toggleTranslate = () => {
+    dispatch(toggleTranslateMode())
   }
 
   return (
@@ -54,7 +51,7 @@ const Profile = () =>  {
                 name="translation-mode"
                 value="off"
                 checked={!translateMode}
-                onChange={toggleTranslateMode}
+                onChange={toggleTranslate}
               /> off
             </label>
             <label>
@@ -63,7 +60,7 @@ const Profile = () =>  {
                 name="translation-mode"
                 value="on"
                 checked={translateMode}
-                onChange={toggleTranslateMode}
+                onChange={toggleTranslate}
               /> on
             </label>
           </p>
