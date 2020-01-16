@@ -1,6 +1,23 @@
 export default {
+  Upanišade: {
+    ms: 'Upanišady',
+    src: 'https://upload.wikimedia.org/wikipedia/commons/2/2b/1860s_manuscript_copy_of_ancient_Maitrayaniya_Upanishad%2C_sample_iii%2C_Krishna_Yajurveda%2C_Pune_Maharashtra%2C_Sanskrit%2C_Devanagari.jpg'
+  },
+  'Sogjal Rinpoće': {
+    ms: 'Sogjal Rinpoče',
+    src: 'https://upload.wikimedia.org/wikipedia/commons/b/b2/Sogyal_Rinpoche_Prayer.jpg'
+  },
+  'Søren Kierkegaard': {
+    common: 'Kjerkegor',
+    src: 'https://upload.wikimedia.org/wikipedia/commons/8/89/Kierkegaard.jpg'
+  },
+  'Meister Eckhart': {
+    common: 'Majstr Ekhart',
+    src: 'https://upload.wikimedia.org/wikipedia/commons/6/6e/Bad_W%C3%B6rishofen_Meister_Eckhart_%28Skulptur%29_2012.JPG'
+  },
   'Huangbo Xiyun': {
-    common: 'Huangbo Hsijun'
+    common: 'Huangbo Hsijun',
+    src: 'https://upload.wikimedia.org/wikipedia/commons/a/aa/HuangboXiyun.gif'
   },
   'Dželaludin Rumi': {
     src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Mevlana_Statue%2C_Buca.jpg/37px-Mevlana_Statue%2C_Buca.jpg',
@@ -39,11 +56,10 @@ export default {
     common: 'Šalomon'
   },
   'Sveti Nuri': {
-    src: '',
+    src: 'https://upload.wikimedia.org/wikipedia/commons/3/3a/A_Sufi_in_Ecstasy_in_a_Landscape_LACMA_M.73.5.582.jpg',
     common: 'Nuri'
   },
   'Shunryū Suzuki': {
-    src: '',
     common: 'Šunrju Suzuki'
   },
   'Zhuang Zhou': {
@@ -55,7 +71,7 @@ export default {
     ms: 'Antony Veliky'
   },
   'Ađan Ča': {
-    src: '',
+    src: 'https://upload.wikimedia.org/wikipedia/commons/4/4e/AjahnChahSangha.jpg',
     ms: 'Adžan Ča'
   },
   'Isak Sirin': {
@@ -90,10 +106,11 @@ export default {
     ms: 'Simeon Novy Teolog'
   },
   'Zun-Nun Egipatski': {
-    src: '',
+    src: 'https://upload.wikimedia.org/wikipedia/commons/7/7b/Sufi_reunion_in_the_Jami%60s_Nafahat_al-Uns_-_Google_Art_Project.jpg',
     ms: 'Zun-Nun Egiptsky'
   },
   Nagarđuna: {
+    ms: 'Nagardžuna',
     src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Nagarjuna_with_84_mahasiddha_cropped.jpg/40px-Nagarjuna_with_84_mahasiddha_cropped.jpg'
   },
   Pitagora: {
