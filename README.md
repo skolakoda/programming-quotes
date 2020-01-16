@@ -20,10 +20,9 @@ npm start
 ě
 
 sadrzaj:
-- dodati nova autore i slike, i možda niz slika
 - kratiti preduge razlike
-- dodati izvor za Upanišade i Huangbo Xiyun
 - proveriti svuda gramatiku sa http://steen.free.fr/interslavic/spell_checker.html
+- dodati izvor za Upanišade i Huangbo Xiyun
 - negde zameniti muka sa stradanje
 - uraditi masovno tagovanje, kao na znacima
 

@@ -1,175 +1,5 @@
 [
   {
-    "_id": "5d971035aa30bb9ae3d6bd71",
-    "ms": "Najsovršeněje prividno nedostatočno, ješče jego upotrěbimost nenarušima. Najpolněje prividno prazdno, ješče jego upotrěbimost neizčrpana. Najpravěje prividno krivo. Najboljše uměnje prividno nesručno. Najlušči govor kak zajikanje.",
-    "sr": "Najsavršenijem kao da nešto nedostaje, a ipak je njegova upotrebljivost neokrnjena. Najpunije izgleda prazno, a ipak je njegova upotrebljivost neiscrpna. Najpravije izgleda krivo. Najveća veština izgleda kao nespretnost. Najveća rečitost deluje kao mucanje."
-  },
-  {
-    "_id": "5d971035aa30bb9ae3d6bda5",
-    "ms": "Kto od početka odpira se i protivi strastami, skoro ovladne i zagospodari nad jimi.",
-    "sr": "Ko iz samoga početka daje otpor i protivi se strastima, taj će uskoro nadvladati ih i zagospodariti nad njima."
-  },
-  {
-    "_id": "5d971035aa30bb9ae3d6be6f",
-    "ms": "Ako straž ne ostražny, gladny vol pojede žetvu. Tako neostražnom člověku čutja posedut um. Ako straž ostražny, on odgna vola. Podobno, kogda člověk motri na čutja, um se uspokoji.",
-    "sr": "Ako čuvar letine neoprezan, gladan vo ješće koliko hoće. Isto tako, nepažljivom čoveku čula zagađuju um.\n\nAko je čuvar letine oprezan, oteraće vola štapom. Isto tako, kada čovek pazi na čula, um se smiruje.",
-    "source": null
-  },
-  {
-    "_id": "5d971035aa30bb9ae3d6bbdc",
-    "ms": "Ako by tělo bylo izključiteljno boljno javjenje, ljudi ne by uživali v tělu. No tělo takože radosno javjenje. Ljudi uživajut v tělu, dlja těla jih svezyva strast. Vslěd te sveze se obmažut, to povod obmazanja jest. Zato jim tělo stava odvratno. Vslěd te odvratnosti odrěkajut se strasti, i očiščajut se. To povod očiščenja jest.",
-    "sr": "Kad bi tijelo bilo isključivo bolna pojava, bića ne bi uživala u tijelu. Ali pošto je tijelo također radosna pojava, zato bića uživaju u tijelu za koje ih vezuje strast. Zbog te se vezanosti zagađuju. To je uzrok zagađenosti bića. Zato im tjelo postaje odvratno. Zbog te odvratnosti odustaju od strasti, a time se pročišćuju. To je uzrok pročišćenju bića.",
-    "source": "samyutta/sn22-060"
-  },
-  {
-    "_id": "5d971035aa30bb9ae3d6bce3",
-    "ms": "Budite iskreny! Iskrenost vodi dobru, a dobro voistinu vodi v raj. Čuvajte se lži! Lož vodi v grěh, a grěh v peklo.",
-    "sr": "Budite iskreni, jer iskrenost vodi dobru, a dobro voistinu vodi v raj. Čuvajte se laži, jer laž vodi v grijeh, a grijeh voistinu vodi v pakal.",
-    "source": "Ahmed Mehmedović, Tako je govorio Muhammed, Tuzla, 1991."
-  },
-  {
-    "_id": "5d971035aa30bb9ae3d6bdcf",
-    "ms": "Hotěči živěti dobrodějno i bogoljubno, neh se odrěknu samoljubja i vsake puste i lžne slave, i neh se trude oko izpravjanja života i srdca.",
-    "sr": "Oni koji se trude da žive u vrlinama i bogoljubivo, treba da se odreknu umišljenosti i svake puste i lažne slave, i da se trude oko dobrog ispravljanja života i srca.",
-    "source": null
-  },
-  {
-    "_id": "5dc9b76bd0d1ae0004d31161",
-    "ms": "Fariseji i knižniki vzehu ključ razuměnja. Sami ne vhodet, a vhodečim vozbranihu.",
-    "sr": "Fariseji i pisari su uzeli ključeve znanja i sakrili ih. Niti ulaze unutra niti puštaju druge koji hoće ući.",
-    "source": "Evanđelje po Tomi, izreka 39; Evanđelje po Mateju 23:13; Evanđelje po Luki 11:52"
-  },
-  {
-    "_id": "5d971035aa30bb9ae3d6bc9c",
-    "ms": "Najvyše starajuči věrnik jest starajuči se ob dělah sej i inog světa.",
-    "sr": "Najbrižniji čovjek je vjernik koji se istovremeno brine o ovosvjetskim i onosvjetskim poslovima.",
-    "source": "Ahmed Mehmedović, Tako je govorio Muhammed, Tuzla, 1991."
-  },
-  {
-    "_id": "5d971035aa30bb9ae3d6bbcd",
-    "ms": "Měso možeš jesti samo ako ne vidiš, ne slyšiš i ne sumněvaš da živo bytje ubito tebe radi.",
-    "sr": "Postoje tri slučaja kada se meso može jesti: kada ne vidiš, ne čuješ i ne sumnjaš da je živo biće ubijeno radi tebe."
-  },
-  {
-    "_id": "5d971035aa30bb9ae3d6bbc8",
-    "ms": "Tri sut opitosti: opitost junostju, opitost zdravjem i opitost životom.",
-    "sr": "Monasi, postoje tri vrste opijenosti. Opijenost mladošću, opijenost zdravljem, opijenost životom.",
-    "source": "anguttara/an03-039"
-  },
-  {
-    "_id": "5d971035aa30bb9ae3d6bc5f",
-    "ms": "Světilnik telu jest oko. Ako bude oko tvoje čisto, vse tělo tvoje světlo bude. Ako li oko tvoje lakomo bude, vse tělo tvoje temno bude. Ako světlo, iže v tebe, tma jest, to tma kolika?",
-    "sr": "Svetionik tela je oko. Ako je oko čisto, celo telo biće svetlo. Ako je oko lakomo, celo telo biće tamno. Pazi da svjetlost u tebi ne bude tama. Jer ako je svetlost, koja je u tebi, tama, kolika će to tama biti?",
-    "source": "Evanđelje po Mateju, glava 6:22-23; Evanđelje po Luki, 11:34-36"
-  },
-  {
-    "_id": "5d971035aa30bb9ae3d6bc75",
-    "ms": "Učeniki rěčehu jemu: Tvoja bratija i mati stojat vně, iščut te. Ješua prostre ruku na učeniki i reče: Se, tvoreči volju otca mojego, toj brat moj i sestra i mati.",
-    "sr": "Učenici mu rekoše: Tvoja mati i braća stoje vani, ištu te. Ješua odgovori: Ovi ovdje, koji tvore volju moga oca, moji su braća i sestre i mati. Oni su ti, koji će ući u carstvo mojega oca.",
-    "source": "Evanđelje po Mateju, glava 12:46-50; Evanđelje po Marku, glava 3:31-35; Evanđelje po Luki, 8:19-21; Evanđelje po Tomi, izreka 99; Tumačenje znanja 9-11"
-  },
-  {
-    "_id": "5d971035aa30bb9ae3d6bbe2",
-    "ms": "Ljudi množinstvom imajut želanje da se neprijetno menšaje, a prijetno veličaje. No, imajuči takovo želanje, neprijetno se veličaje, a prijetno menšaje.",
-    "sr": "Većina ljudi ima želju: Kad bi se samo neprijatne stvari smanjivale, a prijatne uvećavale! Pa ipak, iako imaju takvu želju, neprijatne stvari se uvećavaju, a prijatne smanjuju.",
-    "source": "majjhima/mn046"
-  },
-  {
-    "_id": "5d971035aa30bb9ae3d6bcfe",
-    "ms": "Kogda imate polno občenje so ženoju, ne oddaljajte se dokolě i ona ne zadovoli svoje potrěbe.",
-    "sr": "Kada neko od vas ima polni odnos sa svojom ženom, neka se ne udaljuje od nje sve dok i ona ne zadovolji svoje potrebe.",
-    "source": "Ahmed Mehmedović, Tako je govorio Muhammed, Tuzla, 1991."
-  },
-  {
-    "_id": "5d971035aa30bb9ae3d6bd7b",
-    "ms": "Kak mogu znati da nazvano prirodom ne jest člověk, a nazvano ljudskim priroda?",
-    "sr": "Kako mogu znati da ono što nazivam prirodom nije čovek, a ono što nazivam ljudskim nije u biti priroda?"
-  },
-  {
-    "_id": "5d971035aa30bb9ae3d6be02",
-    "ms": "Kto vidi v srdcu vragost k drugom člověku za ma kaku grěšku, popolno jest stranny ljubovi k bogu. Jer ljubov k bogu ne trpi vragost k člověku.",
-    "sr": "Ko vidi u srcu svome trag mržnje prema ma kom čoveku za ma kakvu pogrešku, potpuno je tuđ ljubavi prema Bogu. Jer ljubav prema Bogu nikako ne trpi mržnju prema čoveku."
-  },
-  {
-    "_id": "5d971035aa30bb9ae3d6be56",
-    "ms": "Drugi slěpo slědet sobstvena gledišča, trajajut v jim i težko jih ostavjajut. Mi ne budemo slěpo slěditi gledišča i trajati v jim, no jih legko ostavjati.",
-    "sr": "Drugi će slepo slediti sopstvena gledišta, istrajavati na njima i teško ih napuštati. Mi nećemo slepo slediti sopstvena gledišta, istrajavati na njima, već ćemo ih lako napuštati.",
-    "source": null
-  },
-  {
-    "_id": "5d971035aa30bb9ae3d6bca3",
-    "ms": "Ja postim ale i mastim, spim ale i bdim, jedam měso, oženjeny jesm. Pa kto odustane od takovog puta života - koj jest moj put - ne pripada mojoj zajednici.",
-    "sr": "Što se mene tiče, ja postim, ali i mrsim, spavam, ali i bdijem, jedem meso, oženjen sam, pa ko odustane od ovakvog načina života - koji je moj put - taj ne pripada mojoj zajednici.",
-    "source": "Ahmed Mehmedović, Tako je govorio Muhammed, Tuzla, 1991."
-  },
-  {
-    "_id": "5d971035aa30bb9ae3d6bca5",
-    "ms": "Od naslady na světu ljubim zapahe i žene, no moja prava naslada jest v molitvi.",
-    "sr": "Od zadovoljstva na ovom vašem svijetu dragi su mi mirisi i žene; a moje pravo zadovoljstvo je u molitvi.",
-    "source": "Ahmed Mehmedović, Tako je govorio Muhammed, Tuzla, 1991."
-  },
-  {
-    "_id": "5d971035aa30bb9ae3d6bdef",
-    "ms": "Ako želate pravo razuměnje, ne směte dozvoliti da drugi obmanjujut vas. Trěba ubiti vse čto najdete, vnutri ili von. Ako strětnete Budu, ubijte Budu. Ako strětnete patriarhi, ubijte patriarhi. Tad možete postignuti osvobodženje.",
-    "sr": "Ako želite ispravno razumevanje, ne smete dozvoliti da vas drugi obmanjuju. Treba da ubijete sve na šta naiđete, bilo iznutra ili spolja. Ako sretnete Budu, ubijte Budu. Ako sretnete patrijarhe, ubijte patrijarhe... Tad možete postići svoje oslobođenje."
-  },
-  {
-    "_id": "5d971035aa30bb9ae3d6bbbf",
-    "ms": "Razvivajte svědomost, podvižniki. Svědomy vidi tvari kako sut.",
-    "sr": "Razvijajte koncentraciju, monasi. Skoncentrisani monah vidi stvari onakvima kakve jesu.",
-    "source": "samyutta/sn35-099"
-  },
-  {
-    "_id": "5d971035aa30bb9ae3d6be4e",
-    "ms": "Ja objavjujem učenje ktorym prěstajemo sporiti se so vsim na světu.",
-    "sr": "Ja objavljujem učenje kojim prestajemo da se neprestano svađamo sa bilo kime na ovome svetu."
-  },
-  {
-    "_id": "5d971035aa30bb9ae3d6bd82",
-    "ms": "Kak mogu znati že ljubov prěmy žitju ne jest obman? Kak mogu znati že prěstrašeny od smrti ne podobi izgubjenom dětetu na putu doma?",
-    "sr": "Kako mogu znati da ljubav prema životu nije obmana? Kako mogu znati da onaj ko se boji smrti nije nalik detetu koje se izgubilo i ne zna da je na putu kući?"
-  },
-  {
-    "_id": "5d971035aa30bb9ae3d6be2a",
-    "ms": "Kto žela ljubiti boga iznad vsega trěba se starati o čistotě duše. Čistota duše dobyva se sovladnenjem i izkorenenjem strasti.",
-    "sr": "Onaj ko želi da zavoli Boga iznad svega treba da se postara o čistoti svoje duše. Čistota, pak, duše stiče se savlađivanjem i istrebljivanjem strasti."
-  },
-  {
-    "_id": "5d971035aa30bb9ae3d6bbcf",
-    "ms": "Tri sut žedže: žedža dlja naslad, žedža dlja byti, žedža dlja nebyti.",
-    "sr": "Postoje tri vrste žuđi. Žeđ za zadovoljstvima čula, žeđ za postojanjem, žeđ za nepostojanjem.",
-    "source": "samyutta/sn45-170"
-  },
-  {
-    "_id": "5d971035aa30bb9ae3d6bbe7",
-    "ms": "Ne mysli legko o zlu: ne bude me sovladnuti. Posuda se napolni vodom kap po kap. Podobno, nerazumny se napolni zlom kap po kap.",
-    "sr": "Ne misli olako o zlu: “Ono me neće savladati. Čak se i krčag napuni kap po kap. Isto tako će se i budala napuniti zlom skupljajući ga makar kap po kap.",
-    "source": ""
-  },
-  {
-    "_id": "5d971035aa30bb9ae3d6bbef",
-    "ms": "Nevěděnje jest prědteča slabyh stanov uma. Slědi odsutnost styda i zazora od zlyh děla.",
-    "sr": "Neznanje je prethodnica nepovoljnih stanja uma, a za njim slede odsustvo stida i zazora od činjenja loših dela.",
-    "source": "samyutta/sn45-001"
-  },
-  {
-    "_id": "5d971035aa30bb9ae3d6bca4",
-    "ms": "Kto věruje v boga i ini svět, da pogosti gosta. Ko věruje v boga i ini svět, da považi susěda. Ko věruje v boga i ini svět, da govori dobro ili zamolkne.",
-    "sr": "Ko veruje u Boga i drugi svet, neka počasti gosta.\nKo veruje u Boga i drugi svet, neka poštuje suseda.\nKo veruje u Boga i drugi svet, neka govori ono što je dobro ili neka ćuti.",
-    "source": "Ahmed Mehmedović, Tako je govorio Muhammed, Tuzla, 1991."
-  },
-  {
-    "_id": "5d971035aa30bb9ae3d6bcfd",
-    "ms": "Najgorši člověk na sudnom dnju bude ktory intimno občenje s ženoju drugym odkryva.",
-    "sr": "Najgori čovjek kod Boga na sudnjem danu biće onaj, koji svoj intimni odnos sa ženom drugima objelodanjuje.",
-    "source": "Ahmed Mehmedović, Tako je govorio Muhammed, Tuzla, 1991."
-  },
-  {
-    "_id": "5d971035aa30bb9ae3d6bd91",
-    "ms": "Hodaj prěd gospodom v prostoti, a ne lukavstvu uma. Prostota donosi věru, a lukava i složena razmyslenja gordost, a gordost ostavjanje od boga.",
-    "sr": "Hodaj pred Gospodom u prostoti, a ne u lukavosti uma. Prostota donosi veru; lukava i komplikovana razmišljanja donose taštinu; a taština nam donosi napuštanje od Boga."
-  },
-  {
     "_id": "5d971035aa30bb9ae3d6be5e",
     "ms": "Ne uskrati dobra potrěbitym, kogda to rukom možeš učiniti. Ne rěči bližnjem: „Idi, dojdi vtory raz, zautra ti hoču dati”, ako segda imaješ.",
     "sr": "Ne uskrati dobra onima kojima je potrebno, kad rukom svojom to možeš učiniti. Ne reci bližnjem svom: „Idi, pa dođi drugi put, sutra ću ti dati”, ako već sada imaš.",
@@ -202,24 +32,6 @@
     "_id": "5d971035aa30bb9ae3d6be1d",
     "ms": "Ne prězri svědomje koje ti vsegda sovětuje dobro. Ona ti prědlaže božske i angelske sověte, osvobadža od tajnyh oskvrnjenja srdca i daruje ti smělost k bogu v vrěme smrti.",
     "sr": "Ne preziri savest koja ti uvek savetuje ono što je najbolje. Jer ona ti predlaže božanske i anđelske savete i oslobađa te od tajnih oskvrnjenja srca i daruje ti smelost prema Bogu u vreme smrti."
-  },
-  {
-    "_id": "5d971035aa30bb9ae3d6bbc6",
-    "ms": "Pet podviga ne može postignuti asketa, svečenik, nadprirodno bytje, diavol, bog ni nikto ini na světu. Da podležno starěnju ne stari. Da podležno bolesti ne oboli. Da podležno smrti ne umre. Da podležno končanju ne skonča. Da podležno razorenje ne razori se.",
-    "sr": "Pet je stvari koje ne može postići asketa, sveštenik, natprirodno biće, Đavo, Bog i niko drugi na svetu. Da ono podložno starenju ne stari. Da ono podložno bolesti ne oboli. Da ono podložno smrti ne umre. Da ono podložno okončanju ne okonča. Da se ono podložno razaranju ne razori.",
-    "source": "anguttara/an05-049"
-  },
-  {
-    "_id": "5d971035aa30bb9ae3d6bc43",
-    "ms": "Vse pobědih, vse prozrěh, ničim čto byva nesm obmazany. Vse ostavih, skončenjem žedže se osvobodih, sam se vozdigoh do věděnja. Na kogo da se vgledam?",
-    "sr": "Sve sam nadmašio, sve prozreo, ničim što postoji nisam okužen, sve sam napustio; dokončanjem žeđi sam se oslobodio, samostalno se uzdigao do spoznaje. Na koga da se ugledam?",
-    "source": "Dhammapada"
-  },
-  {
-    "_id": "5d971035aa30bb9ae3d6bcc4",
-    "ms": "Kogda dojde poslědny čas i v vašym rukami se najde sadnica, ne ustupajte od rabote, no ju zasadite.",
-    "sr": "Kada dođe posljednji čas i u rukama nekog od vas se nađe sadnica, neka ne odustaje od posla, već nek je zasadi ako stigne.",
-    "source": "Ahmed Mehmedović, Tako je govorio Muhammed, Tuzla, 1991."
   },
   {
     "_id": "5d971035aa30bb9ae3d6bce9",
@@ -255,17 +67,6 @@
     "_id": "5d971035aa30bb9ae3d6be28",
     "ms": "Ne mni že samo nabyvajne zlata i srěbra jest lakomstvo. Lakomstvo jest vsako nabyvanje za koje privezana tvoja volja.",
     "sr": "Nemoj misliti da je samo sticanje zlata i srebra gramžljivost. Ono je prisutno kod svakog sticanja stvari za koje je privezana tvoja volja."
-  },
-  {
-    "_id": "5d971035aa30bb9ae3d6bdb4",
-    "ms": "Myslj jest tvar jednako kak tlo, stěna, telefon. Energija dělajuči po obrazcu stava tvar.",
-    "sr": "Misao je materija isto kao što su i pod, zid, telefon, materija. Energija delujući po obrascu postaje materija."
-  },
-  {
-    "_id": "5d971035aa30bb9ae3d6be64",
-    "ms": "Um podvižnika ne dava pozornost prědstavi grada ni prědstavi ljudi, no prědstavom lěsa drži jednost svědomosti. On prědstavom lěsa bistri, utišava i osvobadža um, i vidi: nepokojenja od prědstave grada vyše ne ima, ni nepokojenja od prědstave ljudi.",
-    "sr": "Um isposnika ne poklanja pažnju predodžbi naselja ni predodžbi ljudi, već na osnovu predodžbe šume održava jedinstvo pažnje. On predodžbom šume prožima, bistri, stišava i oslobađa um. Tada spoznaje: Brige od predodžbe naselja više ne postoje, ni brige od predodžbe ljudi.",
-    "source": null
   },
   {
     "_id": "5d971035aa30bb9ae3d6bc78",
@@ -976,12 +777,6 @@
     "source": "Ahmed Mehmedović, Tako je govorio Muhammed, Tuzla, 1991."
   },
   {
-    "_id": "5d971035aa30bb9ae3d6bc18",
-    "ms": "Dobry prijatelji, dobry suputniki, dobry drugari sut cěly svečeny život.",
-    "sr": "Dobro prijateljstvo, dobro saputništvo, dobro drugarstvo jeste čitav svetački život.",
-    "source": "samyutta/sn45-002"
-  },
-  {
     "_id": "5d971035aa30bb9ae3d6bc60",
     "ms": "Dělajte ne za jelo minuče, no jelo ostajuče za život věčny.",
     "sr": "Delajte ne za jelo koje prolazi, no za jelo koje ostaje za život večni.",
@@ -1327,11 +1122,5 @@
     "ms": "Kogda odmetate vse čto vas ne može slěditi, togda najdete mir.",
     "sr": "Tek kad odbacite ono što vas ne može slijediti, tada ćete naći spokoj.",
     "source": "Dijalog Spasitelja, 141-142"
-  },
-  {
-    "_id": "5d971035aa30bb9ae3d6be91",
-    "ms": "Četiri sut povoda odstupiti od puta: žedža, vragost, nevěda i strah.",
-    "sr": "Četiri je načina da skreneš s puta. Zbog žudnje, mržnje, zablude ili straha.",
-    "source": "anguttara/an04-017"
   }
 ]
