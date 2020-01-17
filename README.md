@@ -21,7 +21,6 @@ npm start
 
 sadrzaj:
 - pretraga autora ne radi
-- opcija kad se unosi novi citat da zadrži ime autora i izvor
 - kratiti preduge razlike
 - proveriti svuda gramatiku sa http://steen.free.fr/interslavic/spell_checker.html
 - dodati izvor za Upanišade

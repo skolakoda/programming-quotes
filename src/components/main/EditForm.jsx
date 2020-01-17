@@ -14,6 +14,7 @@ const EditForm = ({ quote }) => {
 
   const [validation, setValidation] = useState('')
   const [response, setResponse] = useState('')
+  const [reuse, setReuse] = useState(false)
 
   const postQuote = e => {
     e.preventDefault()
@@ -48,22 +49,43 @@ const EditForm = ({ quote }) => {
     <div>
       <h1>
         {translate(quote ? 'EDIT_QUOTE' : 'ADD_QUOTE')}
-        {quote && <small><sup>(<Link to={`/citat/${quote._id}`}>show</Link>)</sup></small>}
+        {!reuse && quote && <small><sup>(<Link to={`/citat/${quote._id}`}>show</Link>)</sup></small>}
       </h1>
 
+      <p>should reuse:{' '}
+        <label>
+          <input
+            type="radio"
+            name="translation-mode"
+            value="off"
+            checked={!reuse}
+            onChange={() => setReuse(false)}
+          /> off
+        </label>
+        <label>
+          <input
+            type="radio"
+            name="translation-mode"
+            value="on"
+            checked={reuse}
+            onChange={() => setReuse(true)}
+          /> on
+        </label>
+      </p>
+
       <form onSubmit={postQuote}>
-        <input type="hidden" name="_id" defaultValue={quote && quote._id} />
+        <input type="hidden" name="_id" defaultValue={!reuse && quote ? quote._id : ''} />
         <p>
           <label htmlFor="author" title={translate('AUTHOR_TIP')}>{translate('AUTHOR')} *</label><br/>
           <input name="author" id="author" defaultValue={quote && quote.author} autoFocus />
         </p>
         <p>
           <label htmlFor="sr" >Tekst ({translate('SERBOCROATIAN')}) *</label><br />
-          <textarea name="sr" id="sr" defaultValue={quote && quote.sr} cols="60" rows="5"></textarea>
+          <textarea name="sr" id="sr" defaultValue={!reuse && quote ? quote.sr : ''} cols="60" rows="5"></textarea>
         </p>
         <p>
           <label htmlFor="ms" >Tekst ({translate('INTERSLAVIC')}) </label><br />
-          <textarea name="ms" id="ms" defaultValue={quote && quote.ms} cols="60" rows="5"></textarea>
+          <textarea name="ms" id="ms" defaultValue={!reuse && quote ? quote.ms : ''} cols="60" rows="5"></textarea>
         </p>
         <p>
           <label htmlFor="source">{translate('SOURCE')} </label><br/>
