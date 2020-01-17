@@ -24,6 +24,7 @@ const EditForm = ({ quote }) => {
       .reduce((acc, el) => ({...acc, [el.name]: el.value.trim()}), {})
 
     if (!obj.author || !obj.sr) return setValidation(translate('REQUIRED_FIELDS'))
+    if (reuse) delete obj._id
 
     const endpoint = obj._id ? API.update : API.create
     const method = obj._id ? 'PUT' : 'POST'
@@ -49,7 +50,7 @@ const EditForm = ({ quote }) => {
     <div>
       <h1>
         {translate(quote ? 'EDIT_QUOTE' : 'ADD_QUOTE')}
-        {!reuse && quote && <small><sup>(<Link to={`/citat/${quote._id}`}>show</Link>)</sup></small>}
+        {quote && quote._id && <small><sup>(<Link to={`/citat/${quote._id}`}>show</Link>)</sup></small>}
       </h1>
 
       <p>should reuse:{' '}
@@ -74,18 +75,18 @@ const EditForm = ({ quote }) => {
       </p>
 
       <form onSubmit={postQuote}>
-        <input type="hidden" name="_id" defaultValue={!reuse && quote ? quote._id : ''} />
+        <input type="hidden" name="_id" defaultValue={quote && quote._id} />
         <p>
           <label htmlFor="author" title={translate('AUTHOR_TIP')}>{translate('AUTHOR')} *</label><br/>
           <input name="author" id="author" defaultValue={quote && quote.author} autoFocus />
         </p>
         <p>
           <label htmlFor="sr" >Tekst ({translate('SERBOCROATIAN')}) *</label><br />
-          <textarea name="sr" id="sr" defaultValue={!reuse && quote ? quote.sr : ''} cols="60" rows="5"></textarea>
+          <textarea name="sr" id="sr" defaultValue={quote && quote.sr} cols="60" rows="5"></textarea>
         </p>
         <p>
           <label htmlFor="ms" >Tekst ({translate('INTERSLAVIC')}) </label><br />
-          <textarea name="ms" id="ms" defaultValue={!reuse && quote ? quote.ms : ''} cols="60" rows="5"></textarea>
+          <textarea name="ms" id="ms" defaultValue={quote && quote.ms} cols="60" rows="5"></textarea>
         </p>
         <p>
           <label htmlFor="source">{translate('SOURCE')} </label><br/>
