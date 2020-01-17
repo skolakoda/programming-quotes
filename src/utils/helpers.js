@@ -1,7 +1,7 @@
 import authors from '../data/authors'
 
-export const isLang = (q, lang, translateMode = false) =>
-  q[lang] && (translateMode ? !q.ms : true)
+export const isLang = (q, lang, devMode = false) =>
+  q[lang] && (devMode ? !q.ms : true)
 
 export function findValue(object, searchKey) {
   let value

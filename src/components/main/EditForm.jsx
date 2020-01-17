@@ -7,14 +7,14 @@ import MessagePopup from './MessagePopup'
 import {API} from '../../config/api'
 
 const EditForm = ({ quote }) => {
-  const {token} = useSelector(state => state)
+  const {token, devMode} = useSelector(state => state)
   const dispatch = useDispatch()
   const translate = useTranslate()
   const history = useHistory()
 
   const [validation, setValidation] = useState('')
   const [response, setResponse] = useState('')
-  const [reuse, setReuse] = useState(false)
+  const [reuse, setReuse] = useState(devMode)
 
   const postQuote = e => {
     e.preventDefault()
