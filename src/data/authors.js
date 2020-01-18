@@ -1,4 +1,26 @@
 export default {
+  'Nil Sinajski': {
+    src: 'https://upload.wikimedia.org/wikipedia/commons/4/4f/Nil_Postnik.jpg'
+  },
+  Plotin: {
+    src: 'https://upload.wikimedia.org/wikipedia/commons/e/ee/Plotinos.jpg'
+  },
+  Sengcan: {
+    src: 'https://upload.wikimedia.org/wikipedia/commons/5/52/Sengcan.jpg'
+  },
+  Mani: {
+    src: 'https://upload.wikimedia.org/wikipedia/commons/6/63/Mani.jpg'
+  },
+  Nagasena: {
+    src: 'https://upload.wikimedia.org/wikipedia/commons/4/4d/King_Milinda_ask_questions.jpg'
+  },
+  'Ibn Arabi': {
+    src: 'https://upload.wikimedia.org/wikipedia/commons/e/e9/Ibn_Arabi.jpg'
+  },
+  'Jovan Lestvičnik': {
+    ms: 'Joann Lěstvičnik',
+    src: 'https://upload.wikimedia.org/wikipedia/commons/3/36/StJohnClimacus.jpg'
+  },
   Upanišade: {
     ms: 'Upanišady',
     src: 'https://upload.wikimedia.org/wikipedia/commons/2/2b/1860s_manuscript_copy_of_ancient_Maitrayaniya_Upanishad%2C_sample_iii%2C_Krishna_Yajurveda%2C_Pune_Maharashtra%2C_Sanskrit%2C_Devanagari.jpg'
