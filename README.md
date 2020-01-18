@@ -21,10 +21,8 @@ npm start
 
 sadrzaj:
 - kontakt na dnu strane
-- da za ex-yu po defaultu bude sh
 - kratiti preduge razlike
 - proveriti svuda gramatiku sa http://steen.free.fr/interslavic/spell_checker.html
-- dodati izvor za Upanišade
 - negde zameniti muka sa stradanje
 - uraditi masovno tagovanje, kao na znacima
 - Knjiga mističkih poglavlja, Zagreb, 2005.

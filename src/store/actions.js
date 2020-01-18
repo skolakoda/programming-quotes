@@ -81,6 +81,25 @@ export const fetchQuotes = () => async dispatch => {
   }
 }
 
+export const checkCountry = () => async dispatch => {
+  const setCountryLang = land => {
+    if (land === 'Serbia' || land === 'Montenegro' || land === 'Croatia' || land === 'Bosnia and Herzegovina') {
+      dispatch(setLang('sr'))
+      dispatch(setScript(land === 'Serbia' || land === 'Montenegro' ? 'kir' : 'lat'))
+    }
+  }
+
+  const res = await fetch('http://www.geoplugin.net/json.gp') // 120 requests per minute
+  const data = await res.json()
+  if (data.geoplugin_countryName) setCountryLang(data.geoplugin_countryName)
+
+  if (!data.geoplugin_countryName) {
+    const res2 = await fetch('https://ipapi.co/json/') // 1,000 requests per day
+    const data2 = await res2.json()
+    if (data2.country_name) setCountryLang(data2.country_name)
+  }
+}
+
 export const checkUser = () => (dispatch, getState) => {
   const {token} = getState()
   if (!token) return

@@ -1,7 +1,8 @@
 import React, {useEffect} from 'react'
 import {useDispatch} from 'react-redux'
 
-import {fetchQuotes, checkUser} from '../store/actions'
+import {LS} from '../config/localstorage'
+import {fetchQuotes, checkUser, checkCountry} from '../store/actions'
 import Header from './header/Header'
 import Sidebar from './sidebar/Sidebar'
 import Router from './Router'
@@ -12,7 +13,10 @@ const App = () => {
 
   useEffect(() => {
     dispatch(fetchQuotes())
+    if (!localStorage.getItem(LS.lang) && !localStorage.getItem(LS.script))
+      dispatch(checkCountry())
     dispatch(checkUser())
+
     if ('serviceWorker' in navigator)
       navigator.serviceWorker.register('service-worker.js')
   }, [dispatch])
