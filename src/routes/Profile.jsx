@@ -44,11 +44,11 @@ const Profile = () =>  {
           <p>member since: {new Date(memberSince).toISOString().slice(0, 10)}</p>
           <p>admin: {admin ? 'yes' : 'no'}</p>
           <NavLink to="/neprevedeno" activeClassName="active">{translate('UNTRANSLATED').toLowerCase()}</NavLink>
-          <p>translation mode:{' '}
+          <p>dev mode:{' '}
             <label>
               <input
                 type="radio"
-                name="translation-mode"
+                name="dev-mode"
                 value="off"
                 checked={!devMode}
                 onChange={toggleTranslate}
@@ -57,7 +57,7 @@ const Profile = () =>  {
             <label>
               <input
                 type="radio"
-                name="translation-mode"
+                name="dev-mode"
                 value="on"
                 checked={devMode}
                 onChange={toggleTranslate}

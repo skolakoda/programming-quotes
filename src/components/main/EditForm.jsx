@@ -53,11 +53,11 @@ const EditForm = ({ quote }) => {
         {quote && quote._id && <small><sup>(<Link to={`/citat/${quote._id}`}>show</Link>)</sup></small>}
       </h1>
 
-      <p>should reuse:{' '}
+      <p>tvori novi citat:{' '}
         <label>
           <input
             type="radio"
-            name="translation-mode"
+            name="dev-mode"
             value="off"
             checked={!reuse}
             onChange={() => setReuse(false)}
@@ -66,7 +66,7 @@ const EditForm = ({ quote }) => {
         <label>
           <input
             type="radio"
-            name="translation-mode"
+            name="dev-mode"
             value="on"
             checked={reuse}
             onChange={() => setReuse(true)}
