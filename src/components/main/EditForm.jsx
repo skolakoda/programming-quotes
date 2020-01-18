@@ -7,14 +7,13 @@ import MessagePopup from './MessagePopup'
 import {API} from '../../config/api'
 
 const EditForm = ({ quote }) => {
-  const {token, devMode} = useSelector(state => state)
+  const {token} = useSelector(state => state)
   const dispatch = useDispatch()
   const translate = useTranslate()
   const history = useHistory()
 
   const [validation, setValidation] = useState('')
   const [response, setResponse] = useState('')
-  const [reuse, setReuse] = useState(devMode)
 
   const postQuote = e => {
     e.preventDefault()
@@ -24,7 +23,6 @@ const EditForm = ({ quote }) => {
       .reduce((acc, el) => ({...acc, [el.name]: el.value.trim()}), {})
 
     if (!obj.author || !obj.sr) return setValidation(translate('REQUIRED_FIELDS'))
-    if (reuse) delete obj._id
 
     const endpoint = obj._id ? API.update : API.create
     const method = obj._id ? 'PUT' : 'POST'
@@ -52,27 +50,6 @@ const EditForm = ({ quote }) => {
         {translate(quote ? 'EDIT_QUOTE' : 'ADD_QUOTE')}
         {quote && quote._id && <small><sup>(<Link to={`/citat/${quote._id}`}>show</Link>)</sup></small>}
       </h1>
-
-      <p>tvori novi citat:{' '}
-        <label>
-          <input
-            type="radio"
-            name="dev-mode"
-            value="off"
-            checked={!reuse}
-            onChange={() => setReuse(false)}
-          /> off
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="dev-mode"
-            value="on"
-            checked={reuse}
-            onChange={() => setReuse(true)}
-          /> on
-        </label>
-      </p>
 
       <form onSubmit={postQuote}>
         <input type="hidden" name="_id" defaultValue={quote && quote._id} />
