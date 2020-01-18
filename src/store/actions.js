@@ -82,13 +82,20 @@ export const fetchQuotes = () => async dispatch => {
 }
 
 export const checkCountry = () => async dispatch => {
+
   const setCountryLang = land => {
     if (land === 'Serbia' || land === 'Montenegro' || land === 'Croatia' || land === 'Bosnia and Herzegovina') {
       dispatch(setLang('sr'))
       dispatch(setScript(land === 'Serbia' || land === 'Montenegro' ? 'kir' : 'lat'))
+      return
     }
-    if (land === 'Poland' || land === 'Czech Republic' || land === 'Slovakia' || land === 'Slovenia')
+    if (land === 'Poland' || land === 'Czech Republic' || land === 'Slovakia' || land === 'Slovenia') {
+      dispatch(setLang('ms'))
       dispatch(setScript('lat'))
+      return
+    }
+    dispatch(setLang('ms'))
+    dispatch(setScript('kir'))
   }
 
   const res = await fetch('http://www.geoplugin.net/json.gp') // 120 requests per minute
