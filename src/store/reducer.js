@@ -18,7 +18,7 @@ const initialState = {
 }
 
 export const reducer = (state = initialState, action) => {
-  const {allQuotes, allAuthors, selectedAuthors, lang, devMode, phrase} = state
+  const {allQuotes, allAuthors, selectedAuthors, lang, devMode, phrase, authorPhrase} = state
   const {quote} = action
 
   const ifLang = q => isLang(q, lang, devMode)
@@ -66,6 +66,8 @@ export const reducer = (state = initialState, action) => {
       return {...state, admin: action.admin }
     case 'SET_PHRASE':
       return {...state, phrase: action.phrase }
+    case 'SET_AUTHOR_PHRASE':
+      return {...state, authorPhrase: action.authorPhrase }
     case 'SET_DEV_MODE':
       return {...state, devMode: action.devMode }
     case 'ADD_QUOTE':
@@ -93,11 +95,10 @@ export const reducer = (state = initialState, action) => {
     }
     case 'FILTER_AUTHORS': {
       const filteredAuthors = [...allAuthors]
-        .filter(name => includes(name, phrase) || includes(getName(name, lang), phrase))
+        .filter(name => includes(name, authorPhrase) || includes(getName(name, lang), authorPhrase))
       return {
         ...state,
-        filteredAuthors,
-        authorPhrase: phrase
+        filteredAuthors
       }
     }
     case 'TOGGLE_SELECTED_AUTHORS': {

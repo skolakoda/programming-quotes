@@ -52,6 +52,8 @@ export const toggleSelectedAuthors = (shouldAdd, value) => ({type: 'TOGGLE_SELEC
 
 export const setPhrase = phrase => ({type: 'SET_PHRASE', phrase})
 
+export const setAuthorPhrase = authorPhrase => ({type: 'SET_AUTHOR_PHRASE', authorPhrase})
+
 /* THUNK */
 
 export const setUser = (token, admin = false) => dispatch => {

@@ -20,7 +20,6 @@ npm start
 ě
 
 sadrzaj:
-- pretraga autora ne radi
 - kontakt na dnu strane
 - da za ex-yu po defaultu bude sh
 - kratiti preduge razlike
