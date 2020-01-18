@@ -87,6 +87,8 @@ export const checkCountry = () => async dispatch => {
       dispatch(setLang('sr'))
       dispatch(setScript(land === 'Serbia' || land === 'Montenegro' ? 'kir' : 'lat'))
     }
+    if (land === 'Poland' || land === 'Czech Republic' || land === 'Slovakia' || land === 'Slovenia')
+      dispatch(setScript('lat'))
   }
 
   const res = await fetch('http://www.geoplugin.net/json.gp') // 120 requests per minute
