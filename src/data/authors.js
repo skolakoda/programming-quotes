@@ -1,4 +1,7 @@
 export default {
+  'Diadoh od Fotike': {
+    src: 'https://upload.wikimedia.org/wikipedia/commons/d/d2/Diadochos_of_Photiki.jpg'
+  },
   'Nil Sinajski': {
     src: 'https://upload.wikimedia.org/wikipedia/commons/4/4f/Nil_Postnik.jpg'
   },
