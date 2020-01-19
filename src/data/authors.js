@@ -1,4 +1,8 @@
 export default {
+  'Friedrich Nietzsche': {
+    src: 'https://upload.wikimedia.org/wikipedia/commons/2/23/Nietzsche1882.jpg',
+    common: 'Niče'
+  },
   'Diadoh od Fotike': {
     src: 'https://upload.wikimedia.org/wikipedia/commons/d/d2/Diadochos_of_Photiki.jpg'
   },

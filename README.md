@@ -24,8 +24,9 @@ sadrzaj:
 - kratiti preduge razlike
 - proveriti svuda gramatiku sa http://steen.free.fr/interslavic/spell_checker.html
 - negde zameniti muka sa stradanje
+- proveriti najduže
+- proveriti bez izvora
 - uraditi masovno tagovanje, kao na znacima
-- Knjiga mističkih poglavlja, Zagreb, 2005.
 
 - node.js backend rendering
   - grid fotogaleriju za citate, sa veličinom slova obrnuto srazmernom dužini citata
