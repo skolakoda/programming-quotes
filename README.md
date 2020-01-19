@@ -20,6 +20,7 @@ npm start
 ě
 
 sadrzaj:
+- 5d971035aa30bb9ae3d6bdb3
 - kontakt na dnu strane
 - kratiti preduge razlike
 - proveriti svuda gramatiku sa http://steen.free.fr/interslavic/spell_checker.html
