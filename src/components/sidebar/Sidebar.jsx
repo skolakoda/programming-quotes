@@ -41,7 +41,7 @@ const Sidebar = () => {
 
   return (
     <aside className="sidebar">
-      <button onClick={toggle} className="toggle-button">
+      <button onClick={toggle} className="no-button toggle-button">
         <span role="img" aria-label="search" className="search-icon">&#x1F50D;</span>
       </button>
       {sidebarOpen &&

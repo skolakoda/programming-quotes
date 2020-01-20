@@ -24,10 +24,10 @@ const ShowQuote = ({match}) => {
   if (!quote) return <img src={preloader} alt="loading..." />
 
   return (
-    <React.Fragment>
+    <main>
       <ImageQuote quote={quote} showSource={true} cssClass="big-quote" />
       <button><Link to="/" className="no-link" replace>{translate('MORE_WISDOM')}</Link></button>
-    </React.Fragment>
+    </main>
   )
 }
 

@@ -2,8 +2,8 @@
   padding: 20px;
 }
 
-.main-section {
-  padding-bottom: 20px;
+footer {
+  display: none;
 }
 
 @media (min-width: 1200px) {
@@ -18,6 +18,14 @@
     order: 2;
     right: 0;
     width: 74%;
+    /* grid to keep footer down */
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+  }
+  footer {
+    display: block;
+    padding-top: 20px;
   }
   .sidebar {
     width: 22%;

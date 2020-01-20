@@ -14,6 +14,10 @@ body {
   padding: 0;
 }
 
+main {
+  margin-bottom: 20px;
+}
+
 h1, h2 {
   color: darkred;
 }
@@ -51,9 +55,18 @@ blockquote {
   margin-right: 0;
 }
 
+small {
+  opacity: 0.9;
+}
+
 .no-link {
   color: inherit;
   text-decoration: none;
+}
+
+.no-button {
+  background: transparent;
+  border: 0;
 }
 
 .pointer {

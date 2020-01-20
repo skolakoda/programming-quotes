@@ -6,6 +6,7 @@ import {fetchQuotes, checkUser, checkCountry} from '../store/actions'
 import Header from './header/Header'
 import Sidebar from './sidebar/Sidebar'
 import Router from './Router'
+import Footer from './header/Footer'
 import './App.css'
 
 const App = () => {
@@ -26,6 +27,7 @@ const App = () => {
       <section className="main-section">
         <Header />
         <Router />
+        <Footer />
       </section>
       <Sidebar/>
     </div>
