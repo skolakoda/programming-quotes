@@ -55,7 +55,7 @@ const Quote = ({ quote, showSource, cssClass }) => {
           <Link to={`/citat/${_id}`} className="no-link">↠</Link>&nbsp;
           {admin &&
             <span>
-              <Link to={`/edituj-citat/${_id}`}><span className="edit-icon">&#9998;</span></Link>&nbsp;
+              <Link to={`/pravi-citat/${_id}`}><span className="edit-icon">&#9998;</span></Link>&nbsp;
               <span onClick={tryDelete} className={deleteCss}>&#10005;</span>
             </span>
           }

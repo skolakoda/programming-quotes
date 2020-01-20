@@ -21,7 +21,7 @@ const Router = () => (
     <Route path='/autor/:name' component={Author} />
     <Route path='/dodaj-citat' component={AddQuote} />
     <Route path='/neprevedeno' component={Untranslated} />
-    <Route path='/edituj-citat/:id' component={EditQuote} />
+    <Route path='/pravi-citat/:id' component={EditQuote} />
     <Route path='/moj-profil' component={Profile} />
     <Route path='/auth/:service/:token' component={Auth} />
   </Switch>

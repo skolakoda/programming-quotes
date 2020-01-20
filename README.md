@@ -20,11 +20,11 @@ npm start
 ě
 
 sadrzaj:
-- 5d971035aa30bb9ae3d6bdb3
 - kontakt na dnu strane
 - kratiti preduge razlike
 - proveriti svuda gramatiku sa http://steen.free.fr/interslavic/spell_checker.html
 - negde zameniti muka sa stradanje
+- negde zameniti podvižnik sa asketa, duhovni borac?
 - proveriti najduže
 - proveriti bez izvora
 - uraditi masovno tagovanje, kao na znacima
