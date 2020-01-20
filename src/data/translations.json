@@ -37,6 +37,7 @@
     "SUCCESS_SAVED": "Hvala, citat je uspešno sačuvan.",
     "SUCCESSFULLY_LOGIN": "Uspešno ste prijavljeni.",
     "SUCCESSFULLY_LOGOUT": "Uspešno ste odjavljeni.",
+    "FOOTER_TEXT": "Izreke i prevode možete slati na",
     "TAGS": "Oznake"
   },
   "ms": {
@@ -77,6 +78,7 @@
     "SUCCESS_SAVED": "Blagodarju, citat uspěšno skladovany.",
     "SUCCESSFULLY_LOGIN": "Uspěšno jeste prijavjeni.",
     "SUCCESSFULLY_LOGOUT": "Uspěšno jeste odjavjeni.",
+    "FOOTER_TEXT": "Izrěčenja i prěvode možete slati na",
     "TAGS": "Značke"
   }
 }

@@ -20,7 +20,6 @@ npm start
 ě
 
 sadrzaj:
-- kontakt na dnu strane
 - kratiti preduge razlike
 - proveriti svuda gramatiku sa http://steen.free.fr/interslavic/spell_checker.html
 - negde zameniti muka sa stradanje
