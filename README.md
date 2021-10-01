@@ -2,13 +2,13 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/skolakoda/programming-quotes/blob/master/LICENSE)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/skolakoda)
 
-[![](screen.png)](https://skolakoda.org/programming-quotes/)
+[![](screen.png)](https://skolakoda.github.io/programming-quotes/#/)
 
 # Programming Quotes
 
 **The Programming Quotes, an open source React app.**
 
-See: [skolakoda.org/programming-quotes](https://skolakoda.org/programming-quotes/)
+See: [skolakoda.github.io/programming-quotes](https://skolakoda.github.io/programming-quotes/)
 
 Using [Programming Quotes API](https://github.com/skolakoda/programming-quotes-api).
 
