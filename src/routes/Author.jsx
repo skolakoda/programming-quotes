@@ -1,27 +1,26 @@
-import React, {Component} from 'react'
+import React from 'react'
+import {useParams} from 'react-router'
 import {connect} from 'react-redux'
 
 import Quotes from '../components/main/Quotes'
 import AuthorBox from '../components/main/AuthorBox'
 import translate from '../shared/translate'
 
-class Author extends Component {
-  render() {
-    const author = this.props.match.params.name.replace(/_/g, ' ')
-    const { language, allQuotes, phrase } = this.props
-    const filtered = allQuotes
-      .filter(q => q.author === author)
-      .filter(quote => quote[language] && quote[language].toLowerCase().includes(phrase.toLowerCase()))
-   
-    return (
-      <main>
-        <h1>{author}</h1>
-        <AuthorBox author={author} />
-        {phrase && <small>{translate('SHOWING_RESULTS')} "{phrase}":</small>}
-        <Quotes loaded={allQuotes.length} currentQuotes={filtered} />
-      </main>
-    )
-  }
+function Author({language, allQuotes, phrase}) {
+  const {name} = useParams()
+  const author = name.replace(/_/g, ' ')
+  const filtered = allQuotes
+    .filter(q => q.author === author)
+    .filter(quote => quote[language] && quote[language].toLowerCase().includes(phrase.toLowerCase()))
+
+  return (
+    <main>
+      <h1>{author}</h1>
+      <AuthorBox author={author} />
+      {phrase && <small>{translate('SHOWING_RESULTS')} "{phrase}":</small>}
+      <Quotes loaded={allQuotes.length} currentQuotes={filtered} />
+    </main>
+  )
 }
 
 const mapStateToProps = ({language, allQuotes, phrase}) => ({language, allQuotes, phrase})

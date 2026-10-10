@@ -26,6 +26,16 @@ npm start
 
 The app runs at `http://localhost:3000`. Vite handles development and production builds; `npm test` runs the regression tests with Vitest, and `npm run test:watch` keeps them running while you work. `npm run build` still writes to `build/` with the GitHub Pages path `/programming-quotes/`.
 
+## Refreshing local data and publishing
+
+Run `npm run save` to replace `src/data/quotes.json` with quotes from the configured server. It reads `REACT_APP_API_URL` from the environment or Vite's server-mode env files (including `.env.local`), defaulting to `http://localhost:5000`. You can also pass a complete endpoint: `npm run save -- https://your-server.example/quotes/`.
+
+The download must succeed and return a non-empty list of valid quotes before the local file is replaced. HTTP errors, invalid JSON, and invalid quote data leave the existing file intact. Review the data changes before committing them.
+
+`npm run deploy` builds the application and publishes `build/` to the `gh-pages` branch of the repository's `origin` remote. It requires Git and permission to push to that repository.
+
+The publishing wrapper stores its Git cache in the system temporary directory to avoid long Windows paths. `gh-pages` is kept on the 6.1 patch line because the newer 6.2/6.3 releases currently bring in vulnerable dependencies.
+
 ## How to contribute
 
 See: [Contributing](CONTRIBUTING.md)

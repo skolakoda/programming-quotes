@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import {setLanguage} from '../../store/actions'
 import Github from './Github'
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router'
 import translate from '../../shared/translate'
 import {useServerData} from '../../config/api'
 import './Navigation.css'

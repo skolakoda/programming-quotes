@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
-import {Link} from 'react-router-dom'
+import {Link, useParams} from 'react-router'
 import {connect} from 'react-redux'
 
 import {addQuote, updateQuote} from '../store/actions'
 import translate from '../shared/translate'
 import MessagePopup from '../components/main/MessagePopup'
 import {API, useServerData} from '../config/api'
-import './EditQuote'
 
 class EditQuote extends Component {
   constructor(props) {
@@ -58,8 +57,8 @@ class EditQuote extends Component {
   }
 
   render() {
-    const edit = (this.props.match.path === '/edit-quote/:id')
-    const id = edit ? this.props.match.params.id : ''
+    const id = this.props.id || ''
+    const edit = Boolean(id)
     const quote = edit ? this.props.allQuotes.find(q => q._id === id) : {}
     const quoteLink = `/quote/${id}`
 
@@ -107,4 +106,9 @@ class EditQuote extends Component {
 const mapStateToProps = ({allQuotes, token, admin}) => ({allQuotes, token, admin})
 const mapDispatchToProps = {addQuote, updateQuote}
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditQuote)
+const ConnectedEditQuote = connect(mapStateToProps, mapDispatchToProps)(EditQuote)
+
+export default function EditQuoteRoute() {
+  const {id} = useParams()
+  return <ConnectedEditQuote key={id || 'new'} id={id} />
+}

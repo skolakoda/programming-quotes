@@ -1,5 +1,5 @@
 import React from 'react'
-import {Switch, Route} from 'react-router-dom'
+import {Routes, Route} from 'react-router'
 
 import AllQuotes from '../routes/AllQuotes'
 import Author from '../routes/Author'
@@ -13,17 +13,18 @@ import {useServerData} from '../config/api'
 
 const Router = () => {
   return (
-    <Switch>
-      <Route exact path='/' component={RandomQuote} />
-      <Route path='/all-quotes' component={AllQuotes} />
-      {useServerData && <Route path='/login' component={Login} />}
-      <Route path='/quote/:id' component={ShowQuote} />
-      <Route path='/author/:name' component={Author} />
-      {useServerData && <Route path='/add-quote' component={EditQuote} />}
-      {useServerData && <Route path='/edit-quote/:id' component={EditQuote} />}
-      {useServerData && <Route path='/profile' component={Profile} />}
-      {useServerData && <Route path='/auth/:service/:token' component={Auth} />}
-    </Switch>
+    <Routes>
+      <Route path='/' element={<RandomQuote />} />
+      <Route path='/all-quotes' element={<AllQuotes />} />
+      {useServerData && <Route path='/login' element={<Login />} />}
+      <Route path='/quote/:id' element={<ShowQuote />} />
+      <Route path='/author/:name' element={<Author />} />
+      {useServerData && <Route path='/add-quote' element={<EditQuote />} />}
+      {useServerData && <Route path='/edit-quote/:id' element={<EditQuote />} />}
+      {useServerData && <Route path='/profile' element={<Profile />} />}
+      {useServerData && <Route path='/auth/:service/:token' element={<Auth />} />}
+      <Route path='*' element={null} />
+    </Routes>
   )
 }
 

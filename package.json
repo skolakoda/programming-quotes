@@ -5,7 +5,7 @@
   "repository": "https://github.com/skolakoda/programming-quotes",
   "license": "MIT",
   "scripts": {
-    "save": "wget https://programming-quotes-api.herokuapp.com/quotes/ -d src/data/quotes.json",
+    "save": "node scripts/save-quotes.mjs",
     "predeploy": "npm run build",
     "start": "vite",
     "start:server": "vite --mode server",
@@ -13,21 +13,20 @@
     "build:server": "vite build --mode server",
     "test": "vitest run",
     "test:watch": "vitest",
-    "deploy": "gh-pages -d build"
+    "deploy": "node scripts/deploy.mjs"
   },
   "dependencies": {
-    "gh-pages": "^1.1.0",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
     "react-redux": "^9.3.0",
-    "react-router-dom": "^5.3.4",
+    "react-router": "^8.4.0",
     "redux": "^5.0.1",
     "redux-thunk": "^3.1.0"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^6.1.2",
+    "gh-pages": "~6.1.1",
     "jsdom": "^30.1.2",
-    "node-wget": "^0.4.2",
     "vite": "^8.3.4",
     "vitest": "^5.0.3"
   },

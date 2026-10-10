@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 
 import Navigation from './header/Navigation'
@@ -35,4 +34,4 @@ class App extends Component {
 const mapStateToProps = ({allAuthors}) => ({allAuthors})
 const mapDispatchToProps = {fetchQuotes, checkUser, getAuthorThumbs}
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))
+export default connect(mapStateToProps, mapDispatchToProps)(App)

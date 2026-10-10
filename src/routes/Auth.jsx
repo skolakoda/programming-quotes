@@ -1,30 +1,29 @@
-import React, {Component} from 'react'
-import {Link} from 'react-router-dom'
+import React, {useEffect} from 'react'
+import {Link, useParams} from 'react-router'
 import {connect} from 'react-redux'
 
-import {checkUser} from '../store/actions'
+import {checkUser, setUser} from '../store/actions'
 import {LS} from '../config/localstorage'
 import translate from '../shared/translate'
 
-class Auth extends Component {
-  componentDidMount() {
-    const {service, token} = this.props.match.params
+function Auth({checkUser, setUser}) {
+  const {service, token} = useParams()
+  useEffect(() => {
     localStorage.setItem(LS.service, service)
     localStorage.setItem(LS.token, token)
-    this.props.checkUser()
-  }
+    setUser(token)
+    checkUser()
+  }, [service, token, setUser, checkUser])
 
-  render() {
-    return (
-      <main>
-        <h1>Auth</h1>
-        <p>{translate('SUCCESSFULLY_LOGIN')}</p>
-        <code>goto</code> <Link to="/profile">{translate('PROFILE')}</Link>
-      </main>
-    )
-  }
+  return (
+    <main>
+      <h1>Auth</h1>
+      <p>{translate('SUCCESSFULLY_LOGIN')}</p>
+      <code>goto</code> <Link to="/profile">{translate('PROFILE')}</Link>
+    </main>
+  )
 }
 
-const mapDispatchToProps = {checkUser}
+const mapDispatchToProps = {checkUser, setUser}
 
 export default connect(null, mapDispatchToProps)(Auth)

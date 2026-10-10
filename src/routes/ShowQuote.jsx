@@ -1,20 +1,18 @@
-import React, {Component} from 'react'
+import React from 'react'
+import {useParams} from 'react-router'
 import {connect} from 'react-redux'
 
 import ImageQuote from './../components/main/ImageQuote'
 import './ShowQuote.css'
 
-class ShowQuote extends Component {
-  render() {
-    const id = this.props.match.params.id
-    const { allQuotes } = this.props
-    const quote = allQuotes.find(q => q._id === id)
-    if (!quote) return null
+function ShowQuote({allQuotes}) {
+  const {id} = useParams()
+  const quote = allQuotes.find(q => q._id === id)
+  if (!quote) return null
 
-    return (
-      <ImageQuote quote={quote} cssClass="big-quote" />
-    )
-  }
+  return (
+    <ImageQuote quote={quote} cssClass="big-quote" />
+  )
 }
 
 const mapStateToProps = ({allQuotes}) => ({allQuotes})
