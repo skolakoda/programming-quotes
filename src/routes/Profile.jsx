@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import {setUser, logout} from '../store/actions'
 import translate from '../shared/translate'
 import {LS} from '../config/localstorage'
-import {domain} from '../config/api'
+import {domain, useServerData} from '../config/api'
 
 class Profile extends Component  {
   constructor(props) {
@@ -16,6 +16,7 @@ class Profile extends Component  {
   }
 
   componentDidMount() {
+    if (!useServerData) return
     const token = localStorage.getItem(LS.token)
     if (!token) return
     const service = localStorage.getItem(LS.service)

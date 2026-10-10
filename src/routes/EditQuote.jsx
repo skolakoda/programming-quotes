@@ -5,7 +5,7 @@ import {connect} from 'react-redux'
 import {addQuote, updateQuote} from '../store/actions'
 import translate from '../shared/translate'
 import MessagePopup from '../components/main/MessagePopup'
-import {API} from '../config/api'
+import {API, useServerData} from '../config/api'
 import './EditQuote'
 
 class EditQuote extends Component {
@@ -24,6 +24,7 @@ class EditQuote extends Component {
   postQuote = e => {
     e.persist() // react fix
     e.preventDefault()
+    if (!useServerData) return
     this.setState({ validation: '' })
     const fields = e.target.elements
     const author = fields.author.value.trim(),

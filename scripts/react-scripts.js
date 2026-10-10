@@ -12,6 +12,7 @@ const result = spawnSync(process.execPath, [
   stdio: 'inherit',
   env: {
     ...process.env,
+    REACT_APP_DATA_MODE: process.argv[3] || process.env.REACT_APP_DATA_MODE || 'local',
     REACT_APP_ENV: script === 'start' ? 'development' : 'production'
   }
 })

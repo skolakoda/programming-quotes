@@ -5,7 +5,7 @@ import {connect} from 'react-redux'
 import Stars from './Stars'
 import MessagePopup from './MessagePopup'
 import translate from '../../shared/translate'
-import {API} from '../../config/api'
+import {API, useServerData} from '../../config/api'
 import {deleteQuote} from '../../store/actions'
 import './Quote.css'
 
@@ -25,6 +25,7 @@ class Quote extends Component {
   }
 
   deleteQuote = () => {
+    if (!useServerData) return
     const _id = this.props.quote._id
     fetch(API.delete, {
       method: 'delete',
@@ -53,7 +54,7 @@ class Quote extends Component {
       <blockquote className={cssClass || 'small-quote'}>
         <p className="quote-text">
           <Link to={`/quote/${id}`} className="no-link">{quote[language]}</Link>&nbsp;
-          { admin &&
+          { useServerData && admin &&
             <span className="admin-actions">
               <Link to={`/edit-quote/${id}`}><span className="edit-icon">&#9998;</span></Link>&nbsp;
               <span onClick={this.tryDelete} className={deleteCss}>&#10005;</span>

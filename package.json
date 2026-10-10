@@ -8,7 +8,9 @@
     "save": "wget https://programming-quotes-api.herokuapp.com/quotes/ -d src/data/quotes.json",
     "predeploy": "npm run build",
     "start": "node scripts/react-scripts.js start",
+    "start:server": "node scripts/react-scripts.js start server",
     "build": "node scripts/react-scripts.js build",
+    "build:server": "node scripts/react-scripts.js build server",
     "deploy": "gh-pages -d build",
     "eject": "react-scripts eject"
   },

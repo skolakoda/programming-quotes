@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import ReactStars from 'react-stars'
-import {API} from '../../config/api'
+import {API, useServerData} from '../../config/api'
 import {LS} from '../../config/localstorage'
 import translate from '../../shared/translate'
 import './Stars.css'
@@ -23,6 +23,7 @@ export default class Stars extends Component {
   }
 
   vote = newVote => {
+    if (!useServerData) return
     const localVotes = JSON.parse(localStorage.getItem(LS.ratings))
     if (this.alreadyVoted(localVotes))
       return this.setState({ error: translate('CAN_VOTE_ONCE') })
@@ -49,7 +50,7 @@ export default class Stars extends Component {
   render() {
     return (
       <div>
-        <ReactStars size={20} value={this.state.rating} onChange={this.vote} />
+        <ReactStars size={20} value={this.state.rating} edit={useServerData} onChange={this.vote} />
         {this.state.error && <p className="vote-error">{this.state.error}</p>}
       </div>
     )

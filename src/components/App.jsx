@@ -8,12 +8,15 @@ import Router from './Router'
 import './App.css'
 
 import {fetchQuotes, checkUser, getAuthorThumbs} from '../store/actions'
+import {useServerData} from '../config/api'
 
 class App extends Component {
   componentDidMount() {
     this.props.getAuthorThumbs(this.props.allAuthors)
-    this.props.fetchQuotes()
-    this.props.checkUser()
+    if (useServerData) {
+      this.props.fetchQuotes()
+      this.props.checkUser()
+    }
   }
 
   render() {

@@ -1,6 +1,6 @@
 import {getallImages} from '../shared/helpers'
 import {LS} from '../config/localstorage'
-import {API, domain} from '../config/api'
+import {API, domain, useServerData} from '../config/api'
 
 export const fetchQuotesRequest = () => ({type: 'FETCH_QUOTES_REQUEST'})
 
@@ -61,6 +61,7 @@ export const initState = allQuotes => dispatch => {
 }
 
 export const fetchQuotes = () => dispatch => {
+  if (!useServerData) return
   dispatch(fetchQuotesRequest(API.read))
   return fetch(API.read)
     .then(response => {
@@ -75,6 +76,7 @@ export const fetchQuotes = () => dispatch => {
 }
 
 export const checkUser = () => (dispatch, getState) => {
+  if (!useServerData) return
   const {token} = getState()
   if (!token) return
   const service = localStorage.getItem(LS.service)

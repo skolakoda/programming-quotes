@@ -5,6 +5,7 @@ import {setLanguage} from '../../store/actions'
 import Github from './Github'
 import {Link} from 'react-router-dom'
 import translate from '../../shared/translate'
+import {useServerData} from '../../config/api'
 import './Navigation.css'
 
 const Navigation = ({language, token, admin, setLanguage}) => {
@@ -15,11 +16,11 @@ const Navigation = ({language, token, admin, setLanguage}) => {
       <nav>
         <Link to="/" replace={true}>{translate('DAILY_QUOTE')}</Link>
         <Link to="/all-quotes">{translate('ALL_QUOTES')}</Link>
-        {admin && <Link to="/add-quote">{translate('ADD_QUOTE')}</Link>}
-        {token
+        {useServerData && admin && <Link to="/add-quote">{translate('ADD_QUOTE')}</Link>}
+        {useServerData && (token
           ? <Link to="/profile">{translate('PROFILE')}</Link>
           : <Link to="/login">{translate('LOGIN')}</Link>
-        }
+        )}
         <div>
           <button
             onClick={() => setLanguage('en')}

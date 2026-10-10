@@ -9,19 +9,20 @@ import RandomQuote from '../routes/RandomQuote'
 import Login from '../routes/Login'
 import Profile from '../routes/Profile'
 import Auth from '../routes/Auth'
+import {useServerData} from '../config/api'
 
 const Router = () => {
   return (
     <Switch>
       <Route exact path='/' component={RandomQuote} />
       <Route path='/all-quotes' component={AllQuotes} />
-      <Route path='/login' component={Login} />
+      {useServerData && <Route path='/login' component={Login} />}
       <Route path='/quote/:id' component={ShowQuote} />
       <Route path='/author/:name' component={Author} />
-      <Route path='/add-quote' component={EditQuote} />
-      <Route path='/edit-quote/:id' component={EditQuote} />
-      <Route path='/profile' component={Profile} />
-      <Route path='/auth/:service/:token' component={Auth} />
+      {useServerData && <Route path='/add-quote' component={EditQuote} />}
+      {useServerData && <Route path='/edit-quote/:id' component={EditQuote} />}
+      {useServerData && <Route path='/profile' component={Profile} />}
+      {useServerData && <Route path='/auth/:service/:token' component={Auth} />}
     </Switch>
   )
 }
