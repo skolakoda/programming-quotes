@@ -42,12 +42,14 @@ export const logout = () => dispatch => {
 
 export const getAuthorThumbs = allAuthors => dispatch => {
   const wikiApiLimit = 50
+  const authors = [...allAuthors]
   const promises = []
-  for (let i = 0; i < [...allAuthors].length; i += wikiApiLimit)
-    promises.push(getallImages([...allAuthors].slice(i, i + wikiApiLimit)))
-  Promise.all(promises)
+  for (let i = 0; i < authors.length; i += wikiApiLimit)
+    promises.push(getallImages(authors.slice(i, i + wikiApiLimit))
+      .catch(() => new Map()))
+  return Promise.all(promises)
     .then(data =>
-      dispatch(setAllImages(data.reduce((a, b) => new Map([...a, ...b]))))
+      dispatch(setAllImages(data.reduce((a, b) => new Map([...a, ...b]), new Map())))
     )
 }
 
@@ -61,11 +63,15 @@ export const initState = allQuotes => dispatch => {
 export const fetchQuotes = () => dispatch => {
   dispatch(fetchQuotesRequest(API.read))
   return fetch(API.read)
-    .then(response => response.json())
+    .then(response => {
+      if (!response.ok) throw new Error(`Unable to load quotes: ${response.status}`)
+      return response.json()
+    })
     .then(json => {
       dispatch(fetchQuotesSuccess())
       dispatch(initState(json))
     })
+    .catch(error => dispatch(fetchQuotesFailure(error.message)))
 }
 
 export const checkUser = () => (dispatch, getState) => {
