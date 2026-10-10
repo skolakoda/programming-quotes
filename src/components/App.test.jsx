@@ -1,11 +1,10 @@
 import React from 'react'
 import {vi} from 'vitest'
 import {act, render, unmount, flushRequests} from '../test/render'
-import {Simulate} from 'react-dom/test-utils'
 import {Provider} from 'react-redux'
 import {MemoryRouter} from 'react-router-dom'
 import {createStore, applyMiddleware} from 'redux'
-import thunk from 'redux-thunk'
+import {thunk} from 'redux-thunk'
 import App from './App'
 import {reducer} from '../store/reducer'
 import {fetchQuotes, checkUser} from '../store/actions'
@@ -60,7 +59,7 @@ test('local mode renders quotes immediately without backend requests, even with 
   expect(container.querySelector('a[href="/login"]')).toBeNull()
   expect(container.querySelector('a[href="/add-quote"]')).toBeNull()
   expect(container.querySelector('.admin-actions')).toBeNull()
-  act(() => Simulate.click(container.querySelector('[data-index="0"]')))
+  act(() => container.querySelector('.rating').click())
   act(() => store.dispatch(fetchQuotes()))
   act(() => store.dispatch(checkUser()))
   await flushRequests()

@@ -1,3 +1,52 @@
+.rating {
+    display: flex;
+    width: max-content;
+    height: 28px;
+}
+
+.rating-star {
+    position: relative;
+    width: 20px;
+    line-height: 28px;
+    font-size: 20px;
+    color: #949494;
+}
+
+.rating-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    color: #ffd700;
+}
+
+.rating input {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.rating-left {
+    left: 0;
+}
+
+.rating-right {
+    right: 0;
+}
+
+.rating-star:has(input:focus-visible) {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+}
+
+.rating input:disabled {
+    cursor: wait;
+}
+
 .vote-error {
     color: red;
     font-size: 0.8em;
