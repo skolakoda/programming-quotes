@@ -21,18 +21,20 @@ const Navigation = ({language, token, admin, setLanguage}) => {
           ? <Link to="/profile">{translate('PROFILE')}</Link>
           : <Link to="/login">{translate('LOGIN')}</Link>
         )}
-        <div>
+        <div className="language-switcher">
           <button
             onClick={() => setLanguage('en')}
-            className={language === 'en' ? 'active' : ''}>ENG</button>
+            lang="en"
+            className={language === 'en' ? 'active' : ''}>English</button>
           <button
             onClick={() => setLanguage('sr')}
-            className={language === 'sr' ? 'active' : ''}>SRB</button>
+            lang="sr"
+            className={language === 'sr' ? 'active' : ''}>Srpski</button>
           <button
             onClick={() => setLanguage('stsl')}
-            aria-label="Staroslovenski"
+            lang="cu"
             aria-pressed={language === 'stsl'}
-            className={language === 'stsl' ? 'active' : ''}>СТСЛ</button>
+            className={language === 'stsl' ? 'active' : ''}>Словѣньскъ</button>
         </div>
       </nav>
     </header>

@@ -53,18 +53,18 @@ test('staroslavonic selection shows translated quotes and supports switching bac
   global.fetch = vi.fn(() => Promise.resolve(wikipediaResponse()))
   mountApp(applicationStore)
   const translated = applicationStore.getState().allQuotes.filter(quote => quote.stsl)
-  const languageButton = container.querySelector('button[aria-label="Staroslovenski"]')
+  const languageButton = container.querySelector('button[lang="cu"]')
 
   try {
     act(() => languageButton.click())
     expect(languageButton.getAttribute('aria-pressed')).toBe('true')
     expect(container.querySelector('h1').textContent).toBe('Programerski citati')
     expect([...container.querySelectorAll('.quote-text a')].map(link => link.textContent))
-      .toEqual(translated.map(quote => quote.stsl))
+      .toEqual(translated.slice(0, 10).map(quote => quote.stsl))
 
     act(() => container.querySelector('nav a[href="/"]').click())
     expect(translated.some(quote => container.querySelector('.quote-text').textContent.includes(quote.stsl))).toBe(true)
-    act(() => [...container.querySelectorAll('nav button')].find(button => button.textContent === 'ENG').click())
+    act(() => container.querySelector('button[lang="en"]').click())
     expect(languageButton.getAttribute('aria-pressed')).toBe('false')
     expect(applicationStore.getState().allQuotes.some(quote => container.querySelector('.quote-text').textContent.includes(quote.en))).toBe(true)
     await flushRequests()

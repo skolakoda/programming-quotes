@@ -1,8 +1,22 @@
-nav > * {
-  display: inline-block;
-  margin-right: 20px;
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+}
+
+nav .language-switcher {
+  display: flex;
+  gap: 4px;
+  margin-left: auto;
 }
 
 nav .active {
   font-weight: bold;
+}
+
+@media (min-width: 801px) {
+  nav {
+    padding-right: 80px;
+  }
 }
