@@ -9,6 +9,7 @@ import App from './App'
 import {reducer} from '../store/reducer'
 import {fetchQuotes, checkUser, setPhrase, setAllAuthors} from '../store/actions'
 import {API, domain} from '../config/api'
+import {LS} from '../config/localstorage'
 
 const dataMode = vi.hoisted(() => ({useServerData: false}))
 
@@ -61,7 +62,8 @@ test('local mode renders quotes immediately without backend requests, even with 
   expect(container.querySelector('a[href="/login"]')).toBeNull()
   expect(container.querySelector('a[href="/add-quote"]')).toBeNull()
   expect(container.querySelector('.admin-actions')).toBeNull()
-  act(() => container.querySelector('.rating').click())
+  act(() => container.querySelector('.rating input[value="4.5"]').click())
+  expect(JSON.parse(localStorage.getItem(LS.localRatings))).toEqual({[localQuotes[0]._id]: 4.5})
   act(() => store.dispatch(fetchQuotes()))
   act(() => store.dispatch(checkUser()))
   await flushRequests()
@@ -73,6 +75,14 @@ test('local mode renders quotes immediately without backend requests, even with 
   })
   const author = container.querySelector('a[href="/author/Alan_Kay"]')
   expect(author.querySelector('img').getAttribute('src')).toBe('https://example.com/alan-kay.jpg')
+  unmount(container)
+  mountApp(createStore(reducer, applyMiddleware(thunk)))
+  await flushRequests()
+  expect(container.querySelector('.rating input[value="4.5"]').checked).toBe(true)
+  expect(localStorage.getItem(LS.ratings)).toBeNull()
+  global.fetch.mock.calls.forEach(([url]) => {
+    expect(new URL(url).hostname).toBe('en.wikipedia.org')
+  })
 })
 
 test.each(['/profile', '/login', '/add-quote', '/edit-quote/1', '/auth/github/token'])(

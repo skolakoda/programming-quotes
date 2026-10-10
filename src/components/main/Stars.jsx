@@ -43,14 +43,40 @@ function readVotes() {
   }
 }
 
+function readLocalRatings() {
+  try {
+    const ratings = JSON.parse(localStorage.getItem(LS.localRatings))
+    return ratings && typeof ratings === 'object' && !Array.isArray(ratings) ? ratings : {}
+  } catch {
+    return {}
+  }
+}
+
+function initialValue(id, rating) {
+  if (useServerData) return Number(rating)
+  const ratings = readLocalRatings()
+  const saved = Object.hasOwn(ratings, id) ? ratings[id] : undefined
+  return typeof saved === 'number' && saved >= 0.5 && saved <= 5 && Number.isInteger(saved * 2)
+    ? saved : Number(rating)
+}
+
 function VotingStars({id, initialRating}) {
-  const [state, setState] = useState({rating: Number(initialRating), error: '', pending: false})
+  const [state, setState] = useState(() => ({rating: initialValue(id, initialRating), error: '', pending: false}))
   const requestId = useRef(0)
   const pending = useRef(false)
   useEffect(() => () => { requestId.current++ }, [])
 
   const vote = async newVote => {
-    if (!useServerData || pending.current) return
+    if (!useServerData) {
+      try {
+        localStorage.setItem(LS.localRatings, JSON.stringify({...readLocalRatings(), [id]: newVote}))
+        setState(previous => ({...previous, rating: newVote, error: ''}))
+      } catch {
+        setState(previous => ({...previous, error: translate('STORAGE_PROBLEM')}))
+      }
+      return
+    }
+    if (pending.current) return
     const localVotes = readVotes()
     if (localVotes.includes(id))
       return setState(previous => ({...previous, error: translate('CAN_VOTE_ONCE')}))
@@ -85,7 +111,7 @@ function VotingStars({id, initialRating}) {
 
   return (
     <div>
-      <Rating value={state.rating} editable={useServerData}
+      <Rating value={state.rating} editable
         disabled={state.pending} onChange={vote} />
       {state.error && <p className="vote-error" role="alert">{state.error}</p>}
     </div>
