@@ -28,6 +28,11 @@ const Navigation = ({language, token, admin, setLanguage}) => {
           <button
             onClick={() => setLanguage('sr')}
             className={language === 'sr' ? 'active' : ''}>SRB</button>
+          <button
+            onClick={() => setLanguage('stsl')}
+            aria-label="Staroslovenski"
+            aria-pressed={language === 'stsl'}
+            className={language === 'stsl' ? 'active' : ''}>СТСЛ</button>
         </div>
       </nav>
     </header>

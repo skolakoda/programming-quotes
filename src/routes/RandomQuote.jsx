@@ -1,23 +1,23 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {connect} from 'react-redux'
 
 import ImageQuote from './../components/main/ImageQuote'
 import translate from './../shared/translate'
-
-function pickRandom(allQuotes, language) {
-  const translated = allQuotes.filter(quote => quote[language])
-  return translated.length ? translated[Math.floor(Math.random() * translated.length)] : null
-}
+import {readQuoteHistory, saveQuoteHistory, selectRandomQuote} from '../shared/randomQuotes'
 
 function RandomQuote({allQuotes, language}) {
-  const [selection, setSelection] = useState(() => ({allQuotes, language, quote: pickRandom(allQuotes, language)}))
+  const [selection, setSelection] = useState(() => selectRandomQuote(allQuotes, language, readQuoteHistory()))
+  useEffect(() => saveQuoteHistory(selection.history), [selection.history])
   let quote = selection.quote
   if (selection.allQuotes !== allQuotes || selection.language !== language) {
-    quote = allQuotes.find(candidate => candidate._id === selection.quote?._id && candidate[language])
-      || pickRandom(allQuotes, language)
-    setSelection({allQuotes, language, quote})
+    const current = allQuotes.find(candidate => candidate._id === selection.quote?._id && candidate[language])
+    const next = current && selection.language === language
+      ? {...selection, allQuotes, quote: current}
+      : selectRandomQuote(allQuotes, language, selection.history, current?._id)
+    quote = next.quote
+    setSelection(next)
   }
-  const getRandom = () => setSelection({allQuotes, language, quote: pickRandom(allQuotes, language)})
+  const getRandom = () => setSelection(previous => selectRandomQuote(allQuotes, language, previous.history))
 
   return (
     <main>

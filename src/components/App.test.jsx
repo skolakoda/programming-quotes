@@ -7,7 +7,8 @@ import {createStore, applyMiddleware} from 'redux'
 import {thunk} from 'redux-thunk'
 import App from './App'
 import {reducer} from '../store/reducer'
-import {fetchQuotes, checkUser, setPhrase, setAllAuthors} from '../store/actions'
+import {fetchQuotes, checkUser, setPhrase, setAllAuthors, setLanguage} from '../store/actions'
+import {store as applicationStore} from '../store'
 import {API, domain} from '../config/api'
 import {LS} from '../config/localstorage'
 
@@ -47,6 +48,30 @@ function wikipediaResponse() {
     1: {title: 'Alan Kay', thumbnail: {source: 'https://example.com/alan-kay.jpg'}}
   }}})}
 }
+
+test('staroslavonic selection shows translated quotes and supports switching back to English', async () => {
+  global.fetch = vi.fn(() => Promise.resolve(wikipediaResponse()))
+  mountApp(applicationStore)
+  const translated = applicationStore.getState().allQuotes.filter(quote => quote.stsl)
+  const languageButton = container.querySelector('button[aria-label="Staroslovenski"]')
+
+  try {
+    act(() => languageButton.click())
+    expect(languageButton.getAttribute('aria-pressed')).toBe('true')
+    expect(container.querySelector('h1').textContent).toBe('Programerski citati')
+    expect([...container.querySelectorAll('.quote-text a')].map(link => link.textContent))
+      .toEqual(translated.map(quote => quote.stsl))
+
+    act(() => container.querySelector('nav a[href="/"]').click())
+    expect(translated.some(quote => container.querySelector('.quote-text').textContent.includes(quote.stsl))).toBe(true)
+    act(() => [...container.querySelectorAll('nav button')].find(button => button.textContent === 'ENG').click())
+    expect(languageButton.getAttribute('aria-pressed')).toBe('false')
+    expect(applicationStore.getState().allQuotes.some(quote => container.querySelector('.quote-text').textContent.includes(quote.en))).toBe(true)
+    await flushRequests()
+  } finally {
+    act(() => applicationStore.dispatch(setLanguage('en')))
+  }
+})
 
 test('local mode renders quotes immediately without backend requests, even with a saved account', async () => {
   const store = createStore(reducer, {
