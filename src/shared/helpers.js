@@ -8,11 +8,17 @@ export function findValue(object, searchKey) {
 }
 
 export function fetchImage(title, size, callback) {
-  fetch(`https://en.wikipedia.org/w/api.php?action=query&titles=${title}&prop=pageimages&format=json&pithumbsize=${size}&origin=*&pilicense=any`)
-    .then(response => response.json())
+  return fetch(`https://en.wikipedia.org/w/api.php?action=query&titles=${encodeURIComponent(title)}&prop=pageimages&format=json&pithumbsize=${size}&origin=*&pilicense=any&redirects=1`)
+    .then(response => {
+      if (!response.ok) throw new Error(`Unable to load author image: ${response.status}`)
+      return response.json()
+    })
     .then(obj => {
-      const imgSrc = findValue(obj, 'source')
-      callback(imgSrc)
+      if (!obj.query || !obj.query.pages) throw new Error('Missing author image results')
+      const page = Object.values(obj.query.pages).find(page => page.thumbnail)
+      const imgSrc = page && page.thumbnail.source
+      if (callback) callback(imgSrc)
+      return imgSrc
     })
 }
 
