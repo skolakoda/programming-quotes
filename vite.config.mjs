@@ -6,7 +6,7 @@ export default defineConfig(({command, mode, isPreview}) => {
   const env = loadEnv(mode, process.cwd(), '')
 
   return {
-    plugins: [react({jsxRuntime: 'classic'})],
+    plugins: [react()],
     base: command === 'build' || isPreview ? '/programming-quotes/' : '/',
     define: {
       'process.env.REACT_APP_DATA_MODE': JSON.stringify(mode === 'server' ? 'server' : env.REACT_APP_DATA_MODE || 'local'),
@@ -17,7 +17,8 @@ export default defineConfig(({command, mode, isPreview}) => {
     server: {port: 3000},
     test: {
       globals: true,
-      environment: 'jsdom'
+      environment: 'jsdom',
+      setupFiles: ['./src/test/setup.js']
     }
   }
 })

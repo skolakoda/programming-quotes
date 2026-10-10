@@ -1,6 +1,6 @@
 import React from 'react'
 import {vi} from 'vitest'
-import {render, unmountComponentAtNode} from 'react-dom'
+import {act, render, unmount} from '../test/render'
 import {Provider} from 'react-redux'
 import {MemoryRouter} from 'react-router-dom'
 import {createStore} from 'redux'
@@ -20,7 +20,7 @@ beforeEach(() => {
 })
 
 afterEach(() => {
-  unmountComponentAtNode(container)
+  unmount(container)
   vi.restoreAllMocks()
 })
 
@@ -38,7 +38,7 @@ test('switching language selects a translated quote when the current one has no 
   const store = mountQuotes([englishOnly, bilingual])
   expect(container.querySelector('.quote-text').textContent).toContain(englishOnly.en)
 
-  store.dispatch(setLanguage('sr'))
+  act(() => store.dispatch(setLanguage('sr')))
 
   expect(container.querySelector('.quote-text').textContent).toContain(bilingual.sr)
   expect(container.textContent).not.toContain(englishOnly.en)
@@ -47,8 +47,8 @@ test('switching language selects a translated quote when the current one has no 
 test('keeps the current quote when it has a translation in the selected language', () => {
   const store = mountQuotes([bilingual, englishOnly])
 
-  store.dispatch(setLanguage('sr'))
-  store.dispatch(setLanguage('en'))
+  act(() => store.dispatch(setLanguage('sr')))
+  act(() => store.dispatch(setLanguage('en')))
 
   expect(container.querySelector('.quote-text').textContent).toContain(bilingual.en)
   expect(container.querySelector('.quote-text a').getAttribute('href')).toBe('/quote/both')
@@ -57,13 +57,13 @@ test('keeps the current quote when it has a translation in the selected language
 test('clears an unavailable quote and recovers when the language changes back', () => {
   const store = mountQuotes([englishOnly])
 
-  store.dispatch(setLanguage('sr'))
+  act(() => store.dispatch(setLanguage('sr')))
 
   expect(container.querySelector('.quote-text')).toBeNull()
   expect(container.querySelector('main').textContent).toContain('No translation for this quote.')
   expect(container.querySelector('button').disabled).toBe(true)
 
-  store.dispatch(setLanguage('en'))
+  act(() => store.dispatch(setLanguage('en')))
 
   expect(container.querySelector('.quote-text').textContent).toContain(englishOnly.en)
   expect(container.querySelector('button').disabled).toBe(false)
@@ -71,9 +71,9 @@ test('clears an unavailable quote and recovers when the language changes back', 
 
 test('uses quotes arriving later with the currently selected language', () => {
   const store = mountQuotes([])
-  store.dispatch(setLanguage('sr'))
+  act(() => store.dispatch(setLanguage('sr')))
 
-  store.dispatch(setAllQuotes([englishOnly, bilingual]))
+  act(() => store.dispatch(setAllQuotes([englishOnly, bilingual])))
 
   expect(container.querySelector('.quote-text').textContent).toContain(bilingual.sr)
 })
@@ -81,7 +81,7 @@ test('uses quotes arriving later with the currently selected language', () => {
 test('refreshes the selected quote when the server replaces its data', () => {
   const store = mountQuotes([bilingual])
 
-  store.dispatch(setAllQuotes([{...bilingual, en: 'Updated quote'}]))
+  act(() => store.dispatch(setAllQuotes([{...bilingual, en: 'Updated quote'}])))
 
   expect(container.querySelector('.quote-text').textContent).toContain('Updated quote')
   expect(container.querySelector('.quote-text a').getAttribute('href')).toBe('/quote/both')

@@ -19,9 +19,9 @@ export default class AuthorImage extends Component {
     this.setImage(this.props)
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (this.props.author !== nextProps.author || this.props.showUnknown !== nextProps.showUnknown)
-      this.setImage(nextProps)
+  componentDidUpdate(prevProps) {
+    if (this.props.author !== prevProps.author || this.props.showUnknown !== prevProps.showUnknown)
+      this.setImage(this.props)
   }
 
   componentWillUnmount() {

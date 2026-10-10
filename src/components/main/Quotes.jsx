@@ -11,8 +11,9 @@ export default class Quotes extends Component {
     this.state = {currentPage: 0}
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({currentPage: 0})
+  componentDidUpdate(prevProps) {
+    if (this.props.currentQuotes !== prevProps.currentQuotes && this.state.currentPage !== 0)
+      this.setState({currentPage: 0})
   }
 
   turnThePage = e => {

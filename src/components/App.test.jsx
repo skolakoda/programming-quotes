@@ -1,6 +1,6 @@
 import React from 'react'
 import {vi} from 'vitest'
-import {render, unmountComponentAtNode} from 'react-dom'
+import {act, render, unmount, flushRequests} from '../test/render'
 import {Simulate} from 'react-dom/test-utils'
 import {Provider} from 'react-redux'
 import {MemoryRouter} from 'react-router-dom'
@@ -27,7 +27,7 @@ beforeEach(() => {
 })
 
 afterEach(() => {
-  unmountComponentAtNode(container)
+  unmount(container)
   global.fetch = originalFetch
   localStorage.clear()
 })
@@ -60,10 +60,10 @@ test('local mode renders quotes immediately without backend requests, even with 
   expect(container.querySelector('a[href="/login"]')).toBeNull()
   expect(container.querySelector('a[href="/add-quote"]')).toBeNull()
   expect(container.querySelector('.admin-actions')).toBeNull()
-  Simulate.click(container.querySelector('[data-index="0"]'))
-  store.dispatch(fetchQuotes())
-  store.dispatch(checkUser())
-  await new Promise(resolve => setTimeout(resolve, 0))
+  act(() => Simulate.click(container.querySelector('[data-index="0"]')))
+  act(() => store.dispatch(fetchQuotes()))
+  act(() => store.dispatch(checkUser()))
+  await flushRequests()
 
   expect(store.getState().allQuotes).toBe(localQuotes)
   expect(global.fetch.mock.calls.length).toBeGreaterThan(0)
@@ -83,7 +83,7 @@ test.each(['/profile', '/login', '/add-quote', '/edit-quote/1', '/auth/github/to
     global.fetch = vi.fn(() => Promise.resolve(wikipediaResponse()))
 
     mountApp(store, path)
-    await new Promise(resolve => setTimeout(resolve, 0))
+    await flushRequests()
 
     global.fetch.mock.calls.forEach(([url]) => {
       expect(new URL(url).hostname).toBe('en.wikipedia.org')
@@ -107,7 +107,7 @@ test('server mode loads server quotes and preserves account and editing options'
   })
 
   mountApp(store)
-  await new Promise(resolve => setTimeout(resolve, 0))
+  await flushRequests()
 
   expect(store.getState().allQuotes).toEqual(serverQuotes)
   expect(container.querySelector('.quote-text').textContent).toContain(serverQuotes[0].en)
@@ -129,7 +129,7 @@ test('server mode retains local quotes and portraits when the quotes server is u
     : {ok: false, status: 404}))
 
   mountApp(store)
-  await new Promise(resolve => setTimeout(resolve, 0))
+  await flushRequests()
 
   const author = container.querySelector('a[href="/author/Alan_Kay"]')
   expect(author.querySelector('img').getAttribute('src')).toBe('https://example.com/alan-kay.jpg')

@@ -11,8 +11,9 @@ class Sidebar extends Component {
     this.state = {authors: [...this.props.allAuthors]}
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({authors: [...nextProps.allAuthors]})
+  componentDidUpdate(prevProps) {
+    if (this.props.allAuthors !== prevProps.allAuthors)
+      this.setState({authors: [...this.props.allAuthors]})
   }
 
   filterAuthors = text => {

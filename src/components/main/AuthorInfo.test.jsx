@@ -1,6 +1,6 @@
 import React from 'react'
 import {vi} from 'vitest'
-import {render, unmountComponentAtNode} from 'react-dom'
+import {render, unmount, flushRequests} from '../../test/render'
 import AuthorInfo from './AuthorInfo'
 
 const originalFetch = global.fetch
@@ -11,12 +11,11 @@ beforeEach(() => {
 })
 
 afterEach(() => {
-  unmountComponentAtNode(container)
+  unmount(container)
   global.fetch = originalFetch
   vi.restoreAllMocks()
 })
 
-const flushRequests = () => new Promise(resolve => setTimeout(resolve, 0))
 const biographyResponse = extract => ({
   ok: true,
   json: () => Promise.resolve({query: {pages: {1: {extract}}}})
@@ -102,7 +101,7 @@ test('does not update a biography after its component has unmounted', async () =
   const consoleError = vi.spyOn(console, 'error')
 
   render(<AuthorInfo author="Alan Perlis" />, container)
-  unmountComponentAtNode(container)
+  unmount(container)
   completeRequest(biographyResponse('Biography of Alan Perlis.'))
   await flushRequests()
 

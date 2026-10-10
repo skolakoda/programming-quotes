@@ -1,6 +1,6 @@
 import React from 'react'
 import {vi} from 'vitest'
-import {render, unmountComponentAtNode} from 'react-dom'
+import {act, render, unmount, flushRequests} from '../../test/render'
 import {Simulate} from 'react-dom/test-utils'
 import AuthorImage from './AuthorImage'
 import unknownImage from '../../assets/images/unknown.jpg'
@@ -15,12 +15,11 @@ beforeEach(() => {
 })
 
 afterEach(() => {
-  unmountComponentAtNode(container)
+  unmount(container)
   global.fetch = originalFetch
   window.innerWidth = originalWidth
 })
 
-const flushRequests = () => new Promise(resolve => setTimeout(resolve, 0))
 const imageResponse = source => ({
   ok: true,
   json: () => Promise.resolve({query: {pages: {
@@ -41,7 +40,7 @@ test('uses the mobile thumbnail URL returned by Wikipedia without rewriting its 
   expect(request.searchParams.get('redirects')).toBe('1')
   const image = container.querySelector('img')
   expect(image.getAttribute('src')).toBe(source)
-  Simulate.load(image)
+  act(() => Simulate.load(image))
   expect(image.style.display).toBe('')
 })
 
@@ -68,7 +67,7 @@ test('shows the placeholder after a failed request when the author page requires
 
   const image = container.querySelector('img')
   expect(image.getAttribute('src')).toBe(unknownImage)
-  Simulate.load(image)
+  act(() => Simulate.load(image))
   expect(image.style.display).toBe('')
 })
 
@@ -77,10 +76,10 @@ test('falls back to the placeholder if the portrait itself fails to load', async
 
   render(<AuthorImage author="Alan Perlis" showUnknown={true} />, container)
   await flushRequests()
-  Simulate.error(container.querySelector('img'))
+  act(() => Simulate.error(container.querySelector('img')))
 
   expect(container.querySelector('img').getAttribute('src')).toBe(unknownImage)
-  Simulate.error(container.querySelector('img'))
+  act(() => Simulate.error(container.querySelector('img')))
   expect(container.querySelector('img')).toBeNull()
 })
 
