@@ -1,3 +1,4 @@
+import {vi} from 'vitest'
 import {getallImages} from './helpers'
 import {getAuthorThumbs} from '../store/actions'
 
@@ -8,7 +9,7 @@ afterEach(() => {
 })
 
 test('matches normalized and redirected Wikipedia titles to the original author names', async () => {
-  global.fetch = jest.fn(() => Promise.resolve({
+  global.fetch = vi.fn(() => Promise.resolve({
     ok: true,
     json: () => Promise.resolve({query: {
       normalized: [{from: 'edsger_W._Dijkstra', to: 'Edsger W. Dijkstra'}],
@@ -34,7 +35,7 @@ test('matches normalized and redirected Wikipedia titles to the original author 
 
 test('keeps successful image batches when another Wikipedia request fails', async () => {
   const authors = Array.from({length: 51}, (_, i) => `Author ${i}`)
-  global.fetch = jest.fn()
+  global.fetch = vi.fn()
     .mockRejectedValueOnce(new Error('Network unavailable'))
     .mockResolvedValueOnce({
       ok: true,
@@ -42,7 +43,7 @@ test('keeps successful image batches when another Wikipedia request fails', asyn
         1: {title: authors[50], thumbnail: {source: 'portrait.jpg'}}
       }}})
     })
-  const dispatch = jest.fn()
+  const dispatch = vi.fn()
 
   await getAuthorThumbs(new Set(authors))(dispatch)
 
@@ -53,8 +54,8 @@ test('keeps successful image batches when another Wikipedia request fails', asyn
 })
 
 test('handles an empty list of authors', async () => {
-  global.fetch = jest.fn()
-  const dispatch = jest.fn()
+  global.fetch = vi.fn()
+  const dispatch = vi.fn()
 
   await getAuthorThumbs(new Set())(dispatch)
 

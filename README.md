@@ -16,13 +16,15 @@ Server mode preserves login, voting, and quote editing using the [Programming Qu
 
 ## Development
 
-Clone repo, then:
+Use Node.js 22.22.2+, 24.15.0+, or 26+; then clone the repo and run:
 
 ```
 npm install
 npm start
 
 ```
+
+The app runs at `http://localhost:3000`. Vite handles development and production builds; `npm test` runs the regression tests with Vitest, and `npm run test:watch` keeps them running while you work. `npm run build` still writes to `build/` with the GitHub Pages path `/programming-quotes/`.
 
 ## How to contribute
 

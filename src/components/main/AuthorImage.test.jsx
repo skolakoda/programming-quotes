@@ -1,4 +1,5 @@
 import React from 'react'
+import {vi} from 'vitest'
 import {render, unmountComponentAtNode} from 'react-dom'
 import {Simulate} from 'react-dom/test-utils'
 import AuthorImage from './AuthorImage'
@@ -29,7 +30,7 @@ const imageResponse = source => ({
 
 test('uses the mobile thumbnail URL returned by Wikipedia without rewriting its size', async () => {
   const source = 'https://example.com/330px-Alan_Perlis.jpg'
-  global.fetch = jest.fn(() => Promise.resolve(imageResponse(source)))
+  global.fetch = vi.fn(() => Promise.resolve(imageResponse(source)))
 
   render(<AuthorImage author="Alan Perlis" />, container)
   await flushRequests()
@@ -46,7 +47,7 @@ test('uses the mobile thumbnail URL returned by Wikipedia without rewriting its 
 
 test('ignores a delayed portrait response for the previous author', async () => {
   const requests = []
-  global.fetch = jest.fn(() => new Promise(resolve => requests.push(resolve)))
+  global.fetch = vi.fn(() => new Promise(resolve => requests.push(resolve)))
 
   render(<AuthorImage author="Alan Perlis" />, container)
   render(<AuthorImage author="Alan Kay" />, container)
@@ -60,7 +61,7 @@ test('ignores a delayed portrait response for the previous author', async () => 
 })
 
 test('shows the placeholder after a failed request when the author page requires an image', async () => {
-  global.fetch = jest.fn(() => Promise.reject(new Error('Network unavailable')))
+  global.fetch = vi.fn(() => Promise.reject(new Error('Network unavailable')))
 
   render(<AuthorImage author="Alan Perlis" showUnknown={true} />, container)
   await flushRequests()
@@ -72,7 +73,7 @@ test('shows the placeholder after a failed request when the author page requires
 })
 
 test('falls back to the placeholder if the portrait itself fails to load', async () => {
-  global.fetch = jest.fn(() => Promise.resolve(imageResponse('perlis.jpg')))
+  global.fetch = vi.fn(() => Promise.resolve(imageResponse('perlis.jpg')))
 
   render(<AuthorImage author="Alan Perlis" showUnknown={true} />, container)
   await flushRequests()
@@ -84,7 +85,7 @@ test('falls back to the placeholder if the portrait itself fails to load', async
 })
 
 test('omits the portrait when Wikipedia has no image and no placeholder is requested', async () => {
-  global.fetch = jest.fn(() => Promise.resolve({
+  global.fetch = vi.fn(() => Promise.resolve({
     ok: true, json: () => Promise.resolve({query: {pages: {1: {title: 'Unknown author'}}}})
   }))
 

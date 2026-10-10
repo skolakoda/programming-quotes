@@ -7,12 +7,13 @@
   "scripts": {
     "save": "wget https://programming-quotes-api.herokuapp.com/quotes/ -d src/data/quotes.json",
     "predeploy": "npm run build",
-    "start": "node scripts/react-scripts.js start",
-    "start:server": "node scripts/react-scripts.js start server",
-    "build": "node scripts/react-scripts.js build",
-    "build:server": "node scripts/react-scripts.js build server",
-    "deploy": "gh-pages -d build",
-    "eject": "react-scripts eject"
+    "start": "vite",
+    "start:server": "vite --mode server",
+    "build": "vite build",
+    "build:server": "vite build --mode server",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "gh-pages": "^1.1.0",
@@ -20,15 +21,19 @@
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "^3.0.1",
     "react-stars": "^2.2.5",
     "redux": "^4.0.0",
-    "redux-thunk": "^2.3.0",
-    "shortid": "^2.2.8"
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
-    "concurrently": "^3.5.1",
-    "node-wget": "^0.4.2"
+    "@vitejs/plugin-react": "^6.1.2",
+    "jsdom": "^30.1.2",
+    "node-wget": "^0.4.2",
+    "vite": "^8.3.4",
+    "vitest": "^5.0.3"
+  },
+  "engines": {
+    "node": "^22.22.2 || ^24.15.0 || >=26.0.0"
   },
   "browserslist": {
     "production": [
