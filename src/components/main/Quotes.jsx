@@ -1,45 +1,34 @@
-import React, {Component} from 'react'
+import React, {useState} from 'react'
 
 import Quote from './Quote'
 import preloader from '../../assets/images/preloader.gif'
 
 const quotesPerPage = 10
 
-export default class Quotes extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {currentPage: 0}
+export default function Quotes({loaded, currentQuotes}) {
+  const [page, setPage] = useState({quotes: currentQuotes, index: 0})
+  if (page.quotes !== currentQuotes) {
+    setPage({quotes: currentQuotes, index: 0})
   }
+  const currentPage = page.quotes === currentQuotes ? page.index : 0
+  const turnThePage = e => setPage({quotes: currentQuotes, index: Number(e.target.value)})
+  const startPosition = currentPage * quotesPerPage
+  const preparedQuotes = currentQuotes
+    .filter((q, i) => i >= startPosition && i < startPosition + quotesPerPage)
+    .map(q =>
+      <Quote key={q._id} quote={q} />
+    )
+  const pagination = []
+  const totalPages = Math.ceil(currentQuotes.length / quotesPerPage)
+  for (let i = 0; i < totalPages; i++)
+    pagination.push(<button value={i} onClick={turnThePage} key={i}>{i}</button>)
 
-  componentDidUpdate(prevProps) {
-    if (this.props.currentQuotes !== prevProps.currentQuotes && this.state.currentPage !== 0)
-      this.setState({currentPage: 0})
-  }
-
-  turnThePage = e => {
-    this.setState({currentPage: e.target.value})
-  }
-
-  render() {
-    const { loaded, currentQuotes } = this.props
-    const startPosition = this.state.currentPage * quotesPerPage
-    const preparedQuotes = currentQuotes
-      .filter((q, i) => i >= startPosition && i < startPosition + quotesPerPage)
-      .map(q =>
-        <Quote key={q._id} quote={q} />
-      )
-    const pagination = []
-    const totalPages = Math.ceil(currentQuotes.length / quotesPerPage)
-    for (let i = 0; i < totalPages; i++)
-      pagination.push(<button value={i} onClick={this.turnThePage} key={i}>{i}</button>)
-
-    return loaded ?
-      (
-        <div>
-          {preparedQuotes}
-          {totalPages > 1 && <p>{pagination}</p>}
-        </div>
-      )
-      : <img src={preloader} alt="loading..." />
-  }
+  return loaded ?
+    (
+      <div>
+        {preparedQuotes}
+        {totalPages > 1 && <p>{pagination}</p>}
+      </div>
+    )
+    : <img src={preloader} alt="loading..." />
 }

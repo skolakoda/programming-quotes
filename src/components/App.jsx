@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {useEffect, useRef} from 'react'
 import {connect} from 'react-redux'
 
 import Navigation from './header/Navigation'
@@ -9,26 +9,25 @@ import './App.css'
 import {fetchQuotes, checkUser, getAuthorThumbs} from '../store/actions'
 import {useServerData} from '../config/api'
 
-class App extends Component {
-  componentDidMount() {
-    this.props.getAuthorThumbs(this.props.allAuthors)
+function App({allAuthors, getAuthorThumbs, fetchQuotes, checkUser}) {
+  const initialAuthors = useRef(allAuthors)
+  useEffect(() => {
+    getAuthorThumbs(initialAuthors.current)
     if (useServerData) {
-      this.props.fetchQuotes()
-      this.props.checkUser()
+      fetchQuotes()
+      checkUser()
     }
-  }
+  }, [getAuthorThumbs, fetchQuotes, checkUser])
 
-  render() {
-    return (
-      <div className="App">
-        <section className="right-section">
-          <Navigation />
-          <Router />
-        </section>
-        <Sidebar/>
-      </div>
-    )
-  }
+  return (
+    <div className="App">
+      <section className="right-section">
+        <Navigation />
+        <Router />
+      </section>
+      <Sidebar/>
+    </div>
+  )
 }
 
 const mapStateToProps = ({allAuthors}) => ({allAuthors})

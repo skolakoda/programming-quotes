@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import {Link} from 'react-router'
 import {connect} from 'react-redux'
 
@@ -9,65 +9,60 @@ import {API, useServerData} from '../../config/api'
 import {deleteQuote} from '../../store/actions'
 import './Quote.css'
 
-class Quote extends Component {
-  constructor() {
-    super()
-    this.state = {
-      shouldDelete: false,
-      response: ''
-    }
+function Quote({quote, language, admin, cssClass, token, deleteQuote}) {
+  const [shouldDelete, setShouldDelete] = useState(false)
+  const [response, setResponse] = useState('')
+  const requestId = useRef(0)
+  useEffect(() => () => { requestId.current++ }, [quote._id])
+
+  const tryDelete = () => {
+    if (shouldDelete) deleteCurrentQuote()
+    setShouldDelete(true)
   }
 
-  tryDelete = () => {
-    if (this.state.shouldDelete)
-      this.deleteQuote()
-    this.setState({shouldDelete: true})
-  }
-
-  deleteQuote = () => {
+  const deleteCurrentQuote = () => {
     if (!useServerData) return
-    const _id = this.props.quote._id
+    const _id = quote._id
+    const currentRequest = ++requestId.current
     fetch(API.delete, {
       method: 'delete',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({_id, token: this.props.token})
+      body: JSON.stringify({_id, token})
     })
       .then(response => response.text())
-      .then(response => {
-        this.setState({response: translate(response)})  // ne otvara popup
-        if (response === 'QUOTE_DELETED') this.props.deleteQuote(_id)
+      .then(message => {
+        if (currentRequest === requestId.current) setResponse(translate(message))
+        if (message === 'QUOTE_DELETED') deleteQuote(_id)
+      })
+      .catch(() => {
+        if (currentRequest === requestId.current) setResponse(translate('NETWORK_PROBLEM'))
       })
   }
 
-  closePopup = () => {
-    this.setState({response: ''})
-  }
+  const closePopup = () => setResponse('')
 
-  render() {
-    const { quote, language, admin, cssClass } = this.props
-    const author = quote.author
-    const id = quote._id
-    const authorLink = `/author/${author.replace(/ /g, '_')}`
-    const deleteCss = `pointer ${this.state.shouldDelete ? 'red' : ''}`
+  const author = quote.author
+  const id = quote._id
+  const authorLink = `/author/${author.replace(/ /g, '_')}`
+  const deleteCss = `pointer ${shouldDelete ? 'red' : ''}`
 
-    return quote[language] ? (
-      <blockquote className={cssClass || 'small-quote'}>
-        <p className="quote-text">
-          <Link to={`/quote/${id}`} className="no-link">{quote[language]}</Link>&nbsp;
-          { useServerData && admin &&
-            <span className="admin-actions">
-              <Link to={`/edit-quote/${id}`}><span className="edit-icon">&#9998;</span></Link>&nbsp;
-              <span onClick={this.tryDelete} className={deleteCss}>&#10005;</span>
-            </span>
-          }
-        </p>
-        <Stars rating={quote.rating} id={id} />
-        <span className="quote-author"> — <Link to={authorLink}>{author}</Link></span>
+  return quote[language] ? (
+    <blockquote className={cssClass || 'small-quote'}>
+      <p className="quote-text">
+        <Link to={`/quote/${id}`} className="no-link">{quote[language]}</Link>&nbsp;
+        { useServerData && admin &&
+          <span className="admin-actions">
+            <Link to={`/edit-quote/${id}`}><span className="edit-icon">&#9998;</span></Link>&nbsp;
+            <span onClick={tryDelete} className={deleteCss}>&#10005;</span>
+          </span>
+        }
+      </p>
+      <Stars rating={quote.rating} id={id} />
+      <span className="quote-author"> — <Link to={authorLink}>{author}</Link></span>
 
-        {this.state.response && <MessagePopup message={this.state.response} closePopup={this.closePopup} />}
-      </blockquote>
-    ) : translate('NO_TRANSLATION')
-  }
+      {response && <MessagePopup message={response} closePopup={closePopup} />}
+    </blockquote>
+  ) : translate('NO_TRANSLATION')
 }
 
 const mapStateToProps = ({language, admin, token}) => ({language, admin, token})

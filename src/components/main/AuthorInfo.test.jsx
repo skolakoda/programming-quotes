@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {StrictMode} from 'react'
 import {vi} from 'vitest'
 import {render, unmount, flushRequests} from '../../test/render'
 import AuthorInfo from './AuthorInfo'
@@ -117,4 +117,28 @@ test('omits the biography and link when Wikipedia has no extract', async () => {
 
   expect(container.textContent).toBe('')
   expect(container.querySelector('a')).toBeNull()
+})
+
+test('clears a previous biography when returning to its author while a fresh request is pending', async () => {
+  global.fetch = vi.fn().mockResolvedValueOnce(biographyResponse('Previous biography.'))
+    .mockImplementation(() => new Promise(() => {}))
+  render(<AuthorInfo author="Alan Perlis" />, container)
+  await flushRequests()
+  expect(container.textContent).toContain('Previous biography.')
+  render(<AuthorInfo author="Alan Kay" />, container)
+  render(<AuthorInfo author="Alan Perlis" />, container)
+  expect(container.textContent).toBe('')
+})
+
+test('ignores the first request when Strict Mode restarts the effect', async () => {
+  const requests = []
+  global.fetch = vi.fn(() => new Promise(resolve => requests.push(resolve)))
+  render(<StrictMode><AuthorInfo author="Alan Perlis" /></StrictMode>, container)
+  expect(requests).toHaveLength(2)
+  requests[1](biographyResponse('Current biography.'))
+  await flushRequests()
+  requests[0](biographyResponse('Stale biography.'))
+  await flushRequests()
+  expect(container.textContent).toContain('Current biography.')
+  expect(container.textContent).not.toContain('Stale biography.')
 })

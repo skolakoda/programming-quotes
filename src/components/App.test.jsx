@@ -7,7 +7,7 @@ import {createStore, applyMiddleware} from 'redux'
 import {thunk} from 'redux-thunk'
 import App from './App'
 import {reducer} from '../store/reducer'
-import {fetchQuotes, checkUser} from '../store/actions'
+import {fetchQuotes, checkUser, setPhrase, setAllAuthors} from '../store/actions'
 import {API, domain} from '../config/api'
 
 const dataMode = vi.hoisted(() => ({useServerData: false}))
@@ -23,10 +23,12 @@ let container
 beforeEach(() => {
   dataMode.useServerData = false
   container = document.createElement('div')
+  document.body.append(container)
 })
 
 afterEach(() => {
   unmount(container)
+  container.remove()
   global.fetch = originalFetch
   localStorage.clear()
 })
@@ -135,4 +137,35 @@ test('server mode retains local quotes and portraits when the quotes server is u
   expect(store.getState().allQuotes).toBe(cachedQuotes)
   expect(store.getState().isFetching).toBe(false)
   expect(store.getState().error).toContain('404')
+})
+
+test('pagination resets when the quote filter changes', async () => {
+  const store = createStore(reducer, reducer(undefined, {}), applyMiddleware(thunk))
+  global.fetch = vi.fn(() => Promise.resolve(wikipediaResponse()))
+  mountApp(store)
+  act(() => container.querySelector('button[value="1"]').click())
+  expect(container.querySelector('.quote-text').textContent).toContain(store.getState().allQuotes[10].en)
+  act(() => store.dispatch(setPhrase('Simplicity is prerequisite')))
+  expect(container.querySelectorAll('.quote-text')).toHaveLength(1)
+  expect(container.querySelector('.quote-text').textContent).toContain('Simplicity is prerequisite')
+  await flushRequests()
+})
+
+test('author filtering and refreshing the author list keep the sidebar usable', async () => {
+  const store = createStore(reducer, {
+    ...reducer(undefined, {}), allAuthors: new Set(['Alan Kay', 'Alan Perlis'])
+  }, applyMiddleware(thunk))
+  global.fetch = vi.fn(() => Promise.resolve(wikipediaResponse()))
+  mountApp(store)
+  const input = container.querySelectorAll('.filters input')[1]
+  act(() => {
+    Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set.call(input, 'PERLIS')
+    input.dispatchEvent(new Event('input', {bubbles: true}))
+  })
+  expect(container.querySelectorAll('a.author')).toHaveLength(1)
+  expect(container.querySelector('a.author').textContent).toContain('Alan Perlis')
+  act(() => store.dispatch(setAllAuthors(new Set(['Alan Kay', 'Grace Hopper']))))
+  expect(container.querySelectorAll('a.author')).toHaveLength(2)
+  expect(container.querySelector('.sidebar').textContent).toContain('Grace Hopper')
+  await flushRequests()
 })

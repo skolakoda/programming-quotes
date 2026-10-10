@@ -1,52 +1,34 @@
-import React, { Component } from 'react'
+import React, {useState} from 'react'
 import {connect} from 'react-redux'
 
 import ImageQuote from './../components/main/ImageQuote'
 import translate from './../shared/translate'
 
-class RandomQuote extends Component {
-  constructor() {
-    super()
-    this.state = {
-      quote: null
-    }
-  }
+function pickRandom(allQuotes, language) {
+  const translated = allQuotes.filter(quote => quote[language])
+  return translated.length ? translated[Math.floor(Math.random() * translated.length)] : null
+}
 
-  componentDidMount() {
-    this.getRandom()
+function RandomQuote({allQuotes, language}) {
+  const [selection, setSelection] = useState(() => ({allQuotes, language, quote: pickRandom(allQuotes, language)}))
+  let quote = selection.quote
+  if (selection.allQuotes !== allQuotes || selection.language !== language) {
+    quote = allQuotes.find(candidate => candidate._id === selection.quote?._id && candidate[language])
+      || pickRandom(allQuotes, language)
+    setSelection({allQuotes, language, quote})
   }
+  const getRandom = () => setSelection({allQuotes, language, quote: pickRandom(allQuotes, language)})
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.language === this.props.language && prevProps.allQuotes === this.props.allQuotes) return
-
-    const quote = this.props.allQuotes.find(q =>
-      this.state.quote && q._id === this.state.quote._id && q[this.props.language]
-    )
-    if (quote) {
-      if (quote !== this.state.quote) this.setState({quote})
-    } else {
-      this.getRandom()
-    }
-  }
-
-  getRandom = () => {
-    const allQuotes = this.props.allQuotes.filter(q => q[this.props.language])
-    const quote = allQuotes.length ? allQuotes[Math.floor(Math.random() * allQuotes.length)] : null
-    this.setState({quote})
-  }
-
-  render() {
-    return (
-      <main>
-        <h1>{translate('QUOTE_OF_THE_DAY')}</h1>
-        {this.state.quote
-          ? <ImageQuote quote={this.state.quote} cssClass="big-quote" />
-          : <p>{translate('NO_TRANSLATION')}</p>
-        }
-        <button onClick={this.getRandom} disabled={!this.state.quote}>Gimme more!</button>
-      </main>
-    )
-  }
+  return (
+    <main>
+      <h1>{translate('QUOTE_OF_THE_DAY')}</h1>
+      {quote
+        ? <ImageQuote quote={quote} cssClass="big-quote" />
+        : <p>{translate('NO_TRANSLATION')}</p>
+      }
+      <button onClick={getRandom} disabled={!quote}>Gimme more!</button>
+    </main>
+  )
 }
 
 const mapStateToProps = ({allQuotes, language}) => ({allQuotes, language})

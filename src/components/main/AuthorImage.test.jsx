@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {StrictMode} from 'react'
 import {vi} from 'vitest'
 import {act, render, unmount, flushRequests} from '../../test/render'
 import AuthorImage from './AuthorImage'
@@ -91,4 +91,27 @@ test('omits the portrait when Wikipedia has no image and no placeholder is reque
   await flushRequests()
 
   expect(container.querySelector('img')).toBeNull()
+})
+
+test('clears a previous portrait when returning to its author while a fresh request is pending', async () => {
+  global.fetch = vi.fn().mockResolvedValueOnce(imageResponse('perlis.jpg'))
+    .mockImplementation(() => new Promise(() => {}))
+  render(<AuthorImage author="Alan Perlis" />, container)
+  await flushRequests()
+  expect(container.querySelector('img').getAttribute('src')).toBe('perlis.jpg')
+  render(<AuthorImage author="Alan Kay" />, container)
+  render(<AuthorImage author="Alan Perlis" />, container)
+  expect(container.querySelector('img')).toBeNull()
+})
+
+test('ignores the first request when Strict Mode restarts the effect', async () => {
+  const requests = []
+  global.fetch = vi.fn(() => new Promise(resolve => requests.push(resolve)))
+  render(<StrictMode><AuthorImage author="Alan Perlis" /></StrictMode>, container)
+  expect(requests).toHaveLength(2)
+  requests[1](imageResponse('current.jpg'))
+  await flushRequests()
+  requests[0](imageResponse('stale.jpg'))
+  await flushRequests()
+  expect(container.querySelector('img').getAttribute('src')).toBe('current.jpg')
 })

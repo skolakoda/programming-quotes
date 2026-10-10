@@ -1,35 +1,25 @@
-import React, {Component} from 'react'
+import React, {useState} from 'react'
 import {connect} from 'react-redux'
 
 import Filters from './Filters'
 import Authors from './Authors'
 import './Sidebar.css'
 
-class Sidebar extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {authors: [...this.props.allAuthors]}
+function Sidebar({allAuthors}) {
+  const [filter, setFilter] = useState({source: allAuthors, text: ''})
+  if (filter.source !== allAuthors) {
+    setFilter({source: allAuthors, text: ''})
   }
+  const text = filter.source === allAuthors ? filter.text : ''
+  const authors = [...allAuthors].filter(name => name.toLowerCase().includes(text.toLowerCase()))
+  const filterAuthors = text => setFilter({source: allAuthors, text})
 
-  componentDidUpdate(prevProps) {
-    if (this.props.allAuthors !== prevProps.allAuthors)
-      this.setState({authors: [...this.props.allAuthors]})
-  }
-
-  filterAuthors = text => {
-    const filtered = [...this.props.allAuthors]
-      .filter(name => name.toLowerCase().includes(text.toLowerCase()))
-    this.setState({authors: filtered})
-  }
-
-  render() {
-    return (<aside className="sidebar">
-      <div className="sidebar-inner">
-        <Filters filterAuthors={this.filterAuthors}/>
-        <Authors authors={this.state.authors}/>
-      </div>
-    </aside>)
-  }
+  return (<aside className="sidebar">
+    <div className="sidebar-inner">
+      <Filters filterAuthors={filterAuthors}/>
+      <Authors authors={authors}/>
+    </div>
+  </aside>)
 }
 
 const mapStateToProps = ({allAuthors}) => ({allAuthors})

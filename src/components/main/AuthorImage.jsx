@@ -1,63 +1,40 @@
-import React, {Component} from 'react'
+import React, {useEffect, useState} from 'react'
 import {fetchImage} from '../../shared/helpers'
 import unknownImage from '../../assets/images/unknown.jpg'
 
 const responsiveBreakpoint = 800
 
-export default class AuthorImage extends Component {
-  requestId = 0
+export default function AuthorImage({author, showUnknown = false}) {
+  const [image, setImage] = useState(null)
 
-  constructor() {
-    super()
-    this.state = {
-      loaded: false,
-      src: '',
-    }
-  }
-
-  componentDidMount() {
-    this.setImage(this.props)
-  }
-
-  componentDidUpdate(prevProps) {
-    if (this.props.author !== prevProps.author || this.props.showUnknown !== prevProps.showUnknown)
-      this.setImage(this.props)
-  }
-
-  componentWillUnmount() {
-    this.requestId++
-  }
-
-  setImage(props) {
-    const {author, showUnknown} = props
-    const requestId = ++this.requestId
+  useEffect(() => {
+    let active = true
+    setImage(null)
     const imgWidth = window.innerWidth < responsiveBreakpoint ? window.innerWidth : 250
     const unknown = showUnknown ? unknownImage : ''
-    this.setState({loaded: false, src: ''})
     fetchImage(author, imgWidth)
       .catch(() => undefined)
       .then(src => {
-        if (requestId === this.requestId) this.setState({src: src || unknown})
+        if (active) setImage({author, showUnknown, src: src || unknown, loaded: false})
       })
-  }
+    return () => { active = false }
+  }, [author, showUnknown])
 
-  handleError = () => {
-    const src = this.props.showUnknown && this.state.src !== unknownImage ? unknownImage : ''
-    this.setState({loaded: false, src})
-  }
+  if (!image?.src || image.author !== author || image.showUnknown !== showUnknown) return null
 
-  render() {
-    if (!this.state.src) return null
+  const handleError = () => setImage(current => current === image ? {
+    ...image, loaded: false, src: showUnknown && image.src !== unknownImage ? unknownImage : ''
+  } : current)
 
-    return (
-      <img
-        className="main-image"
-        src={this.state.src}
-        style={this.state.loaded ? {} : {display: 'none'}}
-        onLoad={() => this.setState({loaded: true})}
-        onError={this.handleError}
-        alt={this.props.author}
-      />
-    )
-  }
+  return (
+    <img
+      key={image.src}
+      className="main-image"
+      src={image.src}
+      style={image.loaded ? {} : {display: 'none'}}
+      onLoad={() => setImage(current => current === image ? {...image, loaded: true} : current)}
+      onError={handleError}
+      alt={author}
+    />
+  )
 }

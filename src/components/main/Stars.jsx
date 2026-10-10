@@ -1,4 +1,4 @@
-import {Component, useId, useState} from 'react'
+import {useEffect, useId, useRef, useState} from 'react'
 import {API, useServerData} from '../../config/api'
 import {LS} from '../../config/localstorage'
 import translate from '../../shared/translate'
@@ -43,33 +43,21 @@ function readVotes() {
   }
 }
 
-export default class Stars extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {rating: Number(props.rating), error: '', pending: false}
-    this.requestId = 0
-  }
+function VotingStars({id, initialRating}) {
+  const [state, setState] = useState({rating: Number(initialRating), error: '', pending: false})
+  const requestId = useRef(0)
+  const pending = useRef(false)
+  useEffect(() => () => { requestId.current++ }, [])
 
-  componentDidUpdate(previous) {
-    if (previous.id !== this.props.id || previous.rating !== this.props.rating) {
-      this.requestId++
-      this.setState({rating: Number(this.props.rating), error: '', pending: false})
-    }
-  }
-
-  componentWillUnmount() {
-    this.requestId++
-  }
-
-  vote = async newVote => {
-    if (!useServerData || this.state.pending) return
+  const vote = async newVote => {
+    if (!useServerData || pending.current) return
     const localVotes = readVotes()
-    if (localVotes.includes(this.props.id))
-      return this.setState({error: translate('CAN_VOTE_ONCE')})
+    if (localVotes.includes(id))
+      return setState(previous => ({...previous, error: translate('CAN_VOTE_ONCE')}))
 
-    const id = this.props.id
-    const requestId = ++this.requestId
-    this.setState({pending: true, error: ''})
+    const currentRequest = ++requestId.current
+    pending.current = true
+    setState(previous => ({...previous, pending: true, error: ''}))
     try {
       const response = await fetch(API.vote, {
         method: 'POST',
@@ -83,20 +71,27 @@ export default class Stars extends Component {
       if (returnedRating == null || returnedRating === '' || !Number.isFinite(rating) || rating < 0 || rating > 5)
         throw new Error('Invalid rating')
       localStorage.setItem(LS.ratings, JSON.stringify([...new Set([...readVotes(), id])]))
-      if (requestId === this.requestId) this.setState({rating, pending: false})
+      if (currentRequest === requestId.current) {
+        pending.current = false
+        setState(previous => ({...previous, rating, pending: false}))
+      }
     } catch {
-      if (requestId === this.requestId)
-        this.setState({error: translate('NETWORK_PROBLEM'), pending: false})
+      if (currentRequest === requestId.current) {
+        pending.current = false
+        setState(previous => ({...previous, error: translate('NETWORK_PROBLEM'), pending: false}))
+      }
     }
   }
 
-  render() {
-    return (
-      <div>
-        <Rating value={this.state.rating} editable={useServerData}
-          disabled={this.state.pending} onChange={this.vote} />
-        {this.state.error && <p className="vote-error" role="alert">{this.state.error}</p>}
-      </div>
-    )
-  }
+  return (
+    <div>
+      <Rating value={state.rating} editable={useServerData}
+        disabled={state.pending} onChange={vote} />
+      {state.error && <p className="vote-error" role="alert">{state.error}</p>}
+    </div>
+  )
+}
+
+export default function Stars({id, rating}) {
+  return <VotingStars key={JSON.stringify([id, rating])} id={id} initialRating={rating} />
 }

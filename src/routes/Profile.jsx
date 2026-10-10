@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {useEffect, useState} from 'react'
 import {connect} from 'react-redux'
 
 import {setUser, logout} from '../store/actions'
@@ -6,57 +6,54 @@ import translate from '../shared/translate'
 import {LS} from '../config/localstorage'
 import {domain, useServerData} from '../config/api'
 
-class Profile extends Component  {
-  constructor(props) {
-    super(props)
-    this.state = {
-      memberSince: null,
-      name: '',
-    }
-  }
-
-  componentDidMount() {
-    if (!useServerData) return
-    const token = localStorage.getItem(LS.token)
-    if (!token) return
-    const service = localStorage.getItem(LS.service)
-    const googleAuthLink = `${domain}/auth/${service}/${token}`
-    fetch(googleAuthLink)
-      .then(data => data.json())
-      .then(data => {
-        const {name, admin, memberSince, voted} = data.user
-        this.setState({memberSince, name, voted})
-        this.props.setUser(token, admin)
-        // if (voted) this.updateLocalVotes(voted) glasanje ne radi?
+function Profile({token, admin, setUser, logout}) {
+  const [profile, setProfile] = useState(null)
+  const [error, setError] = useState(false)
+  const service = localStorage.getItem(LS.service)
+  useEffect(() => {
+    if (!useServerData || !token) return
+    let active = true
+    setProfile(null)
+    setError(false)
+    fetch(`${domain}/auth/${service}/${token}`)
+      .then(response => {
+        if (!response.ok) throw new Error(`HTTP ${response.status}`)
+        return response.json()
       })
-  }
+      .then(data => {
+        if (!active) return
+        if (!data.user) throw new Error('Missing user profile')
+        const {name, admin, memberSince} = data.user
+        setProfile({token, name, memberSince})
+        setUser(token, admin)
+      })
+      .catch(() => { if (active) setError(true) })
+    return () => { active = false }
+  }, [token, service, setUser])
 
-  updateLocalVotes(voted) {
-    localStorage.setItem(LS.ratings, JSON.stringify(voted))
-  }
-
-  logout = e => {
-    this.props.logout()
+  const handleLogout = () => {
+    logout()
     localStorage.setItem(LS.token, '')
   }
+  const current = profile?.token === token ? profile : null
+  const date = current?.memberSince ? new Date(current.memberSince) : null
+  const memberSince = date && Number.isFinite(date.getTime()) ? date.toISOString().slice(0, 10) : ''
 
-  render() {
-    return (
-      <main>
-        <h1>{translate('PROFILE')}</h1>
-        {this.props.token ?
-          <div>
-            <p>name: {this.state.name}</p>
-            <p>member since: {new Date(this.state.memberSince).toISOString().slice(0, 10)}</p>
-            {/* <p>quotes voted: {this.state.voted.length}</p> */}
-            <p>admin: {this.props.admin ? 'yes' : 'no'}</p>
-            <button onClick={this.logout}>{translate('LOGOUT')}</button>
-          </div>
-          : <p>{translate('SUCCESSFULLY_LOGOUT')}</p>
-        }
-      </main>
-    )
-  }
+  return (
+    <main>
+      <h1>{translate('PROFILE')}</h1>
+      {token ?
+        <div>
+          <p>name: {current?.name || ''}</p>
+          <p>member since: {memberSince}</p>
+          <p>admin: {admin ? 'yes' : 'no'}</p>
+          {error && <p>{translate('NETWORK_PROBLEM')}</p>}
+          <button onClick={handleLogout}>{translate('LOGOUT')}</button>
+        </div>
+        : <p>{translate('SUCCESSFULLY_LOGOUT')}</p>
+      }
+    </main>
+  )
 }
 
 const mapStateToProps = ({token, admin}) => ({token, admin})
