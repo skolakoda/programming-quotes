@@ -18,5 +18,5 @@ The app runs at `http://localhost:3000`.
 
 ## TODO
 
-- dodaj stranicu sa statistikama citata (broj citata po autoru i slično)
+- mnoga imena autora imaju zanimanje u zagradi, kao konvenciju sa wikipedije. to je korisno kao ključ ako ne treba prikazivati u UI.
 

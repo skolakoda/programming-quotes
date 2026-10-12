@@ -16,6 +16,7 @@ const Navigation = ({language, token, admin, setLanguage}) => {
       <nav>
         <Link to="/" replace={true}>{translate('DAILY_QUOTE')}</Link>
         <Link to="/all-quotes">{translate('ALL_QUOTES')}</Link>
+        <Link to="/statistics">{translate('STATISTICS')}</Link>
         {useServerData && admin && <Link to="/add-quote">{translate('ADD_QUOTE')}</Link>}
         {useServerData && (token
           ? <Link to="/profile">{translate('PROFILE')}</Link>

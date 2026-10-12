@@ -72,6 +72,11 @@ test('quote and author links navigate, including encoded author names and change
   expect(container.querySelector('.big-quote .quote-text').textContent).toContain('First quote')
 })
 
+test('the statistics page is public', () => {
+  mount('/statistics')
+  expect(container.querySelector('h1').textContent).toBe('Statistics')
+})
+
 test('changing routes does not fetch from the backend in local mode', async () => {
   mount('/all-quotes')
   go('/author/Alan_Kay')

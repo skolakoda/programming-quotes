@@ -1,0 +1,55 @@
+.pie-chart {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 40px;
+  margin: 20px 0;
+}
+
+.pie-chart svg {
+  flex: 0 0 auto;
+  width: 200px;
+}
+
+.pie-chart path,
+.pie-chart circle {
+  stroke: #fff;
+  stroke-width: 2px;
+}
+
+.pie-chart path:hover,
+.pie-chart circle:hover {
+  opacity: 0.8;
+}
+
+.pie-chart figcaption {
+  flex: 1 1 300px;
+}
+
+.pie-chart ul {
+  columns: 16em;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pie-chart li {
+  break-inside: avoid;
+  padding-left: 20px;
+  text-indent: -20px;
+}
+
+.pie-chart .swatch {
+  border-radius: 2px;
+  display: inline-block;
+  height: 12px;
+  margin-right: 8px;
+  width: 12px;
+}
+
+.pie-chart .value {
+  color: #666;
+  margin-left: 8px;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}

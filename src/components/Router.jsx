@@ -6,6 +6,7 @@ import Author from '../routes/Author'
 import EditQuote from '../routes/EditQuote'
 import ShowQuote from '../routes/ShowQuote'
 import RandomQuote from '../routes/RandomQuote'
+import Statistics from '../routes/Statistics'
 import Login from '../routes/Login'
 import Profile from '../routes/Profile'
 import Auth from '../routes/Auth'
@@ -19,6 +20,7 @@ const Router = () => {
       {useServerData && <Route path='/login' element={<Login />} />}
       <Route path='/quote/:id' element={<ShowQuote />} />
       <Route path='/author/:name' element={<Author />} />
+      <Route path='/statistics' element={<Statistics />} />
       {useServerData && <Route path='/add-quote' element={<EditQuote />} />}
       {useServerData && <Route path='/edit-quote/:id' element={<EditQuote />} />}
       {useServerData && <Route path='/profile' element={<Profile />} />}

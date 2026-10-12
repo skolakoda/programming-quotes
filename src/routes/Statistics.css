@@ -1,0 +1,60 @@
+.statistics dl {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  gap: 4px 20px;
+}
+
+.statistics dd {
+  margin: 0;
+  text-align: right;
+}
+
+.statistics .meters {
+  align-items: center;
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr) max-content;
+  gap: 8px 16px;
+  max-width: 600px;
+}
+
+.statistics .track {
+  background: #cde2fb;
+  border-radius: 4px;
+}
+
+.statistics .bar {
+  background: #2a78d6;
+  border-radius: 0 4px 4px 0;
+  display: block;
+  height: 10px;
+}
+
+.statistics .track .bar {
+  border-radius: 4px;
+}
+
+.statistics .value {
+  font-variant-numeric: tabular-nums;
+}
+
+.statistics table {
+  border-collapse: collapse;
+}
+
+.statistics th,
+.statistics td {
+  border-bottom: 1px solid #ddd;
+  padding: 4px 20px 4px 0;
+  text-align: left;
+}
+
+.statistics th:nth-child(2),
+.statistics td:nth-child(2) {
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.statistics .bar-cell {
+  padding-right: 0;
+  width: 30%;
+}
