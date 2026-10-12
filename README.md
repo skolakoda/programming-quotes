@@ -18,5 +18,4 @@ The app runs at `http://localhost:3000`.
 
 ## TODO
 
-- mnoga imena autora imaju zanimanje u zagradi, kao konvenciju sa wikipedije. to je korisno kao ključ ako ne treba prikazivati u UI.
 

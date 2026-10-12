@@ -5,6 +5,7 @@ import {connect} from 'react-redux'
 import Stars from './Stars'
 import MessagePopup from './MessagePopup'
 import translate from '../../shared/translate'
+import {displayName} from '../../shared/helpers'
 import {API, useServerData} from '../../config/api'
 import {deleteQuote} from '../../store/actions'
 import './Quote.css'
@@ -58,7 +59,7 @@ function Quote({quote, language, admin, cssClass, token, deleteQuote}) {
         }
       </p>
       <Stars rating={quote.rating} id={id} />
-      <span className="quote-author"> — <Link to={authorLink}>{author}</Link></span>
+      <span className="quote-author"> — <Link to={authorLink}>{displayName(author)}</Link></span>
 
       {response && <MessagePopup message={response} closePopup={closePopup} />}
     </blockquote>

@@ -5,6 +5,7 @@ import {connect} from 'react-redux'
 import Quotes from '../components/main/Quotes'
 import AuthorBox from '../components/main/AuthorBox'
 import translate from '../shared/translate'
+import {displayName} from '../shared/helpers'
 
 function Author({language, allQuotes, phrase}) {
   const {name} = useParams()
@@ -15,7 +16,7 @@ function Author({language, allQuotes, phrase}) {
 
   return (
     <main>
-      <h1>{author}</h1>
+      <h1>{displayName(author)}</h1>
       <AuthorBox author={author} />
       {phrase && <small>{translate('SHOWING_RESULTS')} "{phrase}":</small>}
       <Quotes loaded={allQuotes.length} currentQuotes={filtered} />

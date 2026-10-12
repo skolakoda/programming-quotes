@@ -1,3 +1,8 @@
+// Author keys are Wikipedia titles, which may end with a disambiguation such as "(programmer)".
+export function displayName(author) {
+  return author.replace(/ \([^)]*\)$/, '')
+}
+
 export function findValue(object, searchKey) {
   let value
   for (const key in object) {

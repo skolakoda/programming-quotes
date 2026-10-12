@@ -72,6 +72,16 @@ test('quote and author links navigate, including encoded author names and change
   expect(container.querySelector('.big-quote .quote-text').textContent).toContain('First quote')
 })
 
+test('author pages show the name without the Wikipedia disambiguation and keep it in the address', () => {
+  const quote = {_id: 'third', author: 'Paul Graham (programmer)', en: 'Third quote', rating: 3}
+  mount('/quote/third', {allQuotes: [quote]})
+  const link = container.querySelector('.quote-author a')
+  expect(link.textContent).toBe('Paul Graham')
+  act(() => link.click())
+  expect(container.querySelector('h1').textContent).toBe('Paul Graham')
+  expect(container.querySelector('.quote-text').textContent).toContain('Third quote')
+})
+
 test('the statistics page is public', () => {
   mount('/statistics')
   expect(container.querySelector('h1').textContent).toBe('Statistics')

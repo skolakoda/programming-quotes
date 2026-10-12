@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router'
+import {displayName} from '../../shared/helpers'
 import unknownImage from '../../assets/images/unknown.jpg'
 import './AuthorThumb.css'
 
@@ -8,7 +9,7 @@ export default function AuthorThumb({author, image}) {
   return (
     <Link className="author" to={link}>
       <img src={image || unknownImage} alt="author" />
-      {author}
+      {displayName(author)}
     </Link>
   )
 }

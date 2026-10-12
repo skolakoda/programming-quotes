@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 
 import Filters from './Filters'
 import Authors from './Authors'
+import {displayName} from '../../shared/helpers'
 import './Sidebar.css'
 
 function Sidebar({allAuthors}) {
@@ -11,7 +12,7 @@ function Sidebar({allAuthors}) {
     setFilter({source: allAuthors, text: ''})
   }
   const text = filter.source === allAuthors ? filter.text : ''
-  const authors = [...allAuthors].filter(name => name.toLowerCase().includes(text.toLowerCase()))
+  const authors = [...allAuthors].filter(name => displayName(name).toLowerCase().includes(text.toLowerCase()))
   const filterAuthors = text => setFilter({source: allAuthors, text})
 
   return (<aside className="sidebar">

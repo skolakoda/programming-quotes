@@ -4,6 +4,7 @@ import {Link} from 'react-router'
 
 import PieChart from '../components/statistics/PieChart'
 import translate from '../shared/translate'
+import {displayName} from '../shared/helpers'
 import './Statistics.css'
 
 const languages = [
@@ -24,7 +25,7 @@ function countByAuthor(quotes) {
 
 function authorSlices(authors) {
   const slices = authors.filter(([, count]) => count >= minQuotesForSlice)
-    .map(([author, count], i) => ({label: author, value: count, color: pieColors[i % pieColors.length]}))
+    .map(([author, count], i) => ({label: displayName(author), value: count, color: pieColors[i % pieColors.length]}))
   const other = authors.slice(slices.length).reduce((sum, [, count]) => sum + count, 0)
   if (other) slices.push({label: translate('OTHER_AUTHORS'), value: other, color: otherColor})
   return slices
@@ -71,7 +72,7 @@ function Statistics({allQuotes}) {
         <tbody>
           {authors.map(([author, count]) =>
             <tr key={author}>
-              <td><Link to={`/author/${author.replace(/ /g, '_')}`}>{author}</Link></td>
+              <td><Link to={`/author/${author.replace(/ /g, '_')}`}>{displayName(author)}</Link></td>
               <td>{count}</td>
               <td aria-hidden="true" className="bar-cell">
                 <span className="bar" style={{width: `${count / maxCount * 100}%`}} />

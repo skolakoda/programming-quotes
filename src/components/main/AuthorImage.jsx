@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import {fetchImage} from '../../shared/helpers'
+import {displayName, fetchImage} from '../../shared/helpers'
 import unknownImage from '../../assets/images/unknown.jpg'
 
 const responsiveBreakpoint = 800
@@ -34,7 +34,7 @@ export default function AuthorImage({author, showUnknown = false}) {
       style={image.loaded ? {} : {display: 'none'}}
       onLoad={() => setImage(current => current === image ? {...image, loaded: true} : current)}
       onError={handleError}
-      alt={author}
+      alt={displayName(author)}
     />
   )
 }

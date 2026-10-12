@@ -1,5 +1,5 @@
 import {vi} from 'vitest'
-import {getallImages} from './helpers'
+import {displayName, getallImages} from './helpers'
 import {getAuthorThumbs} from '../store/actions'
 
 const originalFetch = global.fetch
@@ -61,4 +61,10 @@ test('handles an empty list of authors', async () => {
 
   expect(global.fetch).not.toHaveBeenCalled()
   expect(dispatch).toHaveBeenCalledWith({type: 'SET_ALL_IMAGES', allImages: new Map()})
+})
+
+test('display names drop the Wikipedia disambiguation but keep other parentheses', () => {
+  expect(displayName('Paul Graham (programmer)')).toBe('Paul Graham')
+  expect(displayName('Alan Kay')).toBe('Alan Kay')
+  expect(displayName('Edsger (W.) Dijkstra')).toBe('Edsger (W.) Dijkstra')
 })
