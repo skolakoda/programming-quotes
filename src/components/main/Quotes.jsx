@@ -1,17 +1,21 @@
-import React, {useState} from 'react'
+import React, {useRef, useState} from 'react'
 
 import Quote from './Quote'
-import preloader from '../../assets/images/preloader.gif'
+import './Quotes.css'
 
 const quotesPerPage = 10
 
-export default function Quotes({loaded, currentQuotes}) {
+export default function Quotes({currentQuotes}) {
   const [page, setPage] = useState({quotes: currentQuotes, index: 0})
+  const list = useRef(null)
   if (page.quotes !== currentQuotes) {
     setPage({quotes: currentQuotes, index: 0})
   }
   const currentPage = page.quotes === currentQuotes ? page.index : 0
-  const turnThePage = e => setPage({quotes: currentQuotes, index: Number(e.target.value)})
+  const turnThePage = e => {
+    setPage({quotes: currentQuotes, index: Number(e.target.value)})
+    if (list.current.getBoundingClientRect().top < 0) list.current.scrollIntoView()
+  }
   const startPosition = currentPage * quotesPerPage
   const preparedQuotes = currentQuotes
     .filter((q, i) => i >= startPosition && i < startPosition + quotesPerPage)
@@ -21,14 +25,14 @@ export default function Quotes({loaded, currentQuotes}) {
   const pagination = []
   const totalPages = Math.ceil(currentQuotes.length / quotesPerPage)
   for (let i = 0; i < totalPages; i++)
-    pagination.push(<button value={i} onClick={turnThePage} key={i}>{i}</button>)
-
-  return loaded ?
-    (
-      <div>
-        {preparedQuotes}
-        {totalPages > 1 && <p>{pagination}</p>}
-      </div>
+    pagination.push(
+      <button value={i} onClick={turnThePage} key={i} aria-current={i === currentPage ? 'page' : undefined}>{i}</button>
     )
-    : <img src={preloader} alt="loading..." />
+
+  return (
+    <div ref={list}>
+      {preparedQuotes}
+      {totalPages > 1 && <p className="pagination">{pagination}</p>}
+    </div>
+  )
 }

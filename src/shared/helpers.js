@@ -3,16 +3,7 @@ export function displayName(author) {
   return author.replace(/ \([^)]*\)$/, '')
 }
 
-export function findValue(object, searchKey) {
-  let value
-  for (const key in object) {
-    if (key === searchKey) return object[key]
-    if (typeof object[key] === 'object') value = findValue(object[key], searchKey)
-  }
-  return value
-}
-
-export function fetchImage(title, size, callback) {
+export function fetchImage(title, size) {
   return fetch(`https://en.wikipedia.org/w/api.php?action=query&titles=${encodeURIComponent(title)}&prop=pageimages&format=json&pithumbsize=${size}&origin=*&pilicense=any&redirects=1`)
     .then(response => {
       if (!response.ok) throw new Error(`Unable to load author image: ${response.status}`)
@@ -21,9 +12,7 @@ export function fetchImage(title, size, callback) {
     .then(obj => {
       if (!obj.query || !obj.query.pages) throw new Error('Missing author image results')
       const page = Object.values(obj.query.pages).find(page => page.thumbnail)
-      const imgSrc = page && page.thumbnail.source
-      if (callback) callback(imgSrc)
-      return imgSrc
+      return page && page.thumbnail.source
     })
 }
 

@@ -1,11 +1,12 @@
 import cachedQuotes from '../data/quotes.json'
+import {readSavedLanguage} from '../shared/languages'
 
 const initialState = {
   allQuotes: cachedQuotes,
   allAuthors: new Set(cachedQuotes.map(quote => quote.author).sort()),
   allImages: new Map(),
   phrase: '',
-  language: 'en',
+  language: readSavedLanguage(),
 }
 
 export const reducer = (state = initialState, action) => {

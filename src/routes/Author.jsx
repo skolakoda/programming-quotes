@@ -5,14 +5,14 @@ import {connect} from 'react-redux'
 import Quotes from '../components/main/Quotes'
 import AuthorBox from '../components/main/AuthorBox'
 import {useTranslate} from '../shared/translate'
+import {usePageTitle} from '../shared/usePageTitle'
 import {displayName} from '../shared/helpers'
+import NotFound from './NotFound'
 
-function Author({language, allQuotes, phrase}) {
+function AuthorPage({author, authorQuotes, language, phrase}) {
   const translate = useTranslate()
-  const {name} = useParams()
-  const author = name.replace(/_/g, ' ')
-  const filtered = allQuotes
-    .filter(q => q.author === author)
+  usePageTitle(displayName(author))
+  const filtered = authorQuotes
     .filter(quote => quote[language] && quote[language].toLowerCase().includes(phrase.toLowerCase()))
 
   return (
@@ -20,9 +20,18 @@ function Author({language, allQuotes, phrase}) {
       <h1>{displayName(author)}</h1>
       <AuthorBox author={author} />
       {phrase && <small>{translate('SHOWING_RESULTS')} "{phrase}":</small>}
-      <Quotes loaded={allQuotes.length} currentQuotes={filtered} />
+      <Quotes currentQuotes={filtered} />
     </main>
   )
+}
+
+function Author({language, allQuotes, phrase}) {
+  const {name} = useParams()
+  const author = name.replace(/_/g, ' ')
+  const authorQuotes = allQuotes.filter(q => q.author === author)
+  return authorQuotes.length
+    ? <AuthorPage author={author} authorQuotes={authorQuotes} language={language} phrase={phrase} />
+    : <NotFound />
 }
 
 const mapStateToProps = ({language, allQuotes, phrase}) => ({language, allQuotes, phrase})

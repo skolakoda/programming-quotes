@@ -6,6 +6,7 @@ import Author from '../routes/Author'
 import ShowQuote from '../routes/ShowQuote'
 import RandomQuote from '../routes/RandomQuote'
 import Statistics from '../routes/Statistics'
+import NotFound from '../routes/NotFound'
 
 const Router = () => {
   return (
@@ -15,7 +16,7 @@ const Router = () => {
       <Route path='/quote/:id' element={<ShowQuote />} />
       <Route path='/author/:name' element={<Author />} />
       <Route path='/statistics' element={<Statistics />} />
-      <Route path='*' element={null} />
+      <Route path='*' element={<NotFound />} />
     </Routes>
   )
 }

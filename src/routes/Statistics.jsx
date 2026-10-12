@@ -4,14 +4,10 @@ import {Link} from 'react-router'
 
 import PieChart from '../components/statistics/PieChart'
 import {useTranslate} from '../shared/translate'
+import {usePageTitle} from '../shared/usePageTitle'
 import {displayName} from '../shared/helpers'
+import {languages} from '../shared/languages'
 import './Statistics.css'
-
-const languages = [
-  {code: 'en', lang: 'en', name: 'English'},
-  {code: 'sr', lang: 'sr', name: 'Srpski'},
-  {code: 'stsl', lang: 'cu', name: 'Словѣньскъ'}
-]
 
 const minQuotesForSlice = 10
 const pieColors = ['#2a78d6', '#eb6834', '#1baf7a', '#eda100', '#e87ba4', '#008300', '#6250d6', '#e34948']
@@ -33,6 +29,7 @@ function authorSlices(authors, otherLabel) {
 
 function Statistics({allQuotes}) {
   const translate = useTranslate()
+  usePageTitle(translate('STATISTICS'))
   const authors = countByAuthor(allQuotes)
   const maxCount = authors.length ? authors[0][1] : 0
 

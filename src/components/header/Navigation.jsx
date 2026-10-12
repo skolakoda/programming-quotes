@@ -5,6 +5,7 @@ import {setLanguage} from '../../store/actions'
 import Github from './Github'
 import {Link} from 'react-router'
 import {useTranslate} from '../../shared/translate'
+import {languages} from '../../shared/languages'
 import './Navigation.css'
 
 const Navigation = ({language, setLanguage}) => {
@@ -18,19 +19,14 @@ const Navigation = ({language, setLanguage}) => {
         <Link to="/all-quotes">{translate('ALL_QUOTES')}</Link>
         <Link to="/statistics">{translate('STATISTICS')}</Link>
         <div className="language-switcher">
-          <button
-            onClick={() => setLanguage('en')}
-            lang="en"
-            className={language === 'en' ? 'active' : ''}>English</button>
-          <button
-            onClick={() => setLanguage('sr')}
-            lang="sr"
-            className={language === 'sr' ? 'active' : ''}>Srpski</button>
-          <button
-            onClick={() => setLanguage('stsl')}
-            lang="cu"
-            aria-pressed={language === 'stsl'}
-            className={language === 'stsl' ? 'active' : ''}>Словѣньскъ</button>
+          {languages.map(({code, lang, name}) =>
+            <button
+              key={code}
+              onClick={() => setLanguage(code)}
+              lang={lang}
+              aria-pressed={language === code}
+              className={language === code ? 'active' : ''}>{name}</button>
+          )}
         </div>
       </nav>
     </header>

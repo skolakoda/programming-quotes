@@ -5,6 +5,7 @@ import {connect} from 'react-redux'
 import Stars from './Stars'
 import {useTranslate} from '../../shared/translate'
 import {displayName} from '../../shared/helpers'
+import {findLanguage} from '../../shared/languages'
 import './Quote.css'
 
 function Quote({quote, language, cssClass}) {
@@ -15,7 +16,7 @@ function Quote({quote, language, cssClass}) {
 
   return quote[language] ? (
     <blockquote className={cssClass || 'small-quote'}>
-      <p className="quote-text">
+      <p className="quote-text" lang={findLanguage(language).lang}>
         <Link to={`/quote/${id}`} className="no-link">{quote[language]}</Link>
       </p>
       <Stars rating={quote.rating} id={id} />

@@ -8,7 +8,7 @@ export default function AuthorThumb({author, image}) {
   const link = `/author/${author.replace(/ /g, '_')}`
   return (
     <Link className="author" to={link}>
-      <img src={image || unknownImage} alt="author" />
+      <img src={image || unknownImage} alt="" />
       {displayName(author)}
     </Link>
   )

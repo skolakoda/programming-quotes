@@ -3,10 +3,12 @@ import {connect} from 'react-redux'
 
 import ImageQuote from './../components/main/ImageQuote'
 import {useTranslate} from './../shared/translate'
+import {usePageTitle} from '../shared/usePageTitle'
 import {readQuoteHistory, saveQuoteHistory, selectRandomQuote} from '../shared/randomQuotes'
 
 function RandomQuote({allQuotes, language}) {
   const translate = useTranslate()
+  usePageTitle(translate('QUOTE_OF_THE_DAY'))
   const [selection, setSelection] = useState(() => selectRandomQuote(allQuotes, language, readQuoteHistory()))
   useEffect(() => saveQuoteHistory(selection.history), [selection.history])
   let quote = selection.quote
@@ -27,7 +29,7 @@ function RandomQuote({allQuotes, language}) {
         ? <ImageQuote quote={quote} cssClass="big-quote" />
         : <p>{translate('NO_TRANSLATION')}</p>
       }
-      <button onClick={getRandom} disabled={!quote}>Gimme more!</button>
+      <button onClick={getRandom} disabled={!quote}>{translate('MORE_QUOTES')}</button>
     </main>
   )
 }

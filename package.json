@@ -1,7 +1,6 @@
 {
   "name": "programming-quotes",
   "version": "0.1.0",
-  "homepage": "https://skolakoda.github.io/programming-quotes",
   "repository": "https://github.com/skolakoda/programming-quotes",
   "license": "MIT",
   "scripts": {
@@ -29,17 +28,5 @@
   },
   "engines": {
     "node": "^22.22.2 || ^24.15.0 || >=26.0.0"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
   }
 }

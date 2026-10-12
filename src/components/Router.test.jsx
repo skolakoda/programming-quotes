@@ -78,6 +78,19 @@ test('the statistics page is public', () => {
   expect(container.querySelector('h1').textContent).toBe('Statistics')
 })
 
+test('each page names itself in the document title', () => {
+  mount('/')
+  expect(document.title).toBe('Quote of the day | Programming quotes')
+  go('/all-quotes')
+  expect(document.title).toBe('All quotes | Programming quotes')
+  go('/statistics')
+  expect(document.title).toBe('Statistics | Programming quotes')
+  go('/author/G%C3%A9rard_Berry')
+  expect(document.title).toBe('Gérard Berry | Programming quotes')
+  go('/quote/first')
+  expect(document.title).toBe('Alan Kay | Programming quotes')
+})
+
 test('changing routes requests only Wikipedia', async () => {
   mount('/all-quotes')
   go('/author/Alan_Kay')
@@ -87,9 +100,11 @@ test('changing routes requests only Wikipedia', async () => {
   fetch.mock.calls.forEach(([url]) => expect(new URL(url).hostname).toBe('en.wikipedia.org'))
 })
 
-test.each(['/unknown', '/login', '/profile', '/add-quote', '/edit-quote/first', '/auth/github/token'])(
-  'unknown and removed server addresses keep the navigation area empty: %s', path => {
+test.each(['/unknown', '/login', '/quote/missing', '/author/Nobody'])(
+  'unknown addresses, quotes and authors show a not found page: %s', path => {
     mount(path)
-    expect(container.textContent).toBe('')
+    expect(container.querySelector('h1').textContent).toBe('Page not found')
+    expect(document.title).toBe('Page not found | Programming quotes')
+    expect(container.querySelector('a[href="/"]')).not.toBeNull()
   }
 )

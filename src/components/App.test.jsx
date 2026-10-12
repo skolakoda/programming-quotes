@@ -24,6 +24,7 @@ afterEach(() => {
   container.remove()
   global.fetch = originalFetch
   localStorage.clear()
+  document.documentElement.lang = 'en'
 })
 
 function mountApp(store, path = '/all-quotes') {
@@ -64,6 +65,20 @@ test('staroslavonic selection shows translated quotes and supports switching bac
   }
 })
 
+test('the selected language is saved and marks the interface and quote languages', () => {
+  global.fetch = vi.fn(() => Promise.resolve(wikipediaResponse()))
+  const store = createStore(reducer, applyMiddleware(thunk))
+  mountApp(store)
+  act(() => container.querySelector('button[lang="cu"]').click())
+  expect(localStorage.getItem(LS.language)).toBe('stsl')
+  expect(document.documentElement.lang).toBe('sr')
+  expect(container.querySelector('.quote-text').getAttribute('lang')).toBe('cu')
+  act(() => container.querySelector('button[lang="sr"]').click())
+  expect(container.querySelector('button[lang="sr"]').getAttribute('aria-pressed')).toBe('true')
+  expect(localStorage.getItem(LS.language)).toBe('sr')
+  expect(container.querySelector('.quote-text').getAttribute('lang')).toBe('sr')
+})
+
 test('renders local quotes immediately, requests only Wikipedia, and keeps ratings in the browser', async () => {
   const store = createStore(reducer, applyMiddleware(thunk))
   const localQuotes = store.getState().allQuotes
@@ -92,15 +107,52 @@ test('renders local quotes immediately, requests only Wikipedia, and keeps ratin
   })
 })
 
-test('pagination resets when the quote filter changes', async () => {
+test('pagination marks the current page, returns to the top of the list, and resets when the filter changes', async () => {
   const store = createStore(reducer, reducer(undefined, {}), applyMiddleware(thunk))
   global.fetch = vi.fn(() => Promise.resolve(wikipediaResponse()))
   mountApp(store)
+  expect(container.querySelector('button[aria-current="page"]').value).toBe('0')
+  const list = container.querySelector('.pagination').parentElement
+  list.scrollIntoView = vi.fn()
+  vi.spyOn(list, 'getBoundingClientRect').mockReturnValue({top: -500})
   act(() => container.querySelector('button[value="1"]').click())
+  expect(container.querySelector('button[aria-current="page"]').value).toBe('1')
+  expect(list.scrollIntoView).toHaveBeenCalledTimes(1)
   expect(container.querySelector('.quote-text').textContent).toContain(store.getState().allQuotes[10].en)
   act(() => store.dispatch(setPhrase('Simplicity is prerequisite')))
   expect(container.querySelectorAll('.quote-text')).toHaveLength(1)
   expect(container.querySelector('.quote-text').textContent).toContain('Simplicity is prerequisite')
+  await flushRequests()
+})
+
+test.each(['/', '/statistics', '/quote/5a6ce86e2af929789500e7e4'])(
+  'searching quotes from %s opens the filtered list of all quotes', async path => {
+    const store = createStore(reducer, applyMiddleware(thunk))
+    global.fetch = vi.fn(() => Promise.resolve(wikipediaResponse()))
+    mountApp(store, path)
+    const input = container.querySelectorAll('.filters input')[0]
+    act(() => {
+      Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set.call(input, 'Simplicity is prerequisite')
+      input.dispatchEvent(new Event('input', {bubbles: true}))
+    })
+    expect(container.querySelector('h1').textContent).toBe('Programming quotes')
+    expect(container.querySelectorAll('.quote-text')).toHaveLength(1)
+    expect(container.querySelector('.filters input').value).toBe('Simplicity is prerequisite')
+    await flushRequests()
+  }
+)
+
+test('searching quotes on an author page keeps filtering that author', async () => {
+  const store = createStore(reducer, applyMiddleware(thunk))
+  global.fetch = vi.fn(() => Promise.resolve(wikipediaResponse()))
+  mountApp(store, '/author/Edsger_W._Dijkstra')
+  const input = container.querySelectorAll('.filters input')[0]
+  act(() => {
+    Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set.call(input, 'telescopes')
+    input.dispatchEvent(new Event('input', {bubbles: true}))
+  })
+  expect(container.querySelector('h1').textContent).toBe('Edsger W. Dijkstra')
+  expect(container.querySelectorAll('.quote-text')).toHaveLength(1)
   await flushRequests()
 })
 
@@ -117,6 +169,9 @@ test('author filtering and refreshing the author list keep the sidebar usable', 
   })
   expect(container.querySelectorAll('a.author')).toHaveLength(1)
   expect(container.querySelector('a.author').textContent).toContain('Alan Perlis')
+  expect(container.querySelector('a.author img').getAttribute('alt')).toBe('')
+  expect(input.labels[0].textContent).toBe('Search authors')
+  expect(container.querySelectorAll('.filters input')[0].labels[0].textContent).toBe('Search quotes')
   act(() => store.dispatch(setAllAuthors(new Set(['Alan Kay', 'Grace Hopper']))))
   expect(container.querySelectorAll('a.author')).toHaveLength(2)
   expect(container.querySelector('.sidebar').textContent).toContain('Grace Hopper')

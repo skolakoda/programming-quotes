@@ -7,12 +7,17 @@ import Router from './Router'
 import './App.css'
 
 import {getAuthorThumbs} from '../store/actions'
+import {findLanguage, saveLanguage} from '../shared/languages'
 
-function App({allAuthors, getAuthorThumbs}) {
+function App({allAuthors, language, getAuthorThumbs}) {
   const initialAuthors = useRef(allAuthors)
   useEffect(() => {
     getAuthorThumbs(initialAuthors.current)
   }, [getAuthorThumbs])
+  useEffect(() => {
+    saveLanguage(language)
+    document.documentElement.lang = findLanguage(language).ui
+  }, [language])
 
   return (
     <div className="App">
@@ -25,7 +30,7 @@ function App({allAuthors, getAuthorThumbs}) {
   )
 }
 
-const mapStateToProps = ({allAuthors}) => ({allAuthors})
+const mapStateToProps = ({allAuthors, language}) => ({allAuthors, language})
 const mapDispatchToProps = {getAuthorThumbs}
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

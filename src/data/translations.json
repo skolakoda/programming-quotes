@@ -17,13 +17,17 @@
     "AUTHORS": "Authors",
     "QUOTES_BY_AUTHOR": "Quotes by author",
     "TRANSLATIONS": "Translations",
-    "OTHER_AUTHORS": "Other authors"
+    "OTHER_AUTHORS": "Other authors",
+    "MORE_QUOTES": "Gimme more!",
+    "VIEW_SOURCE": "View source on GitHub",
+    "NOT_FOUND": "Page not found",
+    "BACK_HOME": "Back to the home page"
   },
   "sr": {
     "PROGRAMMING_QUOTES": "Programerski citati",
     "ALL_QUOTES": "Svi citati",
     "SEARCH_QUOTES": "Pretraži citate",
-    "SEARCH_AUTHORS": "Pretraži authore",
+    "SEARCH_AUTHORS": "Pretraži autore",
     "AUTHOR": "Autor",
     "DAILY_QUOTE": "Citat dana",
     "QUOTE_OF_THE_DAY": "Citat dana",
@@ -37,6 +41,10 @@
     "AUTHORS": "Autori",
     "QUOTES_BY_AUTHOR": "Citati po autoru",
     "TRANSLATIONS": "Prevodi",
-    "OTHER_AUTHORS": "Ostali autori"
+    "OTHER_AUTHORS": "Ostali autori",
+    "MORE_QUOTES": "Daj još!",
+    "VIEW_SOURCE": "Pogledaj izvorni kod na GitHubu",
+    "NOT_FOUND": "Stranica nije pronađena",
+    "BACK_HOME": "Nazad na početnu stranu"
   }
 }

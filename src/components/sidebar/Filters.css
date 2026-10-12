@@ -2,6 +2,10 @@
   margin-bottom: 20px;
 }
 
+.filters.quote-search {
+  margin-bottom: 0;
+}
+
 .filters input,
 .filters button {
   font-size: inherit;

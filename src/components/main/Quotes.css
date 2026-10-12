@@ -1,0 +1,3 @@
+.pagination [aria-current="page"] {
+  font-weight: bold;
+}

@@ -2,6 +2,28 @@
   padding: 20px;
 }
 
+@media (width < 800px) {
+  .App {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .right-section,
+  .sidebar,
+  .sidebar-inner {
+    display: contents;
+  }
+
+  .App header {
+    order: -2;
+  }
+
+  .App .quote-search {
+    margin-bottom: 20px;
+    order: -1;
+  }
+}
+
 @media (min-width: 800px) {
   .App {
     display: flex;
