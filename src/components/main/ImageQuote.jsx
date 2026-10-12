@@ -9,7 +9,7 @@ export default function ImageQuote({quote}) {
       <div className="author-image-slot">
         <AuthorImage author={quote.author} showUnknown={true} />
       </div>
-      <Quote quote={quote} cssClass="big-quote" />
+      <Quote quote={quote} cssClass="big-quote" showTags />
     </div>
   )
 }

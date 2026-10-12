@@ -26,7 +26,7 @@ function RandomQuote({allQuotes, language}) {
     <main>
       <h1>{translate('QUOTE_OF_THE_DAY')}</h1>
       {quote
-        ? <ImageQuote quote={quote} cssClass="big-quote" />
+        ? <ImageQuote quote={quote} />
         : <p>{translate('NO_TRANSLATION')}</p>
       }
       <button onClick={getRandom} disabled={!quote}>{translate('MORE_QUOTES')}</button>

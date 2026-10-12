@@ -18,4 +18,3 @@ The app runs at `http://localhost:3000`.
 
 ## TODO
 
-- tagovati sadržaj po temama, a potom dodati tag cloud.

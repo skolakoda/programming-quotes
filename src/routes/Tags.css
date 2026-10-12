@@ -1,0 +1,16 @@
+.tag-cloud {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4em;
+  justify-content: center;
+  list-style: none;
+  margin: 2em 0;
+  max-width: 800px;
+  padding: 0;
+}
+
+.tag-cloud small {
+  color: #666;
+  font-size: 0.6em;
+}

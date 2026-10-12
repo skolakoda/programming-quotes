@@ -8,7 +8,7 @@ import {displayName} from '../../shared/helpers'
 import {findLanguage} from '../../shared/languages'
 import './Quote.css'
 
-function Quote({quote, language, cssClass}) {
+function Quote({quote, language, cssClass, showTags}) {
   const translate = useTranslate()
   const author = quote.author
   const id = quote._id
@@ -21,6 +21,11 @@ function Quote({quote, language, cssClass}) {
       </p>
       <Stars rating={quote.rating} id={id} />
       <span className="quote-author"> — <Link to={authorLink}>{displayName(author)}</Link></span>
+      {showTags && quote.tags?.length > 0 &&
+        <span className="quote-tags">
+          {quote.tags.map(tag => <Link key={tag} to={`/tag/${tag}`} className="tag">{tag}</Link>)}
+        </span>
+      }
     </blockquote>
   ) : translate('NO_TRANSLATION')
 }

@@ -10,7 +10,7 @@ import './ShowQuote.css'
 
 function QuotePage({quote}) {
   usePageTitle(displayName(quote.author))
-  return <ImageQuote quote={quote} cssClass="big-quote" />
+  return <ImageQuote quote={quote} />
 }
 
 function ShowQuote({allQuotes}) {

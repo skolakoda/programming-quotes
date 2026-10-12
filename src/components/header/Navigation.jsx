@@ -17,6 +17,7 @@ const Navigation = ({language, setLanguage}) => {
       <nav>
         <Link to="/" replace={true}>{translate('DAILY_QUOTE')}</Link>
         <Link to="/all-quotes">{translate('ALL_QUOTES')}</Link>
+        <Link to="/tags">{translate('TOPICS')}</Link>
         <Link to="/statistics">{translate('STATISTICS')}</Link>
         <div className="language-switcher">
           {languages.map(({code, lang, name}) =>

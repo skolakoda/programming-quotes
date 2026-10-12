@@ -33,3 +33,20 @@
   color: inherit;
   text-decoration: none;
 }
+
+.quote-tags {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: smaller;
+  gap: 0.4em;
+  margin-top: 0.4em;
+}
+
+.big-quote .tag {
+  background: rgba(255, 255, 255, 0.12);
+  color: inherit;
+}
+
+.big-quote .tag:hover {
+  background: rgba(255, 255, 255, 0.24);
+}

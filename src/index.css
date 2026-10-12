@@ -58,3 +58,17 @@ blockquote {
     display: block;
   }
 }
+
+.tag {
+  background: #e5e5e5;
+  border-radius: 999px;
+  color: #333;
+  display: inline-block;
+  line-height: 1.6;
+  padding: 0 0.6em;
+  text-decoration: none;
+}
+
+.tag:hover {
+  background: #d0d0d0;
+}

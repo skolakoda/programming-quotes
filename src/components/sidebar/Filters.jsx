@@ -14,7 +14,7 @@ const Filters = ({ phrase, setPhrase, filterAuthors }) => {
   const navigate = useNavigate()
   const searchQuotes = value => {
     setPhrase(value)
-    const showsFilteredQuotes = pathname === '/all-quotes' || pathname.startsWith('/author/')
+    const showsFilteredQuotes = pathname === '/all-quotes' || pathname.startsWith('/author/') || pathname.startsWith('/tag/')
     if (value && !showsFilteredQuotes) navigate('/all-quotes')
   }
 
