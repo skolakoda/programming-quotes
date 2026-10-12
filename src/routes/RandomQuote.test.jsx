@@ -83,7 +83,7 @@ test('uses quotes arriving later with the currently selected language', () => {
   expect(container.querySelector('.quote-text').textContent).toContain(bilingual.sr)
 })
 
-test('refreshes the selected quote when the server replaces its data', () => {
+test('refreshes the selected quote when its data is replaced', () => {
   const store = mountQuotes([bilingual])
 
   act(() => store.dispatch(setAllQuotes([{...bilingual, en: 'Updated quote'}])))

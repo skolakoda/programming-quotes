@@ -5,12 +5,9 @@
   "repository": "https://github.com/skolakoda/programming-quotes",
   "license": "MIT",
   "scripts": {
-    "save": "node scripts/save-quotes.mjs",
     "predeploy": "npm run build",
     "start": "vite",
-    "start:server": "vite --mode server",
     "build": "vite build",
-    "build:server": "vite build --mode server",
     "test": "vitest run",
     "test:watch": "vitest",
     "deploy": "node scripts/deploy.mjs"

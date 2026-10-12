@@ -7,23 +7,14 @@ import {createStore, applyMiddleware} from 'redux'
 import {thunk} from 'redux-thunk'
 import App from './App'
 import {reducer} from '../store/reducer'
-import {fetchQuotes, checkUser, setPhrase, setAllAuthors, setLanguage} from '../store/actions'
+import {setPhrase, setAllAuthors, setLanguage} from '../store/actions'
 import {store as applicationStore} from '../store'
-import {API, domain} from '../config/api'
 import {LS} from '../config/localstorage'
-
-const dataMode = vi.hoisted(() => ({useServerData: false}))
-
-vi.mock('../config/api', async importOriginal => ({
-  ...await importOriginal(),
-  get useServerData() { return dataMode.useServerData }
-}))
 
 const originalFetch = global.fetch
 let container
 
 beforeEach(() => {
-  dataMode.useServerData = false
   container = document.createElement('div')
   document.body.append(container)
 })
@@ -73,24 +64,16 @@ test('staroslavonic selection shows translated quotes and supports switching bac
   }
 })
 
-test('local mode renders quotes immediately without backend requests, even with a saved account', async () => {
-  const store = createStore(reducer, {
-    ...reducer(undefined, {}), token: 'saved-token', admin: true
-  }, applyMiddleware(thunk))
+test('renders local quotes immediately, requests only Wikipedia, and keeps ratings in the browser', async () => {
+  const store = createStore(reducer, applyMiddleware(thunk))
   const localQuotes = store.getState().allQuotes
   global.fetch = vi.fn(() => Promise.resolve(wikipediaResponse()))
 
   mountApp(store)
 
   expect(container.querySelector('.quote-text').textContent).toContain(localQuotes[0].en)
-  expect(container.querySelector('a[href="/profile"]')).toBeNull()
-  expect(container.querySelector('a[href="/login"]')).toBeNull()
-  expect(container.querySelector('a[href="/add-quote"]')).toBeNull()
-  expect(container.querySelector('.admin-actions')).toBeNull()
   act(() => container.querySelector('.rating input[value="4.5"]').click())
   expect(JSON.parse(localStorage.getItem(LS.localRatings))).toEqual({[localQuotes[0]._id]: 4.5})
-  act(() => store.dispatch(fetchQuotes()))
-  act(() => store.dispatch(checkUser()))
   await flushRequests()
 
   expect(store.getState().allQuotes).toBe(localQuotes)
@@ -104,74 +87,9 @@ test('local mode renders quotes immediately without backend requests, even with 
   mountApp(createStore(reducer, applyMiddleware(thunk)))
   await flushRequests()
   expect(container.querySelector('.rating input[value="4.5"]').checked).toBe(true)
-  expect(localStorage.getItem(LS.ratings)).toBeNull()
   global.fetch.mock.calls.forEach(([url]) => {
     expect(new URL(url).hostname).toBe('en.wikipedia.org')
   })
-})
-
-test.each(['/profile', '/login', '/add-quote', '/edit-quote/1', '/auth/github/token'])(
-  'local mode blocks backend routes: %s', async path => {
-    const store = createStore(reducer, {
-      ...reducer(undefined, {}), token: 'saved-token', admin: true
-    }, applyMiddleware(thunk))
-    localStorage.setItem('programmingQuotesToken', 'saved-token')
-    global.fetch = vi.fn(() => Promise.resolve(wikipediaResponse()))
-
-    mountApp(store, path)
-    await flushRequests()
-
-    global.fetch.mock.calls.forEach(([url]) => {
-      expect(new URL(url).hostname).toBe('en.wikipedia.org')
-    })
-    expect(container.querySelector('form')).toBeNull()
-  }
-)
-
-test('server mode loads server quotes and preserves account and editing options', async () => {
-  dataMode.useServerData = true
-  const store = createStore(reducer, {
-    ...reducer(undefined, {}), token: 'saved-token', admin: false
-  }, applyMiddleware(thunk))
-  localStorage.setItem('programmingQuotesAuthService', 'github')
-  const serverQuotes = [{_id: 'server-quote', en: 'Quote from the server', author: 'Alan Kay', rating: 4}]
-  global.fetch = vi.fn(url => {
-    if (url.includes('prop=pageimages')) return Promise.resolve(wikipediaResponse())
-    return Promise.resolve({ok: true, json: () => Promise.resolve(
-      url === API.read ? serverQuotes : {user: {admin: true}}
-    )})
-  })
-
-  mountApp(store)
-  await flushRequests()
-
-  expect(store.getState().allQuotes).toEqual(serverQuotes)
-  expect(container.querySelector('.quote-text').textContent).toContain(serverQuotes[0].en)
-  expect(global.fetch).toHaveBeenCalledWith(API.read)
-  expect(global.fetch).toHaveBeenCalledWith(`${domain}/auth/github/saved-token`)
-  expect(container.querySelector('a[href="/profile"]')).not.toBeNull()
-  expect(container.querySelector('a[href="/add-quote"]')).not.toBeNull()
-  expect(container.querySelector('.admin-actions')).not.toBeNull()
-})
-
-test('server mode retains local quotes and portraits when the quotes server is unavailable', async () => {
-  dataMode.useServerData = true
-  const store = createStore(reducer, {
-    ...reducer(undefined, {}), token: '', admin: false
-  }, applyMiddleware(thunk))
-  const cachedQuotes = store.getState().allQuotes
-  global.fetch = vi.fn(url => Promise.resolve(url.includes('prop=pageimages')
-    ? wikipediaResponse()
-    : {ok: false, status: 404}))
-
-  mountApp(store)
-  await flushRequests()
-
-  const author = container.querySelector('a[href="/author/Alan_Kay"]')
-  expect(author.querySelector('img').getAttribute('src')).toBe('https://example.com/alan-kay.jpg')
-  expect(store.getState().allQuotes).toBe(cachedQuotes)
-  expect(store.getState().isFetching).toBe(false)
-  expect(store.getState().error).toContain('404')
 })
 
 test('pagination resets when the quote filter changes', async () => {

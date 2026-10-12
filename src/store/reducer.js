@@ -1,26 +1,15 @@
 import cachedQuotes from '../data/quotes.json'
-import {LS} from '../config/localstorage'
 
 const initialState = {
-  isFetching: false,
   allQuotes: cachedQuotes,
   allAuthors: new Set(cachedQuotes.map(quote => quote.author).sort()),
   allImages: new Map(),
   phrase: '',
   language: 'en',
-  // user
-  token: localStorage.getItem(LS.token),
-  admin: false,
 }
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'FETCH_QUOTES_REQUEST':
-      return {...state, isFetching: true }
-    case 'FETCH_QUOTES_FAILURE':
-      return {...state, isFetching: false, error: action.error }
-    case 'FETCH_QUOTES_SUCCESS':
-      return {...state, isFetching: false }
     case 'SET_ALL_QUOTES':
       return {...state, allQuotes: action.allQuotes }
     case 'SET_ALL_AUTHORS':
@@ -31,22 +20,6 @@ export const reducer = (state = initialState, action) => {
       return {...state, phrase: action.phrase }
     case 'SET_LANGUAGE':
       return {...state, language: action.language }
-    case 'SET_TOKEN':
-      return {...state, token: action.token }
-    case 'SET_ADMIN':
-      return {...state, admin: action.admin }
-    case 'ADD_QUOTE':
-      return {...state, allQuotes: [...state.allQuotes, action.quote]}
-    case 'UPDATE_QUOTE': {
-      const allQuotes = state.allQuotes.map(q => 
-        q._id === action.quote._id ? action.quote : q
-      )
-      return {...state, allQuotes}
-    }
-    case 'DELETE_QUOTE': {
-      const allQuotes = state.allQuotes.filter(q => q._id !== action._id)
-      return {...state, allQuotes}
-    }
     default:
       return state
   }

@@ -1,12 +1,4 @@
 import {getallImages} from '../shared/helpers'
-import {LS} from '../config/localstorage'
-import {API, domain, useServerData} from '../config/api'
-
-export const fetchQuotesRequest = () => ({type: 'FETCH_QUOTES_REQUEST'})
-
-export const fetchQuotesFailure = error => ({type: 'FETCH_QUOTES_FAILURE', error})
-
-export const fetchQuotesSuccess = () => ({type: 'FETCH_QUOTES_SUCCESS'})
 
 export const setAllQuotes = allQuotes => ({type: 'SET_ALL_QUOTES', allQuotes})
 
@@ -18,27 +10,7 @@ export const setPhrase = phrase => ({type: 'SET_PHRASE', phrase})
 
 export const setLanguage = language => ({type: 'SET_LANGUAGE', language})
 
-export const setToken = token => ({type: 'SET_TOKEN', token})
-
-export const setAdmin = admin => ({type: 'SET_ADMIN', admin})
-
-export const addQuote = quote => ({type: 'ADD_QUOTE', quote})
-
-export const updateQuote = quote => ({type: 'UPDATE_QUOTE', quote})
-
-export const deleteQuote = _id => ({type: 'DELETE_QUOTE', _id})
-
 /* THUNK */
-
-export const setUser = (token, admin = false) => dispatch => {
-  dispatch(setToken(token))
-  dispatch(setAdmin(admin))
-}
-
-export const logout = () => dispatch => {
-  dispatch(setToken(''))
-  dispatch(setAdmin(false))
-}
 
 export const getAuthorThumbs = allAuthors => dispatch => {
   const wikiApiLimit = 50
@@ -51,41 +23,4 @@ export const getAuthorThumbs = allAuthors => dispatch => {
     .then(data =>
       dispatch(setAllImages(data.reduce((a, b) => new Map([...a, ...b]), new Map())))
     )
-}
-
-export const initState = allQuotes => dispatch => {
-  dispatch(setAllQuotes(allQuotes))
-  const allAuthors = new Set(allQuotes.map(quote => quote.author).sort())
-  dispatch(setAllAuthors(allAuthors))
-  dispatch(getAuthorThumbs(allAuthors))
-}
-
-export const fetchQuotes = () => dispatch => {
-  if (!useServerData) return
-  dispatch(fetchQuotesRequest(API.read))
-  return fetch(API.read)
-    .then(response => {
-      if (!response.ok) throw new Error(`Unable to load quotes: ${response.status}`)
-      return response.json()
-    })
-    .then(json => {
-      dispatch(fetchQuotesSuccess())
-      dispatch(initState(json))
-    })
-    .catch(error => dispatch(fetchQuotesFailure(error.message)))
-}
-
-export const checkUser = () => (dispatch, getState) => {
-  if (!useServerData) return
-  const {token} = getState()
-  if (!token) return
-  const service = localStorage.getItem(LS.service)
-  fetch(`${domain}/auth/${service}/${token}`)
-    .then(response => response.json())
-    .then(response => {
-      dispatch(setUser(
-        response.user ? token : '',
-        response.user ? response.user.admin : false)
-      )
-    })
 }

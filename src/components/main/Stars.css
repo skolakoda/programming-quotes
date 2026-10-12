@@ -43,10 +43,6 @@
     outline-offset: 2px;
 }
 
-.rating input:disabled {
-    cursor: wait;
-}
-
 .vote-error {
     color: red;
     font-size: 0.8em;

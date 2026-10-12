@@ -6,18 +6,13 @@ import Sidebar from './sidebar/Sidebar'
 import Router from './Router'
 import './App.css'
 
-import {fetchQuotes, checkUser, getAuthorThumbs} from '../store/actions'
-import {useServerData} from '../config/api'
+import {getAuthorThumbs} from '../store/actions'
 
-function App({allAuthors, getAuthorThumbs, fetchQuotes, checkUser}) {
+function App({allAuthors, getAuthorThumbs}) {
   const initialAuthors = useRef(allAuthors)
   useEffect(() => {
     getAuthorThumbs(initialAuthors.current)
-    if (useServerData) {
-      fetchQuotes()
-      checkUser()
-    }
-  }, [getAuthorThumbs, fetchQuotes, checkUser])
+  }, [getAuthorThumbs])
 
   return (
     <div className="App">
@@ -31,6 +26,6 @@ function App({allAuthors, getAuthorThumbs, fetchQuotes, checkUser}) {
 }
 
 const mapStateToProps = ({allAuthors}) => ({allAuthors})
-const mapDispatchToProps = {fetchQuotes, checkUser, getAuthorThumbs}
+const mapDispatchToProps = {getAuthorThumbs}
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

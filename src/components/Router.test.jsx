@@ -6,14 +6,6 @@ import {thunk} from 'redux-thunk'
 import {act, render, unmount, flushRequests} from '../test/render'
 import Router from './Router'
 import {reducer} from '../store/reducer'
-import {API, domain} from '../config/api'
-import {LS} from '../config/localstorage'
-
-const dataMode = vi.hoisted(() => ({useServerData: false}))
-vi.mock('../config/api', async importOriginal => ({
-  ...await importOriginal(),
-  get useServerData() { return dataMode.useServerData }
-}))
 
 const quotes = [
   {_id: 'first', author: 'Alan Kay', en: 'First quote', sr: 'Prvi citat', rating: 3},
@@ -26,7 +18,7 @@ function NavigationProbe() {
 }
 function mount(path, overrides = {}) {
   const store = createStore(reducer, {
-    ...reducer(undefined, {}), allQuotes: quotes, token: '', admin: false, ...overrides
+    ...reducer(undefined, {}), allQuotes: quotes, ...overrides
   }, applyMiddleware(thunk))
   render(<Provider store={store}><MemoryRouter initialEntries={[path]}>
     <NavigationProbe /><Router />
@@ -39,7 +31,6 @@ function go(path) {
 beforeEach(() => {
   container = document.createElement('div')
   document.body.append(container)
-  dataMode.useServerData = false
   localStorage.clear()
   vi.stubGlobal('fetch', vi.fn(async () => ({
     ok: true, json: async () => ({query: {pages: {1: {title: 'Author', extract: ''}}}})
@@ -87,7 +78,7 @@ test('the statistics page is public', () => {
   expect(container.querySelector('h1').textContent).toBe('Statistics')
 })
 
-test('changing routes does not fetch from the backend in local mode', async () => {
+test('changing routes requests only Wikipedia', async () => {
   mount('/all-quotes')
   go('/author/Alan_Kay')
   go('/quote/second')
@@ -96,118 +87,9 @@ test('changing routes does not fetch from the backend in local mode', async () =
   fetch.mock.calls.forEach(([url]) => expect(new URL(url).hostname).toBe('en.wikipedia.org'))
 })
 
-test('server login and profile keep their existing addresses', () => {
-  dataMode.useServerData = true
-  mount('/login')
-  expect(container.querySelector('h1').textContent).toBe('Login')
-  go('/profile')
-  expect(container.querySelector('h1').textContent).toBe('My profile')
-})
-
-test('server edit forms reload the correct fields when the quote id changes or a new quote is added', () => {
-  dataMode.useServerData = true
-  mount('/edit-quote/first', {admin: true})
-  expect(container.querySelector('textarea[name="en"]').value).toBe('First quote')
-  go('/edit-quote/second')
-  expect(container.querySelector('input[name="_id"]').value).toBe('second')
-  expect(container.querySelector('input[name="author"]').value).toBe('Gérard Berry')
-  expect(container.querySelector('textarea[name="en"]').value).toBe('Second quote')
-  expect(container.querySelector('h1').textContent).toContain('Edit quote')
-  go('/add-quote')
-  expect(container.querySelector('h1').textContent).toBe('Add quote')
-  expect(container.querySelector('input[name="_id"]').value).toBe('')
-  expect(container.querySelector('textarea[name="en"]').value).toBe('')
-})
-
-test('editing submits the id from the current address', async () => {
-  dataMode.useServerData = true
-  fetch.mockResolvedValue({ok: true, json: async () => ({message: 'SUCCESS_SAVED', quote: quotes[1]})})
-  mount('/edit-quote/first', {admin: true, token: 'saved-token'})
-  go('/edit-quote/second')
-  act(() => container.querySelector('form').dispatchEvent(new Event('submit', {bubbles: true, cancelable: true})))
-  await flushRequests()
-  expect(fetch.mock.calls[0][0]).toBe(API.update)
-  expect(JSON.parse(fetch.mock.calls[0][1].body)).toMatchObject({_id: 'second', en: 'Second quote', token: 'saved-token'})
-})
-
-test('server editing continues to require an administrator', () => {
-  dataMode.useServerData = true
-  mount('/edit-quote/first')
-  expect(container.querySelector('form')).toBeNull()
-  expect(container.textContent).toContain('You must have admin privilege.')
-})
-
-test('authentication stores and checks the token from the address, including a later callback', async () => {
-  dataMode.useServerData = true
-  fetch.mockResolvedValue({ok: true, json: async () => ({user: {admin: true}})})
-  const store = mount('/auth/github/first-token')
-  await flushRequests()
-  expect(localStorage.getItem(LS.token)).toBe('first-token')
-  expect(fetch).toHaveBeenCalledWith(`${domain}/auth/github/first-token`)
-  expect(store.getState().token).toBe('first-token')
-  expect(store.getState().admin).toBe(true)
-  go('/auth/google/second-token')
-  await flushRequests()
-  expect(localStorage.getItem(LS.service)).toBe('google')
-  expect(fetch).toHaveBeenCalledWith(`${domain}/auth/google/second-token`)
-  expect(store.getState().token).toBe('second-token')
-})
-
-test('unknown addresses keep the navigation area empty', () => {
-  mount('/unknown')
-  expect(container.textContent).toBe('')
-})
-
-test('deleting a quote still requires two clicks and updates the quote list', async () => {
-  dataMode.useServerData = true
-  fetch.mockImplementation(async url => url === API.delete
-    ? {ok: true, text: async () => 'QUOTE_DELETED'}
-    : {ok: true, json: async () => ({query: {pages: {}}})})
-  const store = mount('/quote/first', {admin: true, token: 'saved-token'})
-  const remove = container.querySelector('.admin-actions .pointer')
-  act(() => remove.click())
-  expect(fetch.mock.calls.some(([url]) => url === API.delete)).toBe(false)
-  expect(remove.classList.contains('red')).toBe(true)
-  act(() => remove.click())
-  await flushRequests()
-  const [, options] = fetch.mock.calls.find(([url]) => url === API.delete)
-  expect(JSON.parse(options.body)).toEqual({_id: 'first', token: 'saved-token'})
-  expect(store.getState().allQuotes).toEqual([quotes[1]])
-})
-
-test('adding a quote validates fields, saves to the server, and closes its message', async () => {
-  dataMode.useServerData = true
-  const created = {_id: 'created', author: 'New author', en: 'New quote', rating: 0}
-  fetch.mockResolvedValue({ok: true, json: async () => ({message: 'SUCCESS_SAVED', quote: created})})
-  const store = mount('/add-quote', {admin: true, token: 'saved-token'})
-  const form = container.querySelector('form')
-  act(() => form.dispatchEvent(new Event('submit', {bubbles: true, cancelable: true})))
-  expect(fetch).not.toHaveBeenCalled()
-  expect(container.textContent).toContain('Author and at least one language is required.')
-  form.elements.author.value = 'New author'
-  form.elements.en.value = 'New quote'
-  act(() => form.dispatchEvent(new Event('submit', {bubbles: true, cancelable: true})))
-  await flushRequests()
-  expect(fetch.mock.calls[0][0]).toBe(API.create)
-  expect(fetch.mock.calls[0][1].method).toBe('POST')
-  expect(store.getState().allQuotes).toContainEqual(created)
-  expect(form.elements.en.value).toBe('')
-  expect(container.querySelector('.white_content')).not.toBeNull()
-  act(() => container.querySelector('.white_content button').click())
-  expect(container.querySelector('.white_content')).toBeNull()
-})
-
-test('a delayed edit result updates the saved quote without clearing another edit form', async () => {
-  dataMode.useServerData = true
-  let finish
-  fetch.mockReturnValue(new Promise(resolve => { finish = resolve }))
-  const store = mount('/edit-quote/first', {admin: true})
-  act(() => container.querySelector('form').dispatchEvent(new Event('submit', {bubbles: true, cancelable: true})))
-  go('/edit-quote/second')
-  const saved = {...quotes[0], en: 'Saved first quote'}
-  finish({ok: true, json: async () => ({message: 'SUCCESS_SAVED', quote: saved})})
-  await flushRequests()
-  expect(store.getState().allQuotes[0]).toEqual(saved)
-  expect(container.querySelector('textarea[name="en"]').value).toBe('Second quote')
-  expect(container.querySelector('.white_content')).toBeNull()
-})
+test.each(['/unknown', '/login', '/profile', '/add-quote', '/edit-quote/first', '/auth/github/token'])(
+  'unknown and removed server addresses keep the navigation area empty: %s', path => {
+    mount(path)
+    expect(container.textContent).toBe('')
+  }
+)
