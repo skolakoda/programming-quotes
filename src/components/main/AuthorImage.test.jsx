@@ -39,8 +39,9 @@ test('uses the mobile thumbnail URL returned by Wikipedia without rewriting its 
   expect(request.searchParams.get('redirects')).toBe('1')
   const image = container.querySelector('img')
   expect(image.getAttribute('src')).toBe(source)
+  expect(image.classList.contains('loaded')).toBe(false)
   act(() => image.dispatchEvent(new Event('load')))
-  expect(image.style.display).toBe('')
+  expect(image.classList.contains('loaded')).toBe(true)
 })
 
 test('ignores a delayed portrait response for the previous author', async () => {
@@ -67,7 +68,7 @@ test('shows the placeholder after a failed request when the author page requires
   const image = container.querySelector('img')
   expect(image.getAttribute('src')).toBe(unknownImage)
   act(() => image.dispatchEvent(new Event('load')))
-  expect(image.style.display).toBe('')
+  expect(image.classList.contains('loaded')).toBe(true)
 })
 
 test('falls back to the placeholder if the portrait itself fails to load', async () => {

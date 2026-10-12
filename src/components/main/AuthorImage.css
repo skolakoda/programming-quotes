@@ -1,0 +1,13 @@
+.main-image {
+  opacity: 0;
+}
+
+.main-image.loaded {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .main-image {
+    transition: opacity 0.3s;
+  }
+}

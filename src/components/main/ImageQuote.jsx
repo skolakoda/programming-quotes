@@ -6,7 +6,9 @@ import Quote from './Quote'
 export default function ImageQuote({quote}) {
   return (
     <div className="quote-box">
-      <AuthorImage author={quote.author} />
+      <div className="author-image-slot">
+        <AuthorImage author={quote.author} showUnknown={true} />
+      </div>
       <Quote quote={quote} cssClass="big-quote" />
     </div>
   )

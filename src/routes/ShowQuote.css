@@ -8,10 +8,19 @@
   padding: 25px;
 }
 
-.quote-box img {
+.author-image-slot {
+  align-items: center;
   align-self: center;
+  aspect-ratio: 1;
+  display: flex;
   flex: 0 0 auto;
+  justify-content: center;
   width: 100%;
+}
+
+.author-image-slot img {
+  max-height: 100%;
+  object-fit: contain;
 }
 
 @media (min-width: 800px) {
@@ -21,9 +30,8 @@
     padding: 40px 60px;
   }
 
-  .quote-box img {
-    object-fit: contain;
+  .author-image-slot {
     margin-right: 40px;
-    width: auto;
+    width: 250px;
   }
 }

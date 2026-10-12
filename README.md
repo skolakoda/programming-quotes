@@ -18,5 +18,4 @@ The app runs at `http://localhost:3000`.
 
 ## TODO
 
-- citat dana poskoči kad se učita slika autora: slika ne zauzima mesto dok se ne učita, a kod autora bez slike mesto nestaje
 - tagovati sadržaj po temama, a potom dodati tag cloud.
