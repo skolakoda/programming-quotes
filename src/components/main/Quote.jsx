@@ -3,11 +3,12 @@ import {Link} from 'react-router'
 import {connect} from 'react-redux'
 
 import Stars from './Stars'
-import translate from '../../shared/translate'
+import {useTranslate} from '../../shared/translate'
 import {displayName} from '../../shared/helpers'
 import './Quote.css'
 
 function Quote({quote, language, cssClass}) {
+  const translate = useTranslate()
   const author = quote.author
   const id = quote._id
   const authorLink = `/author/${author.replace(/ /g, '_')}`

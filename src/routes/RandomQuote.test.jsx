@@ -65,7 +65,7 @@ test('clears an unavailable quote and recovers when the language changes back', 
   act(() => store.dispatch(setLanguage('sr')))
 
   expect(container.querySelector('.quote-text')).toBeNull()
-  expect(container.querySelector('main').textContent).toContain('No translation for this quote.')
+  expect(container.querySelector('main').textContent).toContain('Nema prevoda za ovaj citat.')
   expect(container.querySelector('button').disabled).toBe(true)
 
   act(() => store.dispatch(setLanguage('en')))

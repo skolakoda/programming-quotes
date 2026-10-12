@@ -1,9 +1,10 @@
 import {Provider} from 'react-redux'
 import {MemoryRouter} from 'react-router'
 import {createStore} from 'redux'
-import {render, unmount} from '../test/render'
+import {act, render, unmount} from '../test/render'
 import Statistics from './Statistics'
 import {reducer} from '../store/reducer'
+import {setLanguage} from '../store/actions'
 
 const quotes = [
   {_id: '1', author: 'Fred Brooks', en: 'One', sr: 'Jedan', stsl: 'Єдинъ'},
@@ -24,6 +25,7 @@ afterEach(() => {
 function mount(allQuotes = quotes) {
   const store = createStore(reducer, {...reducer(undefined, {}), allQuotes})
   render(<Provider store={store}><MemoryRouter><Statistics /></MemoryRouter></Provider>, container)
+  return store
 }
 const texts = selector => [...container.querySelectorAll(selector)].map(element => element.textContent)
 
@@ -66,4 +68,11 @@ test('no quotes render no chart', () => {
   mount([])
   expect(container.querySelector('.pie-chart')).toBeNull()
   expect(texts('.meters .value')).toEqual(['0 / 0', '0 / 0', '0 / 0'])
+})
+
+test('switching the language translates the page, including the pie chart', () => {
+  const store = mount([quotes[1]])
+  act(() => store.dispatch(setLanguage('sr')))
+  expect(container.querySelector('h1').textContent).toBe('Statistika')
+  expect(texts('.pie-chart li')).toEqual(['Ostali autori1 (100.0%)'])
 })

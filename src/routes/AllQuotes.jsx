@@ -1,10 +1,11 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import translate from '../shared/translate'
+import {useTranslate} from '../shared/translate'
 import Quotes from '../components/main/Quotes'
 
 const AllQuotes = ({ language, allQuotes, phrase }) => {
+  const translate = useTranslate()
   const filtered = allQuotes
     .filter(quote => quote[language] && quote[language].toLowerCase().includes(phrase.toLowerCase()))
 

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import translate from '../../shared/translate'
+import {useTranslate} from '../../shared/translate'
 import './AuthorBox.css'
 
 function prepareInfo(info, author) {
@@ -9,6 +9,7 @@ function prepareInfo(info, author) {
 }
 
 export default function AuthorInfo({author}) {
+  const translate = useTranslate()
   const [biography, setBiography] = useState(null)
 
   useEffect(() => {

@@ -4,10 +4,11 @@ import {connect} from 'react-redux'
 
 import Quotes from '../components/main/Quotes'
 import AuthorBox from '../components/main/AuthorBox'
-import translate from '../shared/translate'
+import {useTranslate} from '../shared/translate'
 import {displayName} from '../shared/helpers'
 
 function Author({language, allQuotes, phrase}) {
+  const translate = useTranslate()
   const {name} = useParams()
   const author = name.replace(/_/g, ' ')
   const filtered = allQuotes

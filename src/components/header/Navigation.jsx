@@ -4,10 +4,11 @@ import { connect } from 'react-redux'
 import {setLanguage} from '../../store/actions'
 import Github from './Github'
 import {Link} from 'react-router'
-import translate from '../../shared/translate'
+import {useTranslate} from '../../shared/translate'
 import './Navigation.css'
 
 const Navigation = ({language, setLanguage}) => {
+  const translate = useTranslate()
 
   return (
     <header>

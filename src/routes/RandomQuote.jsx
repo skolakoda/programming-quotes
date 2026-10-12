@@ -2,10 +2,11 @@ import React, {useEffect, useState} from 'react'
 import {connect} from 'react-redux'
 
 import ImageQuote from './../components/main/ImageQuote'
-import translate from './../shared/translate'
+import {useTranslate} from './../shared/translate'
 import {readQuoteHistory, saveQuoteHistory, selectRandomQuote} from '../shared/randomQuotes'
 
 function RandomQuote({allQuotes, language}) {
+  const translate = useTranslate()
   const [selection, setSelection] = useState(() => selectRandomQuote(allQuotes, language, readQuoteHistory()))
   useEffect(() => saveQuoteHistory(selection.history), [selection.history])
   let quote = selection.quote

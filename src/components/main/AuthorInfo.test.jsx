@@ -1,7 +1,13 @@
 import React, {StrictMode} from 'react'
 import {vi} from 'vitest'
-import {render, unmount, flushRequests} from '../../test/render'
+import {Provider} from 'react-redux'
+import {createStore} from 'redux'
+import {render as renderElement, unmount, flushRequests} from '../../test/render'
 import AuthorInfo from './AuthorInfo'
+import {reducer} from '../../store/reducer'
+
+const store = createStore(reducer)
+const render = (element, container) => renderElement(<Provider store={store}>{element}</Provider>, container)
 
 const originalFetch = global.fetch
 let container
@@ -133,7 +139,7 @@ test('clears a previous biography when returning to its author while a fresh req
 test('ignores the first request when Strict Mode restarts the effect', async () => {
   const requests = []
   global.fetch = vi.fn(() => new Promise(resolve => requests.push(resolve)))
-  render(<StrictMode><AuthorInfo author="Alan Perlis" /></StrictMode>, container)
+  renderElement(<StrictMode><Provider store={store}><AuthorInfo author="Alan Perlis" /></Provider></StrictMode>, container)
   expect(requests).toHaveLength(2)
   requests[1](biographyResponse('Current biography.'))
   await flushRequests()

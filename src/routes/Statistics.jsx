@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router'
 
 import PieChart from '../components/statistics/PieChart'
-import translate from '../shared/translate'
+import {useTranslate} from '../shared/translate'
 import {displayName} from '../shared/helpers'
 import './Statistics.css'
 
@@ -23,15 +23,16 @@ function countByAuthor(quotes) {
   return [...counts].sort(([a, x], [b, y]) => y - x || a.localeCompare(b))
 }
 
-function authorSlices(authors) {
+function authorSlices(authors, otherLabel) {
   const slices = authors.filter(([, count]) => count >= minQuotesForSlice)
     .map(([author, count], i) => ({label: displayName(author), value: count, color: pieColors[i % pieColors.length]}))
   const other = authors.slice(slices.length).reduce((sum, [, count]) => sum + count, 0)
-  if (other) slices.push({label: translate('OTHER_AUTHORS'), value: other, color: otherColor})
+  if (other) slices.push({label: otherLabel, value: other, color: otherColor})
   return slices
 }
 
 function Statistics({allQuotes}) {
+  const translate = useTranslate()
   const authors = countByAuthor(allQuotes)
   const maxCount = authors.length ? authors[0][1] : 0
 
@@ -60,7 +61,7 @@ function Statistics({allQuotes}) {
         })}
       </div>
       <h2>{translate('QUOTES_BY_AUTHOR')}</h2>
-      <PieChart slices={authorSlices(authors)} label={translate('QUOTES_BY_AUTHOR')} />
+      <PieChart slices={authorSlices(authors, translate('OTHER_AUTHORS'))} label={translate('QUOTES_BY_AUTHOR')} />
       <table>
         <thead>
           <tr>

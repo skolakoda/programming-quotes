@@ -1,9 +1,10 @@
 import {useId, useState} from 'react'
 import {LS} from '../../config/localstorage'
-import translate from '../../shared/translate'
+import {useTranslate} from '../../shared/translate'
 import './Stars.css'
 
 function Rating({value, onChange}) {
+  const translate = useTranslate()
   const name = useId()
   const [preview, setPreview] = useState(null)
   const rating = Number.isFinite(Number(value)) ? Math.max(0, Math.min(5, Number(value))) : 0
@@ -50,6 +51,7 @@ function initialValue(id, rating) {
 }
 
 function VotingStars({id, initialRating}) {
+  const translate = useTranslate()
   const [state, setState] = useState(() => ({rating: initialValue(id, initialRating), error: ''}))
 
   const vote = newVote => {

@@ -18,7 +18,6 @@ The app runs at `http://localhost:3000`.
 
 ## TODO
 
-- statistika se ne prevodi pri promeni jezika (`translate()` čita globalni store, a komponenta se ne renderuje ponovo); rešenje: hook `useTranslate()` preko `useSelector`
 - živi sajt i dalje prikazuje staru CRA verziju; trenutni Vite kod nije objavljen (`npm run deploy`)
 - tekstovi koji zaobilaze prevod: „Gimme more!“, „View source on Github“, alt „loading...“
 - izabrani jezik se gubi posle osvežavanja, a `<html lang>` i `lang` na tekstu citata se ne menjaju
@@ -30,4 +29,3 @@ The app runs at `http://localhost:3000`.
 - nema poruke „nije pronađeno“ za nepostojeću stranu, citat ili autora
 - mrtav kod i zastarela podešavanja: `.eslintrc` bez eslinta, `browserslist`, `homepage`, `findValue`
 - naslov strane se ne menja po ruti, nema `og:` opisa, manifest nema ikone za instalaciju
-

@@ -1,7 +1,13 @@
 import {vi} from 'vitest'
-import {act, render, unmount} from '../../test/render'
+import {Provider} from 'react-redux'
+import {createStore} from 'redux'
+import {act, render as renderElement, unmount} from '../../test/render'
 import Stars from './Stars'
+import {reducer} from '../../store/reducer'
 import {LS} from '../../config/localstorage'
+
+const store = createStore(reducer)
+const render = (element, container) => renderElement(<Provider store={store}>{element}</Provider>, container)
 
 let container
 beforeEach(() => {
